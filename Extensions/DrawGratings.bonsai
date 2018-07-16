@@ -99,14 +99,8 @@
               </Operand>
             </Expression>
             <Expression xsi:type="Accumulate" />
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="CombineLatest" />
-            </Expression>
             <Expression xsi:type="MemberSelector">
               <Selector>Item2</Selector>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="Sample" />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:UpdateStep">
@@ -126,6 +120,9 @@
             <Expression xsi:type="q2:ExpressionTransform">
               <q2:Expression>single(it)</q2:Expression>
             </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="WithLatestFrom" />
+            </Expression>
           </Nodes>
           <Edges>
             <Edge>
@@ -140,13 +137,8 @@
             </Edge>
             <Edge>
               <From>2</From>
-              <To>9</To>
+              <To>14</To>
               <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>2</From>
-              <To>11</To>
-              <Label>Source2</Label>
             </Edge>
             <Edge>
               <From>4</From>
@@ -155,7 +147,7 @@
             </Edge>
             <Edge>
               <From>4</From>
-              <To>14</To>
+              <To>12</To>
               <Label>Source2</Label>
             </Edge>
             <Edge>
@@ -165,52 +157,47 @@
             </Edge>
             <Edge>
               <From>6</From>
-              <To>12</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>7</From>
-              <To>14</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>8</From>
-              <To>9</To>
-              <Label>Source2</Label>
-            </Edge>
-            <Edge>
-              <From>9</From>
-              <To>11</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>10</From>
-              <To>5</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>11</From>
               <To>10</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
+              <From>7</From>
+              <To>12</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>8</From>
+              <To>14</To>
+              <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>9</From>
+              <To>5</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>10</From>
+              <To>13</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>11</From>
+              <To>7</To>
+              <Label>Source2</Label>
+            </Edge>
+            <Edge>
               <From>12</From>
-              <To>15</To>
+              <To>8</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>13</From>
               <To>7</To>
-              <Label>Source2</Label>
-            </Edge>
-            <Edge>
-              <From>14</From>
-              <To>8</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
-              <From>15</From>
-              <To>7</To>
+              <From>14</From>
+              <To>9</To>
               <Label>Source1</Label>
             </Edge>
           </Edges>
@@ -685,11 +672,10 @@
     <Type>Bonsai.Shaders.UpdateFrame, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.MultiplyBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.AccumulateBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.CombineLatest, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.Sample, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.UpdateStep, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.DivideBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Scripting.ExpressionTransform, Bonsai.Scripting, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.WithLatestFrom, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.BooleanProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.CreateRotationZ, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.CreateScale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
