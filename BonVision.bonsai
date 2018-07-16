@@ -1,23 +1,97 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
-  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://horizongir.org/bonsai">
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q3="clr-namespace:Bonsai.IO;assembly=Bonsai.System" xmlns:q2="clr-namespace:Bonsai.Numerics;assembly=Bonsai.Numerics" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://horizongir.org/bonsai">
     <Nodes>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:RenderFrame" />
       </Expression>
-      <Expression xsi:type="IncludeWorkflow" Path="Extensions\DrawGratings">
-        <Frequency>10</Frequency>
-        <Phase>0</Phase>
-        <Radius>1</Radius>
-        <Edge>0.2</Edge>
-        <Angle>0</Angle>
-        <ExtentX>1</ExtentX>
-        <ExtentY>1</ExtentY>
-        <LocationX>0</LocationX>
-        <LocationY>0</LocationY>
-        <Square>false</Square>
-        <Contrast>1</Contrast>
-        <Opacity>1</Opacity>
+      <Expression xsi:type="PublishSubject">
+        <Name>DrawStimuli</Name>
+      </Expression>
+      <Expression xsi:type="WorkflowOutput" />
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:Timer">
+          <q1:DueTime>PT0S</q1:DueTime>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="StringProperty">
+          <Value>StartSession</Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q2:CreateRandom">
+          <q2:Seed xsi:nil="true" />
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="AsyncSubject">
+        <Name>Random</Name>
+      </Expression>
+      <Expression xsi:type="SubscribeSubject">
+        <Name>DrawStimuli</Name>
+      </Expression>
+      <Expression xsi:type="GroupWorkflow">
+        <Name>EventLogging</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="BehaviorSubject">
+              <Name>Events</Name>
+            </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>Events</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="Timestamp" />
+            </Expression>
+            <Expression xsi:type="q3:CsvWriter">
+              <q3:FileName>Events.csv</q3:FileName>
+              <q3:Delimiter>,</q3:Delimiter>
+              <q3:Append>false</q3:Append>
+              <q3:Overwrite>true</q3:Overwrite>
+              <q3:Suffix>None</q3:Suffix>
+              <q3:IncludeHeader>true</q3:IncludeHeader>
+              <q3:Selector />
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>FileName</MemberName>
+              <Name>FileName</Name>
+            </Expression>
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>Overwrite</MemberName>
+              <Name>Overwrite</Name>
+            </Expression>
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>1</From>
+              <To>2</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>3</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>4</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>5</From>
+              <To>3</To>
+              <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>6</From>
+              <To>3</To>
+              <Label>Source3</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
       </Expression>
     </Nodes>
     <Edges>
@@ -26,9 +100,35 @@
         <To>1</To>
         <Label>Source1</Label>
       </Edge>
+      <Edge>
+        <From>1</From>
+        <To>2</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>3</From>
+        <To>4</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>4</From>
+        <To>8</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>5</From>
+        <To>6</To>
+        <Label>Source1</Label>
+      </Edge>
     </Edges>
   </Workflow>
   <ExtensionTypes>
     <Type>Bonsai.Shaders.RenderFrame, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.Timer, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.StringProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Numerics.CreateRandom, Bonsai.Numerics, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.AsyncSubjectBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.Timestamp, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.IO.CsvWriter, Bonsai.System, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
