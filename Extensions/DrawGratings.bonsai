@@ -14,14 +14,6 @@
         <Name>Source1</Name>
       </Expression>
       <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Frequency</MemberName>
-        <Name>Frequency</Name>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Phase</MemberName>
-        <Name>Phase</Name>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
         <MemberName>Radius</MemberName>
         <Name>Radius</Name>
       </Expression>
@@ -50,16 +42,24 @@
         <Name>LocationY</Name>
       </Expression>
       <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Square</MemberName>
-        <Name>Square</Name>
+        <MemberName>Opacity</MemberName>
+        <Name>Opacity</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>SpatialFrequency</MemberName>
+        <Name>SpatialFrequency</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>SquareWave</MemberName>
+        <Name>SquareWave</Name>
       </Expression>
       <Expression xsi:type="ExternalizedProperty">
         <MemberName>Contrast</MemberName>
         <Name>Contrast</Name>
       </Expression>
       <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Opacity</MemberName>
-        <Name>Opacity</Name>
+        <MemberName>TemporalFrequency</MemberName>
+        <Name>TemporalFrequency</Name>
       </Expression>
       <Expression xsi:type="GroupWorkflow">
         <Name>PhaseFrequency</Name>
@@ -82,12 +82,7 @@
             <Expression xsi:type="WorkflowOutput" />
             <Expression xsi:type="ExternalizedProperty">
               <MemberName>Value</MemberName>
-              <Name>Frequency</Name>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="FloatProperty">
-                <Value>0</Value>
-              </Combinator>
+              <Name>SpatialFrequency</Name>
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:UpdateUniform">
@@ -95,9 +90,41 @@
                 <q1:ShaderName>Gratings</q1:ShaderName>
               </Combinator>
             </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:UpdateFrame" />
+            </Expression>
+            <Expression xsi:type="Multiply">
+              <Operand xsi:type="FloatProperty">
+                <Value>0</Value>
+              </Operand>
+            </Expression>
+            <Expression xsi:type="Accumulate" />
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="CombineLatest" />
+            </Expression>
+            <Expression xsi:type="MemberSelector">
+              <Selector>Item2</Selector>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="Sample" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:UpdateStep">
+                <q1:StepSize>2</q1:StepSize>
+                <q1:MaxElapsedTime xsi:nil="true" />
+              </Combinator>
+            </Expression>
             <Expression xsi:type="ExternalizedProperty">
               <MemberName>Value</MemberName>
-              <Name>Phase</Name>
+              <Name>TemporalFrequency</Name>
+            </Expression>
+            <Expression xsi:type="Divide">
+              <Operand xsi:type="FloatProperty">
+                <Value>10</Value>
+              </Operand>
+            </Expression>
+            <Expression xsi:type="q2:ExpressionTransform">
+              <q2:Expression>single(it)</q2:Expression>
             </Expression>
           </Nodes>
           <Edges>
@@ -113,8 +140,13 @@
             </Edge>
             <Edge>
               <From>2</From>
-              <To>5</To>
+              <To>9</To>
               <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>11</To>
+              <Label>Source2</Label>
             </Edge>
             <Edge>
               <From>4</From>
@@ -122,19 +154,64 @@
               <Label>Source2</Label>
             </Edge>
             <Edge>
-              <From>5</From>
-              <To>6</To>
-              <Label>Source1</Label>
+              <From>4</From>
+              <To>14</To>
+              <Label>Source2</Label>
             </Edge>
             <Edge>
-              <From>6</From>
+              <From>5</From>
               <To>3</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
+              <From>6</From>
+              <To>12</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
               <From>7</From>
-              <To>5</To>
+              <To>14</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>8</From>
+              <To>9</To>
               <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>9</From>
+              <To>11</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>10</From>
+              <To>5</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>11</From>
+              <To>10</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>12</From>
+              <To>15</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>13</From>
+              <To>7</To>
+              <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>14</From>
+              <To>8</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>15</From>
+              <To>7</To>
+              <Label>Source1</Label>
             </Edge>
           </Edges>
         </Workflow>
@@ -154,7 +231,7 @@
             </Expression>
             <Expression xsi:type="ExternalizedProperty">
               <MemberName>Value</MemberName>
-              <Name>Square</Name>
+              <Name>SquareWave</Name>
             </Expression>
             <Expression xsi:type="q2:ExpressionTransform">
               <q2:Expression>it ? 1 : 0</q2:Expression>
@@ -521,48 +598,48 @@
       </Edge>
       <Edge>
         <From>3</From>
-        <To>15</To>
+        <To>17</To>
         <Label>Source2</Label>
       </Edge>
       <Edge>
         <From>4</From>
-        <To>15</To>
+        <To>17</To>
         <Label>Source3</Label>
       </Edge>
       <Edge>
         <From>5</From>
-        <To>17</To>
+        <To>18</To>
         <Label>Source2</Label>
       </Edge>
       <Edge>
         <From>6</From>
-        <To>17</To>
+        <To>18</To>
         <Label>Source3</Label>
       </Edge>
       <Edge>
         <From>7</From>
         <To>18</To>
-        <Label>Source2</Label>
+        <Label>Source4</Label>
       </Edge>
       <Edge>
         <From>8</From>
         <To>18</To>
-        <Label>Source3</Label>
+        <Label>Source5</Label>
       </Edge>
       <Edge>
         <From>9</From>
         <To>18</To>
-        <Label>Source4</Label>
+        <Label>Source6</Label>
       </Edge>
       <Edge>
         <From>10</From>
-        <To>18</To>
-        <Label>Source5</Label>
+        <To>17</To>
+        <Label>Source4</Label>
       </Edge>
       <Edge>
         <From>11</From>
-        <To>18</To>
-        <Label>Source6</Label>
+        <To>15</To>
+        <Label>Source2</Label>
       </Edge>
       <Edge>
         <From>12</From>
@@ -576,8 +653,8 @@
       </Edge>
       <Edge>
         <From>14</From>
-        <To>17</To>
-        <Label>Source4</Label>
+        <To>15</To>
+        <Label>Source3</Label>
       </Edge>
       <Edge>
         <From>15</From>
@@ -605,6 +682,13 @@
     <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.FloatProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.UpdateFrame, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.MultiplyBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.AccumulateBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.CombineLatest, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.Sample, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.UpdateStep, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.DivideBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Scripting.ExpressionTransform, Bonsai.Scripting, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.BooleanProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.CreateRotationZ, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
