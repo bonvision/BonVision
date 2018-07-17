@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.4.0-preview">
+  <Description>Generates a linear range of values between min and max.</Description>
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp" xmlns="https://horizongir.org/bonsai">
+    <Nodes>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Range">
+          <Start>0</Start>
+          <Count>100</Count>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:Rescale">
+          <q1:Min>0</q1:Min>
+          <q1:Max>100</q1:Max>
+          <q1:RangeMin>0</q1:RangeMin>
+          <q1:RangeMax>1</q1:RangeMax>
+          <q1:RescaleType>Linear</q1:RescaleType>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="PropertySourceOfRangeInt32">
+        <MemberName>Count</MemberName>
+        <Value>10</Value>
+      </Expression>
+      <Expression xsi:type="PropertySourceOfRangeInt32">
+        <MemberName>Count</MemberName>
+        <Value>10</Value>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Value</MemberName>
+        <Name>Count</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Count</MemberName>
+        <Name />
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Max</MemberName>
+        <Name />
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>RangeMin</MemberName>
+        <Name>RangeMin</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>RangeMax</MemberName>
+        <Name>RangeMax</Name>
+      </Expression>
+      <Expression xsi:type="WorkflowOutput" />
+    </Nodes>
+    <Edges>
+      <Edge>
+        <From>0</From>
+        <To>1</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>1</From>
+        <To>9</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>2</From>
+        <To>5</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>3</From>
+        <To>6</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>4</From>
+        <To>2</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>4</From>
+        <To>3</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>5</From>
+        <To>0</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>6</From>
+        <To>1</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
+        <From>7</From>
+        <To>1</To>
+        <Label>Source3</Label>
+      </Edge>
+      <Edge>
+        <From>8</From>
+        <To>1</To>
+        <Label>Source4</Label>
+      </Edge>
+    </Edges>
+  </Workflow>
+  <ExtensionTypes>
+    <Type>Bonsai.Reactive.Range, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Dsp.Rescale, Bonsai.Dsp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Reactive.Range, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null],[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+  </ExtensionTypes>
+</WorkflowBuilder>
