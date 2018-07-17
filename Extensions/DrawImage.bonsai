@@ -75,7 +75,7 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>shift</q1:UniformName>
+                <q1:UniformName>translation</q1:UniformName>
                 <q1:ShaderName>Image</q1:ShaderName>
               </Combinator>
             </Expression>
