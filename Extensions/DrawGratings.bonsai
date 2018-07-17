@@ -571,6 +571,43 @@
           </Edges>
         </Workflow>
       </Expression>
+      <Expression xsi:type="GroupWorkflow">
+        <Name>AspectRatio</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:AspectRatio" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:UpdateUniform">
+                <q1:UniformName>aspectRatio</q1:UniformName>
+                <q1:ShaderName>Gratings</q1:ShaderName>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>1</From>
+              <To>3</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
     </Nodes>
     <Edges>
       <Edge>
@@ -580,7 +617,7 @@
       </Edge>
       <Edge>
         <From>2</From>
-        <To>15</To>
+        <To>19</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -663,6 +700,11 @@
         <To>0</To>
         <Label>Source1</Label>
       </Edge>
+      <Edge>
+        <From>19</From>
+        <To>15</To>
+        <Label>Source1</Label>
+      </Edge>
     </Edges>
   </Workflow>
   <ExtensionTypes>
@@ -681,5 +723,6 @@
     <Type>Bonsai.Shaders.CreateScale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.CreateTranslation, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.CreateMatrix2, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.AspectRatio, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>

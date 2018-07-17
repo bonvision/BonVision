@@ -1,4 +1,5 @@
 #version 400
+uniform float aspectRatio = 1;
 uniform mat2 rotation = mat2(1);
 uniform vec2 scale = vec2(1, 1);
 uniform vec2 shift;
@@ -8,6 +9,7 @@ out vec2 texCoord;
 
 void main()
 {
-  gl_Position = vec4(vp * scale * rotation + shift, 0.0, 1.0);
+  vec2 ratioScale = vec2(scale.x / aspectRatio, scale.y);
+  gl_Position = vec4(vp * rotation * ratioScale + shift, 0.0, 1.0);
   texCoord = vt;
 }
