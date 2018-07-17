@@ -44,6 +44,14 @@
         <MemberName>TextureName</MemberName>
         <Name>TextureName</Name>
       </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>ShiftX</MemberName>
+        <Name>ShiftX</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>ShiftY</MemberName>
+        <Name>ShiftY</Name>
+      </Expression>
       <Expression xsi:type="GroupWorkflow">
         <Name>Transform</Name>
         <Workflow>
@@ -218,11 +226,78 @@
           </Edges>
         </Workflow>
       </Expression>
+      <Expression xsi:type="GroupWorkflow">
+        <Name>Shift</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>X</MemberName>
+              <Name>ShiftX</Name>
+            </Expression>
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>Y</MemberName>
+              <Name>ShiftY</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:UpdateUniform">
+                <q1:UniformName>shift</q1:UniformName>
+                <q1:ShaderName>Image</q1:ShaderName>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:CreateScale">
+                <q1:X>0</q1:X>
+                <q1:Y>0</q1:Y>
+                <q1:Z>1</q1:Z>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="MemberSelector">
+              <Selector>M11,M22</Selector>
+            </Expression>
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>5</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>5</To>
+              <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>3</From>
+              <To>5</To>
+              <Label>Source3</Label>
+            </Edge>
+            <Edge>
+              <From>4</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>5</From>
+              <To>6</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>6</From>
+              <To>4</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
     </Nodes>
     <Edges>
       <Edge>
         <From>0</From>
-        <To>10</To>
+        <To>12</To>
         <Label>Source2</Label>
       </Edge>
       <Edge>
@@ -232,27 +307,27 @@
       </Edge>
       <Edge>
         <From>3</From>
-        <To>10</To>
+        <To>12</To>
         <Label>Source2</Label>
       </Edge>
       <Edge>
         <From>4</From>
-        <To>10</To>
+        <To>12</To>
         <Label>Source3</Label>
       </Edge>
       <Edge>
         <From>5</From>
-        <To>10</To>
+        <To>12</To>
         <Label>Source4</Label>
       </Edge>
       <Edge>
         <From>6</From>
-        <To>10</To>
+        <To>12</To>
         <Label>Source5</Label>
       </Edge>
       <Edge>
         <From>7</From>
-        <To>10</To>
+        <To>12</To>
         <Label>Source6</Label>
       </Edge>
       <Edge>
@@ -267,6 +342,21 @@
       </Edge>
       <Edge>
         <From>10</From>
+        <To>13</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
+        <From>11</From>
+        <To>13</To>
+        <Label>Source3</Label>
+      </Edge>
+      <Edge>
+        <From>12</From>
+        <To>13</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>13</From>
         <To>8</To>
         <Label>Source1</Label>
       </Edge>
