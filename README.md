@@ -15,5 +15,6 @@ The following extensions are currently available in BonVision:
 * `DrawGratings`: Draws parameterized 2D sinewave gratings, with support for interactive manipulation of spatio-temporal frequency, angle, location, size, envelope, etc.
 * `DrawImage`: Draws an affine transformed 2D image. Textures need to be added to the Shader configuration window first. Double-click on the `RenderFrame` node at the top and select the `Textures` tab. You can drag-and-drop arbitrary image files to the window. This operator also supports interactive manipulation of location, size, etc.
 * `GammaCorrection`: Renders the current scene to a texture and applies gamma correction as a post-processing effect using a look-up table specified via an external image file.
+* `MeshMapping`: Renders the current scene to a texture and applies mesh mapping and brightness correction as a post-processing effect using a mesh grid specified via an external calibration file.
 * `ParameterRange`: Generates a sequence of parameter values between a specified min and max range. This operator can be useful for automating generation of parameterized trial sequences.
 * `LogEvent`: Logs the specified value into the common event file. This operator can be used for keeping a general record of session events in chronological order.
