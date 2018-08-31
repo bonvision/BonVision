@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
-  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q3="clr-namespace:Bonsai.IO;assembly=Bonsai.System" xmlns:q2="clr-namespace:Bonsai.Numerics;assembly=Bonsai.Numerics" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://horizongir.org/bonsai">
+  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q2="clr-namespace:Bonsai.Numerics;assembly=Bonsai.Numerics" xmlns:q3="clr-namespace:Bonsai.IO;assembly=Bonsai.System" xmlns="https://horizongir.org/bonsai">
     <Nodes>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:RenderFrame" />
@@ -9,11 +9,6 @@
         <Name>DrawStimuli</Name>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:Timer">
-          <q1:DueTime>PT0S</q1:DueTime>
-        </Combinator>
-      </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="StringProperty">
           <Value>StartSession</Value>
@@ -29,6 +24,11 @@
       </Expression>
       <Expression xsi:type="SubscribeSubject">
         <Name>DrawStimuli</Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Take">
+          <Count>1</Count>
+        </Combinator>
       </Expression>
       <Expression xsi:type="GroupWorkflow">
         <Name>EventLogging</Name>
@@ -93,6 +93,20 @@
           </Edges>
         </Workflow>
       </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="Extensions\DrawGratings">
+        <Radius>1</Radius>
+        <Edge>0.2</Edge>
+        <Angle>0</Angle>
+        <ExtentX>1</ExtentX>
+        <ExtentY>1</ExtentY>
+        <LocationX>0</LocationX>
+        <LocationY>0</LocationY>
+        <Opacity>1</Opacity>
+        <SpatialFrequency>10</SpatialFrequency>
+        <SquareWave>false</SquareWave>
+        <Contrast>1</Contrast>
+        <TemporalFrequency>0</TemporalFrequency>
+      </Expression>
     </Nodes>
     <Edges>
       <Edge>
@@ -107,27 +121,32 @@
       </Edge>
       <Edge>
         <From>3</From>
-        <To>4</To>
+        <To>7</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>4</From>
-        <To>8</To>
+        <To>5</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
-        <From>5</From>
-        <To>6</To>
+        <From>6</From>
+        <To>9</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>7</From>
+        <To>8</To>
         <Label>Source1</Label>
       </Edge>
     </Edges>
   </Workflow>
   <ExtensionTypes>
     <Type>Bonsai.Shaders.RenderFrame, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.Timer, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.StringProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Numerics.CreateRandom, Bonsai.Numerics, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.AsyncSubjectBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.Take, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.Timestamp, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.IO.CsvWriter, Bonsai.System, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
