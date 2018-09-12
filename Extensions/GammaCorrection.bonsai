@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Renders the current scene to a texture and applies gamma correction as a post-processing effect.</Description>
-  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://horizongir.org/bonsai">
+  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://horizongir.org/bonsai">
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
@@ -23,8 +23,8 @@
           <q1:Width xsi:nil="true" />
           <q1:Height xsi:nil="true" />
           <q1:InternalFormat>Rgba</q1:InternalFormat>
-          <q1:WrapS>Repeat</q1:WrapS>
-          <q1:WrapT>Repeat</q1:WrapT>
+          <q1:WrapS>ClampToEdge</q1:WrapS>
+          <q1:WrapT>ClampToEdge</q1:WrapT>
           <q1:MinFilter>Linear</q1:MinFilter>
           <q1:MagFilter>Linear</q1:MagFilter>
           <q1:ColorType>Unchanged</q1:ColorType>

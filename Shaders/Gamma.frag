@@ -7,6 +7,8 @@ out vec4 fragColor;
 void main()
 {
   vec4 texel = texture(tex, texCoord);
-  vec4 weight = texture(lut, texCoord);
-  fragColor = texel * weight;
+  texel.r *= texture(lut, vec2(texel.r, 0.5)).r;
+  texel.g *= texture(lut, vec2(texel.g, 0.5)).g;
+  texel.b *= texture(lut, vec2(texel.b, 0.5)).b;
+  fragColor = texel;
 }
