@@ -13,6 +13,7 @@ BonVision is a common workflow template and set of extensions, shaders and resou
 The following extensions are currently available in BonVision:
 
 * `DrawGratings`: Draws parameterized 2D sinewave gratings, with support for interactive manipulation of spatio-temporal frequency, angle, location, size, envelope, etc.
+* `DrawCheckerboard`: Draws parameterized checkerboards, with support for interactive manipulation of number of columns, rows, and grid phase used for flickering stimuli.
 * `DrawImage`: Draws an affine transformed 2D image. Textures need to be added to the Shader configuration window first. Double-click on the `RenderFrame` node at the top and select the `Textures` tab. You can drag-and-drop arbitrary image files to the window. This operator also supports interactive manipulation of location, size, etc.
 * `GammaCorrection`: Renders the current scene to a texture and applies gamma correction as a post-processing effect using a look-up table specified via an external image file.
 * `MeshMapping`: Renders the current scene to a texture and applies mesh mapping and brightness correction as a post-processing effect using a mesh grid specified via an external calibration file.
