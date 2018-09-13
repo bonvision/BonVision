@@ -7,6 +7,7 @@ BonVision is a common workflow template and set of extensions, shaders and resou
 1. BonVision is currently built on top of the 2.4-preview release of Bonsai. You can download this release from the [official Bonsai website](https://bonsai-rx.org).
 2. Install the `Bonsai.Numerics` package.
 3. Open the `BonVision.bonsai` workflow to get started.
+4. *** Required extensions of Bonsai to added
 
 ## Extensions
 
