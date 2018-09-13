@@ -21,3 +21,10 @@ The following extensions are currently available in BonVision:
 * `RangeAnimation`: Animates a sequence of parameter values between a min and max range at the specified cycles per second. This operator can be useful to specify continuous changes in parameter values.
 * `GratingsSpecification`: Creates a sequence of grating parameters used for stimulus presentation. This operator can be useful for specifying parametric trial sequences.
 * `LogEvent`: Logs the specified value into the common event file. This operator can be used for keeping a general record of session events in chronological order.
+
+## Examples
+
+* 'HandMapping'
+* 'DirectionTuning'
+* 'ContrastTuning'
+
