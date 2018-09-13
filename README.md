@@ -18,5 +18,6 @@ The following extensions are currently available in BonVision:
 * `GammaCorrection`: Renders the current scene to a texture and applies gamma correction as a post-processing effect using a look-up table specified via an external image file.
 * `MeshMapping`: Renders the current scene to a texture and applies mesh mapping and brightness correction as a post-processing effect using a mesh grid specified via an external calibration file.
 * `ParameterRange`: Generates a sequence of parameter values between a specified min and max range. This operator can be useful for automating generation of parameterized trial sequences.
-* `RangeAnimation`: Animates a sequence of parameter values between a min and max range at the specified cycles per second. This operator can be useful to specify continuous changes in parameter values. 
+* `RangeAnimation`: Animates a sequence of parameter values between a min and max range at the specified cycles per second. This operator can be useful to specify continuous changes in parameter values.
+* `GratingsSpecification`: Creates a sequence of grating parameters used for stimulus presentation. This operator can be useful for specifying parametric trial sequences.
 * `LogEvent`: Logs the specified value into the common event file. This operator can be used for keeping a general record of session events in chronological order.
