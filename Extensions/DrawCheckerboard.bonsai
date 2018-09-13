@@ -90,9 +90,6 @@
                 <Value>3</Value>
               </Combinator>
             </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="Zip" />
-            </Expression>
             <Expression xsi:type="ExternalizedProperty">
               <MemberName>Value</MemberName>
               <Name>Columns</Name>
@@ -101,22 +98,19 @@
               <MemberName>Value</MemberName>
               <Name>Rows</Name>
             </Expression>
-            <Expression xsi:type="InputMapping">
-              <PropertyMappings>
-                <Property name="X" selector="Item1" />
-                <Property name="Y" selector="Item2" />
-              </PropertyMappings>
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>X</MemberName>
+              <Name />
+            </Expression>
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>Y</MemberName>
+              <Name />
             </Expression>
           </Nodes>
           <Edges>
             <Edge>
               <From>0</From>
-              <To>7</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>0</From>
-              <To>8</To>
+              <To>3</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
@@ -146,33 +140,33 @@
             </Edge>
             <Edge>
               <From>7</From>
-              <To>9</To>
+              <To>11</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>8</From>
-              <To>9</To>
-              <Label>Source2</Label>
-            </Edge>
-            <Edge>
-              <From>9</From>
               <To>12</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
-              <From>10</From>
+              <From>9</From>
               <To>7</To>
-              <Label>Source2</Label>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>10</From>
+              <To>8</To>
+              <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>11</From>
-              <To>8</To>
+              <To>3</To>
               <Label>Source2</Label>
             </Edge>
             <Edge>
               <From>12</From>
               <To>3</To>
-              <Label>Source1</Label>
+              <Label>Source3</Label>
             </Edge>
           </Edges>
         </Workflow>
@@ -462,7 +456,6 @@
     <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.CreateVector2, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.IntProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.Zip, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.CreateRotationZ, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.CreateScale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.CreateTranslation, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
