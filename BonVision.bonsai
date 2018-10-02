@@ -93,6 +93,7 @@
           </Edges>
         </Workflow>
       </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="RigInfo\NormalizedViewport.bonsai" />
       <Expression xsi:type="IncludeWorkflow" Path="Extensions\DrawGratings">
         <Radius>1</Radius>
         <Edge>0.2</Edge>
@@ -111,7 +112,7 @@
     <Edges>
       <Edge>
         <From>0</From>
-        <To>1</To>
+        <To>9</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -131,12 +132,17 @@
       </Edge>
       <Edge>
         <From>6</From>
-        <To>9</To>
+        <To>10</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>7</From>
         <To>8</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>9</From>
+        <To>1</To>
         <Label>Source1</Label>
       </Edge>
     </Edges>
