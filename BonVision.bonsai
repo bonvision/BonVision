@@ -97,7 +97,6 @@
       <Expression xsi:type="IncludeWorkflow" Path="Extensions\DrawGratings">
         <Radius>1</Radius>
         <Edge>0.2</Edge>
-        <Angle>0</Angle>
         <ExtentX>1</ExtentX>
         <ExtentY>1</ExtentY>
         <LocationX>0</LocationX>
@@ -107,6 +106,7 @@
         <SquareWave>false</SquareWave>
         <Contrast>1</Contrast>
         <TemporalFrequency>0</TemporalFrequency>
+        <Angle>0</Angle>
       </Expression>
     </Nodes>
     <Edges>

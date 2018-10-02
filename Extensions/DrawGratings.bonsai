@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Draws parameterized 2D sinewave gratings.</Description>
-  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q2="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns="https://horizongir.org/bonsai">
+  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q2="clr-namespace:;assembly=Extensions" xmlns:q3="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns="https://horizongir.org/bonsai">
     <Nodes>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:DrawMesh">
@@ -20,10 +20,6 @@
       <Expression xsi:type="ExternalizedProperty">
         <MemberName>Edge</MemberName>
         <Name>Edge</Name>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Angle</MemberName>
-        <Name>Angle</Name>
       </Expression>
       <Expression xsi:type="ExternalizedProperty">
         <MemberName>ExtentX</MemberName>
@@ -60,6 +56,19 @@
       <Expression xsi:type="ExternalizedProperty">
         <MemberName>TemporalFrequency</MemberName>
         <Name>TemporalFrequency</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Angle</MemberName>
+        <Name />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q2:AngleProperty">
+          <q2:Value>0</q2:Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Value</MemberName>
+        <Name>Angle</Name>
       </Expression>
       <Expression xsi:type="GroupWorkflow">
         <Name>PhaseFrequency</Name>
@@ -117,8 +126,8 @@
                 <Value>10</Value>
               </Operand>
             </Expression>
-            <Expression xsi:type="q2:ExpressionTransform">
-              <q2:Expression>single(it)</q2:Expression>
+            <Expression xsi:type="q3:ExpressionTransform">
+              <q3:Expression>single(it)</q3:Expression>
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="WithLatestFrom" />
@@ -220,8 +229,8 @@
               <MemberName>Value</MemberName>
               <Name>SquareWave</Name>
             </Expression>
-            <Expression xsi:type="q2:ExpressionTransform">
-              <q2:Expression>it ? 1 : 0</q2:Expression>
+            <Expression xsi:type="q3:ExpressionTransform">
+              <q3:Expression>it ? 1 : 0</q3:Expression>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
             <Expression xsi:type="Combinator">
@@ -580,77 +589,77 @@
       </Edge>
       <Edge>
         <From>2</From>
-        <To>15</To>
+        <To>17</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>3</From>
-        <To>17</To>
+        <To>19</To>
         <Label>Source2</Label>
       </Edge>
       <Edge>
         <From>4</From>
-        <To>17</To>
+        <To>19</To>
         <Label>Source3</Label>
       </Edge>
       <Edge>
         <From>5</From>
-        <To>18</To>
+        <To>20</To>
         <Label>Source2</Label>
       </Edge>
       <Edge>
         <From>6</From>
-        <To>18</To>
+        <To>20</To>
         <Label>Source3</Label>
       </Edge>
       <Edge>
         <From>7</From>
-        <To>18</To>
+        <To>20</To>
         <Label>Source4</Label>
       </Edge>
       <Edge>
         <From>8</From>
-        <To>18</To>
+        <To>20</To>
         <Label>Source5</Label>
       </Edge>
       <Edge>
         <From>9</From>
-        <To>18</To>
-        <Label>Source6</Label>
+        <To>19</To>
+        <Label>Source4</Label>
       </Edge>
       <Edge>
         <From>10</From>
         <To>17</To>
-        <Label>Source4</Label>
+        <Label>Source2</Label>
       </Edge>
       <Edge>
         <From>11</From>
-        <To>15</To>
+        <To>18</To>
         <Label>Source2</Label>
       </Edge>
       <Edge>
         <From>12</From>
-        <To>16</To>
-        <Label>Source2</Label>
+        <To>18</To>
+        <Label>Source3</Label>
       </Edge>
       <Edge>
         <From>13</From>
-        <To>16</To>
+        <To>17</To>
         <Label>Source3</Label>
       </Edge>
       <Edge>
         <From>14</From>
-        <To>15</To>
-        <Label>Source3</Label>
+        <To>20</To>
+        <Label>Source6</Label>
       </Edge>
       <Edge>
         <From>15</From>
-        <To>16</To>
+        <To>14</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>16</From>
-        <To>17</To>
+        <To>15</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -660,6 +669,16 @@
       </Edge>
       <Edge>
         <From>18</From>
+        <To>19</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>19</From>
+        <To>20</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>20</From>
         <To>0</To>
         <Label>Source1</Label>
       </Edge>
@@ -667,6 +686,7 @@
   </Workflow>
   <ExtensionTypes>
     <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>AngleProperty, Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.FloatProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.UpdateFrame, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
