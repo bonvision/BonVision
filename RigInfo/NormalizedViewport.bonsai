@@ -60,6 +60,12 @@
               <Name>Source1</Name>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:UpdateUniform">
+                <q1:UniformName>transform</q1:UniformName>
+                <q1:ShaderName>Circle</q1:ShaderName>
+              </Combinator>
+            </Expression>
           </Nodes>
           <Edges>
             <Edge>
@@ -79,12 +85,17 @@
             </Edge>
             <Edge>
               <From>3</From>
-              <To>5</To>
+              <To>6</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>4</From>
               <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>6</From>
+              <To>5</To>
               <Label>Source1</Label>
             </Edge>
           </Edges>
