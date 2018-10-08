@@ -12,11 +12,18 @@
           <q1:RenderState />
           <q1:ClearColor>Gray</q1:ClearColor>
           <q1:ClearMask>DepthBufferBit ColorBufferBit</q1:ClearMask>
+          <q1:Width xsi:nil="true" />
+          <q1:Height xsi:nil="true" />
+          <q1:WrapS>ClampToEdge</q1:WrapS>
+          <q1:WrapT>ClampToEdge</q1:WrapT>
+          <q1:MinFilter>Linear</q1:MinFilter>
+          <q1:MagFilter>Linear</q1:MagFilter>
         </Combinator>
       </Expression>
       <Expression xsi:type="ExternalizedProperty">
         <MemberName>ClearColor</MemberName>
         <Name>ClearColor</Name>
+        <Category>Misc</Category>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:BindTexture">
@@ -58,6 +65,7 @@
       <Expression xsi:type="ExternalizedProperty">
         <MemberName>FileName</MemberName>
         <Name>FileName</Name>
+        <Category />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q3:CreateVertexGrid" />
