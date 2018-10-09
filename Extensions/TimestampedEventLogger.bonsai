@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
-  <Description>Creates and initializes a CSV file, and matching behavior subject, on which to log events.</Description>
+  <Description>Creates and initializes a CSV file, and matching behavior subject, on which to timestamp and log events.</Description>
   <Workflow xmlns:q1="clr-namespace:Bonsai.IO;assembly=Bonsai.System" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://horizongir.org/bonsai">
     <Nodes>
       <Expression xsi:type="BehaviorSubject">
@@ -36,6 +36,9 @@
       <Expression xsi:type="ExternalizedProperty">
         <MemberName>Suffix</MemberName>
         <Name>Suffix</Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Timestamp" />
       </Expression>
       <Expression xsi:type="GroupWorkflow">
         <Name>GenerateFileName</Name>
@@ -88,7 +91,7 @@
     <Edges>
       <Edge>
         <From>1</From>
-        <To>2</To>
+        <To>8</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -108,7 +111,7 @@
       </Edge>
       <Edge>
         <From>5</From>
-        <To>8</To>
+        <To>9</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -123,6 +126,11 @@
       </Edge>
       <Edge>
         <From>8</From>
+        <To>2</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>9</From>
         <To>4</To>
         <Label>Source1</Label>
       </Edge>
@@ -130,6 +138,7 @@
   </Workflow>
   <ExtensionTypes>
     <Type>Bonsai.IO.CsvWriter, Bonsai.System, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.Timestamp, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.StringProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.FormatBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.Take, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
