@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
-  <Description>Logs a value into the common event stream.</Description>
+  <Description>Logs a value into the specified common event stream.</Description>
   <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://horizongir.org/bonsai">
     <Nodes>
       <Expression xsi:type="WorkflowInput">
@@ -14,6 +14,11 @@
       <Expression xsi:type="ExternalizedProperty">
         <MemberName>Selector</MemberName>
         <Name>Selector</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Name</MemberName>
+        <Name>Name</Name>
+        <Category />
       </Expression>
       <Expression xsi:type="Sink">
         <Name>FormatLog</Name>
@@ -34,6 +39,10 @@
             <Expression xsi:type="ExternalizedProperty">
               <MemberName>Selector</MemberName>
               <Name>Selector</Name>
+            </Expression>
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>Name</MemberName>
+              <Name>Name</Name>
             </Expression>
           </Nodes>
           <Edges>
@@ -62,6 +71,11 @@
               <To>1</To>
               <Label>Source3</Label>
             </Edge>
+            <Edge>
+              <From>6</From>
+              <To>0</To>
+              <Label>Source2</Label>
+            </Edge>
           </Edges>
         </Workflow>
       </Expression>
@@ -69,21 +83,26 @@
     <Edges>
       <Edge>
         <From>0</From>
-        <To>4</To>
+        <To>5</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>2</From>
-        <To>4</To>
+        <To>5</To>
         <Label>Source2</Label>
       </Edge>
       <Edge>
         <From>3</From>
-        <To>4</To>
+        <To>5</To>
         <Label>Source3</Label>
       </Edge>
       <Edge>
         <From>4</From>
+        <To>5</To>
+        <Label>Source4</Label>
+      </Edge>
+      <Edge>
+        <From>5</From>
         <To>1</To>
         <Label>Source1</Label>
       </Edge>
