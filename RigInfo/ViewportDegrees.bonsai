@@ -1,27 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
-  <Description>Specifies the viewport dimensions, in degrees.</Description>
-  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://horizongir.org/bonsai">
+  <Description>Specifies the viewport limits, in degrees.</Description>
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://horizongir.org/bonsai">
     <Nodes>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:CreateOrthographic">
-          <q1:Width>40</q1:Width>
-          <q1:Height>30</q1:Height>
-          <q1:NearClip>0.1</q1:NearClip>
-          <q1:FarClip>1000</q1:FarClip>
-        </Combinator>
-      </Expression>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Width</MemberName>
-        <Name>Width</Name>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:CreateOrthographicOffCenter">
+          <q1:Left>-20</q1:Left>
+          <q1:Right>20</q1:Right>
+          <q1:Bottom>-15</q1:Bottom>
+          <q1:Top>15</q1:Top>
+          <q1:NearClip>0.1</q1:NearClip>
+          <q1:FarClip>1000</q1:FarClip>
+        </Combinator>
       </Expression>
       <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Height</MemberName>
-        <Name>Height</Name>
+        <MemberName>Left</MemberName>
+        <Name>Left</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Right</MemberName>
+        <Name>Right</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Bottom</MemberName>
+        <Name>Bottom</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Top</MemberName>
+        <Name>Top</Name>
       </Expression>
       <Expression xsi:type="GroupWorkflow">
         <Name>UpdateTransform</Name>
@@ -100,33 +110,43 @@
     <Edges>
       <Edge>
         <From>0</From>
-        <To>5</To>
+        <To>2</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
-        <From>1</From>
-        <To>0</To>
+        <From>2</From>
+        <To>7</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>3</From>
-        <To>0</To>
+        <To>2</To>
         <Label>Source2</Label>
       </Edge>
       <Edge>
         <From>4</From>
-        <To>0</To>
+        <To>2</To>
         <Label>Source3</Label>
       </Edge>
       <Edge>
         <From>5</From>
         <To>2</To>
+        <Label>Source4</Label>
+      </Edge>
+      <Edge>
+        <From>6</From>
+        <To>2</To>
+        <Label>Source5</Label>
+      </Edge>
+      <Edge>
+        <From>7</From>
+        <To>1</To>
         <Label>Source1</Label>
       </Edge>
     </Edges>
   </Workflow>
   <ExtensionTypes>
-    <Type>Bonsai.Shaders.CreateOrthographic, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.CreateOrthographicOffCenter, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>

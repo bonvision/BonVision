@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.4.0-preview">
+  <Description>Renders a viewport with field of view determined by the angle and distance of an observer to the screen.</Description>
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q2="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://horizongir.org/bonsai">
+    <Nodes>
+      <Expression xsi:type="WorkflowInput">
+        <Name>Source1</Name>
+      </Expression>
+      <Expression xsi:type="WorkflowOutput" />
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Angle</MemberName>
+        <Name>Angle</Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:CreatePerspectiveFieldOfView">
+          <q1:FovY>0.4636476</q1:FovY>
+          <q1:AspectRatio>1</q1:AspectRatio>
+          <q1:NearClip>0.1</q1:NearClip>
+          <q1:FarClip>1000</q1:FarClip>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>AspectRatio</MemberName>
+        <Name>AspectRatio</Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="FloatProperty">
+          <Value>10</Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="FloatProperty">
+          <Value>0.1</Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="CombineLatest" />
+      </Expression>
+      <Expression xsi:type="q2:ExpressionTransform">
+        <q2:Expression>Math.Atan(0.005 * Item1 / Item2)</q2:Expression>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>FovY</MemberName>
+        <Name />
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Value</MemberName>
+        <Name>ScreenWidth</Name>
+        <Description>The size of the physical display, in cm.</Description>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Value</MemberName>
+        <Name>ScreenDistance</Name>
+        <Description>The distance of the observer to the physical display, in meters.</Description>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:RotateY">
+          <q1:Order>Prepend</q1:Order>
+          <q1:Angle>0</q1:Angle>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:UpdateUniform">
+          <q1:UniformName>modelview</q1:UniformName>
+          <q1:ShaderName>MeshMap</q1:ShaderName>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:UpdateUniform">
+          <q1:UniformName>projection</q1:UniformName>
+          <q1:ShaderName>MeshMap</q1:ShaderName>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:DrawMesh">
+          <q1:ShaderName>MeshMap</q1:ShaderName>
+          <q1:MeshName>SphereMap</q1:MeshName>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:CreateLookAt">
+          <q1:Eye>
+            <q1:X>0</q1:X>
+            <q1:Y>0</q1:Y>
+            <q1:Z>0</q1:Z>
+          </q1:Eye>
+          <q1:Target>
+            <q1:X>0</q1:X>
+            <q1:Y>0</q1:Y>
+            <q1:Z>1</q1:Z>
+          </q1:Target>
+          <q1:Up>
+            <q1:X>0</q1:X>
+            <q1:Y>1</q1:Y>
+            <q1:Z>0</q1:Z>
+          </q1:Up>
+        </Combinator>
+      </Expression>
+    </Nodes>
+    <Edges>
+      <Edge>
+        <From>0</From>
+        <To>16</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>2</From>
+        <To>12</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
+        <From>3</From>
+        <To>14</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>4</From>
+        <To>3</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
+        <From>5</From>
+        <To>7</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>6</From>
+        <To>7</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
+        <From>7</From>
+        <To>8</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>8</From>
+        <To>9</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>9</From>
+        <To>3</To>
+        <Label>Source3</Label>
+      </Edge>
+      <Edge>
+        <From>10</From>
+        <To>5</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>11</From>
+        <To>6</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>12</From>
+        <To>13</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>13</From>
+        <To>3</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>14</From>
+        <To>15</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>15</From>
+        <To>1</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>16</From>
+        <To>12</To>
+        <Label>Source1</Label>
+      </Edge>
+    </Edges>
+  </Workflow>
+  <ExtensionTypes>
+    <Type>Bonsai.Shaders.CreatePerspectiveFieldOfView, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.FloatProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.CombineLatest, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Scripting.ExpressionTransform, Bonsai.Scripting, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.RotateY, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.CreateLookAt, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+  </ExtensionTypes>
+</WorkflowBuilder>
