@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Specifies the viewport limits, in degrees.</Description>
-  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://horizongir.org/bonsai">
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q2="clr-namespace:;assembly=Extensions" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://horizongir.org/bonsai">
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
@@ -9,10 +9,10 @@
       <Expression xsi:type="WorkflowOutput" />
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:CreateOrthographicOffCenter">
-          <q1:Left>-20</q1:Left>
-          <q1:Right>20</q1:Right>
-          <q1:Bottom>-15</q1:Bottom>
-          <q1:Top>15</q1:Top>
+          <q1:Left>-60</q1:Left>
+          <q1:Right>60</q1:Right>
+          <q1:Bottom>-30</q1:Bottom>
+          <q1:Top>30</q1:Top>
           <q1:NearClip>0.1</q1:NearClip>
           <q1:FarClip>1000</q1:FarClip>
         </Combinator>
@@ -32,6 +32,38 @@
       <Expression xsi:type="ExternalizedProperty">
         <MemberName>Top</MemberName>
         <Name>Top</Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q2:CreateSphereGrid">
+          <q2:Left>-60</q2:Left>
+          <q2:Right>60</q2:Right>
+          <q2:Bottom>-30</q2:Bottom>
+          <q2:Top>30</q2:Top>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:Timer">
+          <q1:DueTime>PT0S</q1:DueTime>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:UpdateVertexBuffer">
+          <q1:MeshName>SphereMap</q1:MeshName>
+          <q1:DrawMode>Triangles</q1:DrawMode>
+          <q1:Usage>StaticDraw</q1:Usage>
+          <q1:VertexAttributes>
+            <q1:VertexAttributeMapping>
+              <q1:Size>3</q1:Size>
+              <q1:Normalized>false</q1:Normalized>
+              <q1:Type>Float</q1:Type>
+            </q1:VertexAttributeMapping>
+            <q1:VertexAttributeMapping>
+              <q1:Size>3</q1:Size>
+              <q1:Normalized>false</q1:Normalized>
+              <q1:Type>Float</q1:Type>
+            </q1:VertexAttributeMapping>
+          </q1:VertexAttributes>
+        </Combinator>
       </Expression>
       <Expression xsi:type="GroupWorkflow">
         <Name>UpdateTransform</Name>
@@ -115,7 +147,7 @@
       </Edge>
       <Edge>
         <From>2</From>
-        <To>7</To>
+        <To>10</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -124,8 +156,18 @@
         <Label>Source2</Label>
       </Edge>
       <Edge>
+        <From>3</From>
+        <To>7</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
         <From>4</From>
         <To>2</To>
+        <Label>Source3</Label>
+      </Edge>
+      <Edge>
+        <From>4</From>
+        <To>7</To>
         <Label>Source3</Label>
       </Edge>
       <Edge>
@@ -134,12 +176,32 @@
         <Label>Source4</Label>
       </Edge>
       <Edge>
+        <From>5</From>
+        <To>7</To>
+        <Label>Source4</Label>
+      </Edge>
+      <Edge>
         <From>6</From>
         <To>2</To>
         <Label>Source5</Label>
       </Edge>
       <Edge>
+        <From>6</From>
+        <To>7</To>
+        <Label>Source5</Label>
+      </Edge>
+      <Edge>
         <From>7</From>
+        <To>9</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>8</From>
+        <To>7</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>10</From>
         <To>1</To>
         <Label>Source1</Label>
       </Edge>
@@ -147,6 +209,9 @@
   </Workflow>
   <ExtensionTypes>
     <Type>Bonsai.Shaders.CreateOrthographicOffCenter, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>CreateSphereGrid, Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.Timer, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.UpdateVertexBuffer, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
