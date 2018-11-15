@@ -9,6 +9,6 @@ out vec2 texCoord;
 
 void main()
 {
-  gl_Position = vec4(vp * rotation * scale + translation, 0.0, 1.0) * transform;
+  gl_Position = transform * vec4(vp * rotation * scale + translation, -1.0, 1.0);
   texCoord = vt;
 }
