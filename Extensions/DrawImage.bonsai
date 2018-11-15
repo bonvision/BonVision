@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Draws an affine transformed 2D image.</Description>
-  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q2="clr-namespace:;assembly=Extensions" xmlns="https://horizongir.org/bonsai">
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q2="clr-namespace:;assembly=Extensions" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://horizongir.org/bonsai">
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
@@ -29,17 +29,6 @@
         <MemberName>LocationY</MemberName>
         <Name>LocationY</Name>
       </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:BindTexture">
-          <q1:TextureSlot>Texture0</q1:TextureSlot>
-          <q1:ShaderName>Image</q1:ShaderName>
-          <q1:TextureName />
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>TextureName</MemberName>
-        <Name>TextureName</Name>
-      </Expression>
       <Expression xsi:type="ExternalizedProperty">
         <MemberName>ShiftX</MemberName>
         <Name>ShiftX</Name>
@@ -60,6 +49,17 @@
       <Expression xsi:type="ExternalizedProperty">
         <MemberName>Value</MemberName>
         <Name>Angle</Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:BindTexture">
+          <q1:TextureSlot>Texture0</q1:TextureSlot>
+          <q1:ShaderName>Image</q1:ShaderName>
+          <q1:TextureName />
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>TextureName</MemberName>
+        <Name>TextureName</Name>
       </Expression>
       <Expression xsi:type="GroupWorkflow">
         <Name>Transform</Name>
@@ -306,8 +306,8 @@
     <Edges>
       <Edge>
         <From>0</From>
-        <To>14</To>
-        <Label>Source2</Label>
+        <To>12</To>
+        <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>2</From>
@@ -336,38 +336,38 @@
       </Edge>
       <Edge>
         <From>7</From>
-        <To>2</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>8</From>
-        <To>7</To>
-        <Label>Source2</Label>
-      </Edge>
-      <Edge>
-        <From>9</From>
         <To>15</To>
         <Label>Source2</Label>
       </Edge>
       <Edge>
-        <From>10</From>
+        <From>8</From>
         <To>15</To>
         <Label>Source3</Label>
       </Edge>
       <Edge>
-        <From>11</From>
+        <From>9</From>
         <To>14</To>
         <Label>Source6</Label>
       </Edge>
       <Edge>
+        <From>10</From>
+        <To>9</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>11</From>
+        <To>10</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
         <From>12</From>
-        <To>11</To>
+        <To>14</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>13</From>
         <To>12</To>
-        <Label>Source1</Label>
+        <Label>Source2</Label>
       </Edge>
       <Edge>
         <From>14</From>
@@ -376,15 +376,15 @@
       </Edge>
       <Edge>
         <From>15</From>
-        <To>7</To>
+        <To>2</To>
         <Label>Source1</Label>
       </Edge>
     </Edges>
   </Workflow>
   <ExtensionTypes>
     <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.BindTexture, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>AngleProperty, Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.BindTexture, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.CreateRotationZ, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.CreateScale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
