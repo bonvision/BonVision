@@ -13,7 +13,7 @@
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:CreatePerspectiveFieldOfView">
-          <q1:FovY>0.4636476</q1:FovY>
+          <q1:FovY>1.37340081</q1:FovY>
           <q1:AspectRatio>1</q1:AspectRatio>
           <q1:NearClip>0.1</q1:NearClip>
           <q1:FarClip>1000</q1:FarClip>
@@ -85,9 +85,9 @@
             <q1:Z>0</q1:Z>
           </q1:Eye>
           <q1:Target>
-            <q1:X>0</q1:X>
+            <q1:X>-1</q1:X>
             <q1:Y>0</q1:Y>
-            <q1:Z>1</q1:Z>
+            <q1:Z>0</q1:Z>
           </q1:Target>
           <q1:Up>
             <q1:X>0</q1:X>
