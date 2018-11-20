@@ -1,0 +1,434 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.4.0-preview">
+  <Description>Draws multiple colored circles using the input array as position data.</Description>
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://horizongir.org/bonsai">
+    <Nodes>
+      <Expression xsi:type="WorkflowInput">
+        <Name>Source1</Name>
+      </Expression>
+      <Expression xsi:type="WorkflowOutput" />
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>LocationX</MemberName>
+        <Name>LocationX</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>LocationY</MemberName>
+        <Name>LocationY</Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:CreateVector4">
+          <q1:X>1</q1:X>
+          <q1:Y>1</q1:Y>
+          <q1:Z>1</q1:Z>
+          <q1:W>1</q1:W>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>X</MemberName>
+        <Name />
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Y</MemberName>
+        <Name />
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Z</MemberName>
+        <Name />
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>W</MemberName>
+        <Name />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:UpdateUniform">
+          <q1:UniformName>color</q1:UniformName>
+          <q1:ShaderName>CircleArray</q1:ShaderName>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="FloatProperty">
+          <Value>1</Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="FloatProperty">
+          <Value>1</Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="FloatProperty">
+          <Value>1</Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="FloatProperty">
+          <Value>1</Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Value</MemberName>
+        <Name>ColorR</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Value</MemberName>
+        <Name>ColorG</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Value</MemberName>
+        <Name>ColorB</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Value</MemberName>
+        <Name>ColorA</Name>
+      </Expression>
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property name="ExtentX" />
+          <Property name="ExtentY" />
+        </PropertyMappings>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Value</MemberName>
+        <Name>Diameter</Name>
+      </Expression>
+      <Expression xsi:type="PropertySourceOfCreateScaleSingle">
+        <MemberName>X</MemberName>
+        <Value>0.02</Value>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Zip" />
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Item1</Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:DrawMeshInstanced">
+          <q1:ShaderName>CircleArray</q1:ShaderName>
+          <q1:MeshName>Quad</q1:MeshName>
+          <q1:Usage>DynamicDraw</q1:Usage>
+          <q1:InstanceAttributes>
+            <q1:InstanceAttributeMapping>
+              <q1:Size>2</q1:Size>
+              <q1:Normalized>false</q1:Normalized>
+              <q1:Type>Float</q1:Type>
+              <q1:Divisor>1</q1:Divisor>
+            </q1:InstanceAttributeMapping>
+          </q1:InstanceAttributes>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="GroupWorkflow">
+        <Name>Transform</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:CreateRotationZ">
+                <q1:Angle>0</q1:Angle>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>Angle</MemberName>
+              <Name>Angle</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:UpdateUniform">
+                <q1:UniformName>rotation</q1:UniformName>
+                <q1:ShaderName>CircleArray</q1:ShaderName>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:UpdateUniform">
+                <q1:UniformName>scale</q1:UniformName>
+                <q1:ShaderName>CircleArray</q1:ShaderName>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:UpdateUniform">
+                <q1:UniformName>translation</q1:UniformName>
+                <q1:ShaderName>CircleArray</q1:ShaderName>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:CreateScale">
+                <q1:X>0.02</q1:X>
+                <q1:Y>0.02</q1:Y>
+                <q1:Z>1</q1:Z>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>X</MemberName>
+              <Name>ExtentX</Name>
+            </Expression>
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>Y</MemberName>
+              <Name>ExtentY</Name>
+            </Expression>
+            <Expression xsi:type="MemberSelector">
+              <Selector>M11,M22</Selector>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:CreateTranslation">
+                <q1:X>0</q1:X>
+                <q1:Y>0</q1:Y>
+                <q1:Z>0</q1:Z>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>X</MemberName>
+              <Name>LocationX</Name>
+            </Expression>
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>Y</MemberName>
+              <Name>LocationY</Name>
+            </Expression>
+            <Expression xsi:type="MemberSelector">
+              <Selector>M41,M42</Selector>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:CreateMatrix2">
+                <q1:Row0>
+                  <q1:X>1</q1:X>
+                  <q1:Y>0</q1:Y>
+                </q1:Row0>
+                <q1:Row1>
+                  <q1:X>-0</q1:X>
+                  <q1:Y>1</q1:Y>
+                </q1:Row1>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="InputMapping">
+              <PropertyMappings>
+                <Property name="Row0" selector="M11,M12" />
+                <Property name="Row1" selector="M21,M22" />
+              </PropertyMappings>
+            </Expression>
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>2</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>16</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>3</From>
+              <To>2</To>
+              <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>4</From>
+              <To>7</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>5</From>
+              <To>11</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>6</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>7</From>
+              <To>10</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>8</From>
+              <To>7</To>
+              <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>9</From>
+              <To>7</To>
+              <Label>Source3</Label>
+            </Edge>
+            <Edge>
+              <From>10</From>
+              <To>5</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>11</From>
+              <To>14</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>12</From>
+              <To>11</To>
+              <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>13</From>
+              <To>11</To>
+              <Label>Source3</Label>
+            </Edge>
+            <Edge>
+              <From>14</From>
+              <To>6</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>15</From>
+              <To>4</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>16</From>
+              <To>15</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
+    </Nodes>
+    <Edges>
+      <Edge>
+        <From>0</From>
+        <To>24</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
+        <From>0</From>
+        <To>21</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>2</From>
+        <To>24</To>
+        <Label>Source3</Label>
+      </Edge>
+      <Edge>
+        <From>3</From>
+        <To>24</To>
+        <Label>Source4</Label>
+      </Edge>
+      <Edge>
+        <From>4</From>
+        <To>9</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>5</From>
+        <To>4</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
+        <From>6</From>
+        <To>4</To>
+        <Label>Source3</Label>
+      </Edge>
+      <Edge>
+        <From>7</From>
+        <To>4</To>
+        <Label>Source4</Label>
+      </Edge>
+      <Edge>
+        <From>8</From>
+        <To>4</To>
+        <Label>Source5</Label>
+      </Edge>
+      <Edge>
+        <From>9</From>
+        <To>21</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
+        <From>10</From>
+        <To>5</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>11</From>
+        <To>6</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>12</From>
+        <To>7</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>13</From>
+        <To>8</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>14</From>
+        <To>10</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>15</From>
+        <To>11</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>16</From>
+        <To>12</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>17</From>
+        <To>13</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>18</From>
+        <To>24</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
+        <From>19</From>
+        <To>20</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>20</From>
+        <To>18</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>21</From>
+        <To>22</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>22</From>
+        <To>23</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>23</From>
+        <To>1</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>24</From>
+        <To>4</To>
+        <Label>Source1</Label>
+      </Edge>
+    </Edges>
+  </Workflow>
+  <ExtensionTypes>
+    <Type>Bonsai.Shaders.CreateVector4, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.FloatProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Shaders.CreateScale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null],[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.Zip, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.DrawMeshInstanced, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.CreateRotationZ, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.CreateScale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.CreateTranslation, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.CreateMatrix2, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+  </ExtensionTypes>
+</WorkflowBuilder>
