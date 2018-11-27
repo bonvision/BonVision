@@ -60,7 +60,7 @@ public class CreateViewingWindow
         // and projection matrix from relative frustum dimensions
         var latitude = Matrix4.CreateRotationX(centerY);
         var longitude = Matrix4.CreateRotationY(centerX);
-        var view = latitude * longitude * Matrix4.LookAt(Vector3.Zero, -Vector3.UnitZ, Vector3.UnitY);
+        var view = latitude * longitude * Matrix4.LookAt(Vector3.Zero, -Vector3.UnitX, Vector3.UnitY);
         var projection = Matrix4.CreatePerspectiveOffCenter(left, right, bottom, top, zNear, zFar);
         return new ViewingWindow
         {
