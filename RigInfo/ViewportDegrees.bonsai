@@ -9,10 +9,10 @@
       <Expression xsi:type="WorkflowOutput" />
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:CreateOrthographicOffCenter">
-          <q1:Left>-60</q1:Left>
-          <q1:Right>60</q1:Right>
-          <q1:Bottom>-30</q1:Bottom>
-          <q1:Top>30</q1:Top>
+          <q1:Left>-180</q1:Left>
+          <q1:Right>180</q1:Right>
+          <q1:Bottom>-90</q1:Bottom>
+          <q1:Top>90</q1:Top>
           <q1:NearClip>0.1</q1:NearClip>
           <q1:FarClip>1000</q1:FarClip>
         </Combinator>
@@ -33,90 +33,6 @@
         <MemberName>Top</MemberName>
         <Name>Top</Name>
       </Expression>
-      <Expression xsi:type="GroupWorkflow">
-        <Name>UpdateTransform</Name>
-        <Workflow>
-          <Nodes>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>transform</q1:UniformName>
-                <q1:ShaderName>Gratings</q1:ShaderName>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>transform</q1:UniformName>
-                <q1:ShaderName>Checkerboard</q1:ShaderName>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>transform</q1:UniformName>
-                <q1:ShaderName>Image</q1:ShaderName>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>transform</q1:UniformName>
-                <q1:ShaderName>Color</q1:ShaderName>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="WorkflowInput">
-              <Name>Source1</Name>
-            </Expression>
-            <Expression xsi:type="WorkflowOutput" />
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>transform</q1:UniformName>
-                <q1:ShaderName>Circle</q1:ShaderName>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>transform</q1:UniformName>
-                <q1:ShaderName>CircleArray</q1:ShaderName>
-              </Combinator>
-            </Expression>
-          </Nodes>
-          <Edges>
-            <Edge>
-              <From>0</From>
-              <To>1</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>1</From>
-              <To>2</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>2</From>
-              <To>3</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>3</From>
-              <To>6</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>4</From>
-              <To>0</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>6</From>
-              <To>7</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>7</From>
-              <To>5</To>
-              <Label>Source1</Label>
-            </Edge>
-          </Edges>
-        </Workflow>
-      </Expression>
     </Nodes>
     <Edges>
       <Edge>
@@ -126,7 +42,7 @@
       </Edge>
       <Edge>
         <From>2</From>
-        <To>7</To>
+        <To>1</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -149,15 +65,9 @@
         <To>2</To>
         <Label>Source5</Label>
       </Edge>
-      <Edge>
-        <From>7</From>
-        <To>1</To>
-        <Label>Source1</Label>
-      </Edge>
     </Edges>
   </Workflow>
   <ExtensionTypes>
     <Type>Bonsai.Shaders.CreateOrthographicOffCenter, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>

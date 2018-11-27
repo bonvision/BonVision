@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Draws a parameterized checkerboard stimulus.</Description>
-  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q2="clr-namespace:;assembly=Extensions" xmlns="https://horizongir.org/bonsai">
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q2="clr-namespace:;assembly=Extensions" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://horizongir.org/bonsai">
     <Nodes>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:DrawMesh">
@@ -188,38 +188,14 @@
               <Name>Source1</Name>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:CreateRotationZ">
-                <q1:Angle>0</q1:Angle>
-              </Combinator>
-            </Expression>
             <Expression xsi:type="ExternalizedProperty">
               <MemberName>Angle</MemberName>
               <Name>Angle</Name>
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>rotation</q1:UniformName>
+                <q1:UniformName>transform</q1:UniformName>
                 <q1:ShaderName>Checkerboard</q1:ShaderName>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>scale</q1:UniformName>
-                <q1:ShaderName>Checkerboard</q1:ShaderName>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>translation</q1:UniformName>
-                <q1:ShaderName>Checkerboard</q1:ShaderName>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:CreateScale">
-                <q1:X>0.5</q1:X>
-                <q1:Y>0.5</q1:Y>
-                <q1:Z>1</q1:Z>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedProperty">
@@ -230,16 +206,6 @@
               <MemberName>Y</MemberName>
               <Name>ExtentY</Name>
             </Expression>
-            <Expression xsi:type="MemberSelector">
-              <Selector>M11,M22</Selector>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:CreateTranslation">
-                <q1:X>0</q1:X>
-                <q1:Y>0</q1:Y>
-                <q1:Z>0</q1:Z>
-              </Combinator>
-            </Expression>
             <Expression xsi:type="ExternalizedProperty">
               <MemberName>X</MemberName>
               <Name>LocationX</Name>
@@ -248,107 +214,78 @@
               <MemberName>Y</MemberName>
               <Name>LocationY</Name>
             </Expression>
-            <Expression xsi:type="MemberSelector">
-              <Selector>M41,M42</Selector>
-            </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:CreateMatrix2">
-                <q1:Row0>
-                  <q1:X>1</q1:X>
-                  <q1:Y>0</q1:Y>
-                </q1:Row0>
-                <q1:Row1>
-                  <q1:X>-0</q1:X>
-                  <q1:Y>1</q1:Y>
-                </q1:Row1>
+              <Combinator xsi:type="q1:RotateZ">
+                <q1:Order>Prepend</q1:Order>
+                <q1:Angle>0</q1:Angle>
               </Combinator>
             </Expression>
-            <Expression xsi:type="InputMapping">
-              <PropertyMappings>
-                <Property name="Row0" selector="M11,M12" />
-                <Property name="Row1" selector="M21,M22" />
-              </PropertyMappings>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:Scale">
+                <q1:Order>Prepend</q1:Order>
+                <q1:X>1</q1:X>
+                <q1:Y>1</q1:Y>
+                <q1:Z>1</q1:Z>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:Translate">
+                <q1:Order>Prepend</q1:Order>
+                <q1:X>0</q1:X>
+                <q1:Y>0</q1:Y>
+                <q1:Z>0</q1:Z>
+              </Combinator>
             </Expression>
           </Nodes>
           <Edges>
             <Edge>
               <From>0</From>
-              <To>2</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>2</From>
-              <To>16</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>3</From>
-              <To>2</To>
-              <Label>Source2</Label>
-            </Edge>
-            <Edge>
-              <From>4</From>
-              <To>7</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>5</From>
-              <To>11</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>6</From>
-              <To>1</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>7</From>
               <To>10</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
-              <From>8</From>
-              <To>7</To>
+              <From>2</From>
+              <To>8</To>
               <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>3</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>4</From>
+              <To>9</To>
+              <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>5</From>
+              <To>9</To>
+              <Label>Source3</Label>
+            </Edge>
+            <Edge>
+              <From>6</From>
+              <To>10</To>
+              <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>7</From>
+              <To>10</To>
+              <Label>Source3</Label>
+            </Edge>
+            <Edge>
+              <From>8</From>
+              <To>3</To>
+              <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>9</From>
-              <To>7</To>
-              <Label>Source3</Label>
+              <To>8</To>
+              <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>10</From>
-              <To>5</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>11</From>
-              <To>14</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>12</From>
-              <To>11</To>
-              <Label>Source2</Label>
-            </Edge>
-            <Edge>
-              <From>13</From>
-              <To>11</To>
-              <Label>Source3</Label>
-            </Edge>
-            <Edge>
-              <From>14</From>
-              <To>6</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>15</From>
-              <To>4</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>16</From>
-              <To>15</To>
+              <To>9</To>
               <Label>Source1</Label>
             </Edge>
           </Edges>
@@ -363,7 +300,7 @@
       </Edge>
       <Edge>
         <From>2</From>
-        <To>13</To>
+        <To>14</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -418,25 +355,24 @@
       </Edge>
       <Edge>
         <From>13</From>
-        <To>14</To>
+        <To>0</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>14</From>
-        <To>0</To>
+        <To>13</To>
         <Label>Source1</Label>
       </Edge>
     </Edges>
   </Workflow>
   <ExtensionTypes>
     <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>AngleProperty, Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>AngleProperty, Extensions, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.CreateVector2, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.IntProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.CreateRotationZ, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.CreateScale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.CreateTranslation, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.CreateMatrix2, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.RotateZ, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.Scale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.Translate, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
