@@ -11,10 +11,10 @@ using System.Reactive.Linq;
 [WorkflowElementCategory(ElementCategory.Source)]
 public class AngleProperty
 {
-    float value;
+    double value;
     event Action<float> ValueChanged;
-    const float DegreesToRadians = (float)(Math.PI / 180);
-    const float RadiansToDegrees = (float)(180 / Math.PI);
+    const double DegreesToRadians = Math.PI / 180;
+    const double RadiansToDegrees = 180 / Math.PI;
 
 
     [Range(-180, 180)]
@@ -22,11 +22,11 @@ public class AngleProperty
     [Editor(DesignTypes.SliderEditor, "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     public float Value
     {
-        get { return value * RadiansToDegrees; }
+        get { return (float)(value * RadiansToDegrees); }
         set
         {
             this.value = value * DegreesToRadians;
-            OnValueChanged(this.value);
+            OnValueChanged((float)this.value);
         }
     }
 
@@ -42,7 +42,7 @@ public class AngleProperty
     public IObservable<float> Process()
     {
         return Observable
-            .Defer(() => Observable.Return(value))
+            .Defer(() => Observable.Return((float)value))
             .Concat(Observable.FromEvent<float>(
                 handler => ValueChanged += handler,
                 handler => ValueChanged -= handler));
@@ -50,6 +50,6 @@ public class AngleProperty
 
     public IObservable<float> Process<TSource>(IObservable<TSource> source)
     {
-        return source.Select(x => value);
+        return source.Select(x => (float)value);
     }
 }
