@@ -6,26 +6,29 @@ using System.Linq;
 using System.Reactive.Linq;
 using MathNet.Numerics.Distributions;
 
-[Combinator]
-[Description("Draws multiple random samples from the input distribution.")]
-[WorkflowElementCategory(ElementCategory.Combinator)]
-public class SampleMany
+namespace BonVision
 {
-    public SampleMany()
+    [Combinator]
+    [Description("Draws multiple random samples from the input distribution.")]
+    [WorkflowElementCategory(ElementCategory.Combinator)]
+    public class SampleMany
     {
-        Count = 1;
-    }
+        public SampleMany()
+        {
+            Count = 1;
+        }
 
-    [Description("The number of random samples to draw.")]
-    public int Count { get; set; }
+        [Description("The number of random samples to draw.")]
+        public int Count { get; set; }
 
-    public IObservable<int> Process(IObservable<IDiscreteDistribution> source)
-    {
-        return source.SelectMany(distribution => distribution.Samples().Take(Count));
-    }
+        public IObservable<int> Process(IObservable<IDiscreteDistribution> source)
+        {
+            return source.SelectMany(distribution => distribution.Samples().Take(Count));
+        }
 
-    public IObservable<double> Process(IObservable<IContinuousDistribution> source)
-    {
-        return source.SelectMany(distribution => distribution.Samples().Take(Count));
+        public IObservable<double> Process(IObservable<IContinuousDistribution> source)
+        {
+            return source.SelectMany(distribution => distribution.Samples().Take(Count));
+        }
     }
 }
