@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Renders the current scene to a texture and applies mesh mapping and brightness correction as a post-processing effect.</Description>
-  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q2="clr-namespace:Bonsai.IO;assembly=Bonsai.System" xmlns:q3="clr-namespace:;assembly=Extensions" xmlns="https://horizongir.org/bonsai">
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q3="clr-namespace:BonVision;assembly=BonVision" xmlns:q2="clr-namespace:Bonsai.IO;assembly=Bonsai.System" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://horizongir.org/bonsai">
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
@@ -68,10 +68,10 @@
         <Category />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q3:CreateVertexGrid" />
+        <Combinator xsi:type="q1:SampleOnRenderFrame" />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:SampleOnRenderFrame" />
+        <Combinator xsi:type="q3:CreateVertexGrid" />
       </Expression>
     </Nodes>
     <Edges>
@@ -102,8 +102,8 @@
       </Edge>
       <Edge>
         <From>7</From>
-        <To>9</To>
-        <Label>Source2</Label>
+        <To>10</To>
+        <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>8</From>
@@ -112,12 +112,12 @@
       </Edge>
       <Edge>
         <From>9</From>
-        <To>10</To>
+        <To>6</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>10</From>
-        <To>6</To>
+        <To>9</To>
         <Label>Source1</Label>
       </Edge>
     </Edges>
@@ -128,7 +128,7 @@
     <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.UpdateVertexBuffer, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.IO.CsvReader, Bonsai.System, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>CreateVertexGrid, Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.SampleOnRenderFrame, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>BonVision.CreateVertexGrid, BonVision, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>

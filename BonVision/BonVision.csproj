@@ -102,6 +102,7 @@
     <EmbeddedResource Include="RigInfo\SphericalMap.bonsai" />
     <EmbeddedResource Include="RigInfo\ViewportDegrees.bonsai" />
     <EmbeddedResource Include="Primitives\PrimitiveResources.bonsai" />
+    <EmbeddedResource Include="Primitives\DrawVideo.bonsai" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

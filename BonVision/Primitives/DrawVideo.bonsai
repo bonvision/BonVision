@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
-  <Description>Draws a parameterized checkerboard stimulus.</Description>
+  <Description>Draws an affine transformed 2D dynamic image sequence.</Description>
   <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q2="clr-namespace:BonVision;assembly=BonVision" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://horizongir.org/bonsai">
     <Nodes>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:DrawMesh">
-          <q1:ShaderName>Checkerboard</q1:ShaderName>
-          <q1:MeshName>Quad</q1:MeshName>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="WorkflowOutput" />
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
+      </Expression>
+      <Expression xsi:type="WorkflowOutput" />
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:DrawMesh">
+          <q1:ShaderName>Image</q1:ShaderName>
+          <q1:MeshName>Quad</q1:MeshName>
+        </Combinator>
       </Expression>
       <Expression xsi:type="ExternalizedProperty">
         <MemberName>ExtentX</MemberName>
@@ -30,16 +30,12 @@
         <Name>LocationY</Name>
       </Expression>
       <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Columns</MemberName>
-        <Name>NumberColumns</Name>
+        <MemberName>ShiftX</MemberName>
+        <Name>ShiftX</Name>
       </Expression>
       <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Rows</MemberName>
-        <Name>NumberRows</Name>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Phase</MemberName>
-        <Name>Phase</Name>
+        <MemberName>ShiftY</MemberName>
+        <Name>ShiftY</Name>
       </Expression>
       <Expression xsi:type="ExternalizedProperty">
         <MemberName>Angle</MemberName>
@@ -54,128 +50,89 @@
         <MemberName>Value</MemberName>
         <Name>Angle</Name>
       </Expression>
+      <Expression xsi:type="SubscribeSubject">
+        <Name>DrawStimuli</Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="WithLatestFrom" />
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Item1</Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:StoreImage">
+          <q1:Width xsi:nil="true" />
+          <q1:Height xsi:nil="true" />
+          <q1:InternalFormat>Rgba</q1:InternalFormat>
+          <q1:WrapS>Repeat</q1:WrapS>
+          <q1:WrapT>Repeat</q1:WrapT>
+          <q1:MinFilter>Nearest</q1:MinFilter>
+          <q1:MagFilter>Nearest</q1:MagFilter>
+        </Combinator>
+      </Expression>
       <Expression xsi:type="GroupWorkflow">
-        <Name>PhaseFrequency</Name>
+        <Name>Shift</Name>
         <Workflow>
           <Nodes>
             <Expression xsi:type="WorkflowInput">
               <Name>Source1</Name>
             </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>frequency</q1:UniformName>
-                <q1:ShaderName>Checkerboard</q1:ShaderName>
-              </Combinator>
-            </Expression>
             <Expression xsi:type="WorkflowOutput" />
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:CreateVector2">
-                <q1:X>3</q1:X>
-                <q1:Y>3</q1:Y>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="IntProperty">
-                <Value>0</Value>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>phase</q1:UniformName>
-                <q1:ShaderName>Checkerboard</q1:ShaderName>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>Value</MemberName>
-              <Name>Phase</Name>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="IntProperty">
-                <Value>3</Value>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="IntProperty">
-                <Value>3</Value>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>Value</MemberName>
-              <Name>Columns</Name>
-            </Expression>
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>Value</MemberName>
-              <Name>Rows</Name>
-            </Expression>
             <Expression xsi:type="ExternalizedProperty">
               <MemberName>X</MemberName>
-              <Name />
+              <Name>ShiftX</Name>
             </Expression>
             <Expression xsi:type="ExternalizedProperty">
               <MemberName>Y</MemberName>
-              <Name />
+              <Name>ShiftY</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:UpdateUniform">
+                <q1:UniformName>shift</q1:UniformName>
+                <q1:ShaderName>Image</q1:ShaderName>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:CreateScale">
+                <q1:X>0</q1:X>
+                <q1:Y>0</q1:Y>
+                <q1:Z>1</q1:Z>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="MemberSelector">
+              <Selector>M11,M22</Selector>
             </Expression>
           </Nodes>
           <Edges>
             <Edge>
               <From>0</From>
-              <To>3</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>1</From>
-              <To>4</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>3</From>
-              <To>1</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>4</From>
               <To>5</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
+              <From>2</From>
+              <To>5</To>
+              <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>3</From>
+              <To>5</To>
+              <Label>Source3</Label>
+            </Edge>
+            <Edge>
+              <From>4</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
               <From>5</From>
-              <To>2</To>
+              <To>6</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>6</From>
               <To>4</To>
-              <Label>Source2</Label>
-            </Edge>
-            <Edge>
-              <From>7</From>
-              <To>11</To>
               <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>8</From>
-              <To>12</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>9</From>
-              <To>7</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>10</From>
-              <To>8</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>11</From>
-              <To>3</To>
-              <Label>Source2</Label>
-            </Edge>
-            <Edge>
-              <From>12</From>
-              <To>3</To>
-              <Label>Source3</Label>
             </Edge>
           </Edges>
         </Workflow>
@@ -195,7 +152,7 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:UpdateUniform">
                 <q1:UniformName>transform</q1:UniformName>
-                <q1:ShaderName>Checkerboard</q1:ShaderName>
+                <q1:ShaderName>Image</q1:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedProperty">
@@ -291,57 +248,113 @@
           </Edges>
         </Workflow>
       </Expression>
+      <Expression xsi:type="Sink">
+        <Name>BindImage</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="MemberSelector">
+              <Selector>Item2</Selector>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:BindTexture">
+                <q1:TextureSlot>Texture0</q1:TextureSlot>
+                <q1:ShaderName>Image</q1:ShaderName>
+                <q1:TextureName />
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>ShaderName</MemberName>
+              <Name>ShaderName</Name>
+            </Expression>
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>TextureSlot</MemberName>
+              <Name>TextureSlot</Name>
+            </Expression>
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>1</From>
+              <To>3</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>4</From>
+              <To>1</To>
+              <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>5</From>
+              <To>1</To>
+              <Label>Source3</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
     </Nodes>
     <Edges>
       <Edge>
         <From>0</From>
-        <To>1</To>
+        <To>15</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>2</From>
-        <To>14</To>
+        <To>1</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>3</From>
-        <To>14</To>
+        <To>17</To>
         <Label>Source2</Label>
       </Edge>
       <Edge>
         <From>4</From>
-        <To>14</To>
+        <To>17</To>
         <Label>Source3</Label>
       </Edge>
       <Edge>
         <From>5</From>
-        <To>14</To>
+        <To>17</To>
         <Label>Source4</Label>
       </Edge>
       <Edge>
         <From>6</From>
-        <To>14</To>
+        <To>17</To>
         <Label>Source5</Label>
       </Edge>
       <Edge>
         <From>7</From>
-        <To>13</To>
+        <To>16</To>
         <Label>Source2</Label>
       </Edge>
       <Edge>
         <From>8</From>
-        <To>13</To>
+        <To>16</To>
         <Label>Source3</Label>
       </Edge>
       <Edge>
         <From>9</From>
-        <To>13</To>
-        <Label>Source4</Label>
+        <To>17</To>
+        <Label>Source6</Label>
       </Edge>
       <Edge>
         <From>10</From>
-        <To>14</To>
-        <Label>Source6</Label>
+        <To>9</To>
+        <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>11</From>
@@ -350,17 +363,37 @@
       </Edge>
       <Edge>
         <From>12</From>
-        <To>11</To>
+        <To>13</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>13</From>
-        <To>0</To>
+        <To>18</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>14</From>
+        <To>17</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>15</From>
         <To>13</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
+        <From>16</From>
+        <To>2</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>17</From>
+        <To>16</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>18</From>
+        <To>14</To>
         <Label>Source1</Label>
       </Edge>
     </Edges>
@@ -368,11 +401,14 @@
   <ExtensionTypes>
     <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>BonVision.AngleProperty, BonVision, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.WithLatestFrom, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.StoreImage, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.CreateVector2, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.IntProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.CreateScale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.RotateZ, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.Scale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.Translate, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.SinkBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.BindTexture, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
