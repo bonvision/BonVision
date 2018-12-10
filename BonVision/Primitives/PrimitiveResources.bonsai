@@ -125,7 +125,7 @@
               <q1:DestinationFactor>OneMinusSrcAlpha</q1:DestinationFactor>
             </q1:StateConfiguration>
             <q1:StateConfiguration xsi:type="q1:DepthFunctionState">
-              <q1:Function>Less</q1:Function>
+              <q1:Function>Lequal</q1:Function>
             </q1:StateConfiguration>
           </q1:RenderState>
         </Combinator>
