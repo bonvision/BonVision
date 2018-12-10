@@ -1,0 +1,701 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.4.0-preview">
+  <Description>Draws affine transformed multi-line text using the specified style.</Description>
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:q2="clr-namespace:BonVision;assembly=BonVision" xmlns:q3="clr-namespace:Bonsai.Vision.Drawing;assembly=Bonsai.Vision" xmlns:q4="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns="https://horizongir.org/bonsai">
+    <Nodes>
+      <Expression xsi:type="WorkflowInput">
+        <Name>Source1</Name>
+      </Expression>
+      <Expression xsi:type="WorkflowOutput" />
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:DrawMesh">
+          <q1:ShaderName>Image</q1:ShaderName>
+          <q1:MeshName>Quad</q1:MeshName>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>ExtentX</MemberName>
+        <Name />
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>ExtentY</MemberName>
+        <Name />
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>LocationX</MemberName>
+        <Name>LocationX</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>LocationY</MemberName>
+        <Name>LocationY</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Angle</MemberName>
+        <Name />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q2:AngleProperty">
+          <q2:Value>0</q2:Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Value</MemberName>
+        <Name>Angle</Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:StoreImage">
+          <q1:Width xsi:nil="true" />
+          <q1:Height xsi:nil="true" />
+          <q1:InternalFormat>Rgba</q1:InternalFormat>
+          <q1:WrapS>Repeat</q1:WrapS>
+          <q1:WrapT>Repeat</q1:WrapT>
+          <q1:MinFilter>Linear</q1:MinFilter>
+          <q1:MagFilter>Linear</q1:MagFilter>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="WithLatestFrom" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:BindTexture">
+          <q1:TextureSlot>Texture0</q1:TextureSlot>
+          <q1:ShaderName>Image</q1:ShaderName>
+          <q1:TextureName />
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Item2</Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:CreateOrthographic">
+          <q1:Width>2</q1:Width>
+          <q1:Height>2</q1:Height>
+          <q1:NearClip>0.1</q1:NearClip>
+          <q1:FarClip>1000</q1:FarClip>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q3:DrawCanvas" />
+      </Expression>
+      <Expression xsi:type="PropertySourceOfScaleSingle">
+        <MemberName>X</MemberName>
+        <Value>1</Value>
+      </Expression>
+      <Expression xsi:type="PropertySourceOfScaleSingle">
+        <MemberName>Y</MemberName>
+        <Value>1</Value>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="CombineLatest" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:UpdateFrame" />
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Sender.Size</Selector>
+      </Expression>
+      <Expression xsi:type="q4:ExpressionTransform">
+        <q4:Expression>new(
+Item1 * Item3.Width as Width,
+Item2 * Item3.Height as Height)</q4:Expression>
+      </Expression>
+      <Expression xsi:type="PropertySourceOfScaleSingle">
+        <MemberName>X</MemberName>
+        <Value>1</Value>
+      </Expression>
+      <Expression xsi:type="PropertySourceOfScaleSingle">
+        <MemberName>Y</MemberName>
+        <Value>1</Value>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Value</MemberName>
+        <Name>ExtentX</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Value</MemberName>
+        <Name>ExtentY</Name>
+      </Expression>
+      <Expression xsi:type="InputMapping">
+        <PropertyMappings>
+          <Property name="Size" selector="Item1.Width,Item1.Height" />
+          <Property name="Text" selector="Item2" />
+          <Property name="Font" selector="Item3" />
+          <Property name="Alignment" selector="Item4" />
+          <Property name="LineAlignment" selector="Item5" />
+          <Property name="TextRenderingHint" selector="Item6" />
+          <Property name="Color" selector="Item7" />
+        </PropertyMappings>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:SampleOnUpdateFrame" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="DistinctUntilChanged" />
+      </Expression>
+      <Expression xsi:type="PropertySourceOfAddTextBoxString">
+        <MemberName>Text</MemberName>
+        <Value />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="CombineLatest" />
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Value</MemberName>
+        <Name>Text</Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q3:CreateFont">
+          <q3:Font>Microsoft Sans Serif, 13.875pt</q3:Font>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Font</MemberName>
+        <Name>Font</Name>
+        <Category>Text Style</Category>
+      </Expression>
+      <Expression xsi:type="PropertySourceOfAddTextBoxStringAlignment">
+        <MemberName>Alignment</MemberName>
+        <Value>Center</Value>
+      </Expression>
+      <Expression xsi:type="PropertySourceOfAddTextBoxStringAlignment">
+        <MemberName>LineAlignment</MemberName>
+        <Value>Center</Value>
+      </Expression>
+      <Expression xsi:type="PropertySourceOfAddTextBoxTextRenderingHint">
+        <MemberName>TextRenderingHint</MemberName>
+        <Value>AntiAliasGridFit</Value>
+      </Expression>
+      <Expression xsi:type="PropertySourceOfAddTextBoxScalar">
+        <MemberName>Color</MemberName>
+        <Value>
+          <Val0>255</Val0>
+          <Val1>255</Val1>
+          <Val2>255</Val2>
+          <Val3>255</Val3>
+        </Value>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Value</MemberName>
+        <Name>Alignment</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Value</MemberName>
+        <Name>LineAlignment</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Value</MemberName>
+        <Name>TextRenderingHint</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Value</MemberName>
+        <Name>Color</Name>
+        <Category>Text Style</Category>
+      </Expression>
+      <Expression xsi:type="GroupWorkflow">
+        <Name>Transform</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>Angle</MemberName>
+              <Name>Angle</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:UpdateUniform">
+                <q1:UniformName>transform</q1:UniformName>
+                <q1:ShaderName>Image</q1:ShaderName>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>X</MemberName>
+              <Name>ExtentX</Name>
+            </Expression>
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>Y</MemberName>
+              <Name>ExtentY</Name>
+            </Expression>
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>X</MemberName>
+              <Name>LocationX</Name>
+            </Expression>
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>Y</MemberName>
+              <Name>LocationY</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:RotateZ">
+                <q1:Order>Prepend</q1:Order>
+                <q1:Angle>0</q1:Angle>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:Scale">
+                <q1:Order>Prepend</q1:Order>
+                <q1:X>1</q1:X>
+                <q1:Y>1</q1:Y>
+                <q1:Z>1</q1:Z>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:Translate">
+                <q1:Order>Prepend</q1:Order>
+                <q1:X>0</q1:X>
+                <q1:Y>0</q1:Y>
+                <q1:Z>0</q1:Z>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:Scale">
+                <q1:Order>Prepend</q1:Order>
+                <q1:X>1</q1:X>
+                <q1:Y>-1</q1:Y>
+                <q1:Z>1</q1:Z>
+              </Combinator>
+            </Expression>
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>10</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>8</To>
+              <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>3</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>4</From>
+              <To>9</To>
+              <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>5</From>
+              <To>9</To>
+              <Label>Source3</Label>
+            </Edge>
+            <Edge>
+              <From>6</From>
+              <To>10</To>
+              <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>7</From>
+              <To>10</To>
+              <Label>Source3</Label>
+            </Edge>
+            <Edge>
+              <From>8</From>
+              <To>9</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>9</From>
+              <To>11</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>10</From>
+              <To>8</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>11</From>
+              <To>3</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="GroupWorkflow">
+        <Name>BlitText</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q3:CreateCanvas">
+                <q3:Size>
+                  <q3:Width>1306</q3:Width>
+                  <q3:Height>1031</q3:Height>
+                </q3:Size>
+                <q3:Depth>U8</q3:Depth>
+                <q3:Channels>4</q3:Channels>
+                <q3:Color>
+                  <q3:Val0>0</q3:Val0>
+                  <q3:Val1>0</q3:Val1>
+                  <q3:Val2>0</q3:Val2>
+                  <q3:Val3>0</q3:Val3>
+                </q3:Color>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q3:AddTextBox">
+                <q3:Text />
+                <q3:Alignment>Near</q3:Alignment>
+                <q3:LineAlignment>Center</q3:LineAlignment>
+                <q3:TextRenderingHint>AntiAliasGridFit</q3:TextRenderingHint>
+                <q3:Color>
+                  <q3:Val0>255</q3:Val0>
+                  <q3:Val1>255</q3:Val1>
+                  <q3:Val2>255</q3:Val2>
+                  <q3:Val3>255</q3:Val3>
+                </q3:Color>
+                <q3:Font>Microsoft Sans Serif, 13.875pt</q3:Font>
+                <q3:Destination>
+                  <q3:X>0</q3:X>
+                  <q3:Y>0</q3:Y>
+                  <q3:Width>0</q3:Width>
+                  <q3:Height>0</q3:Height>
+                </q3:Destination>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>Size</MemberName>
+              <Name>Size</Name>
+            </Expression>
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>Font</MemberName>
+              <Name>Font</Name>
+            </Expression>
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>Alignment</MemberName>
+              <Name>Alignment</Name>
+            </Expression>
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>LineAlignment</MemberName>
+              <Name>LineAlignment</Name>
+            </Expression>
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>TextRenderingHint</MemberName>
+              <Name>TextRenderingHint</Name>
+            </Expression>
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>Color</MemberName>
+              <Name>Color</Name>
+            </Expression>
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>Text</MemberName>
+              <Name>Text</Name>
+            </Expression>
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>1</From>
+              <To>3</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>4</From>
+              <To>0</To>
+              <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>5</From>
+              <To>1</To>
+              <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>6</From>
+              <To>1</To>
+              <Label>Source3</Label>
+            </Edge>
+            <Edge>
+              <From>7</From>
+              <To>1</To>
+              <Label>Source4</Label>
+            </Edge>
+            <Edge>
+              <From>8</From>
+              <To>1</To>
+              <Label>Source5</Label>
+            </Edge>
+            <Edge>
+              <From>9</From>
+              <To>1</To>
+              <Label>Source6</Label>
+            </Edge>
+            <Edge>
+              <From>10</From>
+              <To>1</To>
+              <Label>Source7</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
+    </Nodes>
+    <Edges>
+      <Edge>
+        <From>0</From>
+        <To>11</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>2</From>
+        <To>1</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>3</From>
+        <To>42</To>
+        <Label>Source5</Label>
+      </Edge>
+      <Edge>
+        <From>4</From>
+        <To>42</To>
+        <Label>Source6</Label>
+      </Edge>
+      <Edge>
+        <From>5</From>
+        <To>42</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
+        <From>6</From>
+        <To>42</To>
+        <Label>Source3</Label>
+      </Edge>
+      <Edge>
+        <From>7</From>
+        <To>42</To>
+        <Label>Source4</Label>
+      </Edge>
+      <Edge>
+        <From>8</From>
+        <To>7</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>9</From>
+        <To>8</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>10</From>
+        <To>11</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
+        <From>11</From>
+        <To>13</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>12</From>
+        <To>14</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>13</From>
+        <To>12</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>14</From>
+        <To>42</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>15</From>
+        <To>10</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>16</From>
+        <To>18</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>17</From>
+        <To>18</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
+        <From>18</From>
+        <To>27</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>19</From>
+        <To>20</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>20</From>
+        <To>28</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>21</From>
+        <To>30</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>22</From>
+        <To>3</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>23</From>
+        <To>4</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>24</From>
+        <To>22</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>24</From>
+        <To>16</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>25</From>
+        <To>23</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>25</From>
+        <To>17</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>26</From>
+        <To>43</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>27</From>
+        <To>21</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>28</From>
+        <To>18</To>
+        <Label>Source3</Label>
+      </Edge>
+      <Edge>
+        <From>29</From>
+        <To>30</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
+        <From>30</From>
+        <To>26</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>31</From>
+        <To>29</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>32</From>
+        <To>30</To>
+        <Label>Source3</Label>
+      </Edge>
+      <Edge>
+        <From>33</From>
+        <To>32</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>34</From>
+        <To>30</To>
+        <Label>Source4</Label>
+      </Edge>
+      <Edge>
+        <From>35</From>
+        <To>30</To>
+        <Label>Source5</Label>
+      </Edge>
+      <Edge>
+        <From>36</From>
+        <To>30</To>
+        <Label>Source6</Label>
+      </Edge>
+      <Edge>
+        <From>37</From>
+        <To>30</To>
+        <Label>Source7</Label>
+      </Edge>
+      <Edge>
+        <From>38</From>
+        <To>34</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>39</From>
+        <To>35</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>40</From>
+        <To>36</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>41</From>
+        <To>37</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>42</From>
+        <To>2</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>43</From>
+        <To>15</To>
+        <Label>Source1</Label>
+      </Edge>
+    </Edges>
+  </Workflow>
+  <ExtensionTypes>
+    <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>BonVision.AngleProperty, BonVision, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.StoreImage, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.WithLatestFrom, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.BindTexture, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.CreateOrthographic, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.Drawing.DrawCanvas, Bonsai.Vision, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Shaders.Scale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null],[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.CombineLatest, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.UpdateFrame, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Scripting.ExpressionTransform, Bonsai.Scripting, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.SampleOnUpdateFrame, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.DistinctUntilChanged, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Vision.Drawing.AddTextBox, Bonsai.Vision, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.Drawing.CreateFont, Bonsai.Vision, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Vision.Drawing.AddTextBox, Bonsai.Vision, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null],[System.Drawing.StringAlignment, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Vision.Drawing.AddTextBox, Bonsai.Vision, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null],[System.Drawing.Text.TextRenderingHint, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Vision.Drawing.AddTextBox, Bonsai.Vision, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null],[OpenCV.Net.Scalar, OpenCV.Net, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.RotateZ, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.Scale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.Translate, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.Drawing.CreateCanvas, Bonsai.Vision, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.Drawing.AddTextBox, Bonsai.Vision, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+  </ExtensionTypes>
+</WorkflowBuilder>

@@ -103,6 +103,7 @@
     <EmbeddedResource Include="RigInfo\ViewportDegrees.bonsai" />
     <EmbeddedResource Include="Primitives\PrimitiveResources.bonsai" />
     <EmbeddedResource Include="Primitives\DrawVideo.bonsai" />
+    <EmbeddedResource Include="Primitives\DrawText.bonsai" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
