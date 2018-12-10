@@ -64,6 +64,7 @@
     <Compile Include="CreateSphereGrid.cs" />
     <Compile Include="CreateVertexGrid.cs" />
     <Compile Include="CreateViewingWindow.cs" />
+    <Compile Include="FieldOfViewProperty.cs" />
     <Compile Include="GratingsSpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SampleMany.cs" />
@@ -104,6 +105,10 @@
     <EmbeddedResource Include="Primitives\PrimitiveResources.bonsai" />
     <EmbeddedResource Include="Primitives\DrawVideo.bonsai" />
     <EmbeddedResource Include="Primitives\DrawText.bonsai" />
+    <EmbeddedResource Include="Shaders\Model.frag" />
+    <EmbeddedResource Include="Shaders\Model.vert" />
+    <EmbeddedResource Include="Primitives\DrawModel.bonsai" />
+    <EmbeddedResource Include="Primitives\PerspectiveViewport.bonsai" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

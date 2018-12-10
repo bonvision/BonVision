@@ -4,22 +4,6 @@
   <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://horizongir.org/bonsai">
     <Nodes>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:MeshResources">
-          <q1:Meshes>
-            <q1:MeshConfiguration xsi:type="q1:TexturedQuad">
-              <q1:Name>Quad</q1:Name>
-              <q1:QuadEffects>None</q1:QuadEffects>
-            </q1:MeshConfiguration>
-            <q1:MeshConfiguration>
-              <q1:Name>MeshMap</q1:Name>
-            </q1:MeshConfiguration>
-            <q1:MeshConfiguration>
-              <q1:Name>SphereMap</q1:Name>
-            </q1:MeshConfiguration>
-          </q1:Meshes>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:ShaderResources">
           <q1:Shaders>
             <q1:ShaderConfiguration xsi:type="q1:Material">
@@ -111,6 +95,15 @@
               <q1:VertexShader>BonVision:Shaders.MeshMap.vert</q1:VertexShader>
               <q1:FragmentShader>BonVision:Shaders.MeshMap.frag</q1:FragmentShader>
             </q1:ShaderConfiguration>
+            <q1:ShaderConfiguration xsi:type="q1:Material">
+              <q1:Name>Model</q1:Name>
+              <q1:RenderState />
+              <q1:ShaderUniforms />
+              <q1:BufferBindings />
+              <q1:FramebufferAttachments />
+              <q1:VertexShader>BonVision:Shaders.Model.vert</q1:VertexShader>
+              <q1:FragmentShader>BonVision:Shaders.Model.frag</q1:FragmentShader>
+            </q1:ShaderConfiguration>
           </q1:Shaders>
         </Combinator>
       </Expression>
@@ -118,11 +111,69 @@
         <Name>Source1</Name>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:UpdateRenderState">
+          <q1:RenderState>
+            <q1:StateConfiguration xsi:type="q1:EnableState">
+              <q1:Capability>Blend</q1:Capability>
+            </q1:StateConfiguration>
+            <q1:StateConfiguration xsi:type="q1:EnableState">
+              <q1:Capability>DepthTest</q1:Capability>
+            </q1:StateConfiguration>
+            <q1:StateConfiguration xsi:type="q1:BlendFunctionState">
+              <q1:SourceFactor>SrcAlpha</q1:SourceFactor>
+              <q1:DestinationFactor>OneMinusSrcAlpha</q1:DestinationFactor>
+            </q1:StateConfiguration>
+            <q1:StateConfiguration xsi:type="q1:DepthFunctionState">
+              <q1:Function>Less</q1:Function>
+            </q1:StateConfiguration>
+          </q1:RenderState>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="NestedWorkflow">
+        <Name>InternalResources</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:MeshResources">
+                <q1:Meshes>
+                  <q1:MeshConfiguration xsi:type="q1:TexturedQuad">
+                    <q1:Name>Quad</q1:Name>
+                    <q1:QuadEffects>None</q1:QuadEffects>
+                  </q1:MeshConfiguration>
+                  <q1:MeshConfiguration>
+                    <q1:Name>MeshMap</q1:Name>
+                  </q1:MeshConfiguration>
+                  <q1:MeshConfiguration>
+                    <q1:Name>SphereMap</q1:Name>
+                  </q1:MeshConfiguration>
+                </q1:Meshes>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>2</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>1</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
     </Nodes>
     <Edges>
       <Edge>
         <From>0</From>
-        <To>1</To>
+        <To>2</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -131,14 +182,20 @@
         <Label>Source1</Label>
       </Edge>
       <Edge>
-        <From>2</From>
+        <From>3</From>
+        <To>4</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>4</From>
         <To>0</To>
         <Label>Source1</Label>
       </Edge>
     </Edges>
   </Workflow>
   <ExtensionTypes>
-    <Type>Bonsai.Shaders.MeshResources, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.ShaderResources, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.UpdateRenderState, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.MeshResources, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
