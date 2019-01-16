@@ -73,6 +73,13 @@
     <None Include="BonVision.nuspec" />
     <None Include="packages.config" />
     <EmbeddedResource Include="Collections\SparseNoise.bonsai" />
+    <EmbeddedResource Include="Environment\GammaCorrection.bonsai" />
+    <EmbeddedResource Include="Environment\MeshMapping.bonsai" />
+    <EmbeddedResource Include="Environment\NormalizedViewport.bonsai" />
+    <EmbeddedResource Include="Environment\PerspectiveViewport.bonsai" />
+    <EmbeddedResource Include="Environment\SphericalMap.bonsai" />
+    <EmbeddedResource Include="Environment\ViewingWindow.bonsai" />
+    <EmbeddedResource Include="Environment\ViewportDegrees.bonsai" />
     <EmbeddedResource Include="Logging\EventLogger.bonsai" />
     <EmbeddedResource Include="Logging\LogEvent.bonsai" />
     <EmbeddedResource Include="Logging\TimestampedEventLogger.bonsai" />
@@ -84,11 +91,8 @@
     <EmbeddedResource Include="Primitives\DrawImage.bonsai" />
     <EmbeddedResource Include="Primitives\DrawQuad.bonsai" />
     <EmbeddedResource Include="Primitives\EnsureGratingParameters.bonsai" />
-    <EmbeddedResource Include="Primitives\GammaCorrection.bonsai" />
-    <EmbeddedResource Include="Primitives\MeshMapping.bonsai" />
     <EmbeddedResource Include="Primitives\ParameterRange.bonsai" />
     <EmbeddedResource Include="Primitives\RangeAnimation.bonsai" />
-    <EmbeddedResource Include="Primitives\ViewingWindow.bonsai" />
     <EmbeddedResource Include="Shaders\Checkerboard.frag" />
     <EmbeddedResource Include="Shaders\Circle.frag" />
     <EmbeddedResource Include="Shaders\Color.frag" />
@@ -99,16 +103,12 @@
     <EmbeddedResource Include="Shaders\MeshMap.vert" />
     <EmbeddedResource Include="Shaders\Quad.vert" />
     <EmbeddedResource Include="Shaders\QuadArray.vert" />
-    <EmbeddedResource Include="RigInfo\NormalizedViewport.bonsai" />
-    <EmbeddedResource Include="RigInfo\SphericalMap.bonsai" />
-    <EmbeddedResource Include="RigInfo\ViewportDegrees.bonsai" />
     <EmbeddedResource Include="Primitives\PrimitiveResources.bonsai" />
     <EmbeddedResource Include="Primitives\DrawVideo.bonsai" />
     <EmbeddedResource Include="Primitives\DrawText.bonsai" />
     <EmbeddedResource Include="Shaders\Model.frag" />
     <EmbeddedResource Include="Shaders\Model.vert" />
     <EmbeddedResource Include="Primitives\DrawModel.bonsai" />
-    <EmbeddedResource Include="Primitives\PerspectiveViewport.bonsai" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

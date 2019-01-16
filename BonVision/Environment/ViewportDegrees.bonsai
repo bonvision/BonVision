@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
-  <Description>Specifies the viewport limits, in degrees.</Description>
-  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://horizongir.org/bonsai">
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://bonsai-rx.org/2018/workflow">
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
@@ -35,36 +34,12 @@
       </Expression>
     </Nodes>
     <Edges>
-      <Edge>
-        <From>0</From>
-        <To>2</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>2</From>
-        <To>1</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>3</From>
-        <To>2</To>
-        <Label>Source2</Label>
-      </Edge>
-      <Edge>
-        <From>4</From>
-        <To>2</To>
-        <Label>Source3</Label>
-      </Edge>
-      <Edge>
-        <From>5</From>
-        <To>2</To>
-        <Label>Source4</Label>
-      </Edge>
-      <Edge>
-        <From>6</From>
-        <To>2</To>
-        <Label>Source5</Label>
-      </Edge>
+      <Edge From="0" To="2" Label="Source1" />
+      <Edge From="2" To="1" Label="Source1" />
+      <Edge From="3" To="2" Label="Source2" />
+      <Edge From="4" To="2" Label="Source3" />
+      <Edge From="5" To="2" Label="Source4" />
+      <Edge From="6" To="2" Label="Source5" />
     </Edges>
   </Workflow>
   <ExtensionTypes>
