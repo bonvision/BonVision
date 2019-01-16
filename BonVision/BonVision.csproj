@@ -60,7 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AngleProperty.cs" />
-    <Compile Include="CreateSparseNoiseGrid.cs" />
+    <Compile Include="Collections\CreateSparseNoiseGrid.cs" />
     <Compile Include="CreateSphereGrid.cs" />
     <Compile Include="CreateVertexGrid.cs" />
     <Compile Include="CreateViewingWindow.cs" />
@@ -72,6 +72,7 @@
   <ItemGroup>
     <None Include="BonVision.nuspec" />
     <None Include="packages.config" />
+    <EmbeddedResource Include="Collections\SparseNoise.bonsai" />
     <EmbeddedResource Include="Logging\EventLogger.bonsai" />
     <EmbeddedResource Include="Logging\LogEvent.bonsai" />
     <EmbeddedResource Include="Logging\TimestampedEventLogger.bonsai" />
@@ -87,7 +88,6 @@
     <EmbeddedResource Include="Primitives\MeshMapping.bonsai" />
     <EmbeddedResource Include="Primitives\ParameterRange.bonsai" />
     <EmbeddedResource Include="Primitives\RangeAnimation.bonsai" />
-    <EmbeddedResource Include="Primitives\SparseNoise.bonsai" />
     <EmbeddedResource Include="Primitives\ViewingWindow.bonsai" />
     <EmbeddedResource Include="Shaders\Checkerboard.frag" />
     <EmbeddedResource Include="Shaders\Circle.frag" />
