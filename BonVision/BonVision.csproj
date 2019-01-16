@@ -61,17 +61,18 @@
   <ItemGroup>
     <Compile Include="AngleProperty.cs" />
     <Compile Include="Collections\CreateSparseNoiseGrid.cs" />
+    <Compile Include="Collections\GratingsSpecification.cs" />
     <Compile Include="CreateSphereGrid.cs" />
     <Compile Include="CreateVertexGrid.cs" />
     <Compile Include="CreateViewingWindow.cs" />
     <Compile Include="FieldOfViewProperty.cs" />
-    <Compile Include="GratingsSpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SampleMany.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BonVision.nuspec" />
     <None Include="packages.config" />
+    <EmbeddedResource Include="Collections\EnsureGratingParameters.bonsai" />
     <EmbeddedResource Include="Collections\SparseNoise.bonsai" />
     <EmbeddedResource Include="Environment\GammaCorrection.bonsai" />
     <EmbeddedResource Include="Environment\MeshMapping.bonsai" />
@@ -90,7 +91,6 @@
     <EmbeddedResource Include="Primitives\DrawGratings.bonsai" />
     <EmbeddedResource Include="Primitives\DrawImage.bonsai" />
     <EmbeddedResource Include="Primitives\DrawQuad.bonsai" />
-    <EmbeddedResource Include="Primitives\EnsureGratingParameters.bonsai" />
     <EmbeddedResource Include="Primitives\ParameterRange.bonsai" />
     <EmbeddedResource Include="Primitives\RangeAnimation.bonsai" />
     <EmbeddedResource Include="Shaders\Checkerboard.frag" />
