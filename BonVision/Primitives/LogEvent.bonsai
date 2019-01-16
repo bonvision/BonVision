@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Logs a value into the specified common event stream.</Description>
-  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://horizongir.org/bonsai">
+  <Workflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://bonsai-rx.org/2018/workflow">
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
@@ -46,66 +46,22 @@
             </Expression>
           </Nodes>
           <Edges>
-            <Edge>
-              <From>0</From>
-              <To>3</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>1</From>
-              <To>0</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>2</From>
-              <To>1</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>4</From>
-              <To>1</To>
-              <Label>Source2</Label>
-            </Edge>
-            <Edge>
-              <From>5</From>
-              <To>1</To>
-              <Label>Source3</Label>
-            </Edge>
-            <Edge>
-              <From>6</From>
-              <To>0</To>
-              <Label>Source2</Label>
-            </Edge>
+            <Edge From="0" To="3" Label="Source1" />
+            <Edge From="1" To="0" Label="Source1" />
+            <Edge From="2" To="1" Label="Source1" />
+            <Edge From="4" To="1" Label="Source2" />
+            <Edge From="5" To="1" Label="Source3" />
+            <Edge From="6" To="0" Label="Source2" />
           </Edges>
         </Workflow>
       </Expression>
     </Nodes>
     <Edges>
-      <Edge>
-        <From>0</From>
-        <To>5</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>2</From>
-        <To>5</To>
-        <Label>Source2</Label>
-      </Edge>
-      <Edge>
-        <From>3</From>
-        <To>5</To>
-        <Label>Source3</Label>
-      </Edge>
-      <Edge>
-        <From>4</From>
-        <To>5</To>
-        <Label>Source4</Label>
-      </Edge>
-      <Edge>
-        <From>5</From>
-        <To>1</To>
-        <Label>Source1</Label>
-      </Edge>
+      <Edge From="0" To="5" Label="Source1" />
+      <Edge From="2" To="5" Label="Source2" />
+      <Edge From="3" To="5" Label="Source3" />
+      <Edge From="4" To="5" Label="Source4" />
+      <Edge From="5" To="1" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>

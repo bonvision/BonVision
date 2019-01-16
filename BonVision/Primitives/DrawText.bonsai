@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Draws affine transformed multi-line text using the specified style.</Description>
-  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:q2="clr-namespace:BonVision;assembly=BonVision" xmlns:q3="clr-namespace:Bonsai.Vision.Drawing;assembly=Bonsai.Vision" xmlns:q4="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns="https://horizongir.org/bonsai">
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:q2="clr-namespace:BonVision;assembly=BonVision" xmlns:q3="clr-namespace:Bonsai.Vision.Drawing;assembly=Bonsai.Vision" xmlns:q4="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns="https://bonsai-rx.org/2018/workflow">
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
@@ -117,13 +117,13 @@ Item2 * Item3.Height as Height)</q4:Expression>
       </Expression>
       <Expression xsi:type="InputMapping">
         <PropertyMappings>
-          <Property name="Size" selector="Item1.Width,Item1.Height" />
-          <Property name="Text" selector="Item2" />
-          <Property name="Font" selector="Item3" />
-          <Property name="Alignment" selector="Item4" />
-          <Property name="LineAlignment" selector="Item5" />
-          <Property name="TextRenderingHint" selector="Item6" />
-          <Property name="Color" selector="Item7" />
+          <Property Name="Size" Selector="Item1.Width,Item1.Height" />
+          <Property Name="Text" Selector="Item2" />
+          <Property Name="Font" Selector="Item3" />
+          <Property Name="Alignment" Selector="Item4" />
+          <Property Name="LineAlignment" Selector="Item5" />
+          <Property Name="TextRenderingHint" Selector="Item6" />
+          <Property Name="Color" Selector="Item7" />
         </PropertyMappings>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -257,61 +257,17 @@ Item2 * Item3.Height as Height)</q4:Expression>
             </Expression>
           </Nodes>
           <Edges>
-            <Edge>
-              <From>0</From>
-              <To>10</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>2</From>
-              <To>8</To>
-              <Label>Source2</Label>
-            </Edge>
-            <Edge>
-              <From>3</From>
-              <To>1</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>4</From>
-              <To>9</To>
-              <Label>Source2</Label>
-            </Edge>
-            <Edge>
-              <From>5</From>
-              <To>9</To>
-              <Label>Source3</Label>
-            </Edge>
-            <Edge>
-              <From>6</From>
-              <To>10</To>
-              <Label>Source2</Label>
-            </Edge>
-            <Edge>
-              <From>7</From>
-              <To>10</To>
-              <Label>Source3</Label>
-            </Edge>
-            <Edge>
-              <From>8</From>
-              <To>9</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>9</From>
-              <To>11</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>10</From>
-              <To>8</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>11</From>
-              <To>3</To>
-              <Label>Source1</Label>
-            </Edge>
+            <Edge From="0" To="10" Label="Source1" />
+            <Edge From="2" To="8" Label="Source2" />
+            <Edge From="3" To="1" Label="Source1" />
+            <Edge From="4" To="9" Label="Source2" />
+            <Edge From="5" To="9" Label="Source3" />
+            <Edge From="6" To="10" Label="Source2" />
+            <Edge From="7" To="10" Label="Source3" />
+            <Edge From="8" To="9" Label="Source1" />
+            <Edge From="9" To="11" Label="Source1" />
+            <Edge From="10" To="8" Label="Source1" />
+            <Edge From="11" To="3" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
@@ -390,286 +346,66 @@ Item2 * Item3.Height as Height)</q4:Expression>
             </Expression>
           </Nodes>
           <Edges>
-            <Edge>
-              <From>0</From>
-              <To>1</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>1</From>
-              <To>3</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>2</From>
-              <To>0</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>4</From>
-              <To>0</To>
-              <Label>Source2</Label>
-            </Edge>
-            <Edge>
-              <From>5</From>
-              <To>1</To>
-              <Label>Source2</Label>
-            </Edge>
-            <Edge>
-              <From>6</From>
-              <To>1</To>
-              <Label>Source3</Label>
-            </Edge>
-            <Edge>
-              <From>7</From>
-              <To>1</To>
-              <Label>Source4</Label>
-            </Edge>
-            <Edge>
-              <From>8</From>
-              <To>1</To>
-              <Label>Source5</Label>
-            </Edge>
-            <Edge>
-              <From>9</From>
-              <To>1</To>
-              <Label>Source6</Label>
-            </Edge>
-            <Edge>
-              <From>10</From>
-              <To>1</To>
-              <Label>Source7</Label>
-            </Edge>
+            <Edge From="0" To="1" Label="Source1" />
+            <Edge From="1" To="3" Label="Source1" />
+            <Edge From="2" To="0" Label="Source1" />
+            <Edge From="4" To="0" Label="Source2" />
+            <Edge From="5" To="1" Label="Source2" />
+            <Edge From="6" To="1" Label="Source3" />
+            <Edge From="7" To="1" Label="Source4" />
+            <Edge From="8" To="1" Label="Source5" />
+            <Edge From="9" To="1" Label="Source6" />
+            <Edge From="10" To="1" Label="Source7" />
           </Edges>
         </Workflow>
       </Expression>
     </Nodes>
     <Edges>
-      <Edge>
-        <From>0</From>
-        <To>11</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>2</From>
-        <To>1</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>3</From>
-        <To>42</To>
-        <Label>Source5</Label>
-      </Edge>
-      <Edge>
-        <From>4</From>
-        <To>42</To>
-        <Label>Source6</Label>
-      </Edge>
-      <Edge>
-        <From>5</From>
-        <To>42</To>
-        <Label>Source2</Label>
-      </Edge>
-      <Edge>
-        <From>6</From>
-        <To>42</To>
-        <Label>Source3</Label>
-      </Edge>
-      <Edge>
-        <From>7</From>
-        <To>42</To>
-        <Label>Source4</Label>
-      </Edge>
-      <Edge>
-        <From>8</From>
-        <To>7</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>9</From>
-        <To>8</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>10</From>
-        <To>11</To>
-        <Label>Source2</Label>
-      </Edge>
-      <Edge>
-        <From>11</From>
-        <To>13</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>12</From>
-        <To>14</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>13</From>
-        <To>12</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>14</From>
-        <To>42</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>15</From>
-        <To>10</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>16</From>
-        <To>18</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>17</From>
-        <To>18</To>
-        <Label>Source2</Label>
-      </Edge>
-      <Edge>
-        <From>18</From>
-        <To>27</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>19</From>
-        <To>20</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>20</From>
-        <To>28</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>21</From>
-        <To>30</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>22</From>
-        <To>3</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>23</From>
-        <To>4</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>24</From>
-        <To>22</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>24</From>
-        <To>16</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>25</From>
-        <To>23</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>25</From>
-        <To>17</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>26</From>
-        <To>43</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>27</From>
-        <To>21</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>28</From>
-        <To>18</To>
-        <Label>Source3</Label>
-      </Edge>
-      <Edge>
-        <From>29</From>
-        <To>30</To>
-        <Label>Source2</Label>
-      </Edge>
-      <Edge>
-        <From>30</From>
-        <To>26</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>31</From>
-        <To>29</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>32</From>
-        <To>30</To>
-        <Label>Source3</Label>
-      </Edge>
-      <Edge>
-        <From>33</From>
-        <To>32</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>34</From>
-        <To>30</To>
-        <Label>Source4</Label>
-      </Edge>
-      <Edge>
-        <From>35</From>
-        <To>30</To>
-        <Label>Source5</Label>
-      </Edge>
-      <Edge>
-        <From>36</From>
-        <To>30</To>
-        <Label>Source6</Label>
-      </Edge>
-      <Edge>
-        <From>37</From>
-        <To>30</To>
-        <Label>Source7</Label>
-      </Edge>
-      <Edge>
-        <From>38</From>
-        <To>34</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>39</From>
-        <To>35</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>40</From>
-        <To>36</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>41</From>
-        <To>37</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>42</From>
-        <To>2</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>43</From>
-        <To>15</To>
-        <Label>Source1</Label>
-      </Edge>
+      <Edge From="0" To="11" Label="Source1" />
+      <Edge From="2" To="1" Label="Source1" />
+      <Edge From="3" To="42" Label="Source5" />
+      <Edge From="4" To="42" Label="Source6" />
+      <Edge From="5" To="42" Label="Source2" />
+      <Edge From="6" To="42" Label="Source3" />
+      <Edge From="7" To="42" Label="Source4" />
+      <Edge From="8" To="7" Label="Source1" />
+      <Edge From="9" To="8" Label="Source1" />
+      <Edge From="10" To="11" Label="Source2" />
+      <Edge From="11" To="13" Label="Source1" />
+      <Edge From="12" To="14" Label="Source1" />
+      <Edge From="13" To="12" Label="Source1" />
+      <Edge From="14" To="42" Label="Source1" />
+      <Edge From="15" To="10" Label="Source1" />
+      <Edge From="16" To="18" Label="Source1" />
+      <Edge From="17" To="18" Label="Source2" />
+      <Edge From="18" To="27" Label="Source1" />
+      <Edge From="19" To="20" Label="Source1" />
+      <Edge From="20" To="28" Label="Source1" />
+      <Edge From="21" To="30" Label="Source1" />
+      <Edge From="22" To="3" Label="Source1" />
+      <Edge From="23" To="4" Label="Source1" />
+      <Edge From="24" To="22" Label="Source1" />
+      <Edge From="24" To="16" Label="Source1" />
+      <Edge From="25" To="23" Label="Source1" />
+      <Edge From="25" To="17" Label="Source1" />
+      <Edge From="26" To="43" Label="Source1" />
+      <Edge From="27" To="21" Label="Source1" />
+      <Edge From="28" To="18" Label="Source3" />
+      <Edge From="29" To="30" Label="Source2" />
+      <Edge From="30" To="26" Label="Source1" />
+      <Edge From="31" To="29" Label="Source1" />
+      <Edge From="32" To="30" Label="Source3" />
+      <Edge From="33" To="32" Label="Source1" />
+      <Edge From="34" To="30" Label="Source4" />
+      <Edge From="35" To="30" Label="Source5" />
+      <Edge From="36" To="30" Label="Source6" />
+      <Edge From="37" To="30" Label="Source7" />
+      <Edge From="38" To="34" Label="Source1" />
+      <Edge From="39" To="35" Label="Source1" />
+      <Edge From="40" To="36" Label="Source1" />
+      <Edge From="41" To="37" Label="Source1" />
+      <Edge From="42" To="2" Label="Source1" />
+      <Edge From="43" To="15" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>
