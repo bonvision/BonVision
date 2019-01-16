@@ -72,6 +72,9 @@
   <ItemGroup>
     <None Include="BonVision.nuspec" />
     <None Include="packages.config" />
+    <EmbeddedResource Include="Logging\EventLogger.bonsai" />
+    <EmbeddedResource Include="Logging\LogEvent.bonsai" />
+    <EmbeddedResource Include="Logging\TimestampedEventLogger.bonsai" />
     <EmbeddedResource Include="Primitives\CreateGratings.bonsai" />
     <EmbeddedResource Include="Primitives\DrawCheckerboard.bonsai" />
     <EmbeddedResource Include="Primitives\DrawCircle.bonsai" />
@@ -80,14 +83,11 @@
     <EmbeddedResource Include="Primitives\DrawImage.bonsai" />
     <EmbeddedResource Include="Primitives\DrawQuad.bonsai" />
     <EmbeddedResource Include="Primitives\EnsureGratingParameters.bonsai" />
-    <EmbeddedResource Include="Primitives\EventLogger.bonsai" />
     <EmbeddedResource Include="Primitives\GammaCorrection.bonsai" />
-    <EmbeddedResource Include="Primitives\LogEvent.bonsai" />
     <EmbeddedResource Include="Primitives\MeshMapping.bonsai" />
     <EmbeddedResource Include="Primitives\ParameterRange.bonsai" />
     <EmbeddedResource Include="Primitives\RangeAnimation.bonsai" />
     <EmbeddedResource Include="Primitives\SparseNoise.bonsai" />
-    <EmbeddedResource Include="Primitives\TimestampedEventLogger.bonsai" />
     <EmbeddedResource Include="Primitives\ViewingWindow.bonsai" />
     <EmbeddedResource Include="Shaders\Checkerboard.frag" />
     <EmbeddedResource Include="Shaders\Circle.frag" />
