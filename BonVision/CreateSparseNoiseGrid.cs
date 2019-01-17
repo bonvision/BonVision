@@ -8,7 +8,7 @@ using System.Reactive;
 using MathNet.Numerics.Distributions;
 using MathNet.Numerics;
 
-namespace BonVision.Collections
+namespace BonVision
 {
     [Combinator]
     [Description("Generates a non-overlapping distribution of values in a grid.")]

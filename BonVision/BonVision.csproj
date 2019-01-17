@@ -60,7 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AngleProperty.cs" />
-    <Compile Include="Collections\CreateSparseNoiseGrid.cs" />
+    <Compile Include="CreateSparseNoiseGrid.cs" />
     <Compile Include="Collections\GratingsSpecification.cs" />
     <Compile Include="CreateSphereGrid.cs" />
     <Compile Include="CreateVertexGrid.cs" />
