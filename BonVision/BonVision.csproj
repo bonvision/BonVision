@@ -109,6 +109,9 @@
     <EmbeddedResource Include="Shaders\Model.frag" />
     <EmbeddedResource Include="Shaders\Model.vert" />
     <EmbeddedResource Include="Primitives\DrawModel.bonsai" />
+    <EmbeddedResource Include="Shaders\TexturedModel.vert" />
+    <EmbeddedResource Include="Shaders\TexturedModel.frag" />
+    <EmbeddedResource Include="Primitives\DrawTexturedModel.bonsai" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
