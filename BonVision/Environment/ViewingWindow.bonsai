@@ -1,135 +1,132 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
-  <Description>Renders the sphere map with an off-center perspective camera covering the specified part of the visual field.</Description>
-  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q2="clr-namespace:BonVision;assembly=BonVision" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Description>Renders the sphere map from the perspective of a viewing window of the specified size, position and orientation relative to the origin.</Description>
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://bonsai-rx.org/2018/workflow">
     <Nodes>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:CreateVector2">
+          <q1:X>29.8</q1:X>
+          <q1:Y>19</q1:Y>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:UpdateUniform">
+          <q1:UniformName>scale</q1:UniformName>
+          <q1:ShaderName>SphereMap</q1:ShaderName>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:DrawMesh">
+          <q1:ShaderName>SphereMap</q1:ShaderName>
+          <q1:MeshName>Quad</q1:MeshName>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:UpdateUniform">
+          <q1:UniformName>transform</q1:UniformName>
+          <q1:ShaderName>SphereMap</q1:ShaderName>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:CreateMatrix4">
+          <q1:Row0>
+            <q1:X>1</q1:X>
+            <q1:Y>0</q1:Y>
+            <q1:Z>0</q1:Z>
+            <q1:W>0</q1:W>
+          </q1:Row0>
+          <q1:Row1>
+            <q1:X>0</q1:X>
+            <q1:Y>1</q1:Y>
+            <q1:Z>0</q1:Z>
+            <q1:W>0</q1:W>
+          </q1:Row1>
+          <q1:Row2>
+            <q1:X>0</q1:X>
+            <q1:Y>0</q1:Y>
+            <q1:Z>1</q1:Z>
+            <q1:W>0</q1:W>
+          </q1:Row2>
+          <q1:Row3>
+            <q1:X>0</q1:X>
+            <q1:Y>0</q1:Y>
+            <q1:Z>0</q1:Z>
+            <q1:W>1</q1:W>
+          </q1:Row3>
+        </Combinator>
+      </Expression>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Left</MemberName>
-        <Name />
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Right</MemberName>
-        <Name />
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Bottom</MemberName>
-        <Name />
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Top</MemberName>
-        <Name />
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>Left</Name>
-        <Description>The angle of the left edge of the viewing window, in degrees.</Description>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>Right</Name>
-        <Description>The angle of the right edge of the viewing window, in degrees.</Description>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>Bottom</Name>
-        <Description>The angle of the bottom edge of the viewing window, in degrees.</Description>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>Top</Name>
-        <Description>The angle of the top edge of the viewing window, in degrees.</Description>
-      </Expression>
       <Expression xsi:type="WorkflowOutput" />
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:DrawMesh">
-          <q1:ShaderName>MeshMap</q1:ShaderName>
-          <q1:MeshName>SphereMap</q1:MeshName>
-        </Combinator>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="X" DisplayName="ScreenWidth" Description="The width of the viewing window, in metric units." Category="Dimensions" />
+        <Property Name="Y" DisplayName="ScreenHeight" Description="The height of the viewing window, in metric units." Category="Dimensions" />
       </Expression>
-      <Expression xsi:type="MemberSelector">
-        <Selector>View</Selector>
-      </Expression>
-      <Expression xsi:type="MemberSelector">
-        <Selector>Projection</Selector>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Row0" Category="Extrinsics" />
+        <Property Name="Row1" Category="Extrinsics" />
+        <Property Name="Row2" Category="Extrinsics" />
+        <Property Name="Row3" Category="Extrinsics" />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:UpdateUniform">
-          <q1:UniformName>modelview</q1:UniformName>
-          <q1:ShaderName>MeshMap</q1:ShaderName>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:UpdateUniform">
-          <q1:UniformName>projection</q1:UniformName>
-          <q1:ShaderName>MeshMap</q1:ShaderName>
+        <Combinator xsi:type="q1:UpdateViewportState">
+          <q1:X>0</q1:X>
+          <q1:Y>0</q1:Y>
+          <q1:Width>1</q1:Width>
+          <q1:Height>1</q1:Height>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="Zip" />
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q2:AngleProperty">
-          <q2:Value>-20</q2:Value>
+        <Combinator xsi:type="q1:UpdateScissorState">
+          <q1:X>0</q1:X>
+          <q1:Y>0</q1:Y>
+          <q1:Width>1</q1:Width>
+          <q1:Height>1</q1:Height>
         </Combinator>
       </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q2:AngleProperty">
-          <q2:Value>20</q2:Value>
-        </Combinator>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="X" Category="Viewport" />
+        <Property Name="Y" Category="Viewport" />
+        <Property Name="Width" Category="Viewport" />
+        <Property Name="Height" Category="Viewport" />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q2:AngleProperty">
-          <q2:Value>-15</q2:Value>
+        <Combinator xsi:type="q1:DrawFramebuffer">
+          <q1:RenderState />
+          <q1:FramebufferAttachments />
+          <q1:ClearColor>Gray</q1:ClearColor>
+          <q1:ClearMask>DepthBufferBit ColorBufferBit</q1:ClearMask>
         </Combinator>
       </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q2:AngleProperty">
-          <q2:Value>15</q2:Value>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q2:CreateViewingWindow">
-          <q2:Left>0</q2:Left>
-          <q2:Right>0</q2:Right>
-          <q2:Bottom>0</q2:Bottom>
-          <q2:Top>0</q2:Top>
-          <q2:NearClip>0.1</q2:NearClip>
-          <q2:FarClip>100</q2:FarClip>
-        </Combinator>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="ClearColor" Category="Viewport" />
       </Expression>
     </Nodes>
     <Edges>
-      <Edge From="0" To="20" Label="Source1" />
-      <Edge From="1" To="20" Label="Source2" />
-      <Edge From="2" To="20" Label="Source3" />
-      <Edge From="3" To="20" Label="Source4" />
-      <Edge From="4" To="20" Label="Source5" />
-      <Edge From="5" To="16" Label="Source1" />
-      <Edge From="6" To="17" Label="Source1" />
-      <Edge From="7" To="18" Label="Source1" />
-      <Edge From="8" To="19" Label="Source1" />
-      <Edge From="10" To="9" Label="Source1" />
-      <Edge From="11" To="13" Label="Source1" />
-      <Edge From="12" To="14" Label="Source1" />
-      <Edge From="13" To="15" Label="Source1" />
-      <Edge From="14" To="15" Label="Source2" />
-      <Edge From="15" To="10" Label="Source1" />
-      <Edge From="16" To="1" Label="Source1" />
-      <Edge From="17" To="2" Label="Source1" />
-      <Edge From="18" To="3" Label="Source1" />
-      <Edge From="19" To="4" Label="Source1" />
-      <Edge From="20" To="11" Label="Source1" />
-      <Edge From="20" To="12" Label="Source1" />
+      <Edge From="0" To="1" Label="Source1" />
+      <Edge From="1" To="4" Label="Source1" />
+      <Edge From="2" To="12" Label="Source1" />
+      <Edge From="3" To="2" Label="Source1" />
+      <Edge From="4" To="3" Label="Source1" />
+      <Edge From="5" To="9" Label="Source1" />
+      <Edge From="7" To="0" Label="Source2" />
+      <Edge From="8" To="4" Label="Source2" />
+      <Edge From="9" To="10" Label="Source1" />
+      <Edge From="10" To="0" Label="Source1" />
+      <Edge From="11" To="9" Label="Source2" />
+      <Edge From="11" To="10" Label="Source2" />
+      <Edge From="12" To="6" Label="Source1" />
+      <Edge From="13" To="12" Label="Source2" />
     </Edges>
   </Workflow>
   <ExtensionTypes>
-    <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.CreateVector2, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.Zip, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>BonVision.AngleProperty, BonVision, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>BonVision.CreateViewingWindow, BonVision, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.CreateMatrix4, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.UpdateViewportState, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.UpdateScissorState, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.DrawFramebuffer, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>

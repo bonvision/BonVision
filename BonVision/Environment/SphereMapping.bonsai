@@ -83,6 +83,22 @@
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="ClearColor" />
       </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:UpdateViewportState">
+          <q1:X>0</q1:X>
+          <q1:Y>0</q1:Y>
+          <q1:Width>1</q1:Width>
+          <q1:Height>1</q1:Height>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:UpdateScissorState">
+          <q1:X>0</q1:X>
+          <q1:Y>0</q1:Y>
+          <q1:Width>1</q1:Width>
+          <q1:Height>1</q1:Height>
+        </Combinator>
+      </Expression>
     </Nodes>
     <Edges>
       <Edge From="0" To="1" Label="Source1" />
@@ -96,10 +112,12 @@
       <Edge From="7" To="11" Label="Source1" />
       <Edge From="8" To="9" Label="Source1" />
       <Edge From="9" To="0" Label="Source1" />
-      <Edge From="10" To="8" Label="Source1" />
+      <Edge From="10" To="14" Label="Source1" />
       <Edge From="12" To="7" Label="Source2" />
       <Edge From="13" To="8" Label="Source2" />
       <Edge From="13" To="7" Label="Source3" />
+      <Edge From="14" To="15" Label="Source1" />
+      <Edge From="15" To="8" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>
@@ -110,5 +128,7 @@
     <Type>Bonsai.Shaders.RenderCubemap, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.RenderTexture, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.BindTexture, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.UpdateViewportState, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.UpdateScissorState, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
