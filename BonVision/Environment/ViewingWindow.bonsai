@@ -60,8 +60,8 @@
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="X" DisplayName="ScreenWidth" Description="The width of the viewing window, in metric units." Category="Dimensions" />
-        <Property Name="Y" DisplayName="ScreenHeight" Description="The height of the viewing window, in metric units." Category="Dimensions" />
+        <Property Name="X" DisplayName="Width" Description="The width of the viewing window, in metric units." Category="Dimensions" />
+        <Property Name="Y" DisplayName="Height" Description="The height of the viewing window, in metric units." Category="Dimensions" />
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Row0" Category="Extrinsics" />
@@ -69,39 +69,16 @@
         <Property Name="Row2" Category="Extrinsics" />
         <Property Name="Row3" Category="Extrinsics" />
       </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:UpdateViewportState">
-          <q1:X>0</q1:X>
-          <q1:Y>0</q1:Y>
-          <q1:Width>1</q1:Width>
-          <q1:Height>1</q1:Height>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="X" Category="Viewport" />
-        <Property Name="Y" Category="Viewport" />
-        <Property Name="Width" Category="Viewport" />
-        <Property Name="Height" Category="Viewport" />
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:DrawFramebuffer">
-          <q1:RenderState />
-          <q1:FramebufferAttachments />
-        </Combinator>
-      </Expression>
     </Nodes>
     <Edges>
       <Edge From="0" To="1" Label="Source1" />
       <Edge From="1" To="4" Label="Source1" />
-      <Edge From="2" To="11" Label="Source1" />
+      <Edge From="2" To="6" Label="Source1" />
       <Edge From="3" To="2" Label="Source1" />
       <Edge From="4" To="3" Label="Source1" />
-      <Edge From="5" To="9" Label="Source1" />
+      <Edge From="5" To="0" Label="Source1" />
       <Edge From="7" To="0" Label="Source2" />
       <Edge From="8" To="4" Label="Source2" />
-      <Edge From="9" To="0" Label="Source1" />
-      <Edge From="10" To="9" Label="Source2" />
-      <Edge From="11" To="6" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>
@@ -109,7 +86,5 @@
     <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.CreateMatrix4, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.UpdateViewportState, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.DrawFramebuffer, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>

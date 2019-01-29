@@ -74,6 +74,7 @@
     <None Include="packages.config" />
     <EmbeddedResource Include="Collections\EnsureGratingParameters.bonsai" />
     <EmbeddedResource Include="Collections\SparseNoise.bonsai" />
+    <EmbeddedResource Include="Environment\DrawViewport.bonsai" />
     <EmbeddedResource Include="Environment\SphereMapping.bonsai" />
     <EmbeddedResource Include="Environment\GammaCorrection.bonsai" />
     <EmbeddedResource Include="Environment\MeshMapping.bonsai" />
