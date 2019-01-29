@@ -77,14 +77,6 @@
           <q1:Height>1</q1:Height>
         </Combinator>
       </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:UpdateScissorState">
-          <q1:X>0</q1:X>
-          <q1:Y>0</q1:Y>
-          <q1:Width>1</q1:Width>
-          <q1:Height>1</q1:Height>
-        </Combinator>
-      </Expression>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="X" Category="Viewport" />
         <Property Name="Y" Category="Viewport" />
@@ -95,29 +87,21 @@
         <Combinator xsi:type="q1:DrawFramebuffer">
           <q1:RenderState />
           <q1:FramebufferAttachments />
-          <q1:ClearColor>Gray</q1:ClearColor>
-          <q1:ClearMask>DepthBufferBit ColorBufferBit</q1:ClearMask>
         </Combinator>
-      </Expression>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="ClearColor" Category="Viewport" />
       </Expression>
     </Nodes>
     <Edges>
       <Edge From="0" To="1" Label="Source1" />
       <Edge From="1" To="4" Label="Source1" />
-      <Edge From="2" To="12" Label="Source1" />
+      <Edge From="2" To="11" Label="Source1" />
       <Edge From="3" To="2" Label="Source1" />
       <Edge From="4" To="3" Label="Source1" />
       <Edge From="5" To="9" Label="Source1" />
       <Edge From="7" To="0" Label="Source2" />
       <Edge From="8" To="4" Label="Source2" />
-      <Edge From="9" To="10" Label="Source1" />
-      <Edge From="10" To="0" Label="Source1" />
-      <Edge From="11" To="9" Label="Source2" />
-      <Edge From="11" To="10" Label="Source2" />
-      <Edge From="12" To="6" Label="Source1" />
-      <Edge From="13" To="12" Label="Source2" />
+      <Edge From="9" To="0" Label="Source1" />
+      <Edge From="10" To="9" Label="Source2" />
+      <Edge From="11" To="6" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>
@@ -126,7 +110,6 @@
     <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.CreateMatrix4, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.UpdateViewportState, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.UpdateScissorState, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.DrawFramebuffer, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>

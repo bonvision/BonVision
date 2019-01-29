@@ -150,9 +150,6 @@
             <q1:StateConfiguration xsi:type="q1:EnableState">
               <q1:Capability>DepthTest</q1:Capability>
             </q1:StateConfiguration>
-            <q1:StateConfiguration xsi:type="q1:EnableState">
-              <q1:Capability>ScissorTest</q1:Capability>
-            </q1:StateConfiguration>
             <q1:StateConfiguration xsi:type="q1:BlendFunctionState">
               <q1:SourceFactor>SrcAlpha</q1:SourceFactor>
               <q1:DestinationFactor>OneMinusSrcAlpha</q1:DestinationFactor>
