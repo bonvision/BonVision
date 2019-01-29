@@ -74,6 +74,7 @@
     <None Include="packages.config" />
     <EmbeddedResource Include="Collections\EnsureGratingParameters.bonsai" />
     <EmbeddedResource Include="Collections\SparseNoise.bonsai" />
+    <EmbeddedResource Include="Environment\SphereMapping.bonsai" />
     <EmbeddedResource Include="Environment\GammaCorrection.bonsai" />
     <EmbeddedResource Include="Environment\MeshMapping.bonsai" />
     <EmbeddedResource Include="Environment\NormalizedViewport.bonsai" />
@@ -84,7 +85,6 @@
     <EmbeddedResource Include="Logging\EventLogger.bonsai" />
     <EmbeddedResource Include="Logging\LogEvent.bonsai" />
     <EmbeddedResource Include="Logging\TimestampedEventLogger.bonsai" />
-    <EmbeddedResource Include="Primitives\CreateGratings.bonsai" />
     <EmbeddedResource Include="Primitives\DrawCheckerboard.bonsai" />
     <EmbeddedResource Include="Primitives\DrawCircle.bonsai" />
     <EmbeddedResource Include="Primitives\DrawCircleArray.bonsai" />
@@ -109,9 +109,11 @@
     <EmbeddedResource Include="Shaders\Model.frag" />
     <EmbeddedResource Include="Shaders\Model.vert" />
     <EmbeddedResource Include="Primitives\DrawModel.bonsai" />
+    <EmbeddedResource Include="Primitives\DrawTexturedModel.bonsai" />
     <EmbeddedResource Include="Shaders\TexturedModel.vert" />
     <EmbeddedResource Include="Shaders\TexturedModel.frag" />
-    <EmbeddedResource Include="Primitives\DrawTexturedModel.bonsai" />
+    <EmbeddedResource Include="Shaders\SphereMap.frag" />
+    <EmbeddedResource Include="Shaders\SphereMap.vert" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

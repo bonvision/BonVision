@@ -96,6 +96,21 @@
               <q1:FragmentShader>BonVision:Shaders.MeshMap.frag</q1:FragmentShader>
             </q1:ShaderConfiguration>
             <q1:ShaderConfiguration xsi:type="q1:Material">
+              <q1:Name>SphereMap</q1:Name>
+              <q1:RenderState />
+              <q1:ShaderUniforms />
+              <q1:BufferBindings>
+                <q1:BufferBinding xsi:type="q1:TextureBinding">
+                  <q1:Name>tex</q1:Name>
+                  <q1:TextureSlot>Texture0</q1:TextureSlot>
+                  <q1:TextureTarget>TextureCubeMap</q1:TextureTarget>
+                </q1:BufferBinding>
+              </q1:BufferBindings>
+              <q1:FramebufferAttachments />
+              <q1:VertexShader>BonVision:Shaders.SphereMap.vert</q1:VertexShader>
+              <q1:FragmentShader>BonVision:Shaders.SphereMap.frag</q1:FragmentShader>
+            </q1:ShaderConfiguration>
+            <q1:ShaderConfiguration xsi:type="q1:Material">
               <q1:Name>Model</q1:Name>
               <q1:RenderState />
               <q1:ShaderUniforms />

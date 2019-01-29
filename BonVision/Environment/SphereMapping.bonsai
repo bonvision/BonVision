@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.4.0-preview">
+  <Description>Renders the current viewport to a cubemap texture which can be used for environmental mapping of physical screens around the origin.
+</Description>
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://bonsai-rx.org/2018/workflow">
+    <Nodes>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:CreateCubemapCamera">
+          <q1:Eye>
+            <q1:X>0</q1:X>
+            <q1:Y>0</q1:Y>
+            <q1:Z>0</q1:Z>
+          </q1:Eye>
+          <q1:NearClip>0.1</q1:NearClip>
+          <q1:FarClip>1000</q1:FarClip>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>ViewMatrix</Selector>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>ProjectionMatrix</Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Zip" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:UpdateUniform">
+          <q1:UniformName>modelview</q1:UniformName>
+          <q1:ShaderName>MeshMap</q1:ShaderName>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:UpdateUniform">
+          <q1:UniformName>projection</q1:UniformName>
+          <q1:ShaderName>MeshMap</q1:ShaderName>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:DrawMesh">
+          <q1:ShaderName>MeshMap</q1:ShaderName>
+          <q1:MeshName>SphereMap</q1:MeshName>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:RenderCubemap">
+          <q1:RenderState />
+          <q1:ClearColor>Gray</q1:ClearColor>
+          <q1:ClearMask>DepthBufferBit ColorBufferBit</q1:ClearMask>
+          <q1:FaceSize xsi:nil="true" />
+          <q1:InternalFormat>Rgb</q1:InternalFormat>
+          <q1:MinFilter>Linear</q1:MinFilter>
+          <q1:MagFilter>Linear</q1:MagFilter>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:RenderTexture">
+          <q1:RenderState />
+          <q1:ClearColor>Gray</q1:ClearColor>
+          <q1:ClearMask>DepthBufferBit ColorBufferBit</q1:ClearMask>
+          <q1:Width>3600</q1:Width>
+          <q1:Height>1800</q1:Height>
+          <q1:WrapS>Repeat</q1:WrapS>
+          <q1:WrapT>Repeat</q1:WrapT>
+          <q1:MinFilter>Linear</q1:MinFilter>
+          <q1:MagFilter>Linear</q1:MagFilter>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:BindTexture">
+          <q1:TextureSlot>Texture0</q1:TextureSlot>
+          <q1:ShaderName>MeshMap</q1:ShaderName>
+          <q1:TextureTarget>Texture2D</q1:TextureTarget>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="WorkflowInput">
+        <Name>Source1</Name>
+      </Expression>
+      <Expression xsi:type="WorkflowOutput" />
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="FaceSize" Category="Misc" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="ClearColor" />
+      </Expression>
+    </Nodes>
+    <Edges>
+      <Edge From="0" To="1" Label="Source1" />
+      <Edge From="0" To="2" Label="Source1" />
+      <Edge From="1" To="4" Label="Source1" />
+      <Edge From="2" To="5" Label="Source1" />
+      <Edge From="3" To="6" Label="Source1" />
+      <Edge From="4" To="3" Label="Source1" />
+      <Edge From="5" To="3" Label="Source2" />
+      <Edge From="6" To="7" Label="Source1" />
+      <Edge From="7" To="11" Label="Source1" />
+      <Edge From="8" To="9" Label="Source1" />
+      <Edge From="9" To="0" Label="Source1" />
+      <Edge From="10" To="8" Label="Source1" />
+      <Edge From="12" To="7" Label="Source2" />
+      <Edge From="13" To="8" Label="Source2" />
+      <Edge From="13" To="7" Label="Source3" />
+    </Edges>
+  </Workflow>
+  <ExtensionTypes>
+    <Type>Bonsai.Shaders.CreateCubemapCamera, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.Zip, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.RenderCubemap, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.RenderTexture, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.BindTexture, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+  </ExtensionTypes>
+</WorkflowBuilder>
