@@ -21,27 +21,15 @@
       <Expression xsi:type="q2:ExpressionTransform">
         <q2:Expression>single(it)</q2:Expression>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>RangeMin</Name>
-      </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="FloatProperty">
           <Value>1</Value>
         </Combinator>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>RangeMax</Name>
-      </Expression>
       <Expression xsi:type="Subtract">
         <Operand xsi:type="FloatProperty">
           <Value>-1</Value>
         </Operand>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name />
       </Expression>
       <Expression xsi:type="Add">
         <Operand xsi:type="FloatProperty">
@@ -53,11 +41,21 @@
           <Value>0.5</Value>
         </Operand>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>Speed</Name>
-      </Expression>
       <Expression xsi:type="WorkflowOutput" />
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="RangeMin" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="RangeMax" />
+      </Expression>
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="Value" />
+        </PropertyMappings>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Speed" />
+      </Expression>
       <Expression xsi:type="TakeWhile">
         <Workflow>
           <Nodes>
@@ -70,9 +68,8 @@
                 <Value>1</Value>
               </Operand>
             </Expression>
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>Value</MemberName>
-              <Name>Value</Name>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="Value" />
             </Expression>
           </Nodes>
           <Edges>
@@ -86,20 +83,20 @@
     <Edges>
       <Edge From="0" To="3" Label="Source1" />
       <Edge From="1" To="2" Label="Source1" />
-      <Edge From="2" To="10" Label="Source1" />
-      <Edge From="3" To="11" Label="Source1" />
+      <Edge From="2" To="7" Label="Source1" />
+      <Edge From="3" To="8" Label="Source1" />
       <Edge From="4" To="1" Label="Source1" />
-      <Edge From="5" To="8" Label="Source2" />
-      <Edge From="5" To="10" Label="Source2" />
-      <Edge From="6" To="8" Label="Source1" />
-      <Edge From="7" To="6" Label="Source1" />
-      <Edge From="7" To="14" Label="Source2" />
-      <Edge From="8" To="9" Label="Source1" />
-      <Edge From="9" To="1" Label="Source2" />
-      <Edge From="10" To="14" Label="Source1" />
-      <Edge From="11" To="4" Label="Source1" />
-      <Edge From="12" To="11" Label="Source2" />
-      <Edge From="14" To="13" Label="Source1" />
+      <Edge From="5" To="6" Label="Source1" />
+      <Edge From="6" To="12" Label="Source1" />
+      <Edge From="7" To="14" Label="Source1" />
+      <Edge From="8" To="4" Label="Source1" />
+      <Edge From="10" To="6" Label="Source2" />
+      <Edge From="10" To="7" Label="Source2" />
+      <Edge From="11" To="5" Label="Source1" />
+      <Edge From="11" To="14" Label="Source2" />
+      <Edge From="12" To="1" Label="Source2" />
+      <Edge From="13" To="8" Label="Source2" />
+      <Edge From="14" To="9" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>

@@ -13,34 +13,10 @@
           <q1:MeshName>Quad</q1:MeshName>
         </Combinator>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>ExtentX</MemberName>
-        <Name />
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>ExtentY</MemberName>
-        <Name />
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>LocationX</MemberName>
-        <Name>LocationX</Name>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>LocationY</MemberName>
-        <Name>LocationY</Name>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Angle</MemberName>
-        <Name />
-      </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q2:AngleProperty">
           <q2:Value>0</q2:Value>
         </Combinator>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>Angle</Name>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:StoreImage">
@@ -61,6 +37,7 @@
           <q1:TextureSlot>Texture0</q1:TextureSlot>
           <q1:ShaderName>Image</q1:ShaderName>
           <q1:TextureName />
+          <q1:TextureTarget>Texture2D</q1:TextureTarget>
         </Combinator>
       </Expression>
       <Expression xsi:type="MemberSelector">
@@ -107,14 +84,6 @@ Item2 * Item3.Height as Height)</q4:Expression>
         <MemberName>Y</MemberName>
         <Value>1</Value>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>ExtentX</Name>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>ExtentY</Name>
-      </Expression>
       <Expression xsi:type="InputMapping">
         <PropertyMappings>
           <Property Name="Size" Selector="Item1.Width,Item1.Height" />
@@ -139,19 +108,10 @@ Item2 * Item3.Height as Height)</q4:Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="CombineLatest" />
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>Text</Name>
-      </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q3:CreateFont">
           <q3:Font>Microsoft Sans Serif, 13.875pt</q3:Font>
         </Combinator>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Font</MemberName>
-        <Name>Font</Name>
-        <Category>Text Style</Category>
       </Expression>
       <Expression xsi:type="PropertySourceOfAddTextBoxStringAlignment">
         <MemberName>Alignment</MemberName>
@@ -174,22 +134,51 @@ Item2 * Item3.Height as Height)</q4:Expression>
           <Val3>255</Val3>
         </Value>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>Alignment</Name>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Text" />
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>LineAlignment</Name>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Font" Category="Text Style" />
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>TextRenderingHint</Name>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Alignment" />
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>Color</Name>
-        <Category>Text Style</Category>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="LineAlignment" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="TextRenderingHint" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Color" Category="Text Style" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="ExtentX" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="ExtentY" />
+      </Expression>
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="ExtentX" />
+        </PropertyMappings>
+      </Expression>
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="ExtentY" />
+        </PropertyMappings>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="LocationX" />
+        <Property Name="LocationY" />
+      </Expression>
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="Angle" />
+        </PropertyMappings>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Angle" />
       </Expression>
       <Expression xsi:type="GroupWorkflow">
         <Name>Transform</Name>
@@ -199,31 +188,11 @@ Item2 * Item3.Height as Height)</q4:Expression>
               <Name>Source1</Name>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>Angle</MemberName>
-              <Name>Angle</Name>
-            </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:UpdateUniform">
                 <q1:UniformName>transform</q1:UniformName>
                 <q1:ShaderName>Image</q1:ShaderName>
               </Combinator>
-            </Expression>
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>X</MemberName>
-              <Name>ExtentX</Name>
-            </Expression>
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>Y</MemberName>
-              <Name>ExtentY</Name>
-            </Expression>
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>X</MemberName>
-              <Name>LocationX</Name>
-            </Expression>
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>Y</MemberName>
-              <Name>LocationY</Name>
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:RotateZ">
@@ -255,19 +224,28 @@ Item2 * Item3.Height as Height)</q4:Expression>
                 <q1:Z>1</q1:Z>
               </Combinator>
             </Expression>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="X" DisplayName="LocationX" />
+              <Property Name="Y" DisplayName="LocationY" />
+            </Expression>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="Angle" />
+            </Expression>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="X" DisplayName="ExtentX" />
+              <Property Name="Y" DisplayName="ExtentY" />
+            </Expression>
           </Nodes>
           <Edges>
-            <Edge From="0" To="10" Label="Source1" />
-            <Edge From="2" To="8" Label="Source2" />
-            <Edge From="3" To="1" Label="Source1" />
-            <Edge From="4" To="9" Label="Source2" />
-            <Edge From="5" To="9" Label="Source3" />
-            <Edge From="6" To="10" Label="Source2" />
-            <Edge From="7" To="10" Label="Source3" />
-            <Edge From="8" To="9" Label="Source1" />
-            <Edge From="9" To="11" Label="Source1" />
-            <Edge From="10" To="8" Label="Source1" />
-            <Edge From="11" To="3" Label="Source1" />
+            <Edge From="0" To="5" Label="Source1" />
+            <Edge From="2" To="1" Label="Source1" />
+            <Edge From="3" To="4" Label="Source1" />
+            <Edge From="4" To="6" Label="Source1" />
+            <Edge From="5" To="3" Label="Source1" />
+            <Edge From="6" To="2" Label="Source1" />
+            <Edge From="7" To="5" Label="Source2" />
+            <Edge From="8" To="3" Label="Source2" />
+            <Edge From="9" To="4" Label="Source2" />
           </Edges>
         </Workflow>
       </Expression>
@@ -316,96 +294,74 @@ Item2 * Item3.Height as Height)</q4:Expression>
               <Name>Source1</Name>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>Size</MemberName>
-              <Name>Size</Name>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="Destination" />
+              <Property Name="Text" />
+              <Property Name="Font" />
+              <Property Name="Alignment" />
+              <Property Name="LineAlignment" />
+              <Property Name="TextRenderingHint" />
+              <Property Name="Color" />
             </Expression>
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>Font</MemberName>
-              <Name>Font</Name>
-            </Expression>
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>Alignment</MemberName>
-              <Name>Alignment</Name>
-            </Expression>
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>LineAlignment</MemberName>
-              <Name>LineAlignment</Name>
-            </Expression>
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>TextRenderingHint</MemberName>
-              <Name>TextRenderingHint</Name>
-            </Expression>
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>Color</MemberName>
-              <Name>Color</Name>
-            </Expression>
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>Text</MemberName>
-              <Name>Text</Name>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="Size" />
             </Expression>
           </Nodes>
           <Edges>
             <Edge From="0" To="1" Label="Source1" />
             <Edge From="1" To="3" Label="Source1" />
             <Edge From="2" To="0" Label="Source1" />
-            <Edge From="4" To="0" Label="Source2" />
-            <Edge From="5" To="1" Label="Source2" />
-            <Edge From="6" To="1" Label="Source3" />
-            <Edge From="7" To="1" Label="Source4" />
-            <Edge From="8" To="1" Label="Source5" />
-            <Edge From="9" To="1" Label="Source6" />
-            <Edge From="10" To="1" Label="Source7" />
+            <Edge From="4" To="1" Label="Source2" />
+            <Edge From="5" To="0" Label="Source2" />
           </Edges>
         </Workflow>
       </Expression>
     </Nodes>
     <Edges>
-      <Edge From="0" To="11" Label="Source1" />
+      <Edge From="0" To="5" Label="Source1" />
       <Edge From="2" To="1" Label="Source1" />
-      <Edge From="3" To="42" Label="Source5" />
-      <Edge From="4" To="42" Label="Source6" />
-      <Edge From="5" To="42" Label="Source2" />
-      <Edge From="6" To="42" Label="Source3" />
-      <Edge From="7" To="42" Label="Source4" />
-      <Edge From="8" To="7" Label="Source1" />
-      <Edge From="9" To="8" Label="Source1" />
-      <Edge From="10" To="11" Label="Source2" />
-      <Edge From="11" To="13" Label="Source1" />
-      <Edge From="12" To="14" Label="Source1" />
-      <Edge From="13" To="12" Label="Source1" />
-      <Edge From="14" To="42" Label="Source1" />
-      <Edge From="15" To="10" Label="Source1" />
-      <Edge From="16" To="18" Label="Source1" />
-      <Edge From="17" To="18" Label="Source2" />
-      <Edge From="18" To="27" Label="Source1" />
-      <Edge From="19" To="20" Label="Source1" />
-      <Edge From="20" To="28" Label="Source1" />
-      <Edge From="21" To="30" Label="Source1" />
-      <Edge From="22" To="3" Label="Source1" />
-      <Edge From="23" To="4" Label="Source1" />
-      <Edge From="24" To="22" Label="Source1" />
-      <Edge From="24" To="16" Label="Source1" />
-      <Edge From="25" To="23" Label="Source1" />
-      <Edge From="25" To="17" Label="Source1" />
-      <Edge From="26" To="43" Label="Source1" />
-      <Edge From="27" To="21" Label="Source1" />
-      <Edge From="28" To="18" Label="Source3" />
-      <Edge From="29" To="30" Label="Source2" />
-      <Edge From="30" To="26" Label="Source1" />
-      <Edge From="31" To="29" Label="Source1" />
-      <Edge From="32" To="30" Label="Source3" />
-      <Edge From="33" To="32" Label="Source1" />
-      <Edge From="34" To="30" Label="Source4" />
-      <Edge From="35" To="30" Label="Source5" />
-      <Edge From="36" To="30" Label="Source6" />
-      <Edge From="37" To="30" Label="Source7" />
-      <Edge From="38" To="34" Label="Source1" />
-      <Edge From="39" To="35" Label="Source1" />
-      <Edge From="40" To="36" Label="Source1" />
-      <Edge From="41" To="37" Label="Source1" />
-      <Edge From="42" To="2" Label="Source1" />
-      <Edge From="43" To="15" Label="Source1" />
+      <Edge From="3" To="39" Label="Source1" />
+      <Edge From="4" To="5" Label="Source2" />
+      <Edge From="5" To="7" Label="Source1" />
+      <Edge From="6" To="8" Label="Source1" />
+      <Edge From="7" To="6" Label="Source1" />
+      <Edge From="8" To="41" Label="Source1" />
+      <Edge From="9" To="4" Label="Source1" />
+      <Edge From="10" To="12" Label="Source1" />
+      <Edge From="11" To="12" Label="Source2" />
+      <Edge From="12" To="19" Label="Source1" />
+      <Edge From="13" To="14" Label="Source1" />
+      <Edge From="14" To="20" Label="Source1" />
+      <Edge From="15" To="22" Label="Source1" />
+      <Edge From="16" To="36" Label="Source1" />
+      <Edge From="17" To="37" Label="Source1" />
+      <Edge From="18" To="42" Label="Source1" />
+      <Edge From="19" To="15" Label="Source1" />
+      <Edge From="20" To="12" Label="Source3" />
+      <Edge From="21" To="22" Label="Source2" />
+      <Edge From="22" To="18" Label="Source1" />
+      <Edge From="23" To="22" Label="Source3" />
+      <Edge From="24" To="22" Label="Source4" />
+      <Edge From="25" To="22" Label="Source5" />
+      <Edge From="26" To="22" Label="Source6" />
+      <Edge From="27" To="22" Label="Source7" />
+      <Edge From="28" To="21" Label="Source1" />
+      <Edge From="29" To="23" Label="Source1" />
+      <Edge From="30" To="24" Label="Source1" />
+      <Edge From="31" To="25" Label="Source1" />
+      <Edge From="32" To="26" Label="Source1" />
+      <Edge From="33" To="27" Label="Source1" />
+      <Edge From="34" To="16" Label="Source1" />
+      <Edge From="34" To="10" Label="Source1" />
+      <Edge From="35" To="17" Label="Source1" />
+      <Edge From="35" To="11" Label="Source1" />
+      <Edge From="36" To="41" Label="Source4" />
+      <Edge From="37" To="41" Label="Source5" />
+      <Edge From="38" To="41" Label="Source2" />
+      <Edge From="39" To="41" Label="Source3" />
+      <Edge From="40" To="3" Label="Source1" />
+      <Edge From="41" To="2" Label="Source1" />
+      <Edge From="42" To="9" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>

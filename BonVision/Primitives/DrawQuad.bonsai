@@ -13,22 +13,6 @@
           <q1:MeshName>Quad</q1:MeshName>
         </Combinator>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>ExtentX</MemberName>
-        <Name>ExtentX</Name>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>ExtentY</MemberName>
-        <Name>ExtentY</Name>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>LocationX</MemberName>
-        <Name>LocationX</Name>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>LocationY</MemberName>
-        <Name>LocationY</Name>
-      </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:CreateVector4">
           <q1:X>1</q1:X>
@@ -79,21 +63,23 @@
           <Value>1</Value>
         </Combinator>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>ColorR</Name>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="ExtentX" />
+        <Property Name="ExtentY" />
+        <Property Name="LocationX" />
+        <Property Name="LocationY" />
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>ColorG</Name>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="ColorR" />
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>ColorB</Name>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="ColorG" />
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>ColorA</Name>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="ColorB" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="ColorA" />
       </Expression>
       <Expression xsi:type="GroupWorkflow">
         <Name>Transform</Name>
@@ -103,36 +89,10 @@
               <Name>Source1</Name>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>Angle</MemberName>
-              <Name>Angle</Name>
-            </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:UpdateUniform">
                 <q1:UniformName>transform</q1:UniformName>
-                <q1:ShaderName>Color</q1:ShaderName>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>X</MemberName>
-              <Name>ExtentX</Name>
-            </Expression>
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>Y</MemberName>
-              <Name>ExtentY</Name>
-            </Expression>
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>X</MemberName>
-              <Name>LocationX</Name>
-            </Expression>
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>Y</MemberName>
-              <Name>LocationY</Name>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:RotateZ">
-                <q1:Order>Prepend</q1:Order>
-                <q1:Angle>0</q1:Angle>
+                <q1:ShaderName>Gratings</q1:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
@@ -151,44 +111,45 @@
                 <q1:Z>0</q1:Z>
               </Combinator>
             </Expression>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="X" DisplayName="LocationX" />
+              <Property Name="Y" DisplayName="LocationY" />
+            </Expression>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="X" DisplayName="ExtentX" />
+              <Property Name="Y" DisplayName="ExtentY" />
+            </Expression>
           </Nodes>
           <Edges>
-            <Edge From="0" To="10" Label="Source1" />
-            <Edge From="2" To="8" Label="Source2" />
-            <Edge From="3" To="1" Label="Source1" />
-            <Edge From="4" To="9" Label="Source2" />
-            <Edge From="5" To="9" Label="Source3" />
-            <Edge From="6" To="10" Label="Source2" />
-            <Edge From="7" To="10" Label="Source3" />
-            <Edge From="8" To="3" Label="Source1" />
-            <Edge From="9" To="8" Label="Source1" />
-            <Edge From="10" To="9" Label="Source1" />
+            <Edge From="0" To="4" Label="Source1" />
+            <Edge From="2" To="1" Label="Source1" />
+            <Edge From="3" To="2" Label="Source1" />
+            <Edge From="4" To="3" Label="Source1" />
+            <Edge From="5" To="4" Label="Source2" />
+            <Edge From="6" To="3" Label="Source2" />
           </Edges>
         </Workflow>
       </Expression>
     </Nodes>
     <Edges>
-      <Edge From="0" To="21" Label="Source2" />
+      <Edge From="0" To="18" Label="Source2" />
       <Edge From="2" To="1" Label="Source1" />
-      <Edge From="3" To="21" Label="Source2" />
-      <Edge From="4" To="21" Label="Source3" />
-      <Edge From="5" To="21" Label="Source4" />
-      <Edge From="6" To="21" Label="Source5" />
-      <Edge From="7" To="12" Label="Source1" />
-      <Edge From="8" To="7" Label="Source2" />
-      <Edge From="9" To="7" Label="Source3" />
-      <Edge From="10" To="7" Label="Source4" />
-      <Edge From="11" To="7" Label="Source5" />
-      <Edge From="12" To="2" Label="Source1" />
-      <Edge From="13" To="8" Label="Source1" />
+      <Edge From="3" To="8" Label="Source1" />
+      <Edge From="4" To="3" Label="Source2" />
+      <Edge From="5" To="3" Label="Source3" />
+      <Edge From="6" To="3" Label="Source4" />
+      <Edge From="7" To="3" Label="Source5" />
+      <Edge From="8" To="2" Label="Source1" />
+      <Edge From="9" To="4" Label="Source1" />
+      <Edge From="10" To="5" Label="Source1" />
+      <Edge From="11" To="6" Label="Source1" />
+      <Edge From="12" To="7" Label="Source1" />
+      <Edge From="13" To="18" Label="Source2" />
       <Edge From="14" To="9" Label="Source1" />
       <Edge From="15" To="10" Label="Source1" />
       <Edge From="16" To="11" Label="Source1" />
-      <Edge From="17" To="13" Label="Source1" />
-      <Edge From="18" To="14" Label="Source1" />
-      <Edge From="19" To="15" Label="Source1" />
-      <Edge From="20" To="16" Label="Source1" />
-      <Edge From="21" To="7" Label="Source1" />
+      <Edge From="17" To="12" Label="Source1" />
+      <Edge From="18" To="3" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>
@@ -196,7 +157,6 @@
     <Type>Bonsai.Shaders.CreateVector4, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.FloatProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.RotateZ, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.Scale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.Translate, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>

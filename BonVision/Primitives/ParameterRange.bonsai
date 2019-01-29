@@ -26,45 +26,41 @@
         <MemberName>Count</MemberName>
         <Value>10</Value>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>Count</Name>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Count</MemberName>
-        <Name />
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Max</MemberName>
-        <Name />
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>RangeMin</MemberName>
-        <Name>RangeMin</Name>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>RangeMax</MemberName>
-        <Name>RangeMax</Name>
-      </Expression>
       <Expression xsi:type="WorkflowOutput" />
       <Expression xsi:type="Add">
         <Operand xsi:type="IntProperty">
           <Value>1</Value>
         </Operand>
       </Expression>
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="Max" />
+        </PropertyMappings>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="RangeMin" />
+        <Property Name="RangeMax" />
+      </Expression>
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="Count" />
+        </PropertyMappings>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Count" />
+      </Expression>
     </Nodes>
     <Edges>
-      <Edge From="0" To="10" Label="Source1" />
-      <Edge From="1" To="9" Label="Source1" />
-      <Edge From="2" To="5" Label="Source1" />
+      <Edge From="0" To="5" Label="Source1" />
+      <Edge From="1" To="4" Label="Source1" />
+      <Edge From="2" To="8" Label="Source1" />
       <Edge From="3" To="6" Label="Source1" />
-      <Edge From="4" To="2" Label="Source1" />
-      <Edge From="4" To="3" Label="Source1" />
-      <Edge From="5" To="0" Label="Source1" />
+      <Edge From="5" To="1" Label="Source1" />
       <Edge From="6" To="1" Label="Source2" />
       <Edge From="7" To="1" Label="Source3" />
-      <Edge From="8" To="1" Label="Source4" />
-      <Edge From="10" To="1" Label="Source1" />
+      <Edge From="8" To="0" Label="Source1" />
+      <Edge From="9" To="2" Label="Source1" />
+      <Edge From="9" To="3" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>
