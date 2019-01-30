@@ -107,6 +107,7 @@
     <EmbeddedResource Include="Primitives\PrimitiveResources.bonsai" />
     <EmbeddedResource Include="Primitives\DrawVideo.bonsai" />
     <EmbeddedResource Include="Primitives\DrawText.bonsai" />
+    <EmbeddedResource Include="Models\Plane.obj" />
     <EmbeddedResource Include="Shaders\Model.frag" />
     <EmbeddedResource Include="Shaders\Model.vert" />
     <EmbeddedResource Include="Primitives\DrawModel.bonsai" />
