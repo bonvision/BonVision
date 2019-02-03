@@ -12,12 +12,6 @@
         </Operand>
       </Expression>
       <Expression xsi:type="Accumulate" />
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:UpdateStep">
-          <q1:StepSize>2</q1:StepSize>
-          <q1:MaxElapsedTime xsi:nil="true" />
-        </Combinator>
-      </Expression>
       <Expression xsi:type="q2:ExpressionTransform">
         <q2:Expression>single(it)</q2:Expression>
       </Expression>
@@ -56,6 +50,9 @@
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Value" DisplayName="Speed" />
       </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>TimeStep.ElapsedTime</Selector>
+      </Expression>
       <Expression xsi:type="TakeWhile">
         <Workflow>
           <Nodes>
@@ -81,22 +78,22 @@
       </Expression>
     </Nodes>
     <Edges>
-      <Edge From="0" To="3" Label="Source1" />
+      <Edge From="0" To="13" Label="Source1" />
       <Edge From="1" To="2" Label="Source1" />
-      <Edge From="2" To="7" Label="Source1" />
-      <Edge From="3" To="8" Label="Source1" />
-      <Edge From="4" To="1" Label="Source1" />
-      <Edge From="5" To="6" Label="Source1" />
-      <Edge From="6" To="12" Label="Source1" />
-      <Edge From="7" To="14" Label="Source1" />
-      <Edge From="8" To="4" Label="Source1" />
-      <Edge From="10" To="6" Label="Source2" />
-      <Edge From="10" To="7" Label="Source2" />
-      <Edge From="11" To="5" Label="Source1" />
-      <Edge From="11" To="14" Label="Source2" />
-      <Edge From="12" To="1" Label="Source2" />
-      <Edge From="13" To="8" Label="Source2" />
-      <Edge From="14" To="9" Label="Source1" />
+      <Edge From="2" To="6" Label="Source1" />
+      <Edge From="3" To="1" Label="Source1" />
+      <Edge From="4" To="5" Label="Source1" />
+      <Edge From="5" To="11" Label="Source1" />
+      <Edge From="6" To="14" Label="Source1" />
+      <Edge From="7" To="3" Label="Source1" />
+      <Edge From="9" To="5" Label="Source2" />
+      <Edge From="9" To="6" Label="Source2" />
+      <Edge From="10" To="4" Label="Source1" />
+      <Edge From="10" To="14" Label="Source2" />
+      <Edge From="11" To="1" Label="Source2" />
+      <Edge From="12" To="7" Label="Source2" />
+      <Edge From="13" To="7" Label="Source1" />
+      <Edge From="14" To="8" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>
@@ -104,7 +101,6 @@
     <Type>Bonsai.Expressions.MultiplyBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.FloatProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.AccumulateBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.UpdateStep, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Scripting.ExpressionTransform, Bonsai.Scripting, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.SubtractBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.AddBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
