@@ -2,7 +2,7 @@
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Renders the current viewport to a cubemap texture which can be used for environmental mapping of physical screens around the origin.
 </Description>
-  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q3="clr-namespace:BonVision;assembly=BonVision" xmlns:q2="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://bonsai-rx.org/2018/workflow">
     <Nodes>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:CreateCubemapCamera">
@@ -91,6 +91,85 @@
           <q1:Height>1</q1:Height>
         </Combinator>
       </Expression>
+      <Expression xsi:type="Sink">
+        <Name>UpdateSphereGrid</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+            <Expression xsi:type="q2:ExpressionTransform">
+              <q2:Expression>(-1 - M41) / M11</q2:Expression>
+            </Expression>
+            <Expression xsi:type="q2:ExpressionTransform">
+              <q2:Expression>(1 - M41) / M11</q2:Expression>
+            </Expression>
+            <Expression xsi:type="q2:ExpressionTransform">
+              <q2:Expression>(-1 - M42) / M22</q2:Expression>
+            </Expression>
+            <Expression xsi:type="q2:ExpressionTransform">
+              <q2:Expression>(1 - M42) / M22</q2:Expression>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="Zip" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q3:CreateSphereGrid">
+                <q3:Left>-50.0000038</q3:Left>
+                <q3:Right>180</q3:Right>
+                <q3:Bottom>-90</q3:Bottom>
+                <q3:Top>70</q3:Top>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="InputMapping">
+              <PropertyMappings>
+                <Property Name="Left" Selector="Item1" />
+                <Property Name="Right" Selector="Item2" />
+                <Property Name="Bottom" Selector="Item3" />
+                <Property Name="Top" Selector="Item4" />
+              </PropertyMappings>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:UpdateVertexBuffer">
+                <q1:MeshName>SphereMap</q1:MeshName>
+                <q1:DrawMode>Triangles</q1:DrawMode>
+                <q1:Usage>StaticDraw</q1:Usage>
+                <q1:VertexAttributes>
+                  <q1:VertexAttributeMapping>
+                    <q1:Size>3</q1:Size>
+                    <q1:Normalized>false</q1:Normalized>
+                    <q1:Type>Float</q1:Type>
+                  </q1:VertexAttributeMapping>
+                  <q1:VertexAttributeMapping>
+                    <q1:Size>3</q1:Size>
+                    <q1:Normalized>false</q1:Normalized>
+                    <q1:Type>Float</q1:Type>
+                  </q1:VertexAttributeMapping>
+                </q1:VertexAttributes>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="DistinctUntilChanged" />
+            </Expression>
+          </Nodes>
+          <Edges>
+            <Edge From="0" To="2" Label="Source1" />
+            <Edge From="0" To="3" Label="Source1" />
+            <Edge From="0" To="4" Label="Source1" />
+            <Edge From="0" To="5" Label="Source1" />
+            <Edge From="2" To="6" Label="Source1" />
+            <Edge From="3" To="6" Label="Source2" />
+            <Edge From="4" To="6" Label="Source3" />
+            <Edge From="5" To="6" Label="Source4" />
+            <Edge From="6" To="10" Label="Source1" />
+            <Edge From="7" To="9" Label="Source1" />
+            <Edge From="8" To="7" Label="Source1" />
+            <Edge From="9" To="1" Label="Source1" />
+            <Edge From="10" To="8" Label="Source1" />
+          </Edges>
+        </Workflow>
+      </Expression>
     </Nodes>
     <Edges>
       <Edge From="0" To="1" Label="Source1" />
@@ -104,11 +183,12 @@
       <Edge From="7" To="11" Label="Source1" />
       <Edge From="8" To="9" Label="Source1" />
       <Edge From="9" To="0" Label="Source1" />
-      <Edge From="10" To="14" Label="Source1" />
+      <Edge From="10" To="15" Label="Source1" />
       <Edge From="12" To="7" Label="Source2" />
       <Edge From="13" To="8" Label="Source2" />
       <Edge From="13" To="7" Label="Source3" />
       <Edge From="14" To="8" Label="Source1" />
+      <Edge From="15" To="14" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>
@@ -120,5 +200,10 @@
     <Type>Bonsai.Shaders.RenderTexture, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.BindTexture, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.UpdateViewportState, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.SinkBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Scripting.ExpressionTransform, Bonsai.Scripting, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>BonVision.CreateSphereGrid, BonVision, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.UpdateVertexBuffer, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.DistinctUntilChanged, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
