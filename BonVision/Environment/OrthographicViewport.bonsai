@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
+  <Description>Specifies an orthographic viewport, commonly used for 2D stimulus environments.</Description>
   <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://bonsai-rx.org/2018/workflow">
     <Nodes>
       <Expression xsi:type="WorkflowInput">
@@ -17,10 +18,10 @@
         </Combinator>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Left" Description="The left boundary of the spherical environment, in degrees." />
-        <Property Name="Right" Description="The right boundary of the spherical environment, in degrees." />
-        <Property Name="Bottom" Description="The bottom boundary of the spherical environment, in degrees." />
-        <Property Name="Top" Description="The top boundary of the spherical environment, in degrees." />
+        <Property Name="Left" Description="The left boundary of the orthographic environment." />
+        <Property Name="Right" Description="The right boundary of the orthographic environment." />
+        <Property Name="Bottom" Description="The bottom boundary of the orthographic environment." />
+        <Property Name="Top" Description="The top boundary of the orthographic environment." />
       </Expression>
     </Nodes>
     <Edges>
