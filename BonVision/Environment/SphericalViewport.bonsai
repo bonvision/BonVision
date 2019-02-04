@@ -16,30 +16,17 @@
           <q1:FarClip>1000</q1:FarClip>
         </Combinator>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Left</MemberName>
-        <Name>Left</Name>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Right</MemberName>
-        <Name>Right</Name>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Bottom</MemberName>
-        <Name>Bottom</Name>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Top</MemberName>
-        <Name>Top</Name>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Left" Description="The left boundary of the spherical environment, in degrees." />
+        <Property Name="Right" Description="The right boundary of the spherical environment, in degrees." />
+        <Property Name="Bottom" Description="The bottom boundary of the spherical environment, in degrees." />
+        <Property Name="Top" Description="The top boundary of the spherical environment, in degrees." />
       </Expression>
     </Nodes>
     <Edges>
       <Edge From="0" To="2" Label="Source1" />
       <Edge From="2" To="1" Label="Source1" />
       <Edge From="3" To="2" Label="Source2" />
-      <Edge From="4" To="2" Label="Source3" />
-      <Edge From="5" To="2" Label="Source4" />
-      <Edge From="6" To="2" Label="Source5" />
     </Edges>
   </Workflow>
   <ExtensionTypes>
