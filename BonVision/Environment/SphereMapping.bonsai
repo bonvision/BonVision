@@ -58,8 +58,8 @@
           <q1:RenderState />
           <q1:ClearColor>Gray</q1:ClearColor>
           <q1:ClearMask>DepthBufferBit ColorBufferBit</q1:ClearMask>
-          <q1:Width>3600</q1:Width>
-          <q1:Height>1800</q1:Height>
+          <q1:Width xsi:nil="true" />
+          <q1:Height xsi:nil="true" />
           <q1:WrapS>Repeat</q1:WrapS>
           <q1:WrapT>Repeat</q1:WrapT>
           <q1:MinFilter>Linear</q1:MinFilter>
@@ -91,6 +91,10 @@
           <q1:Height>1</q1:Height>
         </Combinator>
       </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Width" Description="The optional width of the texture used for spherical mapping. Higher values reduce blurring but decrease performance." />
+        <Property Name="Height" Description="The optional height of the texture used for spherical mapping. Higher values reduce blurring but decrease performance." />
+      </Expression>
       <Expression xsi:type="Sink">
         <Name>UpdateSphereGrid</Name>
         <Workflow>
@@ -116,10 +120,10 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q3:CreateSphereGrid">
-                <q3:Left>-50.0000038</q3:Left>
+                <q3:Left>-180</q3:Left>
                 <q3:Right>180</q3:Right>
                 <q3:Bottom>-90</q3:Bottom>
-                <q3:Top>70</q3:Top>
+                <q3:Top>90</q3:Top>
               </Combinator>
             </Expression>
             <Expression xsi:type="InputMapping">
@@ -183,12 +187,13 @@
       <Edge From="7" To="11" Label="Source1" />
       <Edge From="8" To="9" Label="Source1" />
       <Edge From="9" To="0" Label="Source1" />
-      <Edge From="10" To="15" Label="Source1" />
+      <Edge From="10" To="16" Label="Source1" />
       <Edge From="12" To="7" Label="Source2" />
       <Edge From="13" To="8" Label="Source2" />
       <Edge From="13" To="7" Label="Source3" />
       <Edge From="14" To="8" Label="Source1" />
-      <Edge From="15" To="14" Label="Source1" />
+      <Edge From="15" To="8" Label="Source3" />
+      <Edge From="16" To="14" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>
