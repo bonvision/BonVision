@@ -47,7 +47,7 @@
         </PropertyMappings>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="Count" />
+        <Property Name="Value" DisplayName="Count" Description="The number of parameter values to generate." />
       </Expression>
     </Nodes>
     <Edges>
