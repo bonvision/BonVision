@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Renders the sphere map from the perspective of a viewing window of the specified size, position and orientation relative to the origin.</Description>
-  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q2="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://bonsai-rx.org/2018/workflow">
     <Nodes>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:CreateVector2">
@@ -27,34 +27,6 @@
           <q1:ShaderName>SphereMap</q1:ShaderName>
         </Combinator>
       </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:CreateMatrix4">
-          <q1:Row0>
-            <q1:X>1</q1:X>
-            <q1:Y>0</q1:Y>
-            <q1:Z>0</q1:Z>
-            <q1:W>0</q1:W>
-          </q1:Row0>
-          <q1:Row1>
-            <q1:X>0</q1:X>
-            <q1:Y>1</q1:Y>
-            <q1:Z>0</q1:Z>
-            <q1:W>0</q1:W>
-          </q1:Row1>
-          <q1:Row2>
-            <q1:X>0</q1:X>
-            <q1:Y>0</q1:Y>
-            <q1:Z>1</q1:Z>
-            <q1:W>0</q1:W>
-          </q1:Row2>
-          <q1:Row3>
-            <q1:X>0</q1:X>
-            <q1:Y>0</q1:Y>
-            <q1:Z>0</q1:Z>
-            <q1:W>1</q1:W>
-          </q1:Row3>
-        </Combinator>
-      </Expression>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
       </Expression>
@@ -63,12 +35,6 @@
         <Property Name="X" DisplayName="Width" Description="The width of the viewing window, in metric units." Category="Dimensions" />
         <Property Name="Y" DisplayName="Height" Description="The height of the viewing window, in metric units." Category="Dimensions" />
       </Expression>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Row0" Category="Extrinsics" />
-        <Property Name="Row1" Category="Extrinsics" />
-        <Property Name="Row2" Category="Extrinsics" />
-        <Property Name="Row3" Category="Extrinsics" />
-      </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:BindTexture">
           <q1:TextureSlot>Texture0</q1:TextureSlot>
@@ -76,24 +42,51 @@
           <q1:TextureTarget>TextureCubeMap</q1:TextureTarget>
         </Combinator>
       </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q2:CreateExtrinsics">
+          <q2:Rotation>
+            <q2:X>0</q2:X>
+            <q2:Y>0</q2:Y>
+            <q2:Z>0</q2:Z>
+          </q2:Rotation>
+          <q2:Translation>
+            <q2:X>0</q2:X>
+            <q2:Y>0</q2:Y>
+            <q2:Z>10</q2:Z>
+          </q2:Translation>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Rotation" Category="Extrinsics" />
+        <Property Name="Translation" Category="Extrinsics" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:ExtrinsicsModelView" />
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Rotation,Translation</Selector>
+      </Expression>
     </Nodes>
     <Edges>
       <Edge From="0" To="1" Label="Source1" />
-      <Edge From="1" To="4" Label="Source1" />
-      <Edge From="2" To="6" Label="Source1" />
+      <Edge From="1" To="8" Label="Source1" />
+      <Edge From="2" To="5" Label="Source1" />
       <Edge From="3" To="2" Label="Source1" />
-      <Edge From="4" To="3" Label="Source1" />
-      <Edge From="5" To="9" Label="Source1" />
-      <Edge From="7" To="0" Label="Source2" />
-      <Edge From="8" To="4" Label="Source2" />
-      <Edge From="9" To="0" Label="Source1" />
+      <Edge From="4" To="7" Label="Source1" />
+      <Edge From="6" To="0" Label="Source2" />
+      <Edge From="7" To="0" Label="Source1" />
+      <Edge From="8" To="11" Label="Source1" />
+      <Edge From="9" To="8" Label="Source2" />
+      <Edge From="10" To="3" Label="Source1" />
+      <Edge From="11" To="10" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>
     <Type>Bonsai.Shaders.CreateVector2, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.CreateMatrix4, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.BindTexture, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.CreateExtrinsics, Bonsai.Vision, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.ExtrinsicsModelView, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
