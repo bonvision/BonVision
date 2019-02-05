@@ -92,7 +92,7 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:UpdateUniform">
                 <q1:UniformName>transform</q1:UniformName>
-                <q1:ShaderName>Gratings</q1:ShaderName>
+                <q1:ShaderName>Color</q1:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
