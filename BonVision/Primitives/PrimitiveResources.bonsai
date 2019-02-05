@@ -7,15 +7,6 @@
         <Combinator xsi:type="q1:ShaderResources">
           <q1:Shaders>
             <q1:ShaderConfiguration xsi:type="q1:Material">
-              <q1:Name>Gratings</q1:Name>
-              <q1:RenderState />
-              <q1:ShaderUniforms />
-              <q1:BufferBindings />
-              <q1:FramebufferAttachments />
-              <q1:VertexShader>BonVision:Shaders.Quad.vert</q1:VertexShader>
-              <q1:FragmentShader>BonVision:Shaders.Gratings.frag</q1:FragmentShader>
-            </q1:ShaderConfiguration>
-            <q1:ShaderConfiguration xsi:type="q1:Material">
               <q1:Name>Checkerboard</q1:Name>
               <q1:RenderState />
               <q1:ShaderUniforms />
@@ -38,6 +29,15 @@
               <q1:FramebufferAttachments />
               <q1:VertexShader>BonVision:Shaders.Quad.vert</q1:VertexShader>
               <q1:FragmentShader>BonVision:Shaders.Image.frag</q1:FragmentShader>
+            </q1:ShaderConfiguration>
+            <q1:ShaderConfiguration xsi:type="q1:Material">
+              <q1:Name>Gratings</q1:Name>
+              <q1:RenderState />
+              <q1:ShaderUniforms />
+              <q1:BufferBindings />
+              <q1:FramebufferAttachments />
+              <q1:VertexShader>BonVision:Shaders.Quad.vert</q1:VertexShader>
+              <q1:FragmentShader>BonVision:Shaders.Gratings.frag</q1:FragmentShader>
             </q1:ShaderConfiguration>
             <q1:ShaderConfiguration xsi:type="q1:Material">
               <q1:Name>Color</q1:Name>
