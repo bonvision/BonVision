@@ -8,7 +8,7 @@ out vec4 texCoord;
 
 void main()
 {
-  vec2 v = -0.5 * vp * scale + shift;
-  texCoord = transform * vec4(v.y, 0, v.x, 1.0);
+  vec2 v = 0.5 * vp * scale + shift;
+  texCoord = transform * vec4(v, 0.0, 1.0);
   gl_Position = vec4(vp, 0.0, 1.0);
 }
