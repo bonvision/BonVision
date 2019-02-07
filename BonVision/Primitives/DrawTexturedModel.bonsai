@@ -54,13 +54,13 @@
         </Combinator>
       </Expression>
       <Expression xsi:type="MemberSelector">
-        <Selector>View</Selector>
+        <Selector>ViewMatrix</Selector>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="Zip" />
       </Expression>
       <Expression xsi:type="MemberSelector">
-        <Selector>Projection</Selector>
+        <Selector>ProjectionMatrix</Selector>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:UpdateUniform">

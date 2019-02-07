@@ -47,8 +47,8 @@
       </Expression>
       <Expression xsi:type="q2:ExpressionTransform">
         <q2:Expression>new(
-Item1 as View,
-Item2 as Projection,
+Item1 as ViewMatrix,
+Item2 as ProjectionMatrix,
 Item3 as Light)</q2:Expression>
       </Expression>
       <Expression xsi:type="ExternalizedProperty">
