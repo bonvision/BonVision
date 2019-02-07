@@ -80,9 +80,8 @@
     <EmbeddedResource Include="Environment\MeshMapping.bonsai" />
     <EmbeddedResource Include="Environment\NormalizedViewport.bonsai" />
     <EmbeddedResource Include="Environment\PerspectiveViewport.bonsai" />
-    <EmbeddedResource Include="Environment\SphericalMap.bonsai" />
     <EmbeddedResource Include="Environment\ViewingWindow.bonsai" />
-    <EmbeddedResource Include="Environment\ViewportDegrees.bonsai" />
+    <EmbeddedResource Include="Environment\OrthographicViewport.bonsai" />
     <EmbeddedResource Include="Logging\EventLogger.bonsai" />
     <EmbeddedResource Include="Logging\LogEvent.bonsai" />
     <EmbeddedResource Include="Logging\TimestampedEventLogger.bonsai" />
@@ -105,7 +104,6 @@
     <EmbeddedResource Include="Shaders\Quad.vert" />
     <EmbeddedResource Include="Shaders\QuadArray.vert" />
     <EmbeddedResource Include="Primitives\PrimitiveResources.bonsai" />
-    <EmbeddedResource Include="Primitives\DrawVideo.bonsai" />
     <EmbeddedResource Include="Primitives\DrawText.bonsai" />
     <EmbeddedResource Include="Models\Plane.obj" />
     <EmbeddedResource Include="Shaders\Model.frag" />
