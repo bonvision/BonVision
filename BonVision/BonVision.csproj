@@ -82,6 +82,7 @@
     <EmbeddedResource Include="Environment\PerspectiveViewport.bonsai" />
     <EmbeddedResource Include="Environment\ViewingWindow.bonsai" />
     <EmbeddedResource Include="Environment\OrthographicViewport.bonsai" />
+    <EmbeddedResource Include="Environment\CubemapViewport.bonsai" />
     <EmbeddedResource Include="Logging\EventLogger.bonsai" />
     <EmbeddedResource Include="Logging\LogEvent.bonsai" />
     <EmbeddedResource Include="Logging\TimestampedEventLogger.bonsai" />
