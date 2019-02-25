@@ -125,7 +125,7 @@
               <q1:ShaderUniforms />
               <q1:BufferBindings>
                 <q1:BufferBinding xsi:type="q1:TextureBinding">
-                  <q1:Name>mapKd</q1:Name>
+                  <q1:Name>tex</q1:Name>
                   <q1:TextureSlot>Texture0</q1:TextureSlot>
                   <q1:TextureTarget>Texture2D</q1:TextureTarget>
                 </q1:BufferBinding>
