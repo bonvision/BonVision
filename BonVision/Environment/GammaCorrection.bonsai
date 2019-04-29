@@ -1,12 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Renders the current scene to a texture and applies gamma correction as a post-processing effect.</Description>
-  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://bonsai-rx.org/2018/workflow">
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
       </Expression>
-      <Expression xsi:type="WorkflowOutput" />
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>ClearColor</MemberName>
+        <Name>ClearColor</Name>
+        <Category>Misc</Category>
+      </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:RenderTexture">
           <q1:RenderState />
@@ -14,16 +18,38 @@
           <q1:ClearMask>DepthBufferBit ColorBufferBit</q1:ClearMask>
           <q1:Width xsi:nil="true" />
           <q1:Height xsi:nil="true" />
+          <q1:InternalFormat>Rgb</q1:InternalFormat>
           <q1:WrapS>ClampToEdge</q1:WrapS>
           <q1:WrapT>ClampToEdge</q1:WrapT>
           <q1:MinFilter>Linear</q1:MinFilter>
           <q1:MagFilter>Linear</q1:MagFilter>
         </Combinator>
       </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:BindTexture">
+          <q1:TextureSlot>Texture0</q1:TextureSlot>
+          <q1:ShaderName>Gamma</q1:ShaderName>
+          <q1:TextureTarget>Texture2D</q1:TextureTarget>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:DrawMesh">
+          <q1:ShaderName>Gamma</q1:ShaderName>
+          <q1:MeshName>Quad</q1:MeshName>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="WorkflowOutput" />
       <Expression xsi:type="ExternalizedProperty">
-        <MemberName>ClearColor</MemberName>
-        <Name>ClearColor</Name>
-        <Category>Misc</Category>
+        <MemberName>Value</MemberName>
+        <Name>GammaLut</Name>
+      </Expression>
+      <Expression xsi:type="PropertySourceOfLoadImageString">
+        <MemberName>FileName</MemberName>
+      </Expression>
+      <Expression xsi:type="InputMapping">
+        <PropertyMappings>
+          <Property Name="FileName" />
+        </PropertyMappings>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:LoadImage">
@@ -40,52 +66,29 @@
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:BindTexture">
-          <q1:TextureSlot>Texture0</q1:TextureSlot>
-          <q1:ShaderName>Gamma</q1:ShaderName>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:BindTexture">
           <q1:TextureSlot>Texture1</q1:TextureSlot>
           <q1:ShaderName>Gamma</q1:ShaderName>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="PropertySourceOfLoadImageString">
-        <MemberName>FileName</MemberName>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>GammaLut</Name>
-      </Expression>
-      <Expression xsi:type="InputMapping">
-        <PropertyMappings>
-          <Property Name="FileName" />
-        </PropertyMappings>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:DrawMesh">
-          <q1:ShaderName>Gamma</q1:ShaderName>
-          <q1:MeshName>Quad</q1:MeshName>
+          <q1:TextureTarget>Texture2D</q1:TextureTarget>
         </Combinator>
       </Expression>
     </Nodes>
     <Edges>
       <Edge From="0" To="2" Label="Source1" />
-      <Edge From="2" To="5" Label="Source1" />
-      <Edge From="3" To="2" Label="Source2" />
-      <Edge From="4" To="6" Label="Source1" />
-      <Edge From="5" To="10" Label="Source1" />
-      <Edge From="7" To="9" Label="Source1" />
-      <Edge From="8" To="7" Label="Source1" />
-      <Edge From="9" To="4" Label="Source1" />
-      <Edge From="10" To="1" Label="Source1" />
+      <Edge From="1" To="2" Label="Source2" />
+      <Edge From="2" To="3" Label="Source1" />
+      <Edge From="3" To="4" Label="Source1" />
+      <Edge From="4" To="5" Label="Source1" />
+      <Edge From="6" To="7" Label="Source1" />
+      <Edge From="7" To="8" Label="Source1" />
+      <Edge From="8" To="9" Label="Source1" />
+      <Edge From="9" To="10" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>
-    <Type>Bonsai.Shaders.RenderTexture, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.LoadImage, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.BindTexture, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Shaders.LoadImage, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.BindTexture, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.LoadImage, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.RenderTexture, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
