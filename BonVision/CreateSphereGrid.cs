@@ -56,7 +56,7 @@ namespace BonVision
                 for (int j = 0; j <= Segments; j++)
                 {
                     if (pole && j == Segments) break;
-                    var longitude = j * LongitudeStep;
+                    var longitude = j * LongitudeStep + MathHelper.PiOver2;
 
                     var x = (float)(Math.Sin(latitude) * Math.Cos(longitude));
                     var y = (float)(Math.Cos(latitude));
