@@ -62,7 +62,7 @@
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:DrawMesh">
           <q1:ShaderName>SphereMap</q1:ShaderName>
-          <q1:MeshName>Quad</q1:MeshName>
+          <q1:MeshName>ViewportQuad</q1:MeshName>
         </Combinator>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
