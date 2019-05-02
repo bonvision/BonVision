@@ -7,10 +7,10 @@
         <Name>Source1</Name>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="X" />
-        <Property Name="Y" />
-        <Property Name="Width" />
-        <Property Name="Height" />
+        <Property Name="X" Description="The x-coordinate of the lower-left corner of the viewport rectangle, as a fraction of total number of pixels in the window width." />
+        <Property Name="Y" Description="The y-coordinate of the lower-left corner of the viewport rectangle, as a fraction of total number of pixels in the window height." />
+        <Property Name="Width" Description="The width of the viewport rectangle as a fraction of total number of pixels in the window width." />
+        <Property Name="Height" Description="The height of the viewport rectangle as a fraction of total number of pixels in the window height." />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:UpdateViewportState">
