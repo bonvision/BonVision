@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Loads mesh and shader resources for rendering primitive stimuli.</Description>
-  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://bonsai-rx.org/2018/workflow">
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
@@ -38,6 +38,10 @@
                   <q1:MeshConfiguration xsi:type="q1:TexturedModel">
                     <q1:Name>Quad</q1:Name>
                     <q1:FileName>BonVision:Models.Quad.obj</q1:FileName>
+                  </q1:MeshConfiguration>
+                  <q1:MeshConfiguration xsi:type="q1:TexturedQuad">
+                    <q1:Name>ViewportQuad</q1:Name>
+                    <q1:QuadEffects>None</q1:QuadEffects>
                   </q1:MeshConfiguration>
                   <q1:MeshConfiguration>
                     <q1:Name>MeshMap</q1:Name>
