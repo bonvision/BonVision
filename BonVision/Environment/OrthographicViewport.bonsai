@@ -1,12 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Specifies an orthographic viewport, commonly used for 2D stimulus environments.</Description>
-  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://bonsai-rx.org/2018/workflow">
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
       </Expression>
-      <Expression xsi:type="WorkflowOutput" />
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Left" Description="The left boundary of the orthographic environment." />
+        <Property Name="Right" Description="The right boundary of the orthographic environment." />
+        <Property Name="Bottom" Description="The bottom boundary of the orthographic environment." />
+        <Property Name="Top" Description="The top boundary of the orthographic environment." />
+      </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:CreateOrthographicOffCenter">
           <q1:Left>-180</q1:Left>
@@ -17,17 +22,12 @@
           <q1:FarClip>1000</q1:FarClip>
         </Combinator>
       </Expression>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Left" Description="The left boundary of the orthographic environment." />
-        <Property Name="Right" Description="The right boundary of the orthographic environment." />
-        <Property Name="Bottom" Description="The bottom boundary of the orthographic environment." />
-        <Property Name="Top" Description="The top boundary of the orthographic environment." />
-      </Expression>
+      <Expression xsi:type="WorkflowOutput" />
     </Nodes>
     <Edges>
       <Edge From="0" To="2" Label="Source1" />
-      <Edge From="2" To="1" Label="Source1" />
-      <Edge From="3" To="2" Label="Source2" />
+      <Edge From="1" To="2" Label="Source2" />
+      <Edge From="2" To="3" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>

@@ -1,12 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Logs a value into the specified common event stream.</Description>
-  <Workflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://bonsai-rx.org/2018/workflow">
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
       </Expression>
-      <Expression xsi:type="WorkflowOutput" />
       <Expression xsi:type="ExternalizedProperty">
         <MemberName>Format</MemberName>
         <Name>Format</Name>
@@ -24,14 +23,9 @@
         <Name>FormatLog</Name>
         <Workflow>
           <Nodes>
-            <Expression xsi:type="MulticastSubject">
-              <Name>Events</Name>
-            </Expression>
-            <Expression xsi:type="Format" />
             <Expression xsi:type="WorkflowInput">
               <Name>Source1</Name>
             </Expression>
-            <Expression xsi:type="WorkflowOutput" />
             <Expression xsi:type="ExternalizedProperty">
               <MemberName>Format</MemberName>
               <Name>Format</Name>
@@ -40,33 +34,39 @@
               <MemberName>Selector</MemberName>
               <Name>Selector</Name>
             </Expression>
+            <Expression xsi:type="Format" />
             <Expression xsi:type="ExternalizedProperty">
               <MemberName>Name</MemberName>
               <Name>Name</Name>
             </Expression>
+            <Expression xsi:type="MulticastSubject">
+              <Name>Events</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
           </Nodes>
           <Edges>
             <Edge From="0" To="3" Label="Source1" />
-            <Edge From="1" To="0" Label="Source1" />
-            <Edge From="2" To="1" Label="Source1" />
-            <Edge From="4" To="1" Label="Source2" />
-            <Edge From="5" To="1" Label="Source3" />
-            <Edge From="6" To="0" Label="Source2" />
+            <Edge From="1" To="3" Label="Source2" />
+            <Edge From="2" To="3" Label="Source3" />
+            <Edge From="3" To="5" Label="Source1" />
+            <Edge From="4" To="5" Label="Source2" />
+            <Edge From="5" To="6" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
+      <Expression xsi:type="WorkflowOutput" />
     </Nodes>
     <Edges>
-      <Edge From="0" To="5" Label="Source1" />
-      <Edge From="2" To="5" Label="Source2" />
-      <Edge From="3" To="5" Label="Source3" />
-      <Edge From="4" To="5" Label="Source4" />
-      <Edge From="5" To="1" Label="Source1" />
+      <Edge From="0" To="4" Label="Source1" />
+      <Edge From="1" To="4" Label="Source2" />
+      <Edge From="2" To="4" Label="Source3" />
+      <Edge From="3" To="4" Label="Source4" />
+      <Edge From="4" To="5" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>
-    <Type>Bonsai.Expressions.SinkBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.MulticastSubjectBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.FormatBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.MulticastSubjectBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.SinkBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>

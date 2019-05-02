@@ -1,13 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Creates and initializes a CSV file, and matching behavior subject, on which to log events.</Description>
-  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.IO;assembly=Bonsai.System" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow xmlns:q1="clr-namespace:Bonsai.IO;assembly=Bonsai.System" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://bonsai-rx.org/2018/workflow">
     <Nodes>
-      <Expression xsi:type="BehaviorSubject">
-        <Name>Events</Name>
+      <Expression xsi:type="WorkflowInput">
+        <Name>Source1</Name>
       </Expression>
       <Expression xsi:type="SubscribeSubject">
         <Name>Events</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Name</MemberName>
+        <Name>Name</Name>
+      </Expression>
+      <Expression xsi:type="BehaviorSubject">
+        <Name>Events</Name>
+      </Expression>
+      <Expression xsi:type="GroupWorkflow">
+        <Name>GenerateFileName</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="ExternalizedProperty">
+              <MemberName>Value</MemberName>
+              <Name>Name</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>Events</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="Take">
+                <Count>1</Count>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Format">
+              <Format>{0}.csv</Format>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge From="0" To="1" Label="Source1" />
+            <Edge From="1" To="2" Label="Source1" />
+            <Edge From="2" To="3" Label="Source1" />
+            <Edge From="3" To="4" Label="Source1" />
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>FileName</MemberName>
+        <Name />
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Overwrite</MemberName>
+        <Name>Overwrite</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Suffix</MemberName>
+        <Name>Suffix</Name>
       </Expression>
       <Expression xsi:type="q1:CsvWriter">
         <q1:FileName>Events.csv</q1:FileName>
@@ -18,72 +68,22 @@
         <q1:IncludeHeader>false</q1:IncludeHeader>
         <q1:Selector />
       </Expression>
-      <Expression xsi:type="WorkflowInput">
-        <Name>Source1</Name>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>FileName</MemberName>
-        <Name />
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Name</MemberName>
-        <Name>Name</Name>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Overwrite</MemberName>
-        <Name>Overwrite</Name>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Suffix</MemberName>
-        <Name>Suffix</Name>
-      </Expression>
-      <Expression xsi:type="GroupWorkflow">
-        <Name>GenerateFileName</Name>
-        <Workflow>
-          <Nodes>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="StringProperty">
-                <Value>Events</Value>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="WorkflowOutput" />
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>Value</MemberName>
-              <Name>Name</Name>
-            </Expression>
-            <Expression xsi:type="Format">
-              <Format>{0}.csv</Format>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="Take">
-                <Count>1</Count>
-              </Combinator>
-            </Expression>
-          </Nodes>
-          <Edges>
-            <Edge From="0" To="4" Label="Source1" />
-            <Edge From="2" To="0" Label="Source1" />
-            <Edge From="3" To="1" Label="Source1" />
-            <Edge From="4" To="3" Label="Source1" />
-          </Edges>
-        </Workflow>
-      </Expression>
     </Nodes>
     <Edges>
-      <Edge From="1" To="2" Label="Source1" />
-      <Edge From="3" To="0" Label="Source1" />
-      <Edge From="4" To="2" Label="Source2" />
-      <Edge From="5" To="0" Label="Source2" />
-      <Edge From="5" To="8" Label="Source1" />
-      <Edge From="6" To="2" Label="Source3" />
-      <Edge From="7" To="2" Label="Source4" />
-      <Edge From="8" To="4" Label="Source1" />
+      <Edge From="0" To="3" Label="Source1" />
+      <Edge From="1" To="8" Label="Source1" />
+      <Edge From="2" To="3" Label="Source2" />
+      <Edge From="2" To="4" Label="Source1" />
+      <Edge From="4" To="5" Label="Source1" />
+      <Edge From="5" To="8" Label="Source2" />
+      <Edge From="6" To="8" Label="Source3" />
+      <Edge From="7" To="8" Label="Source4" />
     </Edges>
   </Workflow>
   <ExtensionTypes>
-    <Type>Bonsai.IO.CsvWriter, Bonsai.System, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.StringProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.FormatBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.StringProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.IO.CsvWriter, Bonsai.System, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.Take, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>

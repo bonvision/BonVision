@@ -1,17 +1,128 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Draws a single colored circle.</Description>
-  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://bonsai-rx.org/2018/workflow">
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
       </Expression>
-      <Expression xsi:type="WorkflowOutput" />
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="LocationX" />
+        <Property Name="LocationY" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Diameter" />
+      </Expression>
+      <Expression xsi:type="PropertySourceOfCreateScaleSingle">
+        <MemberName>X</MemberName>
+        <Value>0.1</Value>
+      </Expression>
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="ExtentX" />
+          <Property Name="ExtentY" />
+        </PropertyMappings>
+      </Expression>
+      <Expression xsi:type="GroupWorkflow">
+        <Name>Transform</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="X" DisplayName="LocationX" />
+              <Property Name="Y" DisplayName="LocationY" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:Translate">
+                <q1:Order>Prepend</q1:Order>
+                <q1:X>0</q1:X>
+                <q1:Y>0</q1:Y>
+                <q1:Z>0</q1:Z>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="X" DisplayName="ExtentX" />
+              <Property Name="Y" DisplayName="ExtentY" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:Scale">
+                <q1:Order>Prepend</q1:Order>
+                <q1:X>0.1</q1:X>
+                <q1:Y>0.1</q1:Y>
+                <q1:Z>1</q1:Z>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:UpdateUniform">
+                <q1:UniformName>transform</q1:UniformName>
+                <q1:ShaderName>Circle</q1:ShaderName>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge From="0" To="2" Label="Source1" />
+            <Edge From="1" To="2" Label="Source2" />
+            <Edge From="2" To="4" Label="Source1" />
+            <Edge From="3" To="4" Label="Source2" />
+            <Edge From="4" To="5" Label="Source1" />
+            <Edge From="5" To="6" Label="Source1" />
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="ColorR" />
+      </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:DrawMesh">
-          <q1:ShaderName>Circle</q1:ShaderName>
-          <q1:MeshName>Quad</q1:MeshName>
+        <Combinator xsi:type="FloatProperty">
+          <Value>1</Value>
         </Combinator>
+      </Expression>
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="X" />
+        </PropertyMappings>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="ColorG" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="FloatProperty">
+          <Value>1</Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="Y" />
+        </PropertyMappings>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="ColorB" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="FloatProperty">
+          <Value>1</Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="Z" />
+        </PropertyMappings>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="ColorA" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="FloatProperty">
+          <Value>1</Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="W" />
+        </PropertyMappings>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:CreateVector4">
@@ -28,155 +139,44 @@
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="FloatProperty">
-          <Value>1</Value>
+        <Combinator xsi:type="q1:DrawMesh">
+          <q1:ShaderName>Circle</q1:ShaderName>
+          <q1:MeshName>Quad</q1:MeshName>
         </Combinator>
       </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="FloatProperty">
-          <Value>1</Value>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="FloatProperty">
-          <Value>1</Value>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="FloatProperty">
-          <Value>1</Value>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="PropertyMapping">
-        <PropertyMappings>
-          <Property Name="ExtentX" />
-          <Property Name="ExtentY" />
-        </PropertyMappings>
-      </Expression>
-      <Expression xsi:type="PropertySourceOfCreateScaleSingle">
-        <MemberName>X</MemberName>
-        <Value>0.1</Value>
-      </Expression>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="LocationX" />
-        <Property Name="LocationY" />
-      </Expression>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="Diameter" />
-      </Expression>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="ColorR" />
-      </Expression>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="ColorG" />
-      </Expression>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="ColorB" />
-      </Expression>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="ColorA" />
-      </Expression>
-      <Expression xsi:type="PropertyMapping">
-        <PropertyMappings>
-          <Property Name="X" />
-        </PropertyMappings>
-      </Expression>
-      <Expression xsi:type="PropertyMapping">
-        <PropertyMappings>
-          <Property Name="Y" />
-        </PropertyMappings>
-      </Expression>
-      <Expression xsi:type="PropertyMapping">
-        <PropertyMappings>
-          <Property Name="Z" />
-        </PropertyMappings>
-      </Expression>
-      <Expression xsi:type="PropertyMapping">
-        <PropertyMappings>
-          <Property Name="W" />
-        </PropertyMappings>
-      </Expression>
-      <Expression xsi:type="GroupWorkflow">
-        <Name>Transform</Name>
-        <Workflow>
-          <Nodes>
-            <Expression xsi:type="WorkflowInput">
-              <Name>Source1</Name>
-            </Expression>
-            <Expression xsi:type="WorkflowOutput" />
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>transform</q1:UniformName>
-                <q1:ShaderName>Circle</q1:ShaderName>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:Scale">
-                <q1:Order>Prepend</q1:Order>
-                <q1:X>0.1</q1:X>
-                <q1:Y>0.1</q1:Y>
-                <q1:Z>1</q1:Z>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:Translate">
-                <q1:Order>Prepend</q1:Order>
-                <q1:X>0</q1:X>
-                <q1:Y>0</q1:Y>
-                <q1:Z>0</q1:Z>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="ExternalizedMapping">
-              <Property Name="X" DisplayName="LocationX" />
-              <Property Name="Y" DisplayName="LocationY" />
-            </Expression>
-            <Expression xsi:type="ExternalizedMapping">
-              <Property Name="X" DisplayName="ExtentX" />
-              <Property Name="Y" DisplayName="ExtentY" />
-            </Expression>
-          </Nodes>
-          <Edges>
-            <Edge From="0" To="4" Label="Source1" />
-            <Edge From="2" To="1" Label="Source1" />
-            <Edge From="3" To="2" Label="Source1" />
-            <Edge From="4" To="3" Label="Source1" />
-            <Edge From="5" To="4" Label="Source2" />
-            <Edge From="6" To="3" Label="Source2" />
-          </Edges>
-        </Workflow>
-      </Expression>
+      <Expression xsi:type="WorkflowOutput" />
     </Nodes>
     <Edges>
-      <Edge From="0" To="21" Label="Source2" />
-      <Edge From="2" To="1" Label="Source1" />
+      <Edge From="0" To="5" Label="Source2" />
+      <Edge From="1" To="5" Label="Source3" />
+      <Edge From="2" To="3" Label="Source1" />
       <Edge From="3" To="4" Label="Source1" />
-      <Edge From="4" To="2" Label="Source1" />
-      <Edge From="5" To="17" Label="Source1" />
-      <Edge From="6" To="18" Label="Source1" />
-      <Edge From="7" To="19" Label="Source1" />
-      <Edge From="8" To="20" Label="Source1" />
-      <Edge From="9" To="21" Label="Source2" />
-      <Edge From="10" To="9" Label="Source1" />
-      <Edge From="11" To="21" Label="Source3" />
-      <Edge From="12" To="10" Label="Source1" />
-      <Edge From="13" To="5" Label="Source1" />
-      <Edge From="14" To="6" Label="Source1" />
-      <Edge From="15" To="7" Label="Source1" />
-      <Edge From="16" To="8" Label="Source1" />
-      <Edge From="17" To="3" Label="Source2" />
-      <Edge From="18" To="3" Label="Source3" />
-      <Edge From="19" To="3" Label="Source4" />
-      <Edge From="20" To="3" Label="Source5" />
-      <Edge From="21" To="3" Label="Source1" />
+      <Edge From="4" To="5" Label="Source2" />
+      <Edge From="5" To="18" Label="Source1" />
+      <Edge From="6" To="7" Label="Source1" />
+      <Edge From="7" To="8" Label="Source1" />
+      <Edge From="8" To="18" Label="Source2" />
+      <Edge From="9" To="10" Label="Source1" />
+      <Edge From="10" To="11" Label="Source1" />
+      <Edge From="11" To="18" Label="Source3" />
+      <Edge From="12" To="13" Label="Source1" />
+      <Edge From="13" To="14" Label="Source1" />
+      <Edge From="14" To="18" Label="Source4" />
+      <Edge From="15" To="16" Label="Source1" />
+      <Edge From="16" To="17" Label="Source1" />
+      <Edge From="17" To="18" Label="Source5" />
+      <Edge From="18" To="19" Label="Source1" />
+      <Edge From="19" To="20" Label="Source1" />
+      <Edge From="20" To="21" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>
-    <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.CreateVector4, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.FloatProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Shaders.CreateScale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null],[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.CreateVector4, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.Scale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.Translate, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>

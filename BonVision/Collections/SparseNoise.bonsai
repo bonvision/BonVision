@@ -1,20 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Generates and draws a non-overlapping discrete sparse grid of randomly activated quads.</Description>
-  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp" xmlns:q2="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:q3="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision" xmlns:q4="clr-namespace:BonVision;assembly=BonVision" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow xmlns:q2="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q3="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q4="clr-namespace:BonVision;assembly=BonVision" xmlns:q1="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp" xmlns="https://bonsai-rx.org/2018/workflow">
     <Nodes>
       <Expression xsi:type="SubscribeSubject">
         <Name>Random</Name>
       </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Period</MemberName>
+        <Name>Duration</Name>
+      </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:ConvertFromArray">
-          <q1:Size>
-            <q1:Width>10</q1:Width>
-            <q1:Height>10</q1:Height>
-          </q1:Size>
-          <q1:Depth xsi:nil="true" />
-          <q1:Channels xsi:nil="true" />
+        <Combinator xsi:type="q2:Timer">
+          <q2:DueTime>PT0S</q2:DueTime>
+          <q2:Period>PT0.2S</q2:Period>
         </Combinator>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>ActiveQuads</MemberName>
+        <Name>ActiveQuads</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Value</MemberName>
+        <Name>GridSize</Name>
+        <Description>The size of the sparse noise grid.</Description>
+        <Category />
       </Expression>
       <Expression xsi:type="PropertySourceOfConvertFromArraySize">
         <MemberName>Size</MemberName>
@@ -28,20 +38,6 @@
           <Property Name="Size" />
         </PropertyMappings>
       </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q2:Timer">
-          <q2:DueTime>PT0S</q2:DueTime>
-          <q2:Period>PT0.2S</q2:Period>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Period</MemberName>
-        <Name>Duration</Name>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>ActiveQuads</MemberName>
-        <Name>ActiveQuads</Name>
-      </Expression>
       <Expression xsi:type="PropertySourceOfConvertFromArraySize">
         <MemberName>Size</MemberName>
         <Value>
@@ -49,21 +45,11 @@
           <Height>10</Height>
         </Value>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>GridSize</Name>
-        <Description>The size of the sparse noise grid.</Description>
-        <Category />
-      </Expression>
       <Expression xsi:type="PropertyMapping">
         <PropertyMappings>
           <Property Name="Rows" Selector="Height" />
           <Property Name="Columns" Selector="Width" />
         </PropertyMappings>
-      </Expression>
-      <Expression xsi:type="WorkflowOutput" />
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q3:ConvertToImage" />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q4:CreateSparseNoiseGrid">
@@ -72,21 +58,35 @@
           <q4:ActiveQuads>5</q4:ActiveQuads>
         </Combinator>
       </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:ConvertFromArray">
+          <q1:Size>
+            <q1:Width>10</q1:Width>
+            <q1:Height>10</q1:Height>
+          </q1:Size>
+          <q1:Depth xsi:nil="true" />
+          <q1:Channels xsi:nil="true" />
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q3:ConvertToImage" />
+      </Expression>
+      <Expression xsi:type="WorkflowOutput" />
     </Nodes>
     <Edges>
-      <Edge From="0" To="12" Label="Source2" />
-      <Edge From="1" To="11" Label="Source1" />
-      <Edge From="2" To="3" Label="Source1" />
-      <Edge From="3" To="1" Label="Source2" />
-      <Edge From="4" To="12" Label="Source1" />
-      <Edge From="5" To="4" Label="Source1" />
-      <Edge From="6" To="12" Label="Source3" />
-      <Edge From="7" To="9" Label="Source1" />
-      <Edge From="8" To="2" Label="Source1" />
-      <Edge From="8" To="7" Label="Source1" />
-      <Edge From="9" To="12" Label="Source4" />
-      <Edge From="11" To="10" Label="Source1" />
-      <Edge From="12" To="1" Label="Source1" />
+      <Edge From="0" To="9" Label="Source2" />
+      <Edge From="1" To="2" Label="Source1" />
+      <Edge From="2" To="9" Label="Source1" />
+      <Edge From="3" To="9" Label="Source3" />
+      <Edge From="4" To="5" Label="Source1" />
+      <Edge From="4" To="7" Label="Source1" />
+      <Edge From="5" To="6" Label="Source1" />
+      <Edge From="6" To="10" Label="Source2" />
+      <Edge From="7" To="8" Label="Source1" />
+      <Edge From="8" To="9" Label="Source4" />
+      <Edge From="9" To="10" Label="Source1" />
+      <Edge From="10" To="11" Label="Source1" />
+      <Edge From="11" To="12" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>

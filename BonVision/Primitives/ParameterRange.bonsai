@@ -1,13 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Generates a linear range of values between min and max.</Description>
-  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow xmlns:q1="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://bonsai-rx.org/2018/workflow">
     <Nodes>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="RangeMin" />
+        <Property Name="RangeMax" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Count" Description="The number of parameter values to generate." />
+      </Expression>
+      <Expression xsi:type="PropertySourceOfRangeInt32">
+        <MemberName>Count</MemberName>
+        <Value>10</Value>
+      </Expression>
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="Count" />
+        </PropertyMappings>
+      </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="Range">
           <Start>0</Start>
           <Count>10</Count>
         </Combinator>
+      </Expression>
+      <Expression xsi:type="Add">
+        <Operand xsi:type="IntProperty">
+          <Value>1</Value>
+        </Operand>
+      </Expression>
+      <Expression xsi:type="PropertySourceOfRangeInt32">
+        <MemberName>Count</MemberName>
+        <Value>10</Value>
+      </Expression>
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="Max" />
+        </PropertyMappings>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:Rescale">
@@ -18,56 +48,26 @@
           <q1:RescaleType>Linear</q1:RescaleType>
         </Combinator>
       </Expression>
-      <Expression xsi:type="PropertySourceOfRangeInt32">
-        <MemberName>Count</MemberName>
-        <Value>10</Value>
-      </Expression>
-      <Expression xsi:type="PropertySourceOfRangeInt32">
-        <MemberName>Count</MemberName>
-        <Value>10</Value>
-      </Expression>
       <Expression xsi:type="WorkflowOutput" />
-      <Expression xsi:type="Add">
-        <Operand xsi:type="IntProperty">
-          <Value>1</Value>
-        </Operand>
-      </Expression>
-      <Expression xsi:type="PropertyMapping">
-        <PropertyMappings>
-          <Property Name="Max" />
-        </PropertyMappings>
-      </Expression>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="RangeMin" />
-        <Property Name="RangeMax" />
-      </Expression>
-      <Expression xsi:type="PropertyMapping">
-        <PropertyMappings>
-          <Property Name="Count" />
-        </PropertyMappings>
-      </Expression>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="Count" Description="The number of parameter values to generate." />
-      </Expression>
     </Nodes>
     <Edges>
-      <Edge From="0" To="5" Label="Source1" />
-      <Edge From="1" To="4" Label="Source1" />
-      <Edge From="2" To="8" Label="Source1" />
-      <Edge From="3" To="6" Label="Source1" />
-      <Edge From="5" To="1" Label="Source1" />
-      <Edge From="6" To="1" Label="Source2" />
-      <Edge From="7" To="1" Label="Source3" />
-      <Edge From="8" To="0" Label="Source1" />
-      <Edge From="9" To="2" Label="Source1" />
-      <Edge From="9" To="3" Label="Source1" />
+      <Edge From="0" To="8" Label="Source3" />
+      <Edge From="1" To="2" Label="Source1" />
+      <Edge From="1" To="6" Label="Source1" />
+      <Edge From="2" To="3" Label="Source1" />
+      <Edge From="3" To="4" Label="Source1" />
+      <Edge From="4" To="5" Label="Source1" />
+      <Edge From="5" To="8" Label="Source1" />
+      <Edge From="6" To="7" Label="Source1" />
+      <Edge From="7" To="8" Label="Source2" />
+      <Edge From="8" To="9" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>
-    <Type>Bonsai.Reactive.Range, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Dsp.Rescale, Bonsai.Dsp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Reactive.Range, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null],[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.AddBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.IntProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Reactive.Range, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null],[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.Range, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>

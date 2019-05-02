@@ -1,19 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Renders all currently stored draw commands to the specified viewport.</Description>
-  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://bonsai-rx.org/2018/workflow">
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
-      </Expression>
-      <Expression xsi:type="WorkflowOutput" />
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:UpdateViewportState">
-          <q1:X>0</q1:X>
-          <q1:Y>0</q1:Y>
-          <q1:Width>1</q1:Width>
-          <q1:Height>1</q1:Height>
-        </Combinator>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="X" />
@@ -22,21 +13,30 @@
         <Property Name="Height" />
       </Expression>
       <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:UpdateViewportState">
+          <q1:X>0</q1:X>
+          <q1:Y>0</q1:Y>
+          <q1:Width>1</q1:Width>
+          <q1:Height>1</q1:Height>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:DrawFramebuffer">
           <q1:RenderState />
           <q1:FramebufferAttachments />
         </Combinator>
       </Expression>
+      <Expression xsi:type="WorkflowOutput" />
     </Nodes>
     <Edges>
       <Edge From="0" To="2" Label="Source1" />
-      <Edge From="2" To="4" Label="Source1" />
-      <Edge From="3" To="2" Label="Source2" />
-      <Edge From="4" To="1" Label="Source1" />
+      <Edge From="1" To="2" Label="Source2" />
+      <Edge From="2" To="3" Label="Source1" />
+      <Edge From="3" To="4" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>
-    <Type>Bonsai.Shaders.UpdateViewportState, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.DrawFramebuffer, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Shaders.UpdateViewportState, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
