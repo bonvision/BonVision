@@ -8,6 +8,7 @@ using MathNet.Numerics.Distributions;
 
 namespace BonVision
 {
+    [Obsolete]
     [Combinator]
     [Description("Draws multiple random samples from the input distribution.")]
     [WorkflowElementCategory(ElementCategory.Combinator)]
