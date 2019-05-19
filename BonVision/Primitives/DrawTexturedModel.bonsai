@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Draws a textured and transformed 3D model stimulus.</Description>
-  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q2="clr-namespace:BonVision;assembly=BonVision" xmlns="https://bonsai-rx.org/2018/workflow">
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
@@ -23,7 +23,31 @@
         </Combinator>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Angle" DisplayName="RotationZ" />
+        <Property Name="X" DisplayName="ScaleX" />
+        <Property Name="Y" DisplayName="ScaleY" />
+        <Property Name="Z" DisplayName="ScaleZ" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="MeshName" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Ambient" Category="Model Material" />
+        <Property Name="Diffuse" Category="Model Material" />
+        <Property Name="Specular" Category="Model Material" />
+        <Property Name="SpecularExponent" Category="Model Material" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="RotationZ" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q2:AngleProperty">
+          <q2:Value>0</q2:Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="Angle" />
+        </PropertyMappings>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:RotateZ">
@@ -32,7 +56,17 @@
         </Combinator>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Angle" DisplayName="RotationY" />
+        <Property Name="Value" DisplayName="RotationY" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q2:AngleProperty">
+          <q2:Value>0</q2:Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="Angle" />
+        </PropertyMappings>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:RotateY">
@@ -41,18 +75,23 @@
         </Combinator>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Angle" DisplayName="RotationX" />
+        <Property Name="Value" DisplayName="RotationX" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q2:AngleProperty">
+          <q2:Value>0</q2:Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="Angle" />
+        </PropertyMappings>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:RotateX">
           <q1:Order>Prepend</q1:Order>
           <q1:Angle>0</q1:Angle>
         </Combinator>
-      </Expression>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="X" DisplayName="ScaleX" />
-        <Property Name="Y" DisplayName="ScaleY" />
-        <Property Name="Z" DisplayName="ScaleZ" />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:Scale">
@@ -88,15 +127,6 @@
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="Zip" />
-      </Expression>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="MeshName" />
-      </Expression>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Ambient" Category="Model Material" />
-        <Property Name="Diffuse" Category="Model Material" />
-        <Property Name="Specular" Category="Model Material" />
-        <Property Name="SpecularExponent" Category="Model Material" />
       </Expression>
       <Expression xsi:type="GroupWorkflow">
         <Name>UpdateMaterial</Name>
@@ -199,29 +229,35 @@
     </Nodes>
     <Edges>
       <Edge From="0" To="1" Label="Source1" />
-      <Edge From="0" To="13" Label="Source1" />
-      <Edge From="0" To="15" Label="Source1" />
+      <Edge From="0" To="21" Label="Source1" />
+      <Edge From="0" To="23" Label="Source1" />
       <Edge From="1" To="3" Label="Source1" />
       <Edge From="2" To="3" Label="Source2" />
-      <Edge From="3" To="5" Label="Source1" />
-      <Edge From="4" To="5" Label="Source2" />
-      <Edge From="5" To="7" Label="Source1" />
-      <Edge From="6" To="7" Label="Source2" />
-      <Edge From="7" To="9" Label="Source1" />
-      <Edge From="8" To="9" Label="Source2" />
-      <Edge From="9" To="11" Label="Source1" />
-      <Edge From="10" To="11" Label="Source2" />
+      <Edge From="3" To="10" Label="Source1" />
+      <Edge From="4" To="19" Label="Source2" />
+      <Edge From="5" To="27" Label="Source2" />
+      <Edge From="6" To="26" Label="Source2" />
+      <Edge From="7" To="8" Label="Source1" />
+      <Edge From="8" To="9" Label="Source1" />
+      <Edge From="9" To="10" Label="Source2" />
+      <Edge From="10" To="14" Label="Source1" />
       <Edge From="11" To="12" Label="Source1" />
-      <Edge From="12" To="17" Label="Source1" />
-      <Edge From="13" To="14" Label="Source1" />
-      <Edge From="14" To="17" Label="Source2" />
+      <Edge From="12" To="13" Label="Source1" />
+      <Edge From="13" To="14" Label="Source2" />
+      <Edge From="14" To="18" Label="Source1" />
       <Edge From="15" To="16" Label="Source1" />
-      <Edge From="16" To="17" Label="Source3" />
-      <Edge From="17" To="20" Label="Source1" />
-      <Edge From="18" To="21" Label="Source2" />
-      <Edge From="19" To="20" Label="Source2" />
-      <Edge From="20" To="21" Label="Source1" />
+      <Edge From="16" To="17" Label="Source1" />
+      <Edge From="17" To="18" Label="Source2" />
+      <Edge From="18" To="19" Label="Source1" />
+      <Edge From="19" To="20" Label="Source1" />
+      <Edge From="20" To="25" Label="Source1" />
       <Edge From="21" To="22" Label="Source1" />
+      <Edge From="22" To="25" Label="Source2" />
+      <Edge From="23" To="24" Label="Source1" />
+      <Edge From="24" To="25" Label="Source3" />
+      <Edge From="25" To="26" Label="Source1" />
+      <Edge From="26" To="27" Label="Source1" />
+      <Edge From="27" To="28" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>
@@ -235,5 +271,6 @@
     <Type>Bonsai.Shaders.Scale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.Translate, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>BonVision.AngleProperty, BonVision, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
