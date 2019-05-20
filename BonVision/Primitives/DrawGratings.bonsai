@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Draws parameterized 2D sinewave gratings.</Description>
-  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q2="clr-namespace:BonVision;assembly=BonVision" xmlns:q3="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow xmlns:q1="clr-namespace:BonVision;assembly=BonVision" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q2="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:q3="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns="https://bonsai-rx.org/2018/workflow">
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
@@ -16,8 +16,8 @@
         <Property Name="Value" DisplayName="Angle" />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q2:AngleProperty">
-          <q2:Value>0</q2:Value>
+        <Combinator xsi:type="q1:AngleProperty">
+          <q1:Value>0</q1:Value>
         </Combinator>
       </Expression>
       <Expression xsi:type="PropertyMapping">
@@ -37,11 +37,11 @@
               <Property Name="Y" DisplayName="LocationY" />
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:Translate">
-                <q1:Order>Prepend</q1:Order>
-                <q1:X>0</q1:X>
-                <q1:Y>0</q1:Y>
-                <q1:Z>0</q1:Z>
+              <Combinator xsi:type="q2:Translate">
+                <q2:Order>Prepend</q2:Order>
+                <q2:X>0</q2:X>
+                <q2:Y>0</q2:Y>
+                <q2:Z>0</q2:Z>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
@@ -49,26 +49,26 @@
               <Property Name="Y" DisplayName="ExtentY" />
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:Scale">
-                <q1:Order>Prepend</q1:Order>
-                <q1:X>1</q1:X>
-                <q1:Y>1</q1:Y>
-                <q1:Z>1</q1:Z>
+              <Combinator xsi:type="q2:Scale">
+                <q2:Order>Prepend</q2:Order>
+                <q2:X>1</q2:X>
+                <q2:Y>1</q2:Y>
+                <q2:Z>1</q2:Z>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
               <Property Name="Angle" />
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:RotateZ">
-                <q1:Order>Prepend</q1:Order>
-                <q1:Angle>0</q1:Angle>
+              <Combinator xsi:type="q2:RotateZ">
+                <q2:Order>Prepend</q2:Order>
+                <q2:Angle>0</q2:Angle>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>transform</q1:UniformName>
-                <q1:ShaderName>Gratings</q1:ShaderName>
+              <Combinator xsi:type="q2:UpdateUniform">
+                <q2:UniformName>transform</q2:UniformName>
+                <q2:ShaderName>Gratings</q2:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
@@ -97,7 +97,7 @@
               <Name>Source1</Name>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateFrame" />
+              <Combinator xsi:type="q2:UpdateFrame" />
             </Expression>
             <Expression xsi:type="MemberSelector">
               <Selector>TimeStep.ElapsedTime</Selector>
@@ -122,9 +122,9 @@
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>frequency</q1:UniformName>
-                <q1:ShaderName>Gratings</q1:ShaderName>
+              <Combinator xsi:type="q2:UpdateUniform">
+                <q2:UniformName>frequency</q2:UniformName>
+                <q2:ShaderName>Gratings</q2:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="Divide">
@@ -140,9 +140,9 @@
               <Selector>Item2</Selector>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>phase</q1:UniformName>
-                <q1:ShaderName>Gratings</q1:ShaderName>
+              <Combinator xsi:type="q2:UpdateUniform">
+                <q2:UniformName>phase</q2:UniformName>
+                <q2:ShaderName>Gratings</q2:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
@@ -189,9 +189,9 @@
               <q3:Expression>it ? 1 : 0</q3:Expression>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>square</q1:UniformName>
-                <q1:ShaderName>Gratings</q1:ShaderName>
+              <Combinator xsi:type="q2:UpdateUniform">
+                <q2:UniformName>square</q2:UniformName>
+                <q2:ShaderName>Gratings</q2:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
@@ -203,9 +203,9 @@
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>contrast</q1:UniformName>
-                <q1:ShaderName>Gratings</q1:ShaderName>
+              <Combinator xsi:type="q2:UpdateUniform">
+                <q2:UniformName>contrast</q2:UniformName>
+                <q2:ShaderName>Gratings</q2:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
@@ -224,7 +224,7 @@
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Radius" />
-        <Property Name="Edge" />
+        <Property Name="Aperture" />
         <Property Name="Opacity" />
       </Expression>
       <Expression xsi:type="GroupWorkflow">
@@ -243,13 +243,13 @@
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>radius</q1:UniformName>
-                <q1:ShaderName>Gratings</q1:ShaderName>
+              <Combinator xsi:type="q2:UpdateUniform">
+                <q2:UniformName>radius</q2:UniformName>
+                <q2:ShaderName>Gratings</q2:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
-              <Property Name="Value" DisplayName="Edge" />
+              <Property Name="Value" DisplayName="Aperture" />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="FloatProperty">
@@ -257,9 +257,9 @@
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>edge</q1:UniformName>
-                <q1:ShaderName>Gratings</q1:ShaderName>
+              <Combinator xsi:type="q2:UpdateUniform">
+                <q2:UniformName>aperture</q2:UniformName>
+                <q2:ShaderName>Gratings</q2:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
@@ -271,9 +271,9 @@
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>opacity</q1:UniformName>
-                <q1:ShaderName>Gratings</q1:ShaderName>
+              <Combinator xsi:type="q2:UpdateUniform">
+                <q2:UniformName>opacity</q2:UniformName>
+                <q2:ShaderName>Gratings</q2:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
@@ -293,9 +293,9 @@
         </Workflow>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:DrawMesh">
-          <q1:ShaderName>Gratings</q1:ShaderName>
-          <q1:MeshName>Quad</q1:MeshName>
+        <Combinator xsi:type="q2:DrawMesh">
+          <q2:ShaderName>Gratings</q2:ShaderName>
+          <q2:MeshName>Quad</q2:MeshName>
         </Combinator>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
