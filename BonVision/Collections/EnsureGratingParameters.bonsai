@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Specifies default values for optional parameters in the gratings specification.</Description>
-  <Workflow xmlns:q1="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow xmlns:q1="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q2="clr-namespace:Bonsai.Numerics;assembly=Bonsai.Numerics" xmlns="https://bonsai-rx.org/2018/workflow">
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
@@ -121,6 +121,9 @@
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q2:DegreeToRadian" />
+      </Expression>
+      <Expression xsi:type="Combinator">
         <Combinator xsi:type="Zip" />
       </Expression>
       <Expression xsi:type="Combinator">
@@ -164,27 +167,29 @@ Item2.Item4 as Orientation)</q1:Expression>
       <Edge From="12" To="14" Label="Source1" />
       <Edge From="13" To="14" Label="Source2" />
       <Edge From="14" To="15" Label="Source5" />
-      <Edge From="15" To="29" Label="Source1" />
+      <Edge From="15" To="30" Label="Source1" />
       <Edge From="16" To="18" Label="Source1" />
       <Edge From="17" To="18" Label="Source2" />
-      <Edge From="18" To="28" Label="Source1" />
+      <Edge From="18" To="29" Label="Source1" />
       <Edge From="19" To="21" Label="Source1" />
       <Edge From="20" To="21" Label="Source2" />
-      <Edge From="21" To="28" Label="Source2" />
+      <Edge From="21" To="29" Label="Source2" />
       <Edge From="22" To="24" Label="Source1" />
       <Edge From="23" To="24" Label="Source2" />
-      <Edge From="24" To="28" Label="Source3" />
+      <Edge From="24" To="29" Label="Source3" />
       <Edge From="25" To="27" Label="Source1" />
       <Edge From="26" To="27" Label="Source2" />
-      <Edge From="27" To="28" Label="Source4" />
-      <Edge From="28" To="29" Label="Source2" />
-      <Edge From="29" To="30" Label="Source1" />
+      <Edge From="27" To="28" Label="Source1" />
+      <Edge From="28" To="29" Label="Source4" />
+      <Edge From="29" To="30" Label="Source2" />
       <Edge From="30" To="31" Label="Source1" />
+      <Edge From="31" To="32" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>
     <Type>Bonsai.Expressions.FloatProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.GetValueOrDefaultBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Numerics.DegreeToRadian, Bonsai.Numerics, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.ElementIndex, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.Zip, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Scripting.ExpressionTransform, Bonsai.Scripting, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
