@@ -4,36 +4,45 @@ using System.ComponentModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Xml.Serialization;
 
 namespace BonVision
 {
     [Combinator]
     [DisplayName("FieldOfView")]
-    [Description("Represents a workflow property specifying a camera field of view, in degrees.")]
+    [Description("Represents a workflow property specifying a camera field of view angle.")]
     [WorkflowElementCategory(ElementCategory.Source)]
     public class FieldOfViewProperty
     {
-        double value;
+        float value;
         event Action<float> ValueChanged;
-        const double DegreesToRadians = Math.PI / 180;
-        const double RadiansToDegrees = 180 / Math.PI;
 
         public FieldOfViewProperty()
         {
             Value = 90;
         }
 
-        [Range(0.1, 179.9)]
-        [Description("The value of the angle of the field of view, in degrees.")]
+        [XmlIgnore]
+        [Range(0.00174532924, 3.13984728)]
+        [TypeConverter(typeof(DegreeConverter))]
+        [Description("The value of the camera field of view.")]
         [Editor(DesignTypes.SliderEditor, "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         public float Value
         {
-            get { return (float)(value * RadiansToDegrees); }
+            get { return value; }
             set
             {
-                this.value = value * DegreesToRadians;
-                OnValueChanged((float)this.value);
+                this.value = value;
+                OnValueChanged(this.value);
             }
+        }
+
+        [Browsable(false)]
+        [XmlElement("Value")]
+        public float ValueXml
+        {
+            get { return DegreeConverter.RadianToDegree(value); }
+            set { this.value = DegreeConverter.DegreeToRadian(value); }
         }
 
         void OnValueChanged(float value)
