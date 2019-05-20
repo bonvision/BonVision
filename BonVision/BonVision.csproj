@@ -121,6 +121,7 @@
     <EmbeddedResource Include="Shaders\TexturedModel.frag" />
     <EmbeddedResource Include="Shaders\SphereMap.frag" />
     <EmbeddedResource Include="Shaders\SphereMap.vert" />
+    <EmbeddedResource Include="BonVision.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
