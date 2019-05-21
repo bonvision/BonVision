@@ -6,6 +6,7 @@
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
+    <iconUrl>https://github.com/amansaleem/BonVision/raw/nuget-package/Resources/BonVision-Logo.png</iconUrl>
     <licenseUrl>https://raw.githubusercontent.com/amansaleem/BonVision/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/amansaleem/BonVision</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
