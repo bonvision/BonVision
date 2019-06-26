@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Draws parameterized 2D sinewave gratings.</Description>
   <Workflow xmlns:q1="clr-namespace:BonVision;assembly=BonVision" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q2="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:q3="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns="https://bonsai-rx.org/2018/workflow">
@@ -26,6 +26,7 @@
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="SpatialFrequency" />
         <Property Name="TemporalFrequency" />
+        <Property Name="Phase" />
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="SquareWave" />
@@ -142,14 +143,14 @@
                   </Expression>
                   <Expression xsi:type="PropertySourceOfScaleSingle">
                     <MemberName>X</MemberName>
-                      <Value>1</Value>
+                    <Value>1</Value>
                   </Expression>
                   <Expression xsi:type="ExternalizedMapping">
                     <Property Name="Value" DisplayName="ExtentY" />
                   </Expression>
                   <Expression xsi:type="PropertySourceOfScaleSingle">
                     <MemberName>Y</MemberName>
-                      <Value>1</Value>
+                    <Value>1</Value>
                   </Expression>
                   <Expression xsi:type="ExternalizedMapping">
                     <Property Name="Value" DisplayName="Angle" />
@@ -202,6 +203,27 @@ Math.Sqrt((Item1 * Math.Cos(Item4) * Item1 * Math.Cos(Item4)) +
                 <q2:ShaderName>Gratings</q2:ShaderName>
               </Combinator>
             </Expression>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="Value" DisplayName="Phase" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:AngleProperty">
+                <q1:Value>0</q1:Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="q3:ExpressionTransform">
+              <q3:Expression>it / (2 * Math.PI)</q3:Expression>
+            </Expression>
+            <Expression xsi:type="PropertyMapping">
+              <PropertyMappings>
+                <Property Name="Value" />
+              </PropertyMappings>
+            </Expression>
+            <Expression xsi:type="Subtract">
+              <Operand xsi:type="FloatProperty">
+                <Value>0</Value>
+              </Operand>
+            </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="WithLatestFrom" />
             </Expression>
@@ -225,15 +247,20 @@ Math.Sqrt((Item1 * Math.Cos(Item4) * Item1 * Math.Cos(Item4)) +
             <Edge From="3" To="5" Label="Source1" />
             <Edge From="4" To="5" Label="Source2" />
             <Edge From="5" To="6" Label="Source1" />
-            <Edge From="6" To="10" Label="Source2" />
+            <Edge From="6" To="14" Label="Source1" />
             <Edge From="7" To="8" Label="Source2" />
             <Edge From="8" To="9" Label="Source1" />
-            <Edge From="9" To="10" Label="Source1" />
+            <Edge From="9" To="15" Label="Source1" />
             <Edge From="10" To="11" Label="Source1" />
             <Edge From="11" To="12" Label="Source1" />
             <Edge From="12" To="13" Label="Source1" />
-            <Edge From="13" To="14" Label="Source1" />
-            <Edge From="14" To="15" Label="Source1" />
+            <Edge From="13" To="14" Label="Source2" />
+            <Edge From="14" To="15" Label="Source2" />
+            <Edge From="15" To="16" Label="Source1" />
+            <Edge From="16" To="17" Label="Source1" />
+            <Edge From="17" To="18" Label="Source1" />
+            <Edge From="18" To="19" Label="Source1" />
+            <Edge From="19" To="20" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
@@ -387,6 +414,7 @@ Math.Sqrt((Item1 * Math.Cos(Item4) * Item1 * Math.Cos(Item4)) +
     <Type>Bonsai.Expressions.FloatProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.MultiplyBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Shaders.Scale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null],[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.SubtractBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.AccumulateBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.WithLatestFrom, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.Zip, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
@@ -397,6 +425,6 @@ Math.Sqrt((Item1 * Math.Cos(Item4) * Item1 * Math.Cos(Item4)) +
     <Type>Bonsai.Shaders.Translate, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.UpdateFrame, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>BonVision.AngleProperty, BonVision, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>BonVision.AngleProperty, BonVision, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
