@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0-preview">
   <Description>Animates a linear range of values between min and max at the specified cycles per second.</Description>
-  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q2="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q2="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp" xmlns:q3="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns="https://bonsai-rx.org/2018/workflow">
     <Nodes>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:UpdateFrame" />
@@ -10,58 +10,39 @@
         <Selector>TimeStep.ElapsedTime</Selector>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="RangeBegin" Description="The value of the range at the start of the animation." />
+        <Property Name="Value" DisplayName="Duration" Description="The length of the animation, in seconds." />
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="RangeEnd" Description="The value of the range at the end of the animation." />
+        <Property Name="RangeMin" DisplayName="RangeBegin" />
+        <Property Name="RangeMax" DisplayName="RangeEnd" />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="FloatProperty">
-          <Value>1</Value>
+        <Combinator xsi:type="DoubleProperty">
+          <Value>0</Value>
         </Combinator>
       </Expression>
-      <Expression xsi:type="Subtract">
-        <Operand xsi:type="FloatProperty">
-          <Value>-1</Value>
-        </Operand>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="First" />
       </Expression>
-      <Expression xsi:type="PropertyMapping">
-        <PropertyMappings>
-          <Property Name="Value" />
-        </PropertyMappings>
-      </Expression>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="Duration" Description="The length of the animation, in seconds." />
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Concat" />
       </Expression>
       <Expression xsi:type="Divide">
         <Operand xsi:type="DoubleProperty">
           <Value>1</Value>
         </Operand>
       </Expression>
-      <Expression xsi:type="q2:ExpressionTransform">
-        <q2:Expression>single(it)</q2:Expression>
-      </Expression>
-      <Expression xsi:type="Multiply">
-        <Operand xsi:type="FloatProperty">
-          <Value>2</Value>
-        </Operand>
-      </Expression>
       <Expression xsi:type="Accumulate" />
-      <Expression xsi:type="Add">
-        <Operand xsi:type="FloatProperty">
-          <Value>-1</Value>
-        </Operand>
-      </Expression>
       <Expression xsi:type="TakeWhile">
         <Workflow>
           <Nodes>
             <Expression xsi:type="WorkflowInput">
               <Name>Source1</Name>
             </Expression>
-            <Expression xsi:type="ExternalizedMapping">
-              <Property Name="Value" />
+            <Expression xsi:type="q3:ExpressionTransform">
+              <q3:Expression>single(it)</q3:Expression>
             </Expression>
-            <Expression xsi:type="LessThan">
+            <Expression xsi:type="LessThanOrEqual">
               <Operand xsi:type="FloatProperty">
                 <Value>1</Value>
               </Operand>
@@ -69,43 +50,51 @@
             <Expression xsi:type="WorkflowOutput" />
           </Nodes>
           <Edges>
-            <Edge From="0" To="2" Label="Source1" />
-            <Edge From="1" To="2" Label="Source2" />
+            <Edge From="0" To="1" Label="Source1" />
+            <Edge From="1" To="2" Label="Source1" />
             <Edge From="2" To="3" Label="Source1" />
           </Edges>
         </Workflow>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q2:Rescale">
+          <q2:Min>0</q2:Min>
+          <q2:Max>1</q2:Max>
+          <q2:RangeMin>-1</q2:RangeMin>
+          <q2:RangeMax>1</q2:RangeMax>
+          <q2:RescaleType>Linear</q2:RescaleType>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="q3:ExpressionTransform">
+        <q3:Expression>single(it)</q3:Expression>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
     </Nodes>
     <Edges>
       <Edge From="0" To="1" Label="Source1" />
-      <Edge From="1" To="8" Label="Source1" />
-      <Edge From="2" To="5" Label="Source2" />
-      <Edge From="2" To="12" Label="Source2" />
-      <Edge From="3" To="4" Label="Source1" />
-      <Edge From="3" To="13" Label="Source2" />
+      <Edge From="1" To="6" Label="Source2" />
+      <Edge From="2" To="7" Label="Source2" />
+      <Edge From="3" To="10" Label="Source2" />
       <Edge From="4" To="5" Label="Source1" />
       <Edge From="5" To="6" Label="Source1" />
-      <Edge From="6" To="10" Label="Source2" />
-      <Edge From="7" To="8" Label="Source2" />
+      <Edge From="6" To="7" Label="Source1" />
+      <Edge From="7" To="8" Label="Source1" />
       <Edge From="8" To="9" Label="Source1" />
       <Edge From="9" To="10" Label="Source1" />
       <Edge From="10" To="11" Label="Source1" />
       <Edge From="11" To="12" Label="Source1" />
-      <Edge From="12" To="13" Label="Source1" />
-      <Edge From="13" To="14" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>
-    <Type>Bonsai.Expressions.AddBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Dsp.Rescale, Bonsai.Dsp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.DivideBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.DoubleProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.FloatProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.LessThanBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.MultiplyBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.SubtractBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.LessThanOrEqualBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.TakeWhileBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.AccumulateBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.Concat, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.First, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Scripting.ExpressionTransform, Bonsai.Scripting, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.UpdateFrame, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
