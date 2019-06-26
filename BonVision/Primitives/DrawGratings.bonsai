@@ -7,8 +7,6 @@
         <Name>Source1</Name>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="ExtentX" />
-        <Property Name="ExtentY" />
         <Property Name="LocationX" />
         <Property Name="LocationY" />
       </Expression>
@@ -24,6 +22,23 @@
         <PropertyMappings>
           <Property Name="Angle" />
         </PropertyMappings>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="SpatialFrequency" />
+        <Property Name="TemporalFrequency" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="SquareWave" />
+        <Property Name="Contrast" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Radius" />
+        <Property Name="Aperture" />
+        <Property Name="Opacity" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="ExtentX" />
+        <Property Name="ExtentY" />
       </Expression>
       <Expression xsi:type="GroupWorkflow">
         <Name>Transform</Name>
@@ -85,10 +100,6 @@
           </Edges>
         </Workflow>
       </Expression>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="SpatialFrequency" />
-        <Property Name="TemporalFrequency" />
-      </Expression>
       <Expression xsi:type="GroupWorkflow">
         <Name>PhaseFrequency</Name>
         <Workflow>
@@ -113,13 +124,79 @@
                 <Value>0</Value>
               </Operand>
             </Expression>
+            <Expression xsi:type="Accumulate" />
             <Expression xsi:type="ExternalizedMapping">
-              <Property Name="Value" DisplayName="SpatialFrequency" />
+              <Property Name="ExtentX" />
+              <Property Name="ExtentY" />
+              <Property Name="Angle" />
+              <Property Name="SpatialFrequency" />
             </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="FloatProperty">
-                <Value>10</Value>
-              </Combinator>
+            <Expression xsi:type="GroupWorkflow">
+              <Workflow>
+                <Nodes>
+                  <Expression xsi:type="WorkflowInput">
+                    <Name>Source1</Name>
+                  </Expression>
+                  <Expression xsi:type="ExternalizedMapping">
+                    <Property Name="Value" DisplayName="ExtentX" />
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="FloatProperty">
+                      <Value>1</Value>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="ExternalizedMapping">
+                    <Property Name="Value" DisplayName="ExtentY" />
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="FloatProperty">
+                      <Value>1</Value>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="ExternalizedMapping">
+                    <Property Name="Value" DisplayName="Angle" />
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="FloatProperty">
+                      <Value>0</Value>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="ExternalizedMapping">
+                    <Property Name="Value" DisplayName="SpatialFrequency" />
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="FloatProperty">
+                      <Value>10</Value>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="Zip" />
+                  </Expression>
+                  <Expression xsi:type="q3:ExpressionTransform">
+                    <q3:Expression>single(
+Math.Sqrt((Item1 * Math.Cos(Item4) * Item1 * Math.Cos(Item4)) +
+(Item2 * Math.Sin(Item4) * Item2 * Math.Sin(Item4))) * Item3
+)</q3:Expression>
+                  </Expression>
+                  <Expression xsi:type="WorkflowOutput" />
+                </Nodes>
+                <Edges>
+                  <Edge From="0" To="2" Label="Source1" />
+                  <Edge From="0" To="4" Label="Source1" />
+                  <Edge From="0" To="6" Label="Source1" />
+                  <Edge From="0" To="8" Label="Source1" />
+                  <Edge From="1" To="2" Label="Source2" />
+                  <Edge From="2" To="9" Label="Source1" />
+                  <Edge From="3" To="4" Label="Source2" />
+                  <Edge From="4" To="9" Label="Source2" />
+                  <Edge From="5" To="6" Label="Source2" />
+                  <Edge From="6" To="9" Label="Source4" />
+                  <Edge From="7" To="8" Label="Source2" />
+                  <Edge From="8" To="9" Label="Source3" />
+                  <Edge From="9" To="10" Label="Source1" />
+                  <Edge From="10" To="11" Label="Source1" />
+                </Edges>
+              </Workflow>
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q2:UpdateUniform">
@@ -127,18 +204,14 @@
                 <q2:ShaderName>Gratings</q2:ShaderName>
               </Combinator>
             </Expression>
-            <Expression xsi:type="Divide">
-              <Operand xsi:type="FloatProperty">
-                <Value>10</Value>
-              </Operand>
-            </Expression>
-            <Expression xsi:type="Accumulate" />
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="WithLatestFrom" />
             </Expression>
             <Expression xsi:type="MemberSelector">
-              <Selector>Item2</Selector>
+              <Selector>Item2,Item1</Selector>
             </Expression>
+            <Expression xsi:type="Divide" />
+            <Expression xsi:type="MemberSelector" />
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q2:UpdateUniform">
                 <q2:UniformName>phase</q2:UniformName>
@@ -148,27 +221,23 @@
             <Expression xsi:type="WorkflowOutput" />
           </Nodes>
           <Edges>
-            <Edge From="0" To="7" Label="Source1" />
+            <Edge From="0" To="8" Label="Source1" />
             <Edge From="1" To="2" Label="Source1" />
             <Edge From="2" To="3" Label="Source1" />
             <Edge From="3" To="5" Label="Source1" />
             <Edge From="4" To="5" Label="Source2" />
-            <Edge From="5" To="9" Label="Source1" />
-            <Edge From="6" To="7" Label="Source2" />
-            <Edge From="6" To="9" Label="Source2" />
-            <Edge From="7" To="8" Label="Source1" />
-            <Edge From="8" To="11" Label="Source1" />
+            <Edge From="5" To="6" Label="Source1" />
+            <Edge From="6" To="10" Label="Source2" />
+            <Edge From="7" To="8" Label="Source2" />
+            <Edge From="8" To="9" Label="Source1" />
             <Edge From="9" To="10" Label="Source1" />
-            <Edge From="10" To="11" Label="Source2" />
+            <Edge From="10" To="11" Label="Source1" />
             <Edge From="11" To="12" Label="Source1" />
             <Edge From="12" To="13" Label="Source1" />
             <Edge From="13" To="14" Label="Source1" />
+            <Edge From="14" To="15" Label="Source1" />
           </Edges>
         </Workflow>
-      </Expression>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="SquareWave" />
-        <Property Name="Contrast" />
       </Expression>
       <Expression xsi:type="GroupWorkflow">
         <Name>Contrast</Name>
@@ -221,11 +290,6 @@
             <Edge From="7" To="8" Label="Source1" />
           </Edges>
         </Workflow>
-      </Expression>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Radius" />
-        <Property Name="Aperture" />
-        <Property Name="Opacity" />
       </Expression>
       <Expression xsi:type="GroupWorkflow">
         <Name>Border</Name>
@@ -301,19 +365,22 @@
       <Expression xsi:type="WorkflowOutput" />
     </Nodes>
     <Edges>
-      <Edge From="0" To="5" Label="Source1" />
-      <Edge From="1" To="5" Label="Source2" />
+      <Edge From="0" To="9" Label="Source1" />
+      <Edge From="1" To="9" Label="Source2" />
       <Edge From="2" To="3" Label="Source1" />
       <Edge From="3" To="4" Label="Source1" />
-      <Edge From="4" To="5" Label="Source3" />
-      <Edge From="5" To="7" Label="Source1" />
-      <Edge From="6" To="7" Label="Source2" />
-      <Edge From="7" To="9" Label="Source1" />
-      <Edge From="8" To="9" Label="Source2" />
-      <Edge From="9" To="11" Label="Source1" />
-      <Edge From="10" To="11" Label="Source2" />
+      <Edge From="4" To="9" Label="Source4" />
+      <Edge From="4" To="10" Label="Source4" />
+      <Edge From="5" To="10" Label="Source2" />
+      <Edge From="6" To="11" Label="Source2" />
+      <Edge From="7" To="12" Label="Source2" />
+      <Edge From="8" To="9" Label="Source3" />
+      <Edge From="8" To="10" Label="Source3" />
+      <Edge From="9" To="10" Label="Source1" />
+      <Edge From="10" To="11" Label="Source1" />
       <Edge From="11" To="12" Label="Source1" />
       <Edge From="12" To="13" Label="Source1" />
+      <Edge From="13" To="14" Label="Source1" />
     </Edges>
   </Workflow>
   <ExtensionTypes>
@@ -323,6 +390,7 @@
     <Type>Bonsai.Expressions.MultiplyBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.AccumulateBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.WithLatestFrom, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.Zip, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Scripting.ExpressionTransform, Bonsai.Scripting, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.RotateZ, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
