@@ -94,6 +94,6 @@
     <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Dsp.ConvertFromArray, Bonsai.Dsp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null],[OpenCV.Net.Size, OpenCV.Net, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Shaders.Timer, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.ConvertToImage, Bonsai.Vision, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>BonVision.CreateSparseNoiseGrid, BonVision, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>BonVision.CreateSparseNoiseGrid, BonVision, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
