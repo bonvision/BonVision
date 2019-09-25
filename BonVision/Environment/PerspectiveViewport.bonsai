@@ -1,13 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.4.0-preview">
+<WorkflowBuilder Version="2.4.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
+                 xmlns:bv="clr-namespace:BonVision;assembly=BonVision"
+                 xmlns:q1="clr-namespace:OpenTK;assembly=OpenTK"
+                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Specifies a perspective viewport, commonly used for 3D stimulus environments.</Description>
-  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q2="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns:q3="clr-namespace:BonVision;assembly=BonVision" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:AspectRatio" />
+        <Combinator xsi:type="gl:AspectRatio" />
       </Expression>
       <Expression xsi:type="InputMapping">
         <PropertyMappings>
@@ -24,8 +31,8 @@
         <Name>FieldOfView</Name>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q3:FieldOfViewProperty">
-          <q3:Value>90</q3:Value>
+        <Combinator xsi:type="bv:FieldOfViewProperty">
+          <bv:Value>90</bv:Value>
         </Combinator>
       </Expression>
       <Expression xsi:type="ExternalizedProperty">
@@ -42,33 +49,33 @@
         <Property Name="FarClip" />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:CreatePerspectiveFieldOfView">
-          <q1:FovY>1.57079637</q1:FovY>
-          <q1:AspectRatio>1.33333337</q1:AspectRatio>
-          <q1:NearClip>0.1</q1:NearClip>
-          <q1:FarClip>1000</q1:FarClip>
+        <Combinator xsi:type="gl:CreatePerspectiveFieldOfView">
+          <gl:FovY>1.57079637</gl:FovY>
+          <gl:AspectRatio>1.33333337</gl:AspectRatio>
+          <gl:NearClip>0.1</gl:NearClip>
+          <gl:FarClip>1000</gl:FarClip>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:CreateLookAt">
-          <q1:Eye>
-            <q1:X>1</q1:X>
-            <q1:Y>1</q1:Y>
-            <q1:Z>2</q1:Z>
-          </q1:Eye>
-          <q1:Target>
-            <q1:X>-0</q1:X>
-            <q1:Y>-0</q1:Y>
-            <q1:Z>-1</q1:Z>
-          </q1:Target>
-          <q1:Up>
-            <q1:X>0</q1:X>
-            <q1:Y>1</q1:Y>
-            <q1:Z>0</q1:Z>
-          </q1:Up>
+        <Combinator xsi:type="gl:CreateLookAt">
+          <gl:Eye>
+            <gl:X>1</gl:X>
+            <gl:Y>1</gl:Y>
+            <gl:Z>2</gl:Z>
+          </gl:Eye>
+          <gl:Target>
+            <gl:X>-0</gl:X>
+            <gl:Y>-0</gl:Y>
+            <gl:Z>-1</gl:Z>
+          </gl:Target>
+          <gl:Up>
+            <gl:X>0</gl:X>
+            <gl:Y>1</gl:Y>
+            <gl:Z>0</gl:Z>
+          </gl:Up>
         </Combinator>
       </Expression>
-      <Expression xsi:type="PropertySourceOfCreateLookAtVector3">
+      <Expression xsi:type="PropertySource" TypeArguments="gl:CreateLookAt,q1:Vector3">
         <MemberName>Eye</MemberName>
         <Value>
           <X>0</X>
@@ -77,13 +84,13 @@
         </Value>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="Zip" />
+        <Combinator xsi:type="rx:Zip" />
       </Expression>
-      <Expression xsi:type="q2:ExpressionTransform">
-        <q2:Expression>new(
+      <Expression xsi:type="scr:ExpressionTransform">
+        <scr:Expression>new(
 Item1 as ViewMatrix,
 Item2 as ProjectionMatrix,
-Item3 as Light)</q2:Expression>
+Item3 as Light)</scr:Expression>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
     </Nodes>
@@ -106,13 +113,4 @@ Item3 as Light)</q2:Expression>
       <Edge From="13" To="14" Label="Source1" />
     </Edges>
   </Workflow>
-  <ExtensionTypes>
-    <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Shaders.CreateLookAt, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null],[OpenTK.Vector3, OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.Zip, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Scripting.ExpressionTransform, Bonsai.Scripting, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.AspectRatio, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.CreateLookAt, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.CreatePerspectiveFieldOfView, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>BonVision.FieldOfViewProperty, BonVision, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null</Type>
-  </ExtensionTypes>
 </WorkflowBuilder>

@@ -1,7 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.4.0-preview">
+<WorkflowBuilder Version="2.4.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                 xmlns:dsp="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Generates a linear range of values between min and max.</Description>
-  <Workflow xmlns:q1="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
     <Nodes>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="RangeMin" />
@@ -10,7 +15,7 @@
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Value" DisplayName="Count" Description="The number of parameter values to generate." />
       </Expression>
-      <Expression xsi:type="PropertySourceOfRangeInt32">
+      <Expression xsi:type="PropertySource" TypeArguments="rx:Range,sys:Int32">
         <MemberName>Count</MemberName>
         <Value>10</Value>
       </Expression>
@@ -20,9 +25,9 @@
         </PropertyMappings>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="Range">
-          <Start>0</Start>
-          <Count>10</Count>
+        <Combinator xsi:type="rx:Range">
+          <rx:Start>0</rx:Start>
+          <rx:Count>10</rx:Count>
         </Combinator>
       </Expression>
       <Expression xsi:type="Add">
@@ -30,7 +35,7 @@
           <Value>1</Value>
         </Operand>
       </Expression>
-      <Expression xsi:type="PropertySourceOfRangeInt32">
+      <Expression xsi:type="PropertySource" TypeArguments="rx:Range,sys:Int32">
         <MemberName>Count</MemberName>
         <Value>10</Value>
       </Expression>
@@ -40,12 +45,12 @@
         </PropertyMappings>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:Rescale">
-          <q1:Min>1</q1:Min>
-          <q1:Max>10</q1:Max>
-          <q1:RangeMin>0</q1:RangeMin>
-          <q1:RangeMax>1</q1:RangeMax>
-          <q1:RescaleType>Linear</q1:RescaleType>
+        <Combinator xsi:type="dsp:Rescale">
+          <dsp:Min>1</dsp:Min>
+          <dsp:Max>10</dsp:Max>
+          <dsp:RangeMin>0</dsp:RangeMin>
+          <dsp:RangeMax>1</dsp:RangeMax>
+          <dsp:RescaleType>Linear</dsp:RescaleType>
         </Combinator>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
@@ -63,11 +68,4 @@
       <Edge From="8" To="9" Label="Source1" />
     </Edges>
   </Workflow>
-  <ExtensionTypes>
-    <Type>Bonsai.Dsp.Rescale, Bonsai.Dsp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.AddBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.IntProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Reactive.Range, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null],[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.Range, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-  </ExtensionTypes>
 </WorkflowBuilder>

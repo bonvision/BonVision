@@ -1,7 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.4.0-preview">
+<WorkflowBuilder Version="2.4.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
+                 xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
+                 xmlns:bv="clr-namespace:BonVision;assembly=BonVision"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Renders the current scene to a texture and applies mesh mapping and brightness correction as a post-processing effect.</Description>
-  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q2="clr-namespace:Bonsai.IO;assembly=Bonsai.System" xmlns:q3="clr-namespace:BonVision;assembly=BonVision" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
@@ -12,30 +17,30 @@
         <Category>Misc</Category>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:RenderTexture">
-          <q1:RenderState />
-          <q1:ClearColor>Gray</q1:ClearColor>
-          <q1:ClearMask>DepthBufferBit ColorBufferBit</q1:ClearMask>
-          <q1:Width xsi:nil="true" />
-          <q1:Height xsi:nil="true" />
-          <q1:InternalFormat>Rgba</q1:InternalFormat>
-          <q1:WrapS>ClampToEdge</q1:WrapS>
-          <q1:WrapT>ClampToEdge</q1:WrapT>
-          <q1:MinFilter>Linear</q1:MinFilter>
-          <q1:MagFilter>Linear</q1:MagFilter>
+        <Combinator xsi:type="gl:RenderTexture">
+          <gl:RenderState />
+          <gl:ClearColor>Gray</gl:ClearColor>
+          <gl:ClearMask>DepthBufferBit ColorBufferBit</gl:ClearMask>
+          <gl:Width xsi:nil="true" />
+          <gl:Height xsi:nil="true" />
+          <gl:InternalFormat>Rgba</gl:InternalFormat>
+          <gl:WrapS>ClampToEdge</gl:WrapS>
+          <gl:WrapT>ClampToEdge</gl:WrapT>
+          <gl:MinFilter>Linear</gl:MinFilter>
+          <gl:MagFilter>Linear</gl:MagFilter>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:BindTexture">
-          <q1:TextureSlot>Texture0</q1:TextureSlot>
-          <q1:ShaderName>MeshMap</q1:ShaderName>
-          <q1:TextureTarget>Texture2D</q1:TextureTarget>
+        <Combinator xsi:type="gl:BindTexture">
+          <gl:TextureSlot>Texture0</gl:TextureSlot>
+          <gl:ShaderName>MeshMap</gl:ShaderName>
+          <gl:TextureTarget>Texture2D</gl:TextureTarget>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:DrawMesh">
-          <q1:ShaderName>MeshMap</q1:ShaderName>
-          <q1:MeshName>MeshMap</q1:MeshName>
+        <Combinator xsi:type="gl:DrawMesh">
+          <gl:ShaderName>MeshMap</gl:ShaderName>
+          <gl:MeshName>MeshMap</gl:MeshName>
         </Combinator>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
@@ -44,35 +49,35 @@
         <Name>FileName</Name>
         <Category />
       </Expression>
-      <Expression xsi:type="q2:CsvReader">
-        <q2:FileName />
-        <q2:ListSeparator>,</q2:ListSeparator>
-        <q2:ScanPattern>%f</q2:ScanPattern>
-        <q2:SkipRows>0</q2:SkipRows>
+      <Expression xsi:type="io:CsvReader">
+        <io:FileName />
+        <io:ListSeparator>,</io:ListSeparator>
+        <io:ScanPattern>%f</io:ScanPattern>
+        <io:SkipRows>0</io:SkipRows>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q3:CreateVertexGrid" />
+        <Combinator xsi:type="bv:CreateVertexGrid" />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:SampleOnRenderFrame" />
+        <Combinator xsi:type="gl:SampleOnRenderFrame" />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:UpdateVertexBuffer">
-          <q1:MeshName>MeshMap</q1:MeshName>
-          <q1:DrawMode>Quads</q1:DrawMode>
-          <q1:Usage>DynamicDraw</q1:Usage>
-          <q1:VertexAttributes>
-            <q1:VertexAttributeMapping>
-              <q1:Size>3</q1:Size>
-              <q1:Normalized>false</q1:Normalized>
-              <q1:Type>Float</q1:Type>
-            </q1:VertexAttributeMapping>
-            <q1:VertexAttributeMapping>
-              <q1:Size>3</q1:Size>
-              <q1:Normalized>false</q1:Normalized>
-              <q1:Type>Float</q1:Type>
-            </q1:VertexAttributeMapping>
-          </q1:VertexAttributes>
+        <Combinator xsi:type="gl:UpdateVertexBuffer">
+          <gl:MeshName>MeshMap</gl:MeshName>
+          <gl:DrawMode>Quads</gl:DrawMode>
+          <gl:Usage>DynamicDraw</gl:Usage>
+          <gl:VertexAttributes>
+            <gl:VertexAttributeMapping>
+              <gl:Size>3</gl:Size>
+              <gl:Normalized>false</gl:Normalized>
+              <gl:Type>Float</gl:Type>
+            </gl:VertexAttributeMapping>
+            <gl:VertexAttributeMapping>
+              <gl:Size>3</gl:Size>
+              <gl:Normalized>false</gl:Normalized>
+              <gl:Type>Float</gl:Type>
+            </gl:VertexAttributeMapping>
+          </gl:VertexAttributes>
         </Combinator>
       </Expression>
     </Nodes>
@@ -88,13 +93,4 @@
       <Edge From="9" To="10" Label="Source1" />
     </Edges>
   </Workflow>
-  <ExtensionTypes>
-    <Type>Bonsai.IO.CsvReader, Bonsai.System, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.BindTexture, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.RenderTexture, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.SampleOnRenderFrame, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.UpdateVertexBuffer, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>BonVision.CreateVertexGrid, BonVision, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null</Type>
-  </ExtensionTypes>
 </WorkflowBuilder>

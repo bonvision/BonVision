@@ -1,7 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.4.0-preview">
+<WorkflowBuilder Version="2.4.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
+                 xmlns:dsp="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp"
+                 xmlns:q1="clr-namespace:OpenCV.Net;assembly=OpenCV.Net"
+                 xmlns:bv="clr-namespace:BonVision;assembly=BonVision"
+                 xmlns:cv="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Generates and draws a non-overlapping discrete sparse grid of randomly activated quads.</Description>
-  <Workflow xmlns:q2="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q3="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q4="clr-namespace:BonVision;assembly=BonVision" xmlns:q1="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
     <Nodes>
       <Expression xsi:type="SubscribeSubject">
         <Name>Random</Name>
@@ -11,9 +18,9 @@
         <Name>Duration</Name>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q2:Timer">
-          <q2:DueTime>PT0S</q2:DueTime>
-          <q2:Period>PT0.2S</q2:Period>
+        <Combinator xsi:type="gl:Timer">
+          <gl:DueTime>PT0S</gl:DueTime>
+          <gl:Period>PT0.2S</gl:Period>
         </Combinator>
       </Expression>
       <Expression xsi:type="ExternalizedProperty">
@@ -26,7 +33,7 @@
         <Description>The size of the sparse noise grid.</Description>
         <Category />
       </Expression>
-      <Expression xsi:type="PropertySourceOfConvertFromArraySize">
+      <Expression xsi:type="PropertySource" TypeArguments="dsp:ConvertFromArray,q1:Size">
         <MemberName>Size</MemberName>
         <Value>
           <Width>10</Width>
@@ -38,7 +45,7 @@
           <Property Name="Size" />
         </PropertyMappings>
       </Expression>
-      <Expression xsi:type="PropertySourceOfConvertFromArraySize">
+      <Expression xsi:type="PropertySource" TypeArguments="dsp:ConvertFromArray,q1:Size">
         <MemberName>Size</MemberName>
         <Value>
           <Width>10</Width>
@@ -52,24 +59,24 @@
         </PropertyMappings>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q4:CreateSparseNoiseGrid">
-          <q4:Rows>10</q4:Rows>
-          <q4:Columns>10</q4:Columns>
-          <q4:ActiveQuads>5</q4:ActiveQuads>
+        <Combinator xsi:type="bv:CreateSparseNoiseGrid">
+          <bv:Rows>10</bv:Rows>
+          <bv:Columns>10</bv:Columns>
+          <bv:ActiveQuads>5</bv:ActiveQuads>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:ConvertFromArray">
-          <q1:Size>
-            <q1:Width>10</q1:Width>
-            <q1:Height>10</q1:Height>
-          </q1:Size>
-          <q1:Depth xsi:nil="true" />
-          <q1:Channels xsi:nil="true" />
+        <Combinator xsi:type="dsp:ConvertFromArray">
+          <dsp:Size>
+            <dsp:Width>10</dsp:Width>
+            <dsp:Height>10</dsp:Height>
+          </dsp:Size>
+          <dsp:Depth xsi:nil="true" />
+          <dsp:Channels xsi:nil="true" />
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q3:ConvertToImage" />
+        <Combinator xsi:type="cv:ConvertToImage" />
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
     </Nodes>
@@ -89,11 +96,4 @@
       <Edge From="11" To="12" Label="Source1" />
     </Edges>
   </Workflow>
-  <ExtensionTypes>
-    <Type>Bonsai.Dsp.ConvertFromArray, Bonsai.Dsp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Dsp.ConvertFromArray, Bonsai.Dsp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null],[OpenCV.Net.Size, OpenCV.Net, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.Timer, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Vision.ConvertToImage, Bonsai.Vision, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>BonVision.CreateSparseNoiseGrid, BonVision, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null</Type>
-  </ExtensionTypes>
 </WorkflowBuilder>

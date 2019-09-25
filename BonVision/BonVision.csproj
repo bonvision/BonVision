@@ -30,8 +30,8 @@
     <BuildPackage>true</BuildPackage>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bonsai.Core, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Bonsai.Core.2.3.0\lib\net45\Bonsai.Core.dll</HintPath>
+    <Reference Include="Bonsai.Core, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bonsai.Core.2.4.0\lib\net45\Bonsai.Core.dll</HintPath>
     </Reference>
     <Reference Include="Bonsai.Numerics, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Bonsai.Numerics.0.3.0\lib\net45\Bonsai.Numerics.dll</HintPath>

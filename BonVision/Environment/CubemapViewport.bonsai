@@ -1,7 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.4.0-preview">
+<WorkflowBuilder Version="2.4.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
+                 xmlns:q1="clr-namespace:OpenTK;assembly=OpenTK"
+                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Specifies multiple viewports used to render the six different views of a cubemap texture.</Description>
-  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q2="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
@@ -12,20 +18,20 @@
         <Property Name="FarClip" />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:CreateCubemapCamera">
-          <q1:Eye>
-            <q1:X>0</q1:X>
-            <q1:Y>0</q1:Y>
-            <q1:Z>0</q1:Z>
-          </q1:Eye>
-          <q1:NearClip>0.1</q1:NearClip>
-          <q1:FarClip>1000</q1:FarClip>
+        <Combinator xsi:type="gl:CreateCubemapCamera">
+          <gl:Eye>
+            <gl:X>0</gl:X>
+            <gl:Y>0</gl:Y>
+            <gl:Z>0</gl:Z>
+          </gl:Eye>
+          <gl:NearClip>0.1</gl:NearClip>
+          <gl:FarClip>1000</gl:FarClip>
         </Combinator>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Value" DisplayName="Light" Description="The position of the main point light." />
       </Expression>
-      <Expression xsi:type="PropertySourceOfCreateCubemapCameraVector3">
+      <Expression xsi:type="PropertySource" TypeArguments="gl:CreateCubemapCamera,q1:Vector3">
         <MemberName>Eye</MemberName>
         <Value>
           <X>0</X>
@@ -34,13 +40,13 @@
         </Value>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="WithLatestFrom" />
+        <Combinator xsi:type="rx:WithLatestFrom" />
       </Expression>
-      <Expression xsi:type="q2:ExpressionTransform">
-        <q2:Expression>new(
+      <Expression xsi:type="scr:ExpressionTransform">
+        <scr:Expression>new(
 Item1.ViewMatrix as ViewMatrix,
 Item1.ProjectionMatrix as ProjectionMatrix,
-Item2 as Light)</q2:Expression>
+Item2 as Light)</scr:Expression>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
     </Nodes>
@@ -55,10 +61,4 @@ Item2 as Light)</q2:Expression>
       <Edge From="6" To="7" Label="Source1" />
     </Edges>
   </Workflow>
-  <ExtensionTypes>
-    <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Shaders.CreateCubemapCamera, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null],[OpenTK.Vector3, OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.WithLatestFrom, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Scripting.ExpressionTransform, Bonsai.Scripting, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.CreateCubemapCamera, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-  </ExtensionTypes>
 </WorkflowBuilder>

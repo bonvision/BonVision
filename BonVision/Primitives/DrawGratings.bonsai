@@ -1,7 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.4.0-preview">
+<WorkflowBuilder Version="2.4.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:bv="clr-namespace:BonVision;assembly=BonVision"
+                 xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
+                 xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
+                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Draws parameterized 2D sinewave gratings.</Description>
-  <Workflow xmlns:q1="clr-namespace:BonVision;assembly=BonVision" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q2="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:q3="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
@@ -14,8 +21,8 @@
         <Property Name="Value" DisplayName="Angle" />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:AngleProperty">
-          <q1:Value>0</q1:Value>
+        <Combinator xsi:type="bv:AngleProperty">
+          <bv:Value>0</bv:Value>
         </Combinator>
       </Expression>
       <Expression xsi:type="PropertyMapping">
@@ -53,11 +60,11 @@
               <Property Name="Y" DisplayName="LocationY" />
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q2:Translate">
-                <q2:Order>Prepend</q2:Order>
-                <q2:X>0</q2:X>
-                <q2:Y>0</q2:Y>
-                <q2:Z>0</q2:Z>
+              <Combinator xsi:type="gl:Translate">
+                <gl:Order>Prepend</gl:Order>
+                <gl:X>0</gl:X>
+                <gl:Y>0</gl:Y>
+                <gl:Z>0</gl:Z>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
@@ -65,26 +72,26 @@
               <Property Name="Y" DisplayName="ExtentY" />
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q2:Scale">
-                <q2:Order>Prepend</q2:Order>
-                <q2:X>1</q2:X>
-                <q2:Y>1</q2:Y>
-                <q2:Z>1</q2:Z>
+              <Combinator xsi:type="gl:Scale">
+                <gl:Order>Prepend</gl:Order>
+                <gl:X>1</gl:X>
+                <gl:Y>1</gl:Y>
+                <gl:Z>1</gl:Z>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
               <Property Name="Angle" />
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q2:RotateZ">
-                <q2:Order>Prepend</q2:Order>
-                <q2:Angle>0</q2:Angle>
+              <Combinator xsi:type="gl:RotateZ">
+                <gl:Order>Prepend</gl:Order>
+                <gl:Angle>0</gl:Angle>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q2:UpdateUniform">
-                <q2:UniformName>transform</q2:UniformName>
-                <q2:ShaderName>Gratings</q2:ShaderName>
+              <Combinator xsi:type="gl:UpdateUniform">
+                <gl:UniformName>transform</gl:UniformName>
+                <gl:ShaderName>Gratings</gl:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
@@ -109,13 +116,13 @@
               <Name>Source1</Name>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q2:UpdateFrame" />
+              <Combinator xsi:type="gl:UpdateFrame" />
             </Expression>
             <Expression xsi:type="MemberSelector">
               <Selector>TimeStep.ElapsedTime</Selector>
             </Expression>
-            <Expression xsi:type="q3:ExpressionTransform">
-              <q3:Expression>single(it)</q3:Expression>
+            <Expression xsi:type="scr:ExpressionTransform">
+              <scr:Expression>single(it)</scr:Expression>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
               <Property Name="Value" DisplayName="TemporalFrequency" />
@@ -125,7 +132,7 @@
                 <Value>0</Value>
               </Operand>
             </Expression>
-            <Expression xsi:type="Accumulate" />
+            <Expression xsi:type="rx:Accumulate" />
             <Expression xsi:type="ExternalizedMapping">
               <Property Name="ExtentX" />
               <Property Name="ExtentY" />
@@ -141,14 +148,14 @@
                   <Expression xsi:type="ExternalizedMapping">
                     <Property Name="Value" DisplayName="ExtentX" />
                   </Expression>
-                  <Expression xsi:type="PropertySourceOfScaleSingle">
+                  <Expression xsi:type="PropertySource" TypeArguments="gl:Scale,sys:Single">
                     <MemberName>X</MemberName>
                     <Value>1</Value>
                   </Expression>
                   <Expression xsi:type="ExternalizedMapping">
                     <Property Name="Value" DisplayName="ExtentY" />
                   </Expression>
-                  <Expression xsi:type="PropertySourceOfScaleSingle">
+                  <Expression xsi:type="PropertySource" TypeArguments="gl:Scale,sys:Single">
                     <MemberName>Y</MemberName>
                     <Value>1</Value>
                   </Expression>
@@ -169,13 +176,13 @@
                     </Combinator>
                   </Expression>
                   <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="Zip" />
+                    <Combinator xsi:type="rx:Zip" />
                   </Expression>
-                  <Expression xsi:type="q3:ExpressionTransform">
-                    <q3:Expression>single(
+                  <Expression xsi:type="scr:ExpressionTransform">
+                    <scr:Expression>single(
 Math.Sqrt((Item1 * Math.Cos(Item4) * Item1 * Math.Cos(Item4)) +
 (Item2 * Math.Sin(Item4) * Item2 * Math.Sin(Item4))) * Item3
-)</q3:Expression>
+)</scr:Expression>
                   </Expression>
                   <Expression xsi:type="WorkflowOutput" />
                 </Nodes>
@@ -198,21 +205,21 @@ Math.Sqrt((Item1 * Math.Cos(Item4) * Item1 * Math.Cos(Item4)) +
               </Workflow>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q2:UpdateUniform">
-                <q2:UniformName>frequency</q2:UniformName>
-                <q2:ShaderName>Gratings</q2:ShaderName>
+              <Combinator xsi:type="gl:UpdateUniform">
+                <gl:UniformName>frequency</gl:UniformName>
+                <gl:ShaderName>Gratings</gl:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
               <Property Name="Value" DisplayName="Phase" />
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:AngleProperty">
-                <q1:Value>0</q1:Value>
+              <Combinator xsi:type="bv:AngleProperty">
+                <bv:Value>0</bv:Value>
               </Combinator>
             </Expression>
-            <Expression xsi:type="q3:ExpressionTransform">
-              <q3:Expression>it / (2 * Math.PI)</q3:Expression>
+            <Expression xsi:type="scr:ExpressionTransform">
+              <scr:Expression>it / (2 * Math.PI)</scr:Expression>
             </Expression>
             <Expression xsi:type="PropertyMapping">
               <PropertyMappings>
@@ -225,7 +232,7 @@ Math.Sqrt((Item1 * Math.Cos(Item4) * Item1 * Math.Cos(Item4)) +
               </Operand>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="WithLatestFrom" />
+              <Combinator xsi:type="rx:WithLatestFrom" />
             </Expression>
             <Expression xsi:type="MemberSelector">
               <Selector>Item2,Item1</Selector>
@@ -233,9 +240,9 @@ Math.Sqrt((Item1 * Math.Cos(Item4) * Item1 * Math.Cos(Item4)) +
             <Expression xsi:type="Divide" />
             <Expression xsi:type="MemberSelector" />
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q2:UpdateUniform">
-                <q2:UniformName>phase</q2:UniformName>
-                <q2:ShaderName>Gratings</q2:ShaderName>
+              <Combinator xsi:type="gl:UpdateUniform">
+                <gl:UniformName>phase</gl:UniformName>
+                <gl:ShaderName>Gratings</gl:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
@@ -279,13 +286,13 @@ Math.Sqrt((Item1 * Math.Cos(Item4) * Item1 * Math.Cos(Item4)) +
                 <Value>false</Value>
               </Combinator>
             </Expression>
-            <Expression xsi:type="q3:ExpressionTransform">
-              <q3:Expression>it ? 1 : 0</q3:Expression>
+            <Expression xsi:type="scr:ExpressionTransform">
+              <scr:Expression>it ? 1 : 0</scr:Expression>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q2:UpdateUniform">
-                <q2:UniformName>square</q2:UniformName>
-                <q2:ShaderName>Gratings</q2:ShaderName>
+              <Combinator xsi:type="gl:UpdateUniform">
+                <gl:UniformName>square</gl:UniformName>
+                <gl:ShaderName>Gratings</gl:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
@@ -297,9 +304,9 @@ Math.Sqrt((Item1 * Math.Cos(Item4) * Item1 * Math.Cos(Item4)) +
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q2:UpdateUniform">
-                <q2:UniformName>contrast</q2:UniformName>
-                <q2:ShaderName>Gratings</q2:ShaderName>
+              <Combinator xsi:type="gl:UpdateUniform">
+                <gl:UniformName>contrast</gl:UniformName>
+                <gl:ShaderName>Gratings</gl:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
@@ -332,9 +339,9 @@ Math.Sqrt((Item1 * Math.Cos(Item4) * Item1 * Math.Cos(Item4)) +
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q2:UpdateUniform">
-                <q2:UniformName>radius</q2:UniformName>
-                <q2:ShaderName>Gratings</q2:ShaderName>
+              <Combinator xsi:type="gl:UpdateUniform">
+                <gl:UniformName>radius</gl:UniformName>
+                <gl:ShaderName>Gratings</gl:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
@@ -342,13 +349,13 @@ Math.Sqrt((Item1 * Math.Cos(Item4) * Item1 * Math.Cos(Item4)) +
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="FloatProperty">
-                <Value>0.2</Value>
+                <Value>0</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q2:UpdateUniform">
-                <q2:UniformName>aperture</q2:UniformName>
-                <q2:ShaderName>Gratings</q2:ShaderName>
+              <Combinator xsi:type="gl:UpdateUniform">
+                <gl:UniformName>aperture</gl:UniformName>
+                <gl:ShaderName>Gratings</gl:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
@@ -360,9 +367,9 @@ Math.Sqrt((Item1 * Math.Cos(Item4) * Item1 * Math.Cos(Item4)) +
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q2:UpdateUniform">
-                <q2:UniformName>opacity</q2:UniformName>
-                <q2:ShaderName>Gratings</q2:ShaderName>
+              <Combinator xsi:type="gl:UpdateUniform">
+                <gl:UniformName>opacity</gl:UniformName>
+                <gl:ShaderName>Gratings</gl:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
@@ -382,9 +389,9 @@ Math.Sqrt((Item1 * Math.Cos(Item4) * Item1 * Math.Cos(Item4)) +
         </Workflow>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q2:DrawMesh">
-          <q2:ShaderName>Gratings</q2:ShaderName>
-          <q2:MeshName>Quad</q2:MeshName>
+        <Combinator xsi:type="gl:DrawMesh">
+          <gl:ShaderName>Gratings</gl:ShaderName>
+          <gl:MeshName>Quad</gl:MeshName>
         </Combinator>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
@@ -408,23 +415,4 @@ Math.Sqrt((Item1 * Math.Cos(Item4) * Item1 * Math.Cos(Item4)) +
       <Edge From="13" To="14" Label="Source1" />
     </Edges>
   </Workflow>
-  <ExtensionTypes>
-    <Type>Bonsai.Expressions.BooleanProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.DivideBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.FloatProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.MultiplyBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Shaders.Scale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null],[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.SubtractBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.AccumulateBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.WithLatestFrom, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.Zip, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Scripting.ExpressionTransform, Bonsai.Scripting, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.RotateZ, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.Scale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.Translate, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.UpdateFrame, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>BonVision.AngleProperty, BonVision, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null</Type>
-  </ExtensionTypes>
 </WorkflowBuilder>

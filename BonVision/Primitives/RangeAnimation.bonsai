@@ -1,10 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.4.0-preview">
+<WorkflowBuilder Version="2.4.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
+                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
+                 xmlns:dsp="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Animates a linear range of values between min and max at the specified cycles per second.</Description>
-  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q2="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp" xmlns:q3="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
     <Nodes>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:UpdateFrame" />
+        <Combinator xsi:type="gl:UpdateFrame" />
       </Expression>
       <Expression xsi:type="MemberSelector">
         <Selector>TimeStep.ElapsedTime</Selector>
@@ -22,25 +28,25 @@
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="First" />
+        <Combinator xsi:type="rx:First" />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="Concat" />
+        <Combinator xsi:type="rx:Concat" />
       </Expression>
       <Expression xsi:type="Divide">
         <Operand xsi:type="DoubleProperty">
           <Value>1</Value>
         </Operand>
       </Expression>
-      <Expression xsi:type="Accumulate" />
+      <Expression xsi:type="rx:Accumulate" />
       <Expression xsi:type="TakeWhile">
         <Workflow>
           <Nodes>
             <Expression xsi:type="WorkflowInput">
               <Name>Source1</Name>
             </Expression>
-            <Expression xsi:type="q3:ExpressionTransform">
-              <q3:Expression>single(it)</q3:Expression>
+            <Expression xsi:type="scr:ExpressionTransform">
+              <scr:Expression>single(it)</scr:Expression>
             </Expression>
             <Expression xsi:type="LessThanOrEqual">
               <Operand xsi:type="FloatProperty">
@@ -57,16 +63,16 @@
         </Workflow>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q2:Rescale">
-          <q2:Min>0</q2:Min>
-          <q2:Max>1</q2:Max>
-          <q2:RangeMin>-1</q2:RangeMin>
-          <q2:RangeMax>1</q2:RangeMax>
-          <q2:RescaleType>Linear</q2:RescaleType>
+        <Combinator xsi:type="dsp:Rescale">
+          <dsp:Min>0</dsp:Min>
+          <dsp:Max>1</dsp:Max>
+          <dsp:RangeMin>-1</dsp:RangeMin>
+          <dsp:RangeMax>1</dsp:RangeMax>
+          <dsp:RescaleType>Linear</dsp:RescaleType>
         </Combinator>
       </Expression>
-      <Expression xsi:type="q3:ExpressionTransform">
-        <q3:Expression>single(it)</q3:Expression>
+      <Expression xsi:type="scr:ExpressionTransform">
+        <scr:Expression>single(it)</scr:Expression>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
     </Nodes>
@@ -85,17 +91,4 @@
       <Edge From="11" To="12" Label="Source1" />
     </Edges>
   </Workflow>
-  <ExtensionTypes>
-    <Type>Bonsai.Dsp.Rescale, Bonsai.Dsp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.DivideBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.DoubleProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.FloatProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.LessThanOrEqualBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.TakeWhileBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.AccumulateBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.Concat, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.First, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Scripting.ExpressionTransform, Bonsai.Scripting, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.UpdateFrame, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-  </ExtensionTypes>
 </WorkflowBuilder>

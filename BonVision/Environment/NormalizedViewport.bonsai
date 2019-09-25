@@ -1,13 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.4.0-preview">
+<WorkflowBuilder Version="2.4.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Specifies an orthographic viewport with normalized screen coordinates for rapid prototyping of 2D environments.</Description>
-  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:AspectRatio" />
+        <Combinator xsi:type="gl:AspectRatio" />
       </Expression>
       <Expression xsi:type="Multiply">
         <Operand xsi:type="FloatProperty">
@@ -20,11 +23,11 @@
         </PropertyMappings>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:CreateOrthographic">
-          <q1:Width>4</q1:Width>
-          <q1:Height>2</q1:Height>
-          <q1:NearClip>0.1</q1:NearClip>
-          <q1:FarClip>1000</q1:FarClip>
+        <Combinator xsi:type="gl:CreateOrthographic">
+          <gl:Width>4</gl:Width>
+          <gl:Height>2</gl:Height>
+          <gl:NearClip>0.1</gl:NearClip>
+          <gl:FarClip>1000</gl:FarClip>
         </Combinator>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
@@ -37,10 +40,4 @@
       <Edge From="4" To="5" Label="Source1" />
     </Edges>
   </Workflow>
-  <ExtensionTypes>
-    <Type>Bonsai.Expressions.FloatProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.MultiplyBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.AspectRatio, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.CreateOrthographic, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-  </ExtensionTypes>
 </WorkflowBuilder>

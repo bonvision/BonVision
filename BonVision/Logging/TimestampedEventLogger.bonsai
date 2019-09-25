@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.4.0-preview">
+<WorkflowBuilder Version="2.4.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Creates and initializes a CSV file, and matching behavior subject, on which to timestamp and log events.</Description>
-  <Workflow xmlns:q1="clr-namespace:Bonsai.IO;assembly=Bonsai.System" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
@@ -10,7 +14,7 @@
         <Name>Events</Name>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="Timestamp" />
+        <Combinator xsi:type="rx:Timestamp" />
       </Expression>
       <Expression xsi:type="ExternalizedProperty">
         <MemberName>Name</MemberName>
@@ -33,8 +37,8 @@
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="Take">
-                <Count>1</Count>
+              <Combinator xsi:type="rx:Take">
+                <rx:Count>1</rx:Count>
               </Combinator>
             </Expression>
             <Expression xsi:type="Format">
@@ -62,14 +66,14 @@
         <MemberName>Suffix</MemberName>
         <Name>Suffix</Name>
       </Expression>
-      <Expression xsi:type="q1:CsvWriter">
-        <q1:FileName>Events.csv</q1:FileName>
-        <q1:Delimiter>,</q1:Delimiter>
-        <q1:Append>false</q1:Append>
-        <q1:Overwrite>true</q1:Overwrite>
-        <q1:Suffix>None</q1:Suffix>
-        <q1:IncludeHeader>false</q1:IncludeHeader>
-        <q1:Selector />
+      <Expression xsi:type="io:CsvWriter">
+        <io:FileName>Events.csv</io:FileName>
+        <io:Delimiter>,</io:Delimiter>
+        <io:Append>false</io:Append>
+        <io:Overwrite>true</io:Overwrite>
+        <io:Suffix>None</io:Suffix>
+        <io:IncludeHeader>false</io:IncludeHeader>
+        <io:Selector />
       </Expression>
     </Nodes>
     <Edges>
@@ -84,11 +88,4 @@
       <Edge From="8" To="9" Label="Source4" />
     </Edges>
   </Workflow>
-  <ExtensionTypes>
-    <Type>Bonsai.Expressions.FormatBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.StringProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.IO.CsvWriter, Bonsai.System, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.Take, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.Timestamp, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-  </ExtensionTypes>
 </WorkflowBuilder>

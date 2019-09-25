@@ -1,7 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.4.0-preview">
+<WorkflowBuilder Version="2.4.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
+                 xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Draws multiple colored circles using the input array as position data.</Description>
-  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
@@ -10,9 +15,9 @@
         <Name>DrawStimuli</Name>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:UpdateUniform">
-          <q1:UniformName>projection</q1:UniformName>
-          <q1:ShaderName>CircleArray</q1:ShaderName>
+        <Combinator xsi:type="gl:UpdateUniform">
+          <gl:UniformName>projection</gl:UniformName>
+          <gl:ShaderName>CircleArray</gl:ShaderName>
         </Combinator>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
@@ -22,7 +27,7 @@
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Value" DisplayName="Diameter" />
       </Expression>
-      <Expression xsi:type="PropertySourceOfCreateScaleSingle">
+      <Expression xsi:type="PropertySource" TypeArguments="gl:CreateScale,sys:Single">
         <MemberName>X</MemberName>
         <Value>0.02</Value>
       </Expression>
@@ -44,10 +49,10 @@
               <Property Name="Y" DisplayName="LocationY" />
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:CreateTranslation">
-                <q1:X>0</q1:X>
-                <q1:Y>0</q1:Y>
-                <q1:Z>0</q1:Z>
+              <Combinator xsi:type="gl:CreateTranslation">
+                <gl:X>0</gl:X>
+                <gl:Y>0</gl:Y>
+                <gl:Z>0</gl:Z>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
@@ -55,17 +60,17 @@
               <Property Name="Y" DisplayName="ExtentY" />
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:Scale">
-                <q1:Order>Prepend</q1:Order>
-                <q1:X>0.02</q1:X>
-                <q1:Y>0.02</q1:Y>
-                <q1:Z>1</q1:Z>
+              <Combinator xsi:type="gl:Scale">
+                <gl:Order>Prepend</gl:Order>
+                <gl:X>0.02</gl:X>
+                <gl:Y>0.02</gl:Y>
+                <gl:Z>1</gl:Z>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>transform</q1:UniformName>
-                <q1:ShaderName>CircleArray</q1:ShaderName>
+              <Combinator xsi:type="gl:UpdateUniform">
+                <gl:UniformName>transform</gl:UniformName>
+                <gl:ShaderName>CircleArray</gl:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
@@ -133,41 +138,41 @@
         </PropertyMappings>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:CreateVector4">
-          <q1:X>1</q1:X>
-          <q1:Y>1</q1:Y>
-          <q1:Z>1</q1:Z>
-          <q1:W>1</q1:W>
+        <Combinator xsi:type="gl:CreateVector4">
+          <gl:X>1</gl:X>
+          <gl:Y>1</gl:Y>
+          <gl:Z>1</gl:Z>
+          <gl:W>1</gl:W>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:UpdateUniform">
-          <q1:UniformName>color</q1:UniformName>
-          <q1:ShaderName>CircleArray</q1:ShaderName>
+        <Combinator xsi:type="gl:UpdateUniform">
+          <gl:UniformName>color</gl:UniformName>
+          <gl:ShaderName>CircleArray</gl:ShaderName>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="CombineLatest" />
+        <Combinator xsi:type="rx:CombineLatest" />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="Sample" />
+        <Combinator xsi:type="rx:Sample" />
       </Expression>
       <Expression xsi:type="MemberSelector">
         <Selector>Item1</Selector>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:DrawMeshInstanced">
-          <q1:ShaderName>CircleArray</q1:ShaderName>
-          <q1:MeshName>Quad</q1:MeshName>
-          <q1:Usage>DynamicDraw</q1:Usage>
-          <q1:InstanceAttributes>
-            <q1:InstanceAttributeMapping>
-              <q1:Size>2</q1:Size>
-              <q1:Normalized>false</q1:Normalized>
-              <q1:Type>Float</q1:Type>
-              <q1:Divisor>1</q1:Divisor>
-            </q1:InstanceAttributeMapping>
-          </q1:InstanceAttributes>
+        <Combinator xsi:type="gl:DrawMeshInstanced">
+          <gl:ShaderName>CircleArray</gl:ShaderName>
+          <gl:MeshName>Quad</gl:MeshName>
+          <gl:Usage>DynamicDraw</gl:Usage>
+          <gl:InstanceAttributes>
+            <gl:InstanceAttributeMapping>
+              <gl:Size>2</gl:Size>
+              <gl:Normalized>false</gl:Normalized>
+              <gl:Type>Float</gl:Type>
+              <gl:Divisor>1</gl:Divisor>
+            </gl:InstanceAttributeMapping>
+          </gl:InstanceAttributes>
         </Combinator>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
@@ -202,15 +207,4 @@
       <Edge From="25" To="26" Label="Source1" />
     </Edges>
   </Workflow>
-  <ExtensionTypes>
-    <Type>Bonsai.Expressions.FloatProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Shaders.CreateScale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null],[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.CombineLatest, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.Sample, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.CreateTranslation, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.CreateVector4, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.DrawMeshInstanced, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.Scale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-  </ExtensionTypes>
 </WorkflowBuilder>

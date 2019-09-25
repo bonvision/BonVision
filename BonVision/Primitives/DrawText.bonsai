@@ -1,24 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.4.0-preview">
+<WorkflowBuilder Version="2.4.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
+                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns:drw="clr-namespace:Bonsai.Vision.Drawing;assembly=Bonsai.Vision"
+                 xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                 xmlns:q1="clr-namespace:System.Drawing;assembly=System.Drawing"
+                 xmlns:q2="clr-namespace:System.Drawing.Text;assembly=System.Drawing"
+                 xmlns:q3="clr-namespace:OpenCV.Net;assembly=OpenCV.Net"
+                 xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
+                 xmlns:bv="clr-namespace:BonVision;assembly=BonVision"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Draws affine transformed multi-line text using the specified style.</Description>
-  <Workflow xmlns:q2="clr-namespace:BonVision;assembly=BonVision" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q3="clr-namespace:Bonsai.Vision.Drawing;assembly=Bonsai.Vision" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q4="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:UpdateFrame" />
+        <Combinator xsi:type="gl:UpdateFrame" />
       </Expression>
       <Expression xsi:type="MemberSelector">
         <Selector>Sender.Size</Selector>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="DistinctUntilChanged" />
+        <Combinator xsi:type="rx:DistinctUntilChanged" />
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Value" DisplayName="Text" />
       </Expression>
-      <Expression xsi:type="PropertySourceOfAddTextBoxString">
+      <Expression xsi:type="PropertySource" TypeArguments="drw:AddTextBox,sys:String">
         <MemberName>Text</MemberName>
         <Value />
       </Expression>
@@ -26,35 +37,35 @@
         <Property Name="Font" Category="Text Style" />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q3:CreateFont">
-          <q3:Font>Microsoft Sans Serif, 13.875pt</q3:Font>
+        <Combinator xsi:type="drw:CreateFont">
+          <drw:Font>Microsoft Sans Serif, 13.875pt</drw:Font>
         </Combinator>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Value" DisplayName="Alignment" />
       </Expression>
-      <Expression xsi:type="PropertySourceOfAddTextBoxStringAlignment">
+      <Expression xsi:type="PropertySource" TypeArguments="drw:AddTextBox,q1:StringAlignment">
         <MemberName>Alignment</MemberName>
         <Value>Center</Value>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Value" DisplayName="LineAlignment" />
       </Expression>
-      <Expression xsi:type="PropertySourceOfAddTextBoxStringAlignment">
+      <Expression xsi:type="PropertySource" TypeArguments="drw:AddTextBox,q1:StringAlignment">
         <MemberName>LineAlignment</MemberName>
         <Value>Center</Value>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Value" DisplayName="TextRenderingHint" />
       </Expression>
-      <Expression xsi:type="PropertySourceOfAddTextBoxTextRenderingHint">
+      <Expression xsi:type="PropertySource" TypeArguments="drw:AddTextBox,q2:TextRenderingHint">
         <MemberName>TextRenderingHint</MemberName>
         <Value>AntiAliasGridFit</Value>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Value" DisplayName="Color" Category="Text Style" />
       </Expression>
-      <Expression xsi:type="PropertySourceOfAddTextBoxScalar">
+      <Expression xsi:type="PropertySource" TypeArguments="drw:AddTextBox,q3:Scalar">
         <MemberName>Color</MemberName>
         <Value>
           <Val0>255</Val0>
@@ -66,7 +77,7 @@
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Value" DisplayName="ExtentX" />
       </Expression>
-      <Expression xsi:type="PropertySourceOfScaleSingle">
+      <Expression xsi:type="PropertySource" TypeArguments="gl:Scale,sys:Single">
         <MemberName>X</MemberName>
         <Value>1</Value>
       </Expression>
@@ -75,14 +86,14 @@
           <Property Name="ExtentX" />
         </PropertyMappings>
       </Expression>
-      <Expression xsi:type="PropertySourceOfScaleSingle">
+      <Expression xsi:type="PropertySource" TypeArguments="gl:Scale,sys:Single">
         <MemberName>X</MemberName>
         <Value>1</Value>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Value" DisplayName="ExtentY" />
       </Expression>
-      <Expression xsi:type="PropertySourceOfScaleSingle">
+      <Expression xsi:type="PropertySource" TypeArguments="gl:Scale,sys:Single">
         <MemberName>Y</MemberName>
         <Value>1</Value>
       </Expression>
@@ -91,23 +102,23 @@
           <Property Name="ExtentY" />
         </PropertyMappings>
       </Expression>
-      <Expression xsi:type="PropertySourceOfScaleSingle">
+      <Expression xsi:type="PropertySource" TypeArguments="gl:Scale,sys:Single">
         <MemberName>Y</MemberName>
         <Value>1</Value>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="CombineLatest" />
+        <Combinator xsi:type="rx:CombineLatest" />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:SampleOnUpdateFrame" />
+        <Combinator xsi:type="gl:SampleOnUpdateFrame" />
       </Expression>
-      <Expression xsi:type="q4:ExpressionTransform">
-        <q4:Expression>new(
+      <Expression xsi:type="scr:ExpressionTransform">
+        <scr:Expression>new(
 Item1 * Item3.Width as Width,
-Item2 * Item3.Height as Height)</q4:Expression>
+Item2 * Item3.Height as Height)</scr:Expression>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="CombineLatest" />
+        <Combinator xsi:type="rx:CombineLatest" />
       </Expression>
       <Expression xsi:type="InputMapping">
         <PropertyMappings>
@@ -140,40 +151,40 @@ Item2 * Item3.Height as Height)</q4:Expression>
               <Property Name="Size" />
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q3:CreateCanvas">
-                <q3:Size>
-                  <q3:Width>1306</q3:Width>
-                  <q3:Height>1031</q3:Height>
-                </q3:Size>
-                <q3:Depth>U8</q3:Depth>
-                <q3:Channels>4</q3:Channels>
-                <q3:Color>
-                  <q3:Val0>0</q3:Val0>
-                  <q3:Val1>0</q3:Val1>
-                  <q3:Val2>0</q3:Val2>
-                  <q3:Val3>0</q3:Val3>
-                </q3:Color>
+              <Combinator xsi:type="drw:CreateCanvas">
+                <drw:Size>
+                  <drw:Width>1306</drw:Width>
+                  <drw:Height>1031</drw:Height>
+                </drw:Size>
+                <drw:Depth>U8</drw:Depth>
+                <drw:Channels>4</drw:Channels>
+                <drw:Color>
+                  <drw:Val0>0</drw:Val0>
+                  <drw:Val1>0</drw:Val1>
+                  <drw:Val2>0</drw:Val2>
+                  <drw:Val3>0</drw:Val3>
+                </drw:Color>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q3:AddTextBox">
-                <q3:Text />
-                <q3:Alignment>Near</q3:Alignment>
-                <q3:LineAlignment>Center</q3:LineAlignment>
-                <q3:TextRenderingHint>AntiAliasGridFit</q3:TextRenderingHint>
-                <q3:Color>
-                  <q3:Val0>255</q3:Val0>
-                  <q3:Val1>255</q3:Val1>
-                  <q3:Val2>255</q3:Val2>
-                  <q3:Val3>255</q3:Val3>
-                </q3:Color>
-                <q3:Font>Microsoft Sans Serif, 13.875pt</q3:Font>
-                <q3:Destination>
-                  <q3:X>0</q3:X>
-                  <q3:Y>0</q3:Y>
-                  <q3:Width>0</q3:Width>
-                  <q3:Height>0</q3:Height>
-                </q3:Destination>
+              <Combinator xsi:type="drw:AddTextBox">
+                <drw:Text />
+                <drw:Alignment>Near</drw:Alignment>
+                <drw:LineAlignment>Center</drw:LineAlignment>
+                <drw:TextRenderingHint>AntiAliasGridFit</drw:TextRenderingHint>
+                <drw:Color>
+                  <drw:Val0>255</drw:Val0>
+                  <drw:Val1>255</drw:Val1>
+                  <drw:Val2>255</drw:Val2>
+                  <drw:Val3>255</drw:Val3>
+                </drw:Color>
+                <drw:Font>Microsoft Sans Serif, 13.875pt</drw:Font>
+                <drw:Destination>
+                  <drw:X>0</drw:X>
+                  <drw:Y>0</drw:Y>
+                  <drw:Width>0</drw:Width>
+                  <drw:Height>0</drw:Height>
+                </drw:Destination>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
@@ -188,39 +199,39 @@ Item2 * Item3.Height as Height)</q4:Expression>
         </Workflow>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q3:DrawCanvas" />
+        <Combinator xsi:type="drw:DrawCanvas" />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:StoreImage">
-          <q1:Width xsi:nil="true" />
-          <q1:Height xsi:nil="true" />
-          <q1:InternalFormat>Rgba</q1:InternalFormat>
-          <q1:WrapS>Repeat</q1:WrapS>
-          <q1:WrapT>Repeat</q1:WrapT>
-          <q1:MinFilter>Linear</q1:MinFilter>
-          <q1:MagFilter>Linear</q1:MagFilter>
+        <Combinator xsi:type="gl:StoreImage">
+          <gl:Width xsi:nil="true" />
+          <gl:Height xsi:nil="true" />
+          <gl:InternalFormat>Rgba</gl:InternalFormat>
+          <gl:WrapS>Repeat</gl:WrapS>
+          <gl:WrapT>Repeat</gl:WrapT>
+          <gl:MinFilter>Linear</gl:MinFilter>
+          <gl:MagFilter>Linear</gl:MagFilter>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="WithLatestFrom" />
+        <Combinator xsi:type="rx:WithLatestFrom" />
       </Expression>
       <Expression xsi:type="MemberSelector">
         <Selector>Item2</Selector>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:BindTexture">
-          <q1:TextureSlot>Texture0</q1:TextureSlot>
-          <q1:ShaderName>Image</q1:ShaderName>
-          <q1:TextureName />
-          <q1:TextureTarget>Texture2D</q1:TextureTarget>
+        <Combinator xsi:type="gl:BindTexture">
+          <gl:TextureSlot>Texture0</gl:TextureSlot>
+          <gl:ShaderName>Image</gl:ShaderName>
+          <gl:TextureName />
+          <gl:TextureTarget>Texture2D</gl:TextureTarget>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:CreateOrthographic">
-          <q1:Width>2</q1:Width>
-          <q1:Height>2</q1:Height>
-          <q1:NearClip>0.1</q1:NearClip>
-          <q1:FarClip>1000</q1:FarClip>
+        <Combinator xsi:type="gl:CreateOrthographic">
+          <gl:Width>2</gl:Width>
+          <gl:Height>2</gl:Height>
+          <gl:NearClip>0.1</gl:NearClip>
+          <gl:FarClip>1000</gl:FarClip>
         </Combinator>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
@@ -231,8 +242,8 @@ Item2 * Item3.Height as Height)</q4:Expression>
         <Property Name="Value" DisplayName="Angle" />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q2:AngleProperty">
-          <q2:Value>0</q2:Value>
+        <Combinator xsi:type="bv:AngleProperty">
+          <bv:Value>0</bv:Value>
         </Combinator>
       </Expression>
       <Expression xsi:type="PropertyMapping">
@@ -252,20 +263,20 @@ Item2 * Item3.Height as Height)</q4:Expression>
               <Property Name="Y" DisplayName="LocationY" />
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:Translate">
-                <q1:Order>Prepend</q1:Order>
-                <q1:X>0</q1:X>
-                <q1:Y>0</q1:Y>
-                <q1:Z>0</q1:Z>
+              <Combinator xsi:type="gl:Translate">
+                <gl:Order>Prepend</gl:Order>
+                <gl:X>0</gl:X>
+                <gl:Y>0</gl:Y>
+                <gl:Z>0</gl:Z>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
               <Property Name="Angle" />
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:RotateZ">
-                <q1:Order>Prepend</q1:Order>
-                <q1:Angle>0</q1:Angle>
+              <Combinator xsi:type="gl:RotateZ">
+                <gl:Order>Prepend</gl:Order>
+                <gl:Angle>0</gl:Angle>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
@@ -273,25 +284,25 @@ Item2 * Item3.Height as Height)</q4:Expression>
               <Property Name="Y" DisplayName="ExtentY" />
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:Scale">
-                <q1:Order>Prepend</q1:Order>
-                <q1:X>1</q1:X>
-                <q1:Y>1</q1:Y>
-                <q1:Z>1</q1:Z>
+              <Combinator xsi:type="gl:Scale">
+                <gl:Order>Prepend</gl:Order>
+                <gl:X>1</gl:X>
+                <gl:Y>1</gl:Y>
+                <gl:Z>1</gl:Z>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:Scale">
-                <q1:Order>Prepend</q1:Order>
-                <q1:X>1</q1:X>
-                <q1:Y>-1</q1:Y>
-                <q1:Z>1</q1:Z>
+              <Combinator xsi:type="gl:Scale">
+                <gl:Order>Prepend</gl:Order>
+                <gl:X>1</gl:X>
+                <gl:Y>-1</gl:Y>
+                <gl:Z>1</gl:Z>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>transform</q1:UniformName>
-                <q1:ShaderName>Image</q1:ShaderName>
+              <Combinator xsi:type="gl:UpdateUniform">
+                <gl:UniformName>transform</gl:UniformName>
+                <gl:ShaderName>Image</gl:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
@@ -310,9 +321,9 @@ Item2 * Item3.Height as Height)</q4:Expression>
         </Workflow>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:DrawMesh">
-          <q1:ShaderName>Image</q1:ShaderName>
-          <q1:MeshName>Quad</q1:MeshName>
+        <Combinator xsi:type="gl:DrawMesh">
+          <gl:ShaderName>Image</gl:ShaderName>
+          <gl:MeshName>Quad</gl:MeshName>
         </Combinator>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
@@ -364,30 +375,4 @@ Item2 * Item3.Height as Height)</q4:Expression>
       <Edge From="41" To="42" Label="Source1" />
     </Edges>
   </Workflow>
-  <ExtensionTypes>
-    <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Shaders.Scale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null],[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Vision.Drawing.AddTextBox, Bonsai.Vision, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null],[OpenCV.Net.Scalar, OpenCV.Net, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Vision.Drawing.AddTextBox, Bonsai.Vision, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null],[System.Drawing.StringAlignment, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Vision.Drawing.AddTextBox, Bonsai.Vision, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null],[System.Drawing.Text.TextRenderingHint, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Vision.Drawing.AddTextBox, Bonsai.Vision, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.CombineLatest, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.DistinctUntilChanged, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.WithLatestFrom, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Scripting.ExpressionTransform, Bonsai.Scripting, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.BindTexture, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.CreateOrthographic, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.RotateZ, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.SampleOnUpdateFrame, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.Scale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.StoreImage, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.Translate, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.UpdateFrame, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Vision.Drawing.AddTextBox, Bonsai.Vision, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Vision.Drawing.CreateCanvas, Bonsai.Vision, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Vision.Drawing.CreateFont, Bonsai.Vision, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Vision.Drawing.DrawCanvas, Bonsai.Vision, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>BonVision.AngleProperty, BonVision, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null</Type>
-  </ExtensionTypes>
 </WorkflowBuilder>

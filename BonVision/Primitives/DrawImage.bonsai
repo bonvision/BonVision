@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.4.0-preview">
+<WorkflowBuilder Version="2.4.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:bv="clr-namespace:BonVision;assembly=BonVision"
+                 xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Draws an affine transformed 2D image.</Description>
-  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q2="clr-namespace:BonVision;assembly=BonVision" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
@@ -11,8 +15,8 @@
         <Name>Angle</Name>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q2:AngleProperty">
-          <q2:Value>0</q2:Value>
+        <Combinator xsi:type="bv:AngleProperty">
+          <bv:Value>0</bv:Value>
         </Combinator>
       </Expression>
       <Expression xsi:type="PropertyMapping">
@@ -24,11 +28,11 @@
         <Property Name="TextureName" />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:BindTexture">
-          <q1:TextureSlot>Texture0</q1:TextureSlot>
-          <q1:ShaderName>Image</q1:ShaderName>
-          <q1:TextureName />
-          <q1:TextureTarget>Texture2D</q1:TextureTarget>
+        <Combinator xsi:type="gl:BindTexture">
+          <gl:TextureSlot>Texture0</gl:TextureSlot>
+          <gl:ShaderName>Image</gl:ShaderName>
+          <gl:TextureName />
+          <gl:TextureTarget>Texture2D</gl:TextureTarget>
         </Combinator>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
@@ -49,11 +53,11 @@
               <Property Name="Y" DisplayName="LocationY" />
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:Translate">
-                <q1:Order>Prepend</q1:Order>
-                <q1:X>0</q1:X>
-                <q1:Y>0</q1:Y>
-                <q1:Z>0</q1:Z>
+              <Combinator xsi:type="gl:Translate">
+                <gl:Order>Prepend</gl:Order>
+                <gl:X>0</gl:X>
+                <gl:Y>0</gl:Y>
+                <gl:Z>0</gl:Z>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
@@ -61,26 +65,26 @@
               <Property Name="Y" DisplayName="ExtentY" />
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:Scale">
-                <q1:Order>Prepend</q1:Order>
-                <q1:X>1</q1:X>
-                <q1:Y>1</q1:Y>
-                <q1:Z>1</q1:Z>
+              <Combinator xsi:type="gl:Scale">
+                <gl:Order>Prepend</gl:Order>
+                <gl:X>1</gl:X>
+                <gl:Y>1</gl:Y>
+                <gl:Z>1</gl:Z>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
               <Property Name="Angle" />
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:RotateZ">
-                <q1:Order>Prepend</q1:Order>
-                <q1:Angle>0</q1:Angle>
+              <Combinator xsi:type="gl:RotateZ">
+                <gl:Order>Prepend</gl:Order>
+                <gl:Angle>0</gl:Angle>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>transform</q1:UniformName>
-                <q1:ShaderName>Image</q1:ShaderName>
+              <Combinator xsi:type="gl:UpdateUniform">
+                <gl:UniformName>transform</gl:UniformName>
+                <gl:ShaderName>Image</gl:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
@@ -113,19 +117,19 @@
               <Property Name="Y" DisplayName="ShiftY" />
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:CreateScale">
-                <q1:X>0</q1:X>
-                <q1:Y>0</q1:Y>
-                <q1:Z>1</q1:Z>
+              <Combinator xsi:type="gl:CreateScale">
+                <gl:X>0</gl:X>
+                <gl:Y>0</gl:Y>
+                <gl:Z>1</gl:Z>
               </Combinator>
             </Expression>
             <Expression xsi:type="MemberSelector">
               <Selector>M11,M22</Selector>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:UpdateUniform">
-                <q1:UniformName>shift</q1:UniformName>
-                <q1:ShaderName>Image</q1:ShaderName>
+              <Combinator xsi:type="gl:UpdateUniform">
+                <gl:UniformName>shift</gl:UniformName>
+                <gl:ShaderName>Image</gl:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
@@ -140,9 +144,9 @@
         </Workflow>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:DrawMesh">
-          <q1:ShaderName>Image</q1:ShaderName>
-          <q1:MeshName>Quad</q1:MeshName>
+        <Combinator xsi:type="gl:DrawMesh">
+          <gl:ShaderName>Image</gl:ShaderName>
+          <gl:MeshName>Quad</gl:MeshName>
         </Combinator>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
@@ -161,14 +165,4 @@
       <Edge From="10" To="11" Label="Source1" />
     </Edges>
   </Workflow>
-  <ExtensionTypes>
-    <Type>Bonsai.Shaders.BindTexture, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.CreateScale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.RotateZ, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.Scale, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.Translate, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>BonVision.AngleProperty, BonVision, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null</Type>
-  </ExtensionTypes>
 </WorkflowBuilder>

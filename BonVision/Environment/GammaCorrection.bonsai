@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.4.0-preview">
+<WorkflowBuilder Version="2.4.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
+                 xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Renders the current scene to a texture and applies gamma correction as a post-processing effect.</Description>
-  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
@@ -12,30 +16,30 @@
         <Category>Misc</Category>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:RenderTexture">
-          <q1:RenderState />
-          <q1:ClearColor>Gray</q1:ClearColor>
-          <q1:ClearMask>DepthBufferBit ColorBufferBit</q1:ClearMask>
-          <q1:Width xsi:nil="true" />
-          <q1:Height xsi:nil="true" />
-          <q1:InternalFormat>Rgb</q1:InternalFormat>
-          <q1:WrapS>ClampToEdge</q1:WrapS>
-          <q1:WrapT>ClampToEdge</q1:WrapT>
-          <q1:MinFilter>Linear</q1:MinFilter>
-          <q1:MagFilter>Linear</q1:MagFilter>
+        <Combinator xsi:type="gl:RenderTexture">
+          <gl:RenderState />
+          <gl:ClearColor>Gray</gl:ClearColor>
+          <gl:ClearMask>DepthBufferBit ColorBufferBit</gl:ClearMask>
+          <gl:Width xsi:nil="true" />
+          <gl:Height xsi:nil="true" />
+          <gl:InternalFormat>Rgb</gl:InternalFormat>
+          <gl:WrapS>ClampToEdge</gl:WrapS>
+          <gl:WrapT>ClampToEdge</gl:WrapT>
+          <gl:MinFilter>Linear</gl:MinFilter>
+          <gl:MagFilter>Linear</gl:MagFilter>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:BindTexture">
-          <q1:TextureSlot>Texture0</q1:TextureSlot>
-          <q1:ShaderName>Gamma</q1:ShaderName>
-          <q1:TextureTarget>Texture2D</q1:TextureTarget>
+        <Combinator xsi:type="gl:BindTexture">
+          <gl:TextureSlot>Texture0</gl:TextureSlot>
+          <gl:ShaderName>Gamma</gl:ShaderName>
+          <gl:TextureTarget>Texture2D</gl:TextureTarget>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:DrawMesh">
-          <q1:ShaderName>Gamma</q1:ShaderName>
-          <q1:MeshName>ViewportQuad</q1:MeshName>
+        <Combinator xsi:type="gl:DrawMesh">
+          <gl:ShaderName>Gamma</gl:ShaderName>
+          <gl:MeshName>ViewportQuad</gl:MeshName>
         </Combinator>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
@@ -43,7 +47,7 @@
         <MemberName>Value</MemberName>
         <Name>GammaLut</Name>
       </Expression>
-      <Expression xsi:type="PropertySourceOfLoadImageString">
+      <Expression xsi:type="PropertySource" TypeArguments="gl:LoadImage,sys:String">
         <MemberName>FileName</MemberName>
       </Expression>
       <Expression xsi:type="InputMapping">
@@ -52,23 +56,23 @@
         </PropertyMappings>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:LoadImage">
-          <q1:Width xsi:nil="true" />
-          <q1:Height xsi:nil="true" />
-          <q1:InternalFormat>Rgba</q1:InternalFormat>
-          <q1:WrapS>ClampToEdge</q1:WrapS>
-          <q1:WrapT>ClampToEdge</q1:WrapT>
-          <q1:MinFilter>Linear</q1:MinFilter>
-          <q1:MagFilter>Linear</q1:MagFilter>
-          <q1:ColorType>Unchanged</q1:ColorType>
-          <q1:FlipMode>Vertical</q1:FlipMode>
+        <Combinator xsi:type="gl:LoadImage">
+          <gl:Width xsi:nil="true" />
+          <gl:Height xsi:nil="true" />
+          <gl:InternalFormat>Rgba</gl:InternalFormat>
+          <gl:WrapS>ClampToEdge</gl:WrapS>
+          <gl:WrapT>ClampToEdge</gl:WrapT>
+          <gl:MinFilter>Linear</gl:MinFilter>
+          <gl:MagFilter>Linear</gl:MagFilter>
+          <gl:ColorType>Unchanged</gl:ColorType>
+          <gl:FlipMode>Vertical</gl:FlipMode>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:BindTexture">
-          <q1:TextureSlot>Texture1</q1:TextureSlot>
-          <q1:ShaderName>Gamma</q1:ShaderName>
-          <q1:TextureTarget>Texture2D</q1:TextureTarget>
+        <Combinator xsi:type="gl:BindTexture">
+          <gl:TextureSlot>Texture1</gl:TextureSlot>
+          <gl:ShaderName>Gamma</gl:ShaderName>
+          <gl:TextureTarget>Texture2D</gl:TextureTarget>
         </Combinator>
       </Expression>
     </Nodes>
@@ -84,11 +88,4 @@
       <Edge From="9" To="10" Label="Source1" />
     </Edges>
   </Workflow>
-  <ExtensionTypes>
-    <Type>Bonsai.Expressions.PropertySource`2[[Bonsai.Shaders.LoadImage, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.BindTexture, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.LoadImage, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.RenderTexture, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-  </ExtensionTypes>
 </WorkflowBuilder>

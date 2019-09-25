@@ -1,16 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.4.0-preview">
+<WorkflowBuilder Version="2.4.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
+                 xmlns:cv="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Renders the sphere map from the perspective of a viewing window of the specified size, position and orientation relative to the origin.</Description>
-  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q2="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:BindTexture">
-          <q1:TextureSlot>Texture0</q1:TextureSlot>
-          <q1:ShaderName>SphereMap</q1:ShaderName>
-          <q1:TextureTarget>TextureCubeMap</q1:TextureTarget>
+        <Combinator xsi:type="gl:BindTexture">
+          <gl:TextureSlot>Texture0</gl:TextureSlot>
+          <gl:ShaderName>SphereMap</gl:ShaderName>
+          <gl:TextureTarget>TextureCubeMap</gl:TextureTarget>
         </Combinator>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
@@ -18,15 +22,15 @@
         <Property Name="Y" DisplayName="Height" Description="The height of the viewing window, in metric units." Category="Dimensions" />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:CreateVector2">
-          <q1:X>20</q1:X>
-          <q1:Y>15</q1:Y>
+        <Combinator xsi:type="gl:CreateVector2">
+          <gl:X>20</gl:X>
+          <gl:Y>15</gl:Y>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:UpdateUniform">
-          <q1:UniformName>scale</q1:UniformName>
-          <q1:ShaderName>SphereMap</q1:ShaderName>
+        <Combinator xsi:type="gl:UpdateUniform">
+          <gl:UniformName>scale</gl:UniformName>
+          <gl:ShaderName>SphereMap</gl:ShaderName>
         </Combinator>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
@@ -34,35 +38,35 @@
         <Property Name="Translation" Category="Extrinsics" />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q2:CreateExtrinsics">
-          <q2:Rotation>
-            <q2:X>0</q2:X>
-            <q2:Y>0</q2:Y>
-            <q2:Z>0</q2:Z>
-          </q2:Rotation>
-          <q2:Translation>
-            <q2:X>0</q2:X>
-            <q2:Y>0</q2:Y>
-            <q2:Z>-10</q2:Z>
-          </q2:Translation>
+        <Combinator xsi:type="cv:CreateExtrinsics">
+          <cv:Rotation>
+            <cv:X>0</cv:X>
+            <cv:Y>0</cv:Y>
+            <cv:Z>0</cv:Z>
+          </cv:Rotation>
+          <cv:Translation>
+            <cv:X>0</cv:X>
+            <cv:Y>0</cv:Y>
+            <cv:Z>-10</cv:Z>
+          </cv:Translation>
         </Combinator>
       </Expression>
       <Expression xsi:type="MemberSelector">
         <Selector>Rotation,Translation</Selector>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:ExtrinsicsTransform" />
+        <Combinator xsi:type="gl:ExtrinsicsTransform" />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:UpdateUniform">
-          <q1:UniformName>transform</q1:UniformName>
-          <q1:ShaderName>SphereMap</q1:ShaderName>
+        <Combinator xsi:type="gl:UpdateUniform">
+          <gl:UniformName>transform</gl:UniformName>
+          <gl:ShaderName>SphereMap</gl:ShaderName>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:DrawMesh">
-          <q1:ShaderName>SphereMap</q1:ShaderName>
-          <q1:MeshName>ViewportQuad</q1:MeshName>
+        <Combinator xsi:type="gl:DrawMesh">
+          <gl:ShaderName>SphereMap</gl:ShaderName>
+          <gl:MeshName>ViewportQuad</gl:MeshName>
         </Combinator>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
@@ -81,12 +85,4 @@
       <Edge From="10" To="11" Label="Source1" />
     </Edges>
   </Workflow>
-  <ExtensionTypes>
-    <Type>Bonsai.Shaders.BindTexture, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.CreateVector2, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.DrawMesh, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.ExtrinsicsTransform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.UpdateUniform, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Vision.CreateExtrinsics, Bonsai.Vision, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-  </ExtensionTypes>
 </WorkflowBuilder>

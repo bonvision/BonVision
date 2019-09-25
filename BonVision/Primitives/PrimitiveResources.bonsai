@@ -1,28 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.4.0-preview">
+<WorkflowBuilder Version="2.4.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Loads mesh and shader resources for rendering primitive stimuli.</Description>
-  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:UpdateRenderState">
-          <q1:RenderState>
-            <q1:StateConfiguration xsi:type="q1:EnableState">
-              <q1:Capability>Blend</q1:Capability>
-            </q1:StateConfiguration>
-            <q1:StateConfiguration xsi:type="q1:EnableState">
-              <q1:Capability>DepthTest</q1:Capability>
-            </q1:StateConfiguration>
-            <q1:StateConfiguration xsi:type="q1:BlendFunctionState">
-              <q1:SourceFactor>SrcAlpha</q1:SourceFactor>
-              <q1:DestinationFactor>OneMinusSrcAlpha</q1:DestinationFactor>
-            </q1:StateConfiguration>
-            <q1:StateConfiguration xsi:type="q1:DepthFunctionState">
-              <q1:Function>Lequal</q1:Function>
-            </q1:StateConfiguration>
-          </q1:RenderState>
+        <Combinator xsi:type="gl:UpdateRenderState">
+          <gl:RenderState>
+            <gl:StateConfiguration xsi:type="gl:EnableState">
+              <gl:Capability>Blend</gl:Capability>
+            </gl:StateConfiguration>
+            <gl:StateConfiguration xsi:type="gl:EnableState">
+              <gl:Capability>DepthTest</gl:Capability>
+            </gl:StateConfiguration>
+            <gl:StateConfiguration xsi:type="gl:BlendFunctionState">
+              <gl:SourceFactor>SrcAlpha</gl:SourceFactor>
+              <gl:DestinationFactor>OneMinusSrcAlpha</gl:DestinationFactor>
+            </gl:StateConfiguration>
+            <gl:StateConfiguration xsi:type="gl:DepthFunctionState">
+              <gl:Function>Lequal</gl:Function>
+            </gl:StateConfiguration>
+          </gl:RenderState>
         </Combinator>
       </Expression>
       <Expression xsi:type="NestedWorkflow">
@@ -33,23 +36,23 @@
               <Name>Source1</Name>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:MeshResources">
-                <q1:Meshes>
-                  <q1:MeshConfiguration xsi:type="q1:TexturedQuad">
-                    <q1:Name>Quad</q1:Name>
-                    <q1:QuadEffects>None</q1:QuadEffects>
-                  </q1:MeshConfiguration>
-                  <q1:MeshConfiguration xsi:type="q1:TexturedQuad">
-                    <q1:Name>ViewportQuad</q1:Name>
-                    <q1:QuadEffects>None</q1:QuadEffects>
-                  </q1:MeshConfiguration>
-                  <q1:MeshConfiguration>
-                    <q1:Name>MeshMap</q1:Name>
-                  </q1:MeshConfiguration>
-                  <q1:MeshConfiguration>
-                    <q1:Name>SphereMap</q1:Name>
-                  </q1:MeshConfiguration>
-                </q1:Meshes>
+              <Combinator xsi:type="gl:MeshResources">
+                <gl:Meshes>
+                  <gl:MeshConfiguration xsi:type="gl:TexturedQuad">
+                    <gl:Name>Quad</gl:Name>
+                    <gl:QuadEffects>None</gl:QuadEffects>
+                  </gl:MeshConfiguration>
+                  <gl:MeshConfiguration xsi:type="gl:TexturedQuad">
+                    <gl:Name>ViewportQuad</gl:Name>
+                    <gl:QuadEffects>None</gl:QuadEffects>
+                  </gl:MeshConfiguration>
+                  <gl:MeshConfiguration>
+                    <gl:Name>MeshMap</gl:Name>
+                  </gl:MeshConfiguration>
+                  <gl:MeshConfiguration>
+                    <gl:Name>SphereMap</gl:Name>
+                  </gl:MeshConfiguration>
+                </gl:Meshes>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
@@ -61,147 +64,147 @@
         </Workflow>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:MeshResources">
-          <q1:Meshes>
-            <q1:MeshConfiguration xsi:type="q1:TexturedModel">
-              <q1:Name>Plane</q1:Name>
-              <q1:FileName>BonVision:Models.Plane.obj</q1:FileName>
-            </q1:MeshConfiguration>
-          </q1:Meshes>
+        <Combinator xsi:type="gl:MeshResources">
+          <gl:Meshes>
+            <gl:MeshConfiguration xsi:type="gl:TexturedModel">
+              <gl:Name>Plane</gl:Name>
+              <gl:FileName>BonVision:Models.Plane.obj</gl:FileName>
+            </gl:MeshConfiguration>
+          </gl:Meshes>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:ShaderResources">
-          <q1:Shaders>
-            <q1:ShaderConfiguration xsi:type="q1:Material">
-              <q1:Name>Checkerboard</q1:Name>
-              <q1:RenderState />
-              <q1:ShaderUniforms />
-              <q1:BufferBindings />
-              <q1:FramebufferAttachments />
-              <q1:VertexShader>BonVision:Shaders.Quad.vert</q1:VertexShader>
-              <q1:FragmentShader>BonVision:Shaders.Checkerboard.frag</q1:FragmentShader>
-            </q1:ShaderConfiguration>
-            <q1:ShaderConfiguration xsi:type="q1:Material">
-              <q1:Name>Image</q1:Name>
-              <q1:RenderState />
-              <q1:ShaderUniforms />
-              <q1:BufferBindings>
-                <q1:BufferBinding xsi:type="q1:TextureBinding">
-                  <q1:Name>tex</q1:Name>
-                  <q1:TextureSlot>Texture0</q1:TextureSlot>
-                  <q1:TextureTarget>Texture2D</q1:TextureTarget>
-                </q1:BufferBinding>
-              </q1:BufferBindings>
-              <q1:FramebufferAttachments />
-              <q1:VertexShader>BonVision:Shaders.Quad.vert</q1:VertexShader>
-              <q1:FragmentShader>BonVision:Shaders.Image.frag</q1:FragmentShader>
-            </q1:ShaderConfiguration>
-            <q1:ShaderConfiguration xsi:type="q1:Material">
-              <q1:Name>Gratings</q1:Name>
-              <q1:RenderState />
-              <q1:ShaderUniforms />
-              <q1:BufferBindings />
-              <q1:FramebufferAttachments />
-              <q1:VertexShader>BonVision:Shaders.Quad.vert</q1:VertexShader>
-              <q1:FragmentShader>BonVision:Shaders.Gratings.frag</q1:FragmentShader>
-            </q1:ShaderConfiguration>
-            <q1:ShaderConfiguration xsi:type="q1:Material">
-              <q1:Name>Color</q1:Name>
-              <q1:RenderState />
-              <q1:ShaderUniforms />
-              <q1:BufferBindings />
-              <q1:FramebufferAttachments />
-              <q1:VertexShader>BonVision:Shaders.Quad.vert</q1:VertexShader>
-              <q1:FragmentShader>BonVision:Shaders.Color.frag</q1:FragmentShader>
-            </q1:ShaderConfiguration>
-            <q1:ShaderConfiguration xsi:type="q1:Material">
-              <q1:Name>Circle</q1:Name>
-              <q1:RenderState />
-              <q1:ShaderUniforms />
-              <q1:BufferBindings />
-              <q1:FramebufferAttachments />
-              <q1:VertexShader>BonVision:Shaders.Quad.vert</q1:VertexShader>
-              <q1:FragmentShader>BonVision:Shaders.Circle.frag</q1:FragmentShader>
-            </q1:ShaderConfiguration>
-            <q1:ShaderConfiguration xsi:type="q1:Material">
-              <q1:Name>CircleArray</q1:Name>
-              <q1:RenderState />
-              <q1:ShaderUniforms />
-              <q1:BufferBindings />
-              <q1:FramebufferAttachments />
-              <q1:VertexShader>BonVision:Shaders.QuadArray.vert</q1:VertexShader>
-              <q1:FragmentShader>BonVision:Shaders.Circle.frag</q1:FragmentShader>
-            </q1:ShaderConfiguration>
-            <q1:ShaderConfiguration xsi:type="q1:Material">
-              <q1:Name>Gamma</q1:Name>
-              <q1:RenderState />
-              <q1:ShaderUniforms />
-              <q1:BufferBindings>
-                <q1:BufferBinding xsi:type="q1:TextureBinding">
-                  <q1:Name>tex</q1:Name>
-                  <q1:TextureSlot>Texture0</q1:TextureSlot>
-                  <q1:TextureTarget>Texture2D</q1:TextureTarget>
-                </q1:BufferBinding>
-                <q1:BufferBinding xsi:type="q1:TextureBinding">
-                  <q1:Name>lut</q1:Name>
-                  <q1:TextureSlot>Texture1</q1:TextureSlot>
-                  <q1:TextureTarget>Texture2D</q1:TextureTarget>
-                </q1:BufferBinding>
-              </q1:BufferBindings>
-              <q1:FramebufferAttachments />
-              <q1:VertexShader>BonVision:Shaders.Quad.vert</q1:VertexShader>
-              <q1:FragmentShader>BonVision:Shaders.Gamma.frag</q1:FragmentShader>
-            </q1:ShaderConfiguration>
-            <q1:ShaderConfiguration xsi:type="q1:Material">
-              <q1:Name>MeshMap</q1:Name>
-              <q1:RenderState />
-              <q1:ShaderUniforms />
-              <q1:BufferBindings />
-              <q1:FramebufferAttachments />
-              <q1:VertexShader>BonVision:Shaders.MeshMap.vert</q1:VertexShader>
-              <q1:FragmentShader>BonVision:Shaders.MeshMap.frag</q1:FragmentShader>
-            </q1:ShaderConfiguration>
-            <q1:ShaderConfiguration xsi:type="q1:Material">
-              <q1:Name>SphereMap</q1:Name>
-              <q1:RenderState />
-              <q1:ShaderUniforms />
-              <q1:BufferBindings>
-                <q1:BufferBinding xsi:type="q1:TextureBinding">
-                  <q1:Name>tex</q1:Name>
-                  <q1:TextureSlot>Texture0</q1:TextureSlot>
-                  <q1:TextureTarget>TextureCubeMap</q1:TextureTarget>
-                </q1:BufferBinding>
-              </q1:BufferBindings>
-              <q1:FramebufferAttachments />
-              <q1:VertexShader>BonVision:Shaders.SphereMap.vert</q1:VertexShader>
-              <q1:FragmentShader>BonVision:Shaders.SphereMap.frag</q1:FragmentShader>
-            </q1:ShaderConfiguration>
-            <q1:ShaderConfiguration xsi:type="q1:Material">
-              <q1:Name>Model</q1:Name>
-              <q1:RenderState />
-              <q1:ShaderUniforms />
-              <q1:BufferBindings />
-              <q1:FramebufferAttachments />
-              <q1:VertexShader>BonVision:Shaders.Model.vert</q1:VertexShader>
-              <q1:FragmentShader>BonVision:Shaders.Model.frag</q1:FragmentShader>
-            </q1:ShaderConfiguration>
-            <q1:ShaderConfiguration xsi:type="q1:Material">
-              <q1:Name>TexturedModel</q1:Name>
-              <q1:RenderState />
-              <q1:ShaderUniforms />
-              <q1:BufferBindings>
-                <q1:BufferBinding xsi:type="q1:TextureBinding">
-                  <q1:Name>tex</q1:Name>
-                  <q1:TextureSlot>Texture0</q1:TextureSlot>
-                  <q1:TextureTarget>Texture2D</q1:TextureTarget>
-                </q1:BufferBinding>
-              </q1:BufferBindings>
-              <q1:FramebufferAttachments />
-              <q1:VertexShader>BonVision:Shaders.TexturedModel.vert</q1:VertexShader>
-              <q1:FragmentShader>BonVision:Shaders.TexturedModel.frag</q1:FragmentShader>
-            </q1:ShaderConfiguration>
-          </q1:Shaders>
+        <Combinator xsi:type="gl:ShaderResources">
+          <gl:Shaders>
+            <gl:ShaderConfiguration xsi:type="gl:Material">
+              <gl:Name>Checkerboard</gl:Name>
+              <gl:RenderState />
+              <gl:ShaderUniforms />
+              <gl:BufferBindings />
+              <gl:FramebufferAttachments />
+              <gl:VertexShader>BonVision:Shaders.Quad.vert</gl:VertexShader>
+              <gl:FragmentShader>BonVision:Shaders.Checkerboard.frag</gl:FragmentShader>
+            </gl:ShaderConfiguration>
+            <gl:ShaderConfiguration xsi:type="gl:Material">
+              <gl:Name>Image</gl:Name>
+              <gl:RenderState />
+              <gl:ShaderUniforms />
+              <gl:BufferBindings>
+                <gl:BufferBinding xsi:type="gl:TextureBinding">
+                  <gl:Name>tex</gl:Name>
+                  <gl:TextureSlot>Texture0</gl:TextureSlot>
+                  <gl:TextureTarget>Texture2D</gl:TextureTarget>
+                </gl:BufferBinding>
+              </gl:BufferBindings>
+              <gl:FramebufferAttachments />
+              <gl:VertexShader>BonVision:Shaders.Quad.vert</gl:VertexShader>
+              <gl:FragmentShader>BonVision:Shaders.Image.frag</gl:FragmentShader>
+            </gl:ShaderConfiguration>
+            <gl:ShaderConfiguration xsi:type="gl:Material">
+              <gl:Name>Gratings</gl:Name>
+              <gl:RenderState />
+              <gl:ShaderUniforms />
+              <gl:BufferBindings />
+              <gl:FramebufferAttachments />
+              <gl:VertexShader>BonVision:Shaders.Quad.vert</gl:VertexShader>
+              <gl:FragmentShader>BonVision:Shaders.Gratings.frag</gl:FragmentShader>
+            </gl:ShaderConfiguration>
+            <gl:ShaderConfiguration xsi:type="gl:Material">
+              <gl:Name>Color</gl:Name>
+              <gl:RenderState />
+              <gl:ShaderUniforms />
+              <gl:BufferBindings />
+              <gl:FramebufferAttachments />
+              <gl:VertexShader>BonVision:Shaders.Quad.vert</gl:VertexShader>
+              <gl:FragmentShader>BonVision:Shaders.Color.frag</gl:FragmentShader>
+            </gl:ShaderConfiguration>
+            <gl:ShaderConfiguration xsi:type="gl:Material">
+              <gl:Name>Circle</gl:Name>
+              <gl:RenderState />
+              <gl:ShaderUniforms />
+              <gl:BufferBindings />
+              <gl:FramebufferAttachments />
+              <gl:VertexShader>BonVision:Shaders.Quad.vert</gl:VertexShader>
+              <gl:FragmentShader>BonVision:Shaders.Circle.frag</gl:FragmentShader>
+            </gl:ShaderConfiguration>
+            <gl:ShaderConfiguration xsi:type="gl:Material">
+              <gl:Name>CircleArray</gl:Name>
+              <gl:RenderState />
+              <gl:ShaderUniforms />
+              <gl:BufferBindings />
+              <gl:FramebufferAttachments />
+              <gl:VertexShader>BonVision:Shaders.QuadArray.vert</gl:VertexShader>
+              <gl:FragmentShader>BonVision:Shaders.Circle.frag</gl:FragmentShader>
+            </gl:ShaderConfiguration>
+            <gl:ShaderConfiguration xsi:type="gl:Material">
+              <gl:Name>Gamma</gl:Name>
+              <gl:RenderState />
+              <gl:ShaderUniforms />
+              <gl:BufferBindings>
+                <gl:BufferBinding xsi:type="gl:TextureBinding">
+                  <gl:Name>tex</gl:Name>
+                  <gl:TextureSlot>Texture0</gl:TextureSlot>
+                  <gl:TextureTarget>Texture2D</gl:TextureTarget>
+                </gl:BufferBinding>
+                <gl:BufferBinding xsi:type="gl:TextureBinding">
+                  <gl:Name>lut</gl:Name>
+                  <gl:TextureSlot>Texture1</gl:TextureSlot>
+                  <gl:TextureTarget>Texture2D</gl:TextureTarget>
+                </gl:BufferBinding>
+              </gl:BufferBindings>
+              <gl:FramebufferAttachments />
+              <gl:VertexShader>BonVision:Shaders.Quad.vert</gl:VertexShader>
+              <gl:FragmentShader>BonVision:Shaders.Gamma.frag</gl:FragmentShader>
+            </gl:ShaderConfiguration>
+            <gl:ShaderConfiguration xsi:type="gl:Material">
+              <gl:Name>MeshMap</gl:Name>
+              <gl:RenderState />
+              <gl:ShaderUniforms />
+              <gl:BufferBindings />
+              <gl:FramebufferAttachments />
+              <gl:VertexShader>BonVision:Shaders.MeshMap.vert</gl:VertexShader>
+              <gl:FragmentShader>BonVision:Shaders.MeshMap.frag</gl:FragmentShader>
+            </gl:ShaderConfiguration>
+            <gl:ShaderConfiguration xsi:type="gl:Material">
+              <gl:Name>SphereMap</gl:Name>
+              <gl:RenderState />
+              <gl:ShaderUniforms />
+              <gl:BufferBindings>
+                <gl:BufferBinding xsi:type="gl:TextureBinding">
+                  <gl:Name>tex</gl:Name>
+                  <gl:TextureSlot>Texture0</gl:TextureSlot>
+                  <gl:TextureTarget>TextureCubeMap</gl:TextureTarget>
+                </gl:BufferBinding>
+              </gl:BufferBindings>
+              <gl:FramebufferAttachments />
+              <gl:VertexShader>BonVision:Shaders.SphereMap.vert</gl:VertexShader>
+              <gl:FragmentShader>BonVision:Shaders.SphereMap.frag</gl:FragmentShader>
+            </gl:ShaderConfiguration>
+            <gl:ShaderConfiguration xsi:type="gl:Material">
+              <gl:Name>Model</gl:Name>
+              <gl:RenderState />
+              <gl:ShaderUniforms />
+              <gl:BufferBindings />
+              <gl:FramebufferAttachments />
+              <gl:VertexShader>BonVision:Shaders.Model.vert</gl:VertexShader>
+              <gl:FragmentShader>BonVision:Shaders.Model.frag</gl:FragmentShader>
+            </gl:ShaderConfiguration>
+            <gl:ShaderConfiguration xsi:type="gl:Material">
+              <gl:Name>TexturedModel</gl:Name>
+              <gl:RenderState />
+              <gl:ShaderUniforms />
+              <gl:BufferBindings>
+                <gl:BufferBinding xsi:type="gl:TextureBinding">
+                  <gl:Name>tex</gl:Name>
+                  <gl:TextureSlot>Texture0</gl:TextureSlot>
+                  <gl:TextureTarget>Texture2D</gl:TextureTarget>
+                </gl:BufferBinding>
+              </gl:BufferBindings>
+              <gl:FramebufferAttachments />
+              <gl:VertexShader>BonVision:Shaders.TexturedModel.vert</gl:VertexShader>
+              <gl:FragmentShader>BonVision:Shaders.TexturedModel.frag</gl:FragmentShader>
+            </gl:ShaderConfiguration>
+          </gl:Shaders>
         </Combinator>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
@@ -214,9 +217,4 @@
       <Edge From="4" To="5" Label="Source1" />
     </Edges>
   </Workflow>
-  <ExtensionTypes>
-    <Type>Bonsai.Shaders.MeshResources, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.ShaderResources, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Shaders.UpdateRenderState, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-  </ExtensionTypes>
 </WorkflowBuilder>

@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.4.0-preview">
+<WorkflowBuilder Version="2.4.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Specifies an orthographic viewport, commonly used for 2D stimulus environments.</Description>
-  <Workflow xmlns:q1="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
@@ -13,13 +16,13 @@
         <Property Name="Top" Description="The top boundary of the orthographic environment." />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:CreateOrthographicOffCenter">
-          <q1:Left>-180</q1:Left>
-          <q1:Right>180</q1:Right>
-          <q1:Bottom>-90</q1:Bottom>
-          <q1:Top>90</q1:Top>
-          <q1:NearClip>0.1</q1:NearClip>
-          <q1:FarClip>1000</q1:FarClip>
+        <Combinator xsi:type="gl:CreateOrthographicOffCenter">
+          <gl:Left>-180</gl:Left>
+          <gl:Right>180</gl:Right>
+          <gl:Bottom>-90</gl:Bottom>
+          <gl:Top>90</gl:Top>
+          <gl:NearClip>0.1</gl:NearClip>
+          <gl:FarClip>1000</gl:FarClip>
         </Combinator>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
@@ -30,7 +33,4 @@
       <Edge From="2" To="3" Label="Source1" />
     </Edges>
   </Workflow>
-  <ExtensionTypes>
-    <Type>Bonsai.Shaders.CreateOrthographicOffCenter, Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, PublicKeyToken=null</Type>
-  </ExtensionTypes>
 </WorkflowBuilder>

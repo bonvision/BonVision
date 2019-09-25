@@ -1,13 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.4.0-preview">
+<WorkflowBuilder Version="2.4.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns:q1="clr-namespace:Bonsai.Numerics;assembly=Bonsai.Numerics"
+                 xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Specifies default values for optional parameters in the gratings specification.</Description>
-  <Workflow xmlns:q1="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q2="clr-namespace:Bonsai.Numerics;assembly=Bonsai.Numerics" xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="ElementIndex" />
+        <Combinator xsi:type="rx:ElementIndex" />
       </Expression>
       <Expression xsi:type="MemberSelector">
         <Selector>Index</Selector>
@@ -66,7 +71,7 @@
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="Zip" />
+        <Combinator xsi:type="rx:Zip" />
       </Expression>
       <Expression xsi:type="MemberSelector">
         <Selector>Value.Contrast</Selector>
@@ -121,16 +126,16 @@
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q2:DegreeToRadian" />
+        <Combinator xsi:type="q1:DegreeToRadian" />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="Zip" />
+        <Combinator xsi:type="rx:Zip" />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="Zip" />
+        <Combinator xsi:type="rx:Zip" />
       </Expression>
-      <Expression xsi:type="q1:ExpressionTransform">
-        <q1:Expression>new(
+      <Expression xsi:type="scr:ExpressionTransform">
+        <scr:Expression>new(
 Item1.Item1 as Id,
 Item1.Item2 as Duration,
 Item1.Item3 as Diameter,
@@ -139,7 +144,7 @@ Item1.Item5 as Y,
 Item2.Item1 as Contrast,
 Item2.Item2 as SpatialFrequency,
 Item2.Item3 as TemporalFrequency,
-Item2.Item4 as Orientation)</q1:Expression>
+Item2.Item4 as Orientation)</scr:Expression>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
     </Nodes>
@@ -186,12 +191,4 @@ Item2.Item4 as Orientation)</q1:Expression>
       <Edge From="31" To="32" Label="Source1" />
     </Edges>
   </Workflow>
-  <ExtensionTypes>
-    <Type>Bonsai.Expressions.FloatProperty, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.GetValueOrDefaultBuilder, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Numerics.DegreeToRadian, Bonsai.Numerics, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.ElementIndex, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.Zip, Bonsai.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Scripting.ExpressionTransform, Bonsai.Scripting, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null</Type>
-  </ExtensionTypes>
 </WorkflowBuilder>
