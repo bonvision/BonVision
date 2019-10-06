@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Xml.Serialization;
 
 namespace BonVision.Collections
 {
@@ -23,10 +24,43 @@ namespace BonVision.Collections
 
         public float? TemporalFrequency { get; set; }
 
+        [XmlIgnore]
         [Range(-Math.PI, Math.PI)]
         [TypeConverter(typeof(NullableDegreeConverter))]
         [Editor(DesignTypes.SliderEditor, DesignTypes.UITypeEditor)]
         public float? Orientation { get; set; }
+
+        [Browsable(false)]
+        [XmlElement(nameof(Orientation))]
+        public float? OrientationXml
+        {
+            get { return Orientation.HasValue ? DegreeConverter.RadianToDegree(Orientation.Value) : default(float?); }
+            set { this.Orientation = value.HasValue ? DegreeConverter.DegreeToRadian(value.Value) : value; }
+        }
+
+        [Browsable(false)]
+        public bool DurationSpecified => Duration.HasValue;
+
+        [Browsable(false)]
+        public bool DiameterSpecified => Diameter.HasValue;
+
+        [Browsable(false)]
+        public bool XSpecified => X.HasValue;
+
+        [Browsable(false)]
+        public bool YSpecified => Y.HasValue;
+
+        [Browsable(false)]
+        public bool ContrastSpecified => Contrast.HasValue;
+
+        [Browsable(false)]
+        public bool SpatialFrequencySpecified => SpatialFrequency.HasValue;
+
+        [Browsable(false)]
+        public bool TemporalFrequencySpecified => TemporalFrequency.HasValue;
+
+        [Browsable(false)]
+        public bool OrientationSpecified => Orientation.HasValue;
 
         public override string ToString()
         {
