@@ -13,14 +13,17 @@
       <Expression xsi:type="ExternalizedProperty">
         <MemberName>Columns</MemberName>
         <Name>NumberColumns</Name>
+        <Description>The number of columns in the checkerboard.</Description>
       </Expression>
       <Expression xsi:type="ExternalizedProperty">
         <MemberName>Rows</MemberName>
         <Name>NumberRows</Name>
+        <Description>The number of rows in the checkerboard.</Description>
       </Expression>
       <Expression xsi:type="ExternalizedProperty">
         <MemberName>Phase</MemberName>
         <Name>Phase</Name>
+        <Description>The contrast phase offset used to tile the checkerboard stimulus.</Description>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="ExtentX" />
@@ -29,7 +32,7 @@
         <Property Name="LocationY" />
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="Angle" />
+        <Property Name="Value" DisplayName="Angle" Description="The angle of the checkerboard stimulus." />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="bv:AngleProperty">

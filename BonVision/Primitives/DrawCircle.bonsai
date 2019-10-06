@@ -15,7 +15,7 @@
         <Property Name="LocationY" />
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="Diameter" />
+        <Property Name="Value" DisplayName="Diameter" Description="The diameter of the circle." />
       </Expression>
       <Expression xsi:type="PropertySource" TypeArguments="gl:CreateScale,sys:Single">
         <MemberName>X</MemberName>
@@ -77,7 +77,7 @@
         </Workflow>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="ColorR" />
+        <Property Name="Value" DisplayName="ColorR" Description="The red component of the circle color." />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="FloatProperty">
@@ -90,7 +90,7 @@
         </PropertyMappings>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="ColorG" />
+        <Property Name="Value" DisplayName="ColorG" Description="The green component of the circle color." />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="FloatProperty">
@@ -103,7 +103,7 @@
         </PropertyMappings>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="ColorB" />
+        <Property Name="Value" DisplayName="ColorB" Description="The blue component of the circle color." />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="FloatProperty">
@@ -116,7 +116,7 @@
         </PropertyMappings>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="ColorA" />
+        <Property Name="Value" DisplayName="ColorA" Description="The alpha, or opacity, component of the circle color." />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="FloatProperty">

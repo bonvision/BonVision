@@ -13,6 +13,7 @@
       <Expression xsi:type="ExternalizedProperty">
         <MemberName>Value</MemberName>
         <Name>Angle</Name>
+        <Description>The angle of the image.</Description>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="bv:AngleProperty">
@@ -25,7 +26,7 @@
         </PropertyMappings>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="TextureName" />
+        <Property Name="TextureName" Description="The name of the texture to display." />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="gl:BindTexture">

@@ -37,13 +37,13 @@
         <Property Name="MeshName" />
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Ambient" Category="Model Material" />
-        <Property Name="Diffuse" Category="Model Material" />
-        <Property Name="Specular" Category="Model Material" />
-        <Property Name="SpecularExponent" Category="Model Material" />
+        <Property Name="Ambient" Description="The amount and color of the ambient light reflected by the material.&#xD;&#xA;" Category="Model Material" />
+        <Property Name="Diffuse" Description="The amount and color of the diffuse light reflected by the material.&#xD;&#xA;" Category="Model Material" />
+        <Property Name="Specular" Description="The amount and color of the specular light reflected by the material.&#xD;&#xA;" Category="Model Material" />
+        <Property Name="SpecularExponent" Description="The exponent used to compute the specular response of the material." Category="Model Material" />
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="RotationZ" />
+        <Property Name="Value" DisplayName="RotationZ" Description="The rotation about the z-axis." />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="bv:AngleProperty">
@@ -62,7 +62,7 @@
         </Combinator>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="RotationY" />
+        <Property Name="Value" DisplayName="RotationY" Description="The rotation about the y-axis." />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="bv:AngleProperty">
@@ -81,7 +81,7 @@
         </Combinator>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="RotationX" />
+        <Property Name="Value" DisplayName="RotationX" Description="The rotation about the x-axis." />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="bv:AngleProperty">

@@ -239,7 +239,7 @@ Item2 * Item3.Height as Height)</scr:Expression>
         <Property Name="LocationY" />
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="Angle" />
+        <Property Name="Value" DisplayName="Angle" Description="The angular orientation of the text." />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="bv:AngleProperty">

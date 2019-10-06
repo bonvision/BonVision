@@ -16,6 +16,7 @@
       <Expression xsi:type="ExternalizedProperty">
         <MemberName>Name</MemberName>
         <Name>Name</Name>
+        <Description>The name of the subject on which events will be logged.</Description>
       </Expression>
       <Expression xsi:type="BehaviorSubject">
         <Name>Events</Name>
