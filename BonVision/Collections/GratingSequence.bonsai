@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.4.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
+                 xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
+                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Description>Presents a sequence of predefined grating stimuli.</Description>
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="WorkflowInput">
+        <Name>Source1</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Phase" />
+        <Property Name="SquareWave" />
+        <Property Name="Radius" />
+        <Property Name="Aperture" />
+        <Property Name="Opacity" />
+      </Expression>
+      <Expression xsi:type="CreateObservable">
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="AsyncSubject">
+              <Name>Parameters</Name>
+            </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>Draw</Name>
+            </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>Parameters</Name>
+            </Expression>
+            <Expression xsi:type="PropertyMapping">
+              <PropertyMappings>
+                <Property Name="LocationX" Selector="X" />
+                <Property Name="LocationY" Selector="Y" />
+                <Property Name="Angle" Selector="Orientation" />
+                <Property Name="SpatialFrequency" Selector="SpatialFrequency" />
+                <Property Name="TemporalFrequency" Selector="TemporalFrequency" />
+                <Property Name="Contrast" Selector="Contrast" />
+                <Property Name="ExtentX" Selector="Diameter" />
+                <Property Name="ExtentY" Selector="Diameter" />
+              </PropertyMappings>
+            </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>Parameters</Name>
+            </Expression>
+            <Expression xsi:type="scr:ExpressionTransform">
+              <scr:Expression>TimeSpan.FromSeconds(Duration)</scr:Expression>
+            </Expression>
+            <Expression xsi:type="PropertyMapping">
+              <PropertyMappings>
+                <Property Name="DueTime" />
+              </PropertyMappings>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="gl:Timer">
+                <gl:DueTime>PT1S</gl:DueTime>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="gl:SampleOnRenderFrame" />
+            </Expression>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="Phase" />
+              <Property Name="SquareWave" />
+              <Property Name="Radius" />
+              <Property Name="Aperture" />
+              <Property Name="Opacity" />
+            </Expression>
+            <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawGratings.bonsai">
+              <LocationX>0</LocationX>
+              <LocationY>0.5</LocationY>
+              <Angle>180</Angle>
+              <SpatialFrequency>10</SpatialFrequency>
+              <TemporalFrequency>1</TemporalFrequency>
+              <Phase>0</Phase>
+              <SquareWave>false</SquareWave>
+              <Contrast>1</Contrast>
+              <Radius>1</Radius>
+              <Aperture>0</Aperture>
+              <Opacity>1</Opacity>
+              <ExtentX>0.5</ExtentX>
+              <ExtentY>0.5</ExtentY>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:TakeUntil" />
+            </Expression>
+          </Nodes>
+          <Edges>
+            <Edge From="0" To="1" Label="Source1" />
+            <Edge From="2" To="11" Label="Source1" />
+            <Edge From="3" To="4" Label="Source1" />
+            <Edge From="4" To="11" Label="Source2" />
+            <Edge From="5" To="6" Label="Source1" />
+            <Edge From="6" To="7" Label="Source1" />
+            <Edge From="7" To="8" Label="Source1" />
+            <Edge From="8" To="9" Label="Source1" />
+            <Edge From="9" To="12" Label="Source2" />
+            <Edge From="10" To="11" Label="Source3" />
+            <Edge From="11" To="12" Label="Source1" />
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:Concat" />
+      </Expression>
+      <Expression xsi:type="WorkflowOutput" />
+    </Nodes>
+    <Edges>
+      <Edge From="0" To="2" Label="Source1" />
+      <Edge From="1" To="2" Label="Source2" />
+      <Edge From="2" To="3" Label="Source1" />
+      <Edge From="3" To="4" Label="Source1" />
+    </Edges>
+  </Workflow>
+</WorkflowBuilder>
