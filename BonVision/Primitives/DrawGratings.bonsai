@@ -18,7 +18,7 @@
         <Property Name="LocationY" />
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="Angle" />
+        <Property Name="Value" DisplayName="Angle" Description="The angle of the grating stimulus." />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="bv:AngleProperty">
@@ -125,7 +125,7 @@
               <scr:Expression>single(it)</scr:Expression>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
-              <Property Name="Value" DisplayName="TemporalFrequency" />
+              <Property Name="Value" DisplayName="TemporalFrequency" Description="The sliding speed of the grating stimulus, in cycles per second." />
             </Expression>
             <Expression xsi:type="Multiply">
               <Operand xsi:type="FloatProperty">
@@ -137,7 +137,7 @@
               <Property Name="ExtentX" />
               <Property Name="ExtentY" />
               <Property Name="Angle" />
-              <Property Name="SpatialFrequency" />
+              <Property Name="SpatialFrequency" Description="The spatial frequency of the gratings, in cycles per degree." />
             </Expression>
             <Expression xsi:type="GroupWorkflow">
               <Workflow>
@@ -211,7 +211,7 @@ Math.Sqrt((Item1 * Math.Cos(Item4) * Item1 * Math.Cos(Item4)) +
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
-              <Property Name="Value" DisplayName="Phase" />
+              <Property Name="Value" DisplayName="Phase" Description="The optional phase offset of the grating stimulus, in degrees." />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="bv:AngleProperty">
@@ -279,7 +279,7 @@ Math.Sqrt((Item1 * Math.Cos(Item4) * Item1 * Math.Cos(Item4)) +
               <Name>Source1</Name>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
-              <Property Name="Value" DisplayName="SquareWave" />
+              <Property Name="Value" DisplayName="SquareWave" Description="A value specifying whether to use a sine or square wave function as a basis for the stimulus." />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="BooleanProperty">
@@ -296,7 +296,7 @@ Math.Sqrt((Item1 * Math.Cos(Item4) * Item1 * Math.Cos(Item4)) +
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
-              <Property Name="Value" DisplayName="Contrast" />
+              <Property Name="Value" DisplayName="Contrast" Description="The contrast of the grating stimulus, where zero is no contrast, and one is maximum contrast." />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="FloatProperty">
@@ -331,7 +331,7 @@ Math.Sqrt((Item1 * Math.Cos(Item4) * Item1 * Math.Cos(Item4)) +
               <Name>Source1</Name>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
-              <Property Name="Value" DisplayName="Radius" />
+              <Property Name="Value" DisplayName="Radius" Description="The normalized radius of the clipping mask applied to the stimulus." />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="FloatProperty">
@@ -345,7 +345,7 @@ Math.Sqrt((Item1 * Math.Cos(Item4) * Item1 * Math.Cos(Item4)) +
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
-              <Property Name="Value" DisplayName="Aperture" />
+              <Property Name="Value" DisplayName="Aperture" Description="The optional variance of the gaussian mask applied to the stimulus. A value of zero specifies that no mask should be applied." />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="FloatProperty">
@@ -359,7 +359,7 @@ Math.Sqrt((Item1 * Math.Cos(Item4) * Item1 * Math.Cos(Item4)) +
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
-              <Property Name="Value" DisplayName="Opacity" />
+              <Property Name="Value" DisplayName="Opacity" Description="The normalized opacity of the stimulus. Zero is fully transparent, and one is fully opaque." />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="FloatProperty">

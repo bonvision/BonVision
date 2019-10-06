@@ -2,7 +2,7 @@
 <WorkflowBuilder Version="2.4.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
-                 xmlns:q1="clr-namespace:Bonsai.Numerics;assembly=Bonsai.Numerics"
+                 xmlns:bv="clr-namespace:BonVision;assembly=BonVision"
                  xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Specifies default values for optional parameters in the gratings specification.</Description>
@@ -20,24 +20,47 @@
       <Expression xsi:type="MemberSelector">
         <Selector>Value.Duration</Selector>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>Duration</Name>
-        <Description>The duration of the trial.</Description>
-        <Category>Default</Category>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Orientation" Description="The angle of the grating stimulus." Category="Default" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="bv:AngleProperty">
+          <bv:Value>0</bv:Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="Value" />
+        </PropertyMappings>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="TemporalFrequency" Description="The sliding speed of the grating stimulus, in cycles per second." Category="Default" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="SpatialFrequency" Description="The spatial frequency of the gratings, in cycles per degree." Category="Default" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Contrast" Description="The contrast of the grating stimulus, where zero is no contrast, and one is maximum contrast." Category="Default" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Y" Description="The translation of the gratings along the y-axis, in degrees." Category="Default" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="X" Description="The translation of the gratings along the x-axis, in degrees." Category="Default" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Diameter" Description="The diameter of the grating stimulus, in degrees." Category="Default" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Duration" Description="The duration of the trial." Category="Default" />
       </Expression>
       <Expression xsi:type="GetValueOrDefault">
         <Operand xsi:type="FloatProperty">
-          <Value>1</Value>
+          <Value>10</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="MemberSelector">
         <Selector>Value.Diameter</Selector>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>Diameter</Name>
-        <Category>Default</Category>
       </Expression>
       <Expression xsi:type="GetValueOrDefault">
         <Operand xsi:type="FloatProperty">
@@ -47,11 +70,6 @@
       <Expression xsi:type="MemberSelector">
         <Selector>Value.X</Selector>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>X</Name>
-        <Category>Default</Category>
-      </Expression>
       <Expression xsi:type="GetValueOrDefault">
         <Operand xsi:type="FloatProperty">
           <Value>0</Value>
@@ -59,11 +77,6 @@
       </Expression>
       <Expression xsi:type="MemberSelector">
         <Selector>Value.Y</Selector>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>Y</Name>
-        <Category>Default</Category>
       </Expression>
       <Expression xsi:type="GetValueOrDefault">
         <Operand xsi:type="FloatProperty">
@@ -76,11 +89,6 @@
       <Expression xsi:type="MemberSelector">
         <Selector>Value.Contrast</Selector>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>Contrast</Name>
-        <Category>Default</Category>
-      </Expression>
       <Expression xsi:type="GetValueOrDefault">
         <Operand xsi:type="FloatProperty">
           <Value>1</Value>
@@ -88,11 +96,6 @@
       </Expression>
       <Expression xsi:type="MemberSelector">
         <Selector>Value.SpatialFrequency</Selector>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>SpatialFrequency</Name>
-        <Category>Default</Category>
       </Expression>
       <Expression xsi:type="GetValueOrDefault">
         <Operand xsi:type="FloatProperty">
@@ -102,11 +105,6 @@
       <Expression xsi:type="MemberSelector">
         <Selector>Value.TemporalFrequency</Selector>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>TemporalFrequency</Name>
-        <Category>Default</Category>
-      </Expression>
       <Expression xsi:type="GetValueOrDefault">
         <Operand xsi:type="FloatProperty">
           <Value>0</Value>
@@ -115,18 +113,10 @@
       <Expression xsi:type="MemberSelector">
         <Selector>Value.Orientation</Selector>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>Orientation</Name>
-        <Category>Default</Category>
-      </Expression>
       <Expression xsi:type="GetValueOrDefault">
         <Operand xsi:type="FloatProperty">
           <Value>0</Value>
         </Operand>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:DegreeToRadian" />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="rx:Zip" />
@@ -152,43 +142,44 @@ Item2.Item4 as Orientation)</scr:Expression>
       <Edge From="0" To="1" Label="Source1" />
       <Edge From="1" To="2" Label="Source1" />
       <Edge From="1" To="3" Label="Source1" />
-      <Edge From="1" To="6" Label="Source1" />
-      <Edge From="1" To="9" Label="Source1" />
-      <Edge From="1" To="12" Label="Source1" />
-      <Edge From="1" To="16" Label="Source1" />
+      <Edge From="1" To="15" Label="Source1" />
+      <Edge From="1" To="17" Label="Source1" />
       <Edge From="1" To="19" Label="Source1" />
       <Edge From="1" To="22" Label="Source1" />
-      <Edge From="1" To="25" Label="Source1" />
-      <Edge From="2" To="15" Label="Source1" />
-      <Edge From="3" To="5" Label="Source1" />
-      <Edge From="4" To="5" Label="Source2" />
-      <Edge From="5" To="15" Label="Source2" />
-      <Edge From="6" To="8" Label="Source1" />
-      <Edge From="7" To="8" Label="Source2" />
-      <Edge From="8" To="15" Label="Source3" />
-      <Edge From="9" To="11" Label="Source1" />
-      <Edge From="10" To="11" Label="Source2" />
-      <Edge From="11" To="15" Label="Source4" />
-      <Edge From="12" To="14" Label="Source1" />
+      <Edge From="1" To="24" Label="Source1" />
+      <Edge From="1" To="26" Label="Source1" />
+      <Edge From="1" To="28" Label="Source1" />
+      <Edge From="2" To="21" Label="Source1" />
+      <Edge From="3" To="14" Label="Source1" />
+      <Edge From="4" To="5" Label="Source1" />
+      <Edge From="5" To="6" Label="Source1" />
+      <Edge From="6" To="29" Label="Source2" />
+      <Edge From="7" To="27" Label="Source2" />
+      <Edge From="8" To="25" Label="Source2" />
+      <Edge From="9" To="23" Label="Source2" />
+      <Edge From="10" To="20" Label="Source2" />
+      <Edge From="11" To="18" Label="Source2" />
+      <Edge From="12" To="16" Label="Source2" />
       <Edge From="13" To="14" Label="Source2" />
-      <Edge From="14" To="15" Label="Source5" />
-      <Edge From="15" To="30" Label="Source1" />
-      <Edge From="16" To="18" Label="Source1" />
-      <Edge From="17" To="18" Label="Source2" />
-      <Edge From="18" To="29" Label="Source1" />
-      <Edge From="19" To="21" Label="Source1" />
-      <Edge From="20" To="21" Label="Source2" />
-      <Edge From="21" To="29" Label="Source2" />
-      <Edge From="22" To="24" Label="Source1" />
-      <Edge From="23" To="24" Label="Source2" />
-      <Edge From="24" To="29" Label="Source3" />
-      <Edge From="25" To="27" Label="Source1" />
-      <Edge From="26" To="27" Label="Source2" />
-      <Edge From="27" To="28" Label="Source1" />
-      <Edge From="28" To="29" Label="Source4" />
-      <Edge From="29" To="30" Label="Source2" />
-      <Edge From="30" To="31" Label="Source1" />
+      <Edge From="14" To="21" Label="Source2" />
+      <Edge From="15" To="16" Label="Source1" />
+      <Edge From="16" To="21" Label="Source3" />
+      <Edge From="17" To="18" Label="Source1" />
+      <Edge From="18" To="21" Label="Source4" />
+      <Edge From="19" To="20" Label="Source1" />
+      <Edge From="20" To="21" Label="Source5" />
+      <Edge From="21" To="31" Label="Source1" />
+      <Edge From="22" To="23" Label="Source1" />
+      <Edge From="23" To="30" Label="Source1" />
+      <Edge From="24" To="25" Label="Source1" />
+      <Edge From="25" To="30" Label="Source2" />
+      <Edge From="26" To="27" Label="Source1" />
+      <Edge From="27" To="30" Label="Source3" />
+      <Edge From="28" To="29" Label="Source1" />
+      <Edge From="29" To="30" Label="Source4" />
+      <Edge From="30" To="31" Label="Source2" />
       <Edge From="31" To="32" Label="Source1" />
+      <Edge From="32" To="33" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>
