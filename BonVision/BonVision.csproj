@@ -103,7 +103,6 @@
     <EmbeddedResource Include="Primitives\DrawText.bonsai" />
     <EmbeddedResource Include="Primitives\DrawTexturedModel.bonsai" />
     <EmbeddedResource Include="Primitives\ParameterRange.bonsai" />
-    <EmbeddedResource Include="Primitives\PrimitiveResources.bonsai" />
     <EmbeddedResource Include="Primitives\RangeAnimation.bonsai" />
     <EmbeddedResource Include="Shaders\Checkerboard.frag" />
     <EmbeddedResource Include="Shaders\Circle.frag" />
