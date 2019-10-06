@@ -5,14 +5,11 @@
                  xmlns:sys="clr-namespace:System;assembly=mscorlib"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
                  xmlns="https://bonsai-rx.org/2018/workflow">
-  <Description>Draws multiple colored circles using the input array as position data.</Description>
+  <Description>Draws multiple colored circles using the specified position data array.</Description>
   <Workflow>
     <Nodes>
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
-      </Expression>
-      <Expression xsi:type="SubscribeSubject">
-        <Name>DrawStimuli</Name>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="gl:UpdateUniform">
@@ -25,11 +22,11 @@
         <Property Name="LocationY" />
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="Diameter" />
+        <Property Name="Value" DisplayName="Diameter" Description="The diameter of individual circles.&#xD;&#xA;" />
       </Expression>
       <Expression xsi:type="PropertySource" TypeArguments="gl:CreateScale,sys:Single">
         <MemberName>X</MemberName>
-        <Value>0.02</Value>
+        <Value>0.04</Value>
       </Expression>
       <Expression xsi:type="PropertyMapping">
         <PropertyMappings>
@@ -62,8 +59,8 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="gl:Scale">
                 <gl:Order>Prepend</gl:Order>
-                <gl:X>0.02</gl:X>
-                <gl:Y>0.02</gl:Y>
+                <gl:X>0.04</gl:X>
+                <gl:Y>0.04</gl:Y>
                 <gl:Z>1</gl:Z>
               </Combinator>
             </Expression>
@@ -86,7 +83,7 @@
         </Workflow>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="ColorR" />
+        <Property Name="Value" DisplayName="ColorR" Description="The red component of the circle color." />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="FloatProperty">
@@ -99,7 +96,7 @@
         </PropertyMappings>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="ColorG" />
+        <Property Name="Value" DisplayName="ColorG" Description="The green component of the circle color." />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="FloatProperty">
@@ -112,7 +109,7 @@
         </PropertyMappings>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="ColorB" />
+        <Property Name="Value" DisplayName="ColorB" Description="The blue component of the circle color." />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="FloatProperty">
@@ -125,7 +122,7 @@
         </PropertyMappings>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="ColorA" />
+        <Property Name="Value" DisplayName="ColorA" Description="The alpha, or opacity, component of the circle color." />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="FloatProperty">
@@ -150,6 +147,12 @@
           <gl:UniformName>color</gl:UniformName>
           <gl:ShaderName>CircleArray</gl:ShaderName>
         </Combinator>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Name" DisplayName="PositionData" Description="The source containing the position data to draw. The array data should contain a sequence of 2D position values." />
+      </Expression>
+      <Expression xsi:type="SubscribeSubject">
+        <Name />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="rx:CombineLatest" />
@@ -178,33 +181,34 @@
       <Expression xsi:type="WorkflowOutput" />
     </Nodes>
     <Edges>
-      <Edge From="0" To="22" Label="Source1" />
-      <Edge From="1" To="2" Label="Source1" />
-      <Edge From="2" To="7" Label="Source1" />
-      <Edge From="3" To="7" Label="Source3" />
+      <Edge From="0" To="1" Label="Source1" />
+      <Edge From="1" To="6" Label="Source1" />
+      <Edge From="2" To="6" Label="Source3" />
+      <Edge From="3" To="4" Label="Source1" />
       <Edge From="4" To="5" Label="Source1" />
-      <Edge From="5" To="6" Label="Source1" />
-      <Edge From="6" To="7" Label="Source2" />
-      <Edge From="7" To="20" Label="Source1" />
+      <Edge From="5" To="6" Label="Source2" />
+      <Edge From="6" To="19" Label="Source1" />
+      <Edge From="7" To="8" Label="Source1" />
       <Edge From="8" To="9" Label="Source1" />
-      <Edge From="9" To="10" Label="Source1" />
-      <Edge From="10" To="20" Label="Source2" />
+      <Edge From="9" To="19" Label="Source2" />
+      <Edge From="10" To="11" Label="Source1" />
       <Edge From="11" To="12" Label="Source1" />
-      <Edge From="12" To="13" Label="Source1" />
-      <Edge From="13" To="20" Label="Source3" />
+      <Edge From="12" To="19" Label="Source3" />
+      <Edge From="13" To="14" Label="Source1" />
       <Edge From="14" To="15" Label="Source1" />
-      <Edge From="15" To="16" Label="Source1" />
-      <Edge From="16" To="20" Label="Source4" />
+      <Edge From="15" To="19" Label="Source4" />
+      <Edge From="16" To="17" Label="Source1" />
       <Edge From="17" To="18" Label="Source1" />
-      <Edge From="18" To="19" Label="Source1" />
-      <Edge From="19" To="20" Label="Source5" />
-      <Edge From="20" To="21" Label="Source1" />
-      <Edge From="21" To="22" Label="Source2" />
-      <Edge From="21" To="23" Label="Source2" />
+      <Edge From="18" To="19" Label="Source5" />
+      <Edge From="19" To="20" Label="Source1" />
+      <Edge From="20" To="23" Label="Source2" />
+      <Edge From="20" To="24" Label="Source2" />
+      <Edge From="21" To="22" Label="Source1" />
       <Edge From="22" To="23" Label="Source1" />
       <Edge From="23" To="24" Label="Source1" />
       <Edge From="24" To="25" Label="Source1" />
       <Edge From="25" To="26" Label="Source1" />
+      <Edge From="26" To="27" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>
