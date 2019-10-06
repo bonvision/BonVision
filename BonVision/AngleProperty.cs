@@ -21,7 +21,7 @@ namespace BonVision
         [Range(-Math.PI, Math.PI)]
         [TypeConverter(typeof(DegreeConverter))]
         [Description("The value of the angle.")]
-        [Editor(DesignTypes.SliderEditor, "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [Editor(DesignTypes.SliderEditor, DesignTypes.UITypeEditor)]
         public float Value
         {
             get { return value; }
