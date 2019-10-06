@@ -43,4 +43,27 @@ namespace BonVision
             return result;
         }
     }
+
+    class NullableDegreeConverter : NullableConverter
+    {
+        TypeConverter degreeConverter;
+
+        public NullableDegreeConverter(Type type)
+            : base(type)
+        {
+            degreeConverter = new DegreeConverter();
+        }
+
+        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        {
+            if (string.IsNullOrEmpty((string)value)) return base.ConvertFrom(context, culture, value);
+            else return degreeConverter.ConvertFrom(context, culture, value);
+        }
+
+        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+        {
+            if (value != null) return degreeConverter.ConvertTo(context, culture, value, destinationType);
+            return base.ConvertTo(context, culture, value, destinationType);
+        }
+    }
 }
