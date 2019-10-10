@@ -73,21 +73,77 @@
             </Expression>
             <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawGratings.bonsai">
               <LocationX>0</LocationX>
-              <LocationY>0.5</LocationY>
-              <Angle>180</Angle>
+              <LocationY>0</LocationY>
+              <Angle>0</Angle>
               <SpatialFrequency>10</SpatialFrequency>
-              <TemporalFrequency>1</TemporalFrequency>
+              <TemporalFrequency>0</TemporalFrequency>
               <Phase>0</Phase>
               <SquareWave>false</SquareWave>
               <Contrast>1</Contrast>
               <Radius>1</Radius>
               <Aperture>0</Aperture>
               <Opacity>1</Opacity>
-              <ExtentX>0.5</ExtentX>
-              <ExtentY>0.5</ExtentY>
+              <ExtentX>1</ExtentX>
+              <ExtentY>1</ExtentY>
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:TakeUntil" />
+            </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>Parameters</Name>
+            </Expression>
+            <Expression xsi:type="scr:ExpressionTransform">
+              <scr:Expression>TimeSpan.FromSeconds(Delay)</scr:Expression>
+            </Expression>
+            <Expression xsi:type="PropertyMapping">
+              <PropertyMappings>
+                <Property Name="DueTime" />
+              </PropertyMappings>
+            </Expression>
+            <Expression xsi:type="GroupWorkflow">
+              <Name>TimerNoDelay</Name>
+              <Workflow>
+                <Nodes>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="DoubleProperty">
+                      <Value>0</Value>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="rx:First" />
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="gl:UpdateFrame" />
+                  </Expression>
+                  <Expression xsi:type="MemberSelector">
+                    <Selector>TimeStep.ElapsedTime</Selector>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="rx:Concat" />
+                  </Expression>
+                  <Expression xsi:type="ExternalizedMapping">
+                    <Property Name="DueTime" />
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="gl:Timer">
+                      <gl:DueTime>PT0S</gl:DueTime>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="WorkflowOutput" />
+                </Nodes>
+                <Edges>
+                  <Edge From="0" To="1" Label="Source1" />
+                  <Edge From="1" To="4" Label="Source1" />
+                  <Edge From="2" To="3" Label="Source1" />
+                  <Edge From="3" To="4" Label="Source2" />
+                  <Edge From="4" To="6" Label="Source1" />
+                  <Edge From="5" To="6" Label="Source2" />
+                  <Edge From="6" To="7" Label="Source1" />
+                </Edges>
+              </Workflow>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:SubscribeWhen" />
             </Expression>
           </Nodes>
           <Edges>
@@ -102,6 +158,11 @@
             <Edge From="9" To="12" Label="Source2" />
             <Edge From="10" To="11" Label="Source3" />
             <Edge From="11" To="12" Label="Source1" />
+            <Edge From="12" To="17" Label="Source1" />
+            <Edge From="13" To="14" Label="Source1" />
+            <Edge From="14" To="15" Label="Source1" />
+            <Edge From="15" To="16" Label="Source1" />
+            <Edge From="16" To="17" Label="Source2" />
           </Edges>
         </Workflow>
       </Expression>
