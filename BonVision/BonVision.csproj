@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AngleProperty.cs" />
+    <Compile Include="Collections\CreateGratingTrial.cs" />
     <Compile Include="CreateSparseNoiseGrid.cs" />
     <Compile Include="Collections\GratingsSpecification.cs" />
     <Compile Include="CreateSphereGrid.cs" />
@@ -91,7 +92,6 @@
   <ItemGroup>
     <None Include="BonVision.nuspec" />
     <None Include="packages.config" />
-    <EmbeddedResource Include="Collections\EnsureGratingParameters.bonsai" />
     <EmbeddedResource Include="Collections\GratingSequence.bonsai" />
     <EmbeddedResource Include="Collections\SparseNoise.bonsai" />
     <EmbeddedResource Include="Environment\DrawViewport.bonsai" />
