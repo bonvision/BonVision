@@ -10,6 +10,8 @@ namespace BonVision.Collections
 {
     public class GratingParameters
     {
+        public float? Delay { get; set; }
+
         public float? Duration { get; set; }
 
         public float? Diameter { get; set; }
@@ -37,6 +39,9 @@ namespace BonVision.Collections
             get { return Orientation.HasValue ? DegreeConverter.RadianToDegree(Orientation.Value) : default(float?); }
             set { this.Orientation = value.HasValue ? DegreeConverter.DegreeToRadian(value.Value) : value; }
         }
+
+        [Browsable(false)]
+        public bool DelaySpecified => Delay.HasValue;
 
         [Browsable(false)]
         public bool DurationSpecified => Duration.HasValue;
@@ -67,6 +72,7 @@ namespace BonVision.Collections
             var parameters = new List<string>();
             const string PropertySeparator = ": ";
             const string ParameterSeparator = ", ";
+            if (Delay.HasValue) parameters.Add(nameof(Delay) + PropertySeparator + Delay.Value);
             if (Duration.HasValue) parameters.Add(nameof(Duration) + PropertySeparator + Duration.Value);
             if (Diameter.HasValue) parameters.Add(nameof(Diameter) + PropertySeparator + Diameter.Value);
             if (X.HasValue) parameters.Add(nameof(X) + PropertySeparator + X.Value);
