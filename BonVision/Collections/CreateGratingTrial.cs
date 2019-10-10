@@ -74,6 +74,23 @@ namespace BonVision.Collections
             set { Orientation = DegreeConverter.DegreeToRadian(value); }
         }
 
+        public IObservable<GratingTrial> Process<TSource>(IObservable<TSource> source)
+        {
+            return source.Select((element, index) => new GratingTrial
+            {
+                Id = index,
+                Delay = Delay,
+                Duration = Duration,
+                Diameter = Diameter,
+                X = X,
+                Y = Y,
+                Contrast = Contrast,
+                SpatialFrequency = SpatialFrequency,
+                TemporalFrequency = TemporalFrequency,
+                Orientation = Orientation 
+            });
+        }
+
         public override IObservable<GratingTrial> Process(IObservable<GratingParameters> source)
         {
             return source.Select((parameters, index) => new GratingTrial
