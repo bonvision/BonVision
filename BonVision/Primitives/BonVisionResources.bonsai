@@ -106,7 +106,7 @@
               <gl:ShaderUniforms />
               <gl:BufferBindings />
               <gl:FramebufferAttachments />
-              <gl:VertexShader>BonVision:Shaders.Quad.vert</gl:VertexShader>
+              <gl:VertexShader>BonVision:Shaders.Gratings.vert</gl:VertexShader>
               <gl:FragmentShader>BonVision:Shaders.Gratings.frag</gl:FragmentShader>
             </gl:ShaderConfiguration>
             <gl:ShaderConfiguration xsi:type="gl:Material">

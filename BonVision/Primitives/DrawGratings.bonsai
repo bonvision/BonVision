@@ -79,18 +79,23 @@
                 <gl:Z>1</gl:Z>
               </Combinator>
             </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="gl:UpdateUniform">
+                <gl:UniformName>transform</gl:UniformName>
+                <gl:ShaderName>Gratings</gl:ShaderName>
+              </Combinator>
+            </Expression>
             <Expression xsi:type="ExternalizedMapping">
               <Property Name="Angle" />
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="gl:RotateZ">
-                <gl:Order>Prepend</gl:Order>
+              <Combinator xsi:type="gl:CreateRotationZ">
                 <gl:Angle>0</gl:Angle>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="gl:UpdateUniform">
-                <gl:UniformName>transform</gl:UniformName>
+                <gl:UniformName>rotation</gl:UniformName>
                 <gl:ShaderName>Gratings</gl:ShaderName>
               </Combinator>
             </Expression>
@@ -101,10 +106,11 @@
             <Edge From="1" To="2" Label="Source2" />
             <Edge From="2" To="4" Label="Source1" />
             <Edge From="3" To="4" Label="Source2" />
-            <Edge From="4" To="6" Label="Source1" />
-            <Edge From="5" To="6" Label="Source2" />
-            <Edge From="6" To="7" Label="Source1" />
+            <Edge From="4" To="5" Label="Source1" />
+            <Edge From="5" To="7" Label="Source1" />
+            <Edge From="6" To="7" Label="Source2" />
             <Edge From="7" To="8" Label="Source1" />
+            <Edge From="8" To="9" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>

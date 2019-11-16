@@ -125,6 +125,7 @@
     <EmbeddedResource Include="Shaders\Color.frag" />
     <EmbeddedResource Include="Shaders\Gamma.frag" />
     <EmbeddedResource Include="Shaders\Gratings.frag" />
+    <EmbeddedResource Include="Shaders\Gratings.vert" />
     <EmbeddedResource Include="Shaders\Image.frag" />
     <EmbeddedResource Include="Shaders\MeshMap.frag" />
     <EmbeddedResource Include="Shaders\MeshMap.vert" />
