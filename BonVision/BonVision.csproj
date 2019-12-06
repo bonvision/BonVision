@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\OpenCV.Net.3.3.1\build\net40\OpenCV.Net.props" Condition="Exists('..\packages\OpenCV.Net.3.3.1\build\net40\OpenCV.Net.props')" />
   <PropertyGroup>
@@ -36,8 +36,8 @@
     <Reference Include="Bonsai.Core, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Bonsai.Core.2.4.0\lib\net45\Bonsai.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Bonsai.Numerics, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Bonsai.Numerics.0.4.0\lib\net45\Bonsai.Numerics.dll</HintPath>
+    <Reference Include="Bonsai.Numerics, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bonsai.Numerics.0.5.0\lib\net45\Bonsai.Numerics.dll</HintPath>
     </Reference>
     <Reference Include="Bonsai.Shaders, Version=0.19.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Bonsai.Shaders.0.19.1\lib\net45\Bonsai.Shaders.dll</HintPath>
