@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.4.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:vr="clr-namespace:Bonsai.VR;assembly=Bonsai.VR"
+                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
+                 xmlns:q1="clr-namespace:OpenTK;assembly=OpenTK"
+                 xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Description>Specifies stereo viewports used to render head-mounted display environments.
+</Description>
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="WorkflowInput">
+        <Name>Source1</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="NearClip" Category="Z-Clipping" />
+        <Property Name="FarClip" Category="Z-Clipping" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="vr:GetHmdState">
+          <vr:NearClip>0.1</vr:NearClip>
+          <vr:FarClip>100</vr:FarClip>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>LeftViewMatrix,LeftProjectionMatrix</Selector>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>RightViewMatrix,RightProjectionMatrix</Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:Merge" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Light" Description="The position of the main point light." />
+      </Expression>
+      <Expression xsi:type="PropertySource" TypeArguments="gl:CreateLookAt,q1:Vector3">
+        <MemberName>Eye</MemberName>
+        <Value>
+          <X>0</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </Value>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:Zip" />
+      </Expression>
+      <Expression xsi:type="scr:ExpressionTransform">
+        <scr:Expression>new(
+Item1.Item1 as ViewMatrix,
+Item1.Item2 as ProjectionMatrix,
+Item2 as Light)</scr:Expression>
+      </Expression>
+      <Expression xsi:type="WorkflowOutput" />
+    </Nodes>
+    <Edges>
+      <Edge From="0" To="2" Label="Source1" />
+      <Edge From="1" To="2" Label="Source2" />
+      <Edge From="2" To="3" Label="Source1" />
+      <Edge From="2" To="4" Label="Source1" />
+      <Edge From="3" To="5" Label="Source1" />
+      <Edge From="4" To="5" Label="Source2" />
+      <Edge From="5" To="8" Label="Source1" />
+      <Edge From="5" To="7" Label="Source1" />
+      <Edge From="6" To="7" Label="Source2" />
+      <Edge From="7" To="8" Label="Source2" />
+      <Edge From="8" To="9" Label="Source1" />
+      <Edge From="9" To="10" Label="Source1" />
+    </Edges>
+  </Workflow>
+</WorkflowBuilder>
