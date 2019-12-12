@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.4.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                 xmlns:vr="clr-namespace:Bonsai.VR;assembly=Bonsai.VR"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns:vr="clr-namespace:Bonsai.VR;assembly=Bonsai.VR"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Renders all currently stored draw commands into a head-mounted display. Each pass renders one eye of the stereo display.</Description>
   <Workflow>
@@ -16,9 +16,6 @@
           <rx:Step>2</rx:Step>
           <rx:Stop xsi:nil="true" />
         </Combinator>
-      </Expression>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="RenderState" />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="vr:DrawFramebuffer">
@@ -51,15 +48,13 @@
     </Nodes>
     <Edges>
       <Edge From="0" To="1" Label="Source1" />
-      <Edge From="0" To="4" Label="Source1" />
-      <Edge From="1" To="3" Label="Source1" />
-      <Edge From="2" To="3" Label="Source2" />
-      <Edge From="2" To="5" Label="Source2" />
-      <Edge From="3" To="6" Label="Source1" />
-      <Edge From="4" To="5" Label="Source1" />
-      <Edge From="5" To="6" Label="Source2" />
+      <Edge From="0" To="3" Label="Source1" />
+      <Edge From="1" To="2" Label="Source1" />
+      <Edge From="2" To="5" Label="Source1" />
+      <Edge From="3" To="4" Label="Source1" />
+      <Edge From="4" To="5" Label="Source2" />
+      <Edge From="5" To="6" Label="Source1" />
       <Edge From="6" To="7" Label="Source1" />
-      <Edge From="7" To="8" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>
