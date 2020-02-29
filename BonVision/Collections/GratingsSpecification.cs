@@ -93,7 +93,8 @@ namespace BonVision.Collections
     {
         private List<GratingParameters> trials = new List<GratingParameters>();
 
-        [Description("The trial sequence of grating parameters used for stimulus presentation.")]
+        [Description("The sequence of grating parameters used for stimulus presentation.")]
+        [Editor("Bonsai.Resources.Design.CollectionEditor, Bonsai.System.Design", DesignTypes.UITypeEditor)]
         public List<GratingParameters> Trials
         {
             get { return trials; }
