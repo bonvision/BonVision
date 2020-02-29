@@ -2,16 +2,15 @@
 <WorkflowBuilder Version="2.4.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
                  xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
+                 xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
                  xmlns="https://bonsai-rx.org/2018/workflow">
-  <Description>Creates and initializes a CSV file, and matching behavior subject, on which to timestamp and log events.</Description>
+  <Description>Creates and initializes a CSV file, and matching behavior subject, used to log events with frame timing.</Description>
   <Workflow>
     <Nodes>
       <Expression xsi:type="SubscribeSubject">
         <Name>Events</Name>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="rx:Timestamp" />
       </Expression>
       <Expression xsi:type="ExternalizedProperty">
         <MemberName>Name</MemberName>
@@ -70,27 +69,51 @@
         <MemberName>FileName</MemberName>
         <Name />
       </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="gl:UpdateFrame" />
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>TimeStep.ElapsedTime</Selector>
+      </Expression>
+      <Expression xsi:type="rx:Accumulate" />
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:ElementIndex" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:WithLatestFrom" />
+      </Expression>
+      <Expression xsi:type="scr:ExpressionTransform">
+        <scr:Expression>new(
+Item2.Index as Frame,
+Item2.Value as Timestamp,
+Item1 as Value)</scr:Expression>
+      </Expression>
       <Expression xsi:type="io:CsvWriter">
         <io:FileName>Events.csv</io:FileName>
         <io:Delimiter>,</io:Delimiter>
         <io:Append>false</io:Append>
         <io:Overwrite>false</io:Overwrite>
-        <io:Suffix>Timestamp</io:Suffix>
-        <io:IncludeHeader>false</io:IncludeHeader>
+        <io:Suffix>None</io:Suffix>
+        <io:IncludeHeader>true</io:IncludeHeader>
         <io:Selector />
       </Expression>
     </Nodes>
     <Edges>
-      <Edge From="0" To="1" Label="Source1" />
-      <Edge From="1" To="10" Label="Source1" />
-      <Edge From="2" To="7" Label="Source2" />
-      <Edge From="2" To="8" Label="Source1" />
-      <Edge From="3" To="10" Label="Source3" />
-      <Edge From="4" To="10" Label="Source4" />
+      <Edge From="0" To="13" Label="Source1" />
+      <Edge From="1" To="6" Label="Source2" />
+      <Edge From="1" To="7" Label="Source1" />
+      <Edge From="2" To="15" Label="Source3" />
+      <Edge From="3" To="15" Label="Source4" />
+      <Edge From="4" To="5" Label="Source1" />
       <Edge From="5" To="6" Label="Source1" />
-      <Edge From="6" To="7" Label="Source1" />
-      <Edge From="8" To="9" Label="Source1" />
-      <Edge From="9" To="10" Label="Source2" />
+      <Edge From="7" To="8" Label="Source1" />
+      <Edge From="8" To="15" Label="Source2" />
+      <Edge From="9" To="10" Label="Source1" />
+      <Edge From="10" To="11" Label="Source1" />
+      <Edge From="11" To="12" Label="Source1" />
+      <Edge From="12" To="13" Label="Source2" />
+      <Edge From="13" To="14" Label="Source1" />
+      <Edge From="14" To="15" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>

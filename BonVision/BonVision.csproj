@@ -109,8 +109,8 @@
     <EmbeddedResource Include="Environment\HmdViewport.bonsai" />
     <EmbeddedResource Include="Environment\RenderHmd.bonsai" />
     <EmbeddedResource Include="Logging\EventLogger.bonsai" />
+    <EmbeddedResource Include="Logging\FrameEventLogger.bonsai" />
     <EmbeddedResource Include="Logging\LogEvent.bonsai" />
-    <EmbeddedResource Include="Logging\TimestampedEventLogger.bonsai" />
     <EmbeddedResource Include="Models\Plane.obj" />
     <EmbeddedResource Include="Models\Quad.obj" />
     <EmbeddedResource Include="Primitives\BonVisionResources.bonsai" />
