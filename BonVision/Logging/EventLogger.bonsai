@@ -7,9 +7,6 @@
   <Description>Creates and initializes a CSV file, and matching behavior subject, on which to log events.</Description>
   <Workflow>
     <Nodes>
-      <Expression xsi:type="WorkflowInput">
-        <Name>Source1</Name>
-      </Expression>
       <Expression xsi:type="SubscribeSubject">
         <Name>Events</Name>
       </Expression>
@@ -17,6 +14,20 @@
         <MemberName>Name</MemberName>
         <Name>Name</Name>
         <Description>The name of the subject on which events will be logged.</Description>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Overwrite</MemberName>
+        <Name>Overwrite</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Suffix</MemberName>
+        <Name>Suffix</Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="StringProperty" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:IgnoreElements" />
       </Expression>
       <Expression xsi:type="BehaviorSubject">
         <Name>Events</Name>
@@ -56,33 +67,26 @@
         <MemberName>FileName</MemberName>
         <Name />
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Overwrite</MemberName>
-        <Name>Overwrite</Name>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Suffix</MemberName>
-        <Name>Suffix</Name>
-      </Expression>
       <Expression xsi:type="io:CsvWriter">
         <io:FileName>Events.csv</io:FileName>
         <io:Delimiter>,</io:Delimiter>
         <io:Append>false</io:Append>
-        <io:Overwrite>true</io:Overwrite>
-        <io:Suffix>None</io:Suffix>
+        <io:Overwrite>false</io:Overwrite>
+        <io:Suffix>Timestamp</io:Suffix>
         <io:IncludeHeader>false</io:IncludeHeader>
         <io:Selector />
       </Expression>
     </Nodes>
     <Edges>
-      <Edge From="0" To="3" Label="Source1" />
-      <Edge From="1" To="8" Label="Source1" />
-      <Edge From="2" To="3" Label="Source2" />
-      <Edge From="2" To="4" Label="Source1" />
+      <Edge From="0" To="9" Label="Source1" />
+      <Edge From="1" To="6" Label="Source2" />
+      <Edge From="1" To="7" Label="Source1" />
+      <Edge From="2" To="9" Label="Source3" />
+      <Edge From="3" To="9" Label="Source4" />
       <Edge From="4" To="5" Label="Source1" />
-      <Edge From="5" To="8" Label="Source2" />
-      <Edge From="6" To="8" Label="Source3" />
-      <Edge From="7" To="8" Label="Source4" />
+      <Edge From="5" To="6" Label="Source1" />
+      <Edge From="7" To="8" Label="Source1" />
+      <Edge From="8" To="9" Label="Source2" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>
