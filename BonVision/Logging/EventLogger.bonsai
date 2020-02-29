@@ -72,7 +72,7 @@
         <io:Delimiter>,</io:Delimiter>
         <io:Append>false</io:Append>
         <io:Overwrite>false</io:Overwrite>
-        <io:Suffix>Timestamp</io:Suffix>
+        <io:Suffix>None</io:Suffix>
         <io:IncludeHeader>false</io:IncludeHeader>
         <io:Selector />
       </Expression>
