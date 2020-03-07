@@ -8,7 +8,7 @@ using OpenTK;
 
 namespace BonVision
 {
-    public class ViewingWindow
+    public class ViewWindow
     {
         public Matrix4 View;
 
@@ -18,9 +18,9 @@ namespace BonVision
     [Combinator]
     [Description("Creates view and projection matrices for an off-center perspective camera covering the specified part of the visual field.")]
     [WorkflowElementCategory(ElementCategory.Source)]
-    public class CreateViewingWindow
+    public class CreateViewWindow
     {
-        public CreateViewingWindow()
+        public CreateViewWindow()
         {
             NearClip = 0.1f;
             FarClip = 100;
@@ -46,7 +46,7 @@ namespace BonVision
         [Description("The distance to the far clip plane.")]
         public float FarClip { get; set; }
 
-        private static ViewingWindow Create(float left, float right, float bottom, float top, float zNear, float zFar)
+        private static ViewWindow Create(float left, float right, float bottom, float top, float zNear, float zFar)
         {
             // Compute central spherical coordinates of viewing window and subtract from edges
             var centerX = (right + left) / 2;
@@ -64,19 +64,19 @@ namespace BonVision
             var longitude = Matrix4.CreateRotationY(centerX);
             var view = latitude * longitude * Matrix4.LookAt(Vector3.Zero, -Vector3.UnitX, Vector3.UnitY);
             var projection = Matrix4.CreatePerspectiveOffCenter(left, right, bottom, top, zNear, zFar);
-            return new ViewingWindow
+            return new ViewWindow
             {
                 View = view,
                 Projection = projection
             };
         }
 
-        public IObservable<ViewingWindow> Process()
+        public IObservable<ViewWindow> Process()
         {
             return Observable.Defer(() => Observable.Return(Create(Left, Right, Bottom, Top, NearClip, FarClip)));
         }
 
-        public IObservable<ViewingWindow> Process<TSource>(IObservable<TSource> source)
+        public IObservable<ViewWindow> Process<TSource>(IObservable<TSource> source)
         {
             return source.Select(input => Create(Left, Right, Bottom, Top, NearClip, FarClip));
         }

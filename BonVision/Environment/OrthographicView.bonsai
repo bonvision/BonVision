@@ -3,7 +3,7 @@
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
                  xmlns="https://bonsai-rx.org/2018/workflow">
-  <Description>Specifies an orthographic viewport, commonly used for 2D stimulus environments.</Description>
+  <Description>Specifies an orthographic view, commonly used for 2D stimulus environments.</Description>
   <Workflow>
     <Nodes>
       <Expression xsi:type="WorkflowInput">

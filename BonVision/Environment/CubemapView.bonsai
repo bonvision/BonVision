@@ -6,7 +6,7 @@
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
                  xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
                  xmlns="https://bonsai-rx.org/2018/workflow">
-  <Description>Specifies multiple viewports used to render the six different views of a cubemap texture.</Description>
+  <Description>Specifies multiple views used to render the six different faces of a cubemap texture.</Description>
   <Workflow>
     <Nodes>
       <Expression xsi:type="WorkflowInput">

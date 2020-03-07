@@ -4,7 +4,7 @@
                  xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
                  xmlns:cv="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision"
                  xmlns="https://bonsai-rx.org/2018/workflow">
-  <Description>Renders the sphere map from the perspective of a viewing window of the specified size, position and orientation relative to the origin.</Description>
+  <Description>Renders the sphere map from the perspective of a view window of the specified size, position and orientation relative to the origin.</Description>
   <Workflow>
     <Nodes>
       <Expression xsi:type="WorkflowInput">

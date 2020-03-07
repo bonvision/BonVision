@@ -86,7 +86,7 @@
     <Compile Include="Collections\GratingsSpecification.cs" />
     <Compile Include="CreateSphereGrid.cs" />
     <Compile Include="CreateVertexGrid.cs" />
-    <Compile Include="CreateViewingWindow.cs" />
+    <Compile Include="CreateViewWindow.cs" />
     <Compile Include="DegreeConverter.cs" />
     <Compile Include="FieldOfViewProperty.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,12 +101,12 @@
     <EmbeddedResource Include="Environment\SphereMapping.bonsai" />
     <EmbeddedResource Include="Environment\GammaCorrection.bonsai" />
     <EmbeddedResource Include="Environment\MeshMapping.bonsai" />
-    <EmbeddedResource Include="Environment\NormalizedViewport.bonsai" />
-    <EmbeddedResource Include="Environment\PerspectiveViewport.bonsai" />
-    <EmbeddedResource Include="Environment\ViewingWindow.bonsai" />
-    <EmbeddedResource Include="Environment\OrthographicViewport.bonsai" />
-    <EmbeddedResource Include="Environment\CubemapViewport.bonsai" />
-    <EmbeddedResource Include="Environment\HmdViewport.bonsai" />
+    <EmbeddedResource Include="Environment\NormalizedView.bonsai" />
+    <EmbeddedResource Include="Environment\PerspectiveView.bonsai" />
+    <EmbeddedResource Include="Environment\ViewWindow.bonsai" />
+    <EmbeddedResource Include="Environment\OrthographicView.bonsai" />
+    <EmbeddedResource Include="Environment\CubemapView.bonsai" />
+    <EmbeddedResource Include="Environment\HmdView.bonsai" />
     <EmbeddedResource Include="Environment\RenderHmd.bonsai" />
     <EmbeddedResource Include="Logging\EventLogger.bonsai" />
     <EmbeddedResource Include="Logging\FrameEventLogger.bonsai" />

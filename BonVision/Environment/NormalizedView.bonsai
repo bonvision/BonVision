@@ -3,7 +3,7 @@
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
                  xmlns="https://bonsai-rx.org/2018/workflow">
-  <Description>Specifies an orthographic viewport with normalized screen coordinates for rapid prototyping of 2D environments.</Description>
+  <Description>Specifies an orthographic view with normalized screen coordinates for rapid prototyping of 2D environments.</Description>
   <Workflow>
     <Nodes>
       <Expression xsi:type="WorkflowInput">

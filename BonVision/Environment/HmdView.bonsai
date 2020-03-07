@@ -7,7 +7,7 @@
                  xmlns:q1="clr-namespace:OpenTK;assembly=OpenTK"
                  xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
                  xmlns="https://bonsai-rx.org/2018/workflow">
-  <Description>Specifies stereo viewports used to render head-mounted display environments.
+  <Description>Specifies stereo views used to render head-mounted display environments.
 </Description>
   <Workflow>
     <Nodes>
