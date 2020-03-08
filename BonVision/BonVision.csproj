@@ -86,7 +86,6 @@
     <Compile Include="Collections\GratingsSpecification.cs" />
     <Compile Include="CreateSphereGrid.cs" />
     <Compile Include="CreateVertexGrid.cs" />
-    <Compile Include="CreateViewWindow.cs" />
     <Compile Include="DegreeConverter.cs" />
     <Compile Include="FieldOfViewProperty.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
