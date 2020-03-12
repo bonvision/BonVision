@@ -51,7 +51,7 @@ namespace BonVision
             for (int i = 0; i <= Rings; i++)
             {
                 var pole = i == 0 || i == Rings;
-                var latitude = i * LatitudeStep;
+                var latitude = (Rings - i) * LatitudeStep;
 
                 for (int j = 0; j <= Segments; j++)
                 {
