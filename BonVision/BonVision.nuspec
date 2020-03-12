@@ -13,8 +13,8 @@
     <description>$description$</description>
     <copyright>$author$ © 2019</copyright>
     <tags>Bonsai BonVision Visual Stimulus</tags>
+    <dependencies>
+      <dependency id="Bonsai.Shaders.Design" version="0.20.0" />
+    </dependencies>
   </metadata>
-  <dependencies>
-    <dependency id="Bonsai.Shaders.Design" version="0.20.0" />
-  </dependencies>
 </package>
