@@ -1,31 +1,24 @@
-# BonVision
+# [BonVision website](https://bonvision.github.io/)
 
-BonVision is a common workflow template and set of extensions, shaders and resources for quickly designing visual stimulation experiments in Bonsai. It also provides operators for generating parametric trial sequences, event logging, and gamma correction.
 
-## Getting started
+MIT License
 
-1. BonVision is currently built on top of the 2.4-preview release of Bonsai. You can download this release from the [official Bonsai website](https://bonsai-rx.org).
-2. Install the `Bonsai.Numerics` package.
-3. Open the `BonVision.bonsai` workflow to get started.
-4. *** Required extensions of Bonsai to added
+Copyright (c) 2019 Aman Saleem
 
-## Extensions
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-The following extensions are currently available in BonVision:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-* `DrawGratings`: Draws parameterized 2D sinewave gratings, with support for interactive manipulation of spatio-temporal frequency, angle, location, size, envelope, etc.
-* `DrawCheckerboard`: Draws parameterized checkerboards, with support for interactive manipulation of number of columns, rows, and grid phase used for flickering stimuli.
-* `DrawImage`: Draws an affine transformed 2D image. Textures need to be added to the Shader configuration window first. Double-click on the `RenderFrame` node at the top and select the `Textures` tab. You can drag-and-drop arbitrary image files to the window. This operator also supports interactive manipulation of location, size, etc.
-* `GammaCorrection`: Renders the current scene to a texture and applies gamma correction as a post-processing effect using a look-up table specified via an external image file.
-* `MeshMapping`: Renders the current scene to a texture and applies mesh mapping and brightness correction as a post-processing effect using a mesh grid specified via an external calibration file.
-* `ParameterRange`: Generates a sequence of parameter values between a specified min and max range. This operator can be useful for automating generation of parameterized trial sequences.
-* `RangeAnimation`: Animates a sequence of parameter values between a min and max range at the specified cycles per second. This operator can be useful to specify continuous changes in parameter values.
-* `GratingsSpecification`: Creates a sequence of grating parameters used for stimulus presentation. This operator can be useful for specifying parametric trial sequences.
-* `LogEvent`: Logs the specified value into the common event file. This operator can be used for keeping a general record of session events in chronological order.
-
-## Examples
-
-* 'HandMapping'
-* 'DirectionTuning'
-* 'ContrastTuning'
-
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
