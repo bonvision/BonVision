@@ -22,6 +22,21 @@ namespace BonVision.Collections
         public float SpatialFrequency { get; set; }
         public float TemporalFrequency { get; set; }
         public float Orientation { get; set; }
+
+        public override string ToString()
+        {
+            return string.Join(",",
+                nameof(Id), Id,
+                nameof(Delay), Delay,
+                nameof(Duration), Duration,
+                nameof(Diameter), Diameter,
+                nameof(X), X,
+                nameof(Y), Y,
+                nameof(Contrast), Contrast,
+                nameof(SpatialFrequency), SpatialFrequency,
+                nameof(TemporalFrequency), TemporalFrequency,
+                nameof(Orientation), Orientation);
+        }
     }
 
     [Description("Creates a sequence of grating trials used for stimulus presentation.")]
