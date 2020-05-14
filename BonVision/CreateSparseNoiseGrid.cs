@@ -1,10 +1,8 @@
 using Bonsai;
 using System;
 using System.ComponentModel;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
-using System.Reactive;
 using MathNet.Numerics.Distributions;
 using MathNet.Numerics;
 
