@@ -22,6 +22,11 @@ namespace BonVision
         [Description("The number of active quads in the generated grid.")]
         public int ActiveQuads { get; set; }
 
+        public IObservable<byte[]> Process<TSource>(IObservable<TSource> source)
+        {
+            return Process(source, Observable.Return(new Random()));
+        }
+
         public IObservable<byte[]> Process<TSource>(IObservable<TSource> source, IObservable<Random> randomSource)
         {
             var distributionSource = randomSource.Select(random => new DiscreteUniform(0, 1, random));
