@@ -14,7 +14,7 @@
     <GeneratePackageOnBuild Condition="'$(Configuration)'=='Release'">true</GeneratePackageOnBuild>
     <TargetFramework>net462</TargetFramework>
     <Features>strict</Features>
-    <Version>0.6.0</Version>
+    <Version>0.7.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
