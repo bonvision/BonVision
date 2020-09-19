@@ -103,29 +103,43 @@
         </Workflow>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
+        <Property Name="ScaleX" />
+        <Property Name="ScaleY" />
         <Property Name="ShiftX" />
         <Property Name="ShiftY" />
       </Expression>
       <Expression xsi:type="GroupWorkflow">
-        <Name>Shift</Name>
+        <Name>ScaleShift</Name>
         <Workflow>
           <Nodes>
             <Expression xsi:type="WorkflowInput">
               <Name>Source1</Name>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
+              <Property Name="X" DisplayName="ScaleX" />
+              <Property Name="Y" DisplayName="ScaleY" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="bv:CreateTextureScale">
+                <bv:X>1</bv:X>
+                <bv:Y>1</bv:Y>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="gl:UpdateUniform">
+                <gl:UniformName>scale</gl:UniformName>
+                <gl:ShaderName>Image</gl:ShaderName>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="ExternalizedMapping">
               <Property Name="X" DisplayName="ShiftX" />
               <Property Name="Y" DisplayName="ShiftY" />
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="gl:CreateScale">
-                <gl:X>0</gl:X>
-                <gl:Y>0</gl:Y>
-                <gl:Z>1</gl:Z>
+              <Combinator xsi:type="bv:CreateTextureShift">
+                <bv:X>0</bv:X>
+                <bv:Y>0</bv:Y>
               </Combinator>
-            </Expression>
-            <Expression xsi:type="MemberSelector">
-              <Selector>M11,M22</Selector>
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="gl:UpdateUniform">
@@ -139,8 +153,10 @@
             <Edge From="0" To="2" Label="Source1" />
             <Edge From="1" To="2" Label="Source2" />
             <Edge From="2" To="3" Label="Source1" />
-            <Edge From="3" To="4" Label="Source1" />
-            <Edge From="4" To="5" Label="Source1" />
+            <Edge From="3" To="5" Label="Source1" />
+            <Edge From="4" To="5" Label="Source2" />
+            <Edge From="5" To="6" Label="Source1" />
+            <Edge From="6" To="7" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
