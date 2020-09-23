@@ -4,7 +4,7 @@
                  xmlns:bv="clr-namespace:BonVision;assembly=BonVision"
                  xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
                  xmlns="https://bonsai-rx.org/2018/workflow">
-  <Description>Draws a single axis-aligned colored quad.</Description>
+  <Description>Draws a single colored quad.</Description>
   <Workflow>
     <Nodes>
       <Expression xsi:type="WorkflowInput">
