@@ -69,8 +69,8 @@
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
-              <Property Name="X" DisplayName="ExtentX" />
-              <Property Name="Y" DisplayName="ExtentY" />
+              <Property Name="X" DisplayName="ExtentX" Description="The size of the grating stimulus in the x-axis." />
+              <Property Name="Y" DisplayName="ExtentY" Description="The size of the grating stimulus in the y-axis." />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="gl:Scale">
@@ -87,7 +87,7 @@
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
-              <Property Name="Angle" />
+              <Property Name="Angle" Description="The angle of the grating stimulus." />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="gl:CreateRotationZ">

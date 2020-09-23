@@ -35,8 +35,8 @@
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
-              <Property Name="X" DisplayName="ExtentX" />
-              <Property Name="Y" DisplayName="ExtentY" />
+              <Property Name="X" DisplayName="ExtentX" Description="The size of the quad along the x-axis." />
+              <Property Name="Y" DisplayName="ExtentY" Description="The size of the quad along the y-axis." />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="gl:Scale">

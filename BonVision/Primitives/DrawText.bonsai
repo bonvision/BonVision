@@ -5,9 +5,9 @@
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
                  xmlns:drw="clr-namespace:Bonsai.Vision.Drawing;assembly=Bonsai.Vision"
                  xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                 xmlns:q1="clr-namespace:System.Drawing;assembly=System.Drawing"
-                 xmlns:q2="clr-namespace:System.Drawing.Text;assembly=System.Drawing"
-                 xmlns:q3="clr-namespace:OpenCV.Net;assembly=OpenCV.Net"
+                 xmlns:p1="clr-namespace:System.Drawing;assembly=System.Drawing"
+                 xmlns:p2="clr-namespace:System.Drawing.Text;assembly=System.Drawing"
+                 xmlns:p3="clr-namespace:OpenCV.Net;assembly=OpenCV.Net"
                  xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
                  xmlns:bv="clr-namespace:BonVision;assembly=BonVision"
                  xmlns="https://bonsai-rx.org/2018/workflow">
@@ -44,28 +44,28 @@
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Value" DisplayName="Alignment" />
       </Expression>
-      <Expression xsi:type="PropertySource" TypeArguments="drw:AddTextBox,q1:StringAlignment">
+      <Expression xsi:type="PropertySource" TypeArguments="drw:AddTextBox,p1:StringAlignment">
         <MemberName>Alignment</MemberName>
         <Value>Center</Value>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Value" DisplayName="LineAlignment" />
       </Expression>
-      <Expression xsi:type="PropertySource" TypeArguments="drw:AddTextBox,q1:StringAlignment">
+      <Expression xsi:type="PropertySource" TypeArguments="drw:AddTextBox,p1:StringAlignment">
         <MemberName>LineAlignment</MemberName>
         <Value>Center</Value>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Value" DisplayName="TextRenderingHint" />
       </Expression>
-      <Expression xsi:type="PropertySource" TypeArguments="drw:AddTextBox,q2:TextRenderingHint">
+      <Expression xsi:type="PropertySource" TypeArguments="drw:AddTextBox,p2:TextRenderingHint">
         <MemberName>TextRenderingHint</MemberName>
         <Value>AntiAliasGridFit</Value>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Value" DisplayName="Color" Category="Text Style" />
       </Expression>
-      <Expression xsi:type="PropertySource" TypeArguments="drw:AddTextBox,q3:Scalar">
+      <Expression xsi:type="PropertySource" TypeArguments="drw:AddTextBox,p3:Scalar">
         <MemberName>Color</MemberName>
         <Value>
           <Val0>255</Val0>
@@ -75,7 +75,7 @@
         </Value>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="ExtentX" />
+        <Property Name="Value" DisplayName="ExtentX" Description="The size of the text along the x-axis." />
       </Expression>
       <Expression xsi:type="PropertySource" TypeArguments="gl:Scale,sys:Single">
         <MemberName>X</MemberName>
@@ -91,7 +91,7 @@
         <Value>1</Value>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="ExtentY" />
+        <Property Name="Value" DisplayName="ExtentY" Description="The size of the text along the y-axis." />
       </Expression>
       <Expression xsi:type="PropertySource" TypeArguments="gl:Scale,sys:Single">
         <MemberName>Y</MemberName>
@@ -203,8 +203,6 @@ Item2 * Item3.Height as Height)</scr:Expression>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="gl:StoreImage">
-          <gl:Width xsi:nil="true" />
-          <gl:Height xsi:nil="true" />
           <gl:InternalFormat>Rgba</gl:InternalFormat>
           <gl:WrapS>Repeat</gl:WrapS>
           <gl:WrapT>Repeat</gl:WrapT>

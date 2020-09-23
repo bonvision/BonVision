@@ -26,7 +26,7 @@
         </PropertyMappings>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="TextureName" Description="The name of the texture to display." />
+        <Property Name="TextureName" Description="The name of the texture to display." Category="Texture Mapping" />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="gl:BindTexture">
@@ -62,8 +62,8 @@
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
-              <Property Name="X" DisplayName="ExtentX" />
-              <Property Name="Y" DisplayName="ExtentY" />
+              <Property Name="X" DisplayName="ExtentX" Description="The size of the image along the x-axis." />
+              <Property Name="Y" DisplayName="ExtentY" Description="The size of the image along the x-axis." />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="gl:Scale">
@@ -116,8 +116,8 @@
               <Name>Source1</Name>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
-              <Property Name="X" DisplayName="ScaleX" />
-              <Property Name="Y" DisplayName="ScaleY" />
+              <Property Name="X" DisplayName="ScaleX" Category="Texture Mapping" />
+              <Property Name="Y" DisplayName="ScaleY" Category="Texture Mapping" />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="bv:CreateTextureScale">
@@ -132,8 +132,8 @@
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
-              <Property Name="X" DisplayName="ShiftX" />
-              <Property Name="Y" DisplayName="ShiftY" />
+              <Property Name="X" DisplayName="ShiftX" Category="Texture Mapping" />
+              <Property Name="Y" DisplayName="ShiftY" Category="Texture Mapping" />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="bv:CreateTextureShift">
