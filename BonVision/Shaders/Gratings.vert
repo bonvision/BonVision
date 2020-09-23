@@ -8,6 +8,6 @@ out vec2 texCoord;
 void main()
 {
   mat2 texRotation = mat2(rotation[0][0], rotation[1][0], rotation[0][1], rotation[1][1]);
-  gl_Position = transform * vec4(vp, -1.0, 1.0);
+  gl_Position = transform * vec4(vp, 0.0, 1.0);
   texCoord = texRotation * (vt - 0.5) + 0.5;
 }

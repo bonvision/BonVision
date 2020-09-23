@@ -26,8 +26,8 @@
         <Combinator xsi:type="gl:CreateOrthographic">
           <gl:Width>4</gl:Width>
           <gl:Height>2</gl:Height>
-          <gl:NearClip>0.1</gl:NearClip>
-          <gl:FarClip>1000</gl:FarClip>
+          <gl:NearClip>-500</gl:NearClip>
+          <gl:FarClip>500</gl:FarClip>
         </Combinator>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />

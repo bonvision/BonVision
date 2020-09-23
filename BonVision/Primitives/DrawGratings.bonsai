@@ -16,6 +16,7 @@
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="LocationX" />
         <Property Name="LocationY" />
+        <Property Name="Layer" />
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Value" DisplayName="Angle" Description="The angle of the grating stimulus." />
@@ -59,6 +60,7 @@
             <Expression xsi:type="ExternalizedMapping">
               <Property Name="X" DisplayName="LocationX" />
               <Property Name="Y" DisplayName="LocationY" />
+              <Property Name="Z" DisplayName="Layer" Description="The optional drawing overlay priority. Lower numbers appear below higher numbers." />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="gl:Translate">

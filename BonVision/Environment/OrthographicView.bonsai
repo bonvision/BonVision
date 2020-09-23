@@ -21,8 +21,8 @@
           <gl:Right>180</gl:Right>
           <gl:Bottom>-90</gl:Bottom>
           <gl:Top>90</gl:Top>
-          <gl:NearClip>0.1</gl:NearClip>
-          <gl:FarClip>1000</gl:FarClip>
+          <gl:NearClip>-500</gl:NearClip>
+          <gl:FarClip>500</gl:FarClip>
         </Combinator>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />

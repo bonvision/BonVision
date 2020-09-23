@@ -69,6 +69,7 @@
         <Property Name="ScaleY" />
         <Property Name="ShiftX" />
         <Property Name="ShiftY" />
+        <Property Name="Layer" />
       </Expression>
       <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawImage.bonsai">
         <Angle>0</Angle>
@@ -77,6 +78,7 @@
         <ExtentY>1</ExtentY>
         <LocationX>0</LocationX>
         <LocationY>0</LocationY>
+        <Layer>0</Layer>
         <ScaleX>1</ScaleX>
         <ScaleY>1</ScaleY>
         <ShiftX>0</ShiftX>

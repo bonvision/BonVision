@@ -9,6 +9,6 @@ out vec2 texCoord;
 void main()
 {
   vec4 position = transform * vec4(vp, 0.0, 1.0);
-  gl_Position = projection * vec4(position.xy + vo, -1.0, 1.0);
+  gl_Position = projection * vec4(position.xy + vo, 0.0, 1.0);
   texCoord = vt;
 }
