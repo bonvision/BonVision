@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.5.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
+                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Description>Draw and update an affine transformed 2D video texture.</Description>
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="WorkflowInput">
+        <Name>Source1</Name>
+      </Expression>
+      <Expression xsi:type="WorkflowInput">
+        <Name>Source2</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="TextureName" Category="Texture Mapping" />
+        <Property Name="PlaybackRate" Category="Video Control" />
+        <Property Name="Loop" Category="Video Control" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="gl:PlayTextureSequence">
+          <gl:PlaybackRate>0</gl:PlaybackRate>
+          <gl:Loop>false</gl:Loop>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:WithLatestFrom" />
+      </Expression>
+      <Expression xsi:type="Sink">
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="MemberSelector">
+              <Selector>Item2.Value</Selector>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="gl:BindTexture">
+                <gl:TextureSlot>Texture0</gl:TextureSlot>
+                <gl:ShaderName>Image</gl:ShaderName>
+                <gl:TextureTarget>Texture2D</gl:TextureTarget>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge From="0" To="1" Label="Source1" />
+            <Edge From="1" To="2" Label="Source1" />
+            <Edge From="2" To="3" Label="Source1" />
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Item1</Selector>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Index</Selector>
+      </Expression>
+      <Expression xsi:type="WorkflowOutput" />
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Angle" />
+        <Property Name="ExtentX" />
+        <Property Name="ExtentY" />
+        <Property Name="LocationX" />
+        <Property Name="LocationY" />
+        <Property Name="ScaleX" />
+        <Property Name="ScaleY" />
+        <Property Name="ShiftX" />
+        <Property Name="ShiftY" />
+      </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawImage.bonsai">
+        <Angle>0</Angle>
+        <TextureName />
+        <ExtentX>1</ExtentX>
+        <ExtentY>1</ExtentY>
+        <LocationX>0</LocationX>
+        <LocationY>0</LocationY>
+        <ScaleX>1</ScaleX>
+        <ScaleY>1</ScaleY>
+        <ShiftX>0</ShiftX>
+        <ShiftY>0</ShiftY>
+      </Expression>
+    </Nodes>
+    <Edges>
+      <Edge From="0" To="4" Label="Source1" />
+      <Edge From="1" To="3" Label="Source1" />
+      <Edge From="2" To="3" Label="Source2" />
+      <Edge From="3" To="4" Label="Source2" />
+      <Edge From="3" To="7" Label="Source1" />
+      <Edge From="4" To="5" Label="Source1" />
+      <Edge From="5" To="6" Label="Source1" />
+      <Edge From="6" To="10" Label="Source1" />
+      <Edge From="7" To="8" Label="Source1" />
+      <Edge From="9" To="10" Label="Source2" />
+    </Edges>
+  </Workflow>
+</WorkflowBuilder>
