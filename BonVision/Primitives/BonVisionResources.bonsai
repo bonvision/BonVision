@@ -101,15 +101,6 @@
               <gl:FragmentShader>BonVision:Shaders.Image.frag</gl:FragmentShader>
             </gl:ShaderConfiguration>
             <gl:ShaderConfiguration xsi:type="gl:Material">
-              <gl:Name>Gratings</gl:Name>
-              <gl:RenderState />
-              <gl:ShaderUniforms />
-              <gl:BufferBindings />
-              <gl:FramebufferAttachments />
-              <gl:VertexShader>BonVision:Shaders.Gratings.vert</gl:VertexShader>
-              <gl:FragmentShader>BonVision:Shaders.Gratings.frag</gl:FragmentShader>
-            </gl:ShaderConfiguration>
-            <gl:ShaderConfiguration xsi:type="gl:Material">
               <gl:Name>Color</gl:Name>
               <gl:RenderState />
               <gl:ShaderUniforms />
@@ -117,6 +108,15 @@
               <gl:FramebufferAttachments />
               <gl:VertexShader>BonVision:Shaders.Quad.vert</gl:VertexShader>
               <gl:FragmentShader>BonVision:Shaders.Color.frag</gl:FragmentShader>
+            </gl:ShaderConfiguration>
+            <gl:ShaderConfiguration xsi:type="gl:Material">
+              <gl:Name>Gratings</gl:Name>
+              <gl:RenderState />
+              <gl:ShaderUniforms />
+              <gl:BufferBindings />
+              <gl:FramebufferAttachments />
+              <gl:VertexShader>BonVision:Shaders.Gratings.vert</gl:VertexShader>
+              <gl:FragmentShader>BonVision:Shaders.Gratings.frag</gl:FragmentShader>
             </gl:ShaderConfiguration>
             <gl:ShaderConfiguration xsi:type="gl:Material">
               <gl:Name>Circle</gl:Name>
@@ -137,7 +137,16 @@
               <gl:FragmentShader>BonVision:Shaders.Circle.frag</gl:FragmentShader>
             </gl:ShaderConfiguration>
             <gl:ShaderConfiguration xsi:type="gl:Material">
-              <gl:Name>Gamma</gl:Name>
+              <gl:Name>Model</gl:Name>
+              <gl:RenderState />
+              <gl:ShaderUniforms />
+              <gl:BufferBindings />
+              <gl:FramebufferAttachments />
+              <gl:VertexShader>BonVision:Shaders.Model.vert</gl:VertexShader>
+              <gl:FragmentShader>BonVision:Shaders.Model.frag</gl:FragmentShader>
+            </gl:ShaderConfiguration>
+            <gl:ShaderConfiguration xsi:type="gl:Material">
+              <gl:Name>TexturedModel</gl:Name>
               <gl:RenderState />
               <gl:ShaderUniforms />
               <gl:BufferBindings>
@@ -146,15 +155,10 @@
                   <gl:TextureSlot>Texture0</gl:TextureSlot>
                   <gl:TextureTarget>Texture2D</gl:TextureTarget>
                 </gl:BufferBinding>
-                <gl:BufferBinding xsi:type="gl:TextureBinding">
-                  <gl:Name>lut</gl:Name>
-                  <gl:TextureSlot>Texture1</gl:TextureSlot>
-                  <gl:TextureTarget>Texture2D</gl:TextureTarget>
-                </gl:BufferBinding>
               </gl:BufferBindings>
               <gl:FramebufferAttachments />
-              <gl:VertexShader>BonVision:Shaders.Quad.vert</gl:VertexShader>
-              <gl:FragmentShader>BonVision:Shaders.Gamma.frag</gl:FragmentShader>
+              <gl:VertexShader>BonVision:Shaders.TexturedModel.vert</gl:VertexShader>
+              <gl:FragmentShader>BonVision:Shaders.TexturedModel.frag</gl:FragmentShader>
             </gl:ShaderConfiguration>
             <gl:ShaderConfiguration xsi:type="gl:Material">
               <gl:Name>MeshMap</gl:Name>
@@ -181,16 +185,7 @@
               <gl:FragmentShader>BonVision:Shaders.SphereMap.frag</gl:FragmentShader>
             </gl:ShaderConfiguration>
             <gl:ShaderConfiguration xsi:type="gl:Material">
-              <gl:Name>Model</gl:Name>
-              <gl:RenderState />
-              <gl:ShaderUniforms />
-              <gl:BufferBindings />
-              <gl:FramebufferAttachments />
-              <gl:VertexShader>BonVision:Shaders.Model.vert</gl:VertexShader>
-              <gl:FragmentShader>BonVision:Shaders.Model.frag</gl:FragmentShader>
-            </gl:ShaderConfiguration>
-            <gl:ShaderConfiguration xsi:type="gl:Material">
-              <gl:Name>TexturedModel</gl:Name>
+              <gl:Name>Gamma</gl:Name>
               <gl:RenderState />
               <gl:ShaderUniforms />
               <gl:BufferBindings>
@@ -199,10 +194,15 @@
                   <gl:TextureSlot>Texture0</gl:TextureSlot>
                   <gl:TextureTarget>Texture2D</gl:TextureTarget>
                 </gl:BufferBinding>
+                <gl:BufferBinding xsi:type="gl:TextureBinding">
+                  <gl:Name>lut</gl:Name>
+                  <gl:TextureSlot>Texture1</gl:TextureSlot>
+                  <gl:TextureTarget>Texture2D</gl:TextureTarget>
+                </gl:BufferBinding>
               </gl:BufferBindings>
               <gl:FramebufferAttachments />
-              <gl:VertexShader>BonVision:Shaders.TexturedModel.vert</gl:VertexShader>
-              <gl:FragmentShader>BonVision:Shaders.TexturedModel.frag</gl:FragmentShader>
+              <gl:VertexShader>BonVision:Shaders.Quad.vert</gl:VertexShader>
+              <gl:FragmentShader>BonVision:Shaders.Gamma.frag</gl:FragmentShader>
             </gl:ShaderConfiguration>
           </gl:Shaders>
         </Combinator>
