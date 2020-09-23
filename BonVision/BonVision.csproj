@@ -5,9 +5,9 @@
     <Description>A visual stimulus generator and environmental mapping package for Bonsai.</Description>
     <Authors>Aman Saleem</Authors>
     <Copyright>Copyright © Aman Saleem 2020</Copyright>
-    <ProjectUrl>https://bonvision.github.io</ProjectUrl>
+    <PackageProjectUrl>https://bonvision.github.io</PackageProjectUrl>
     <PackageLicenseUrl>https://raw.githubusercontent.com/bonvision/BonVision/master/LICENSE</PackageLicenseUrl>
-    <PackageIconUrl>https://github.com/bonvision/BonVision/raw/nuget-package/Resources/BonVision-Logo.png</PackageIconUrl>
+    <PackageIconUrl>https://github.com/bonvision/BonVision/raw/master/Resources/BonVision-Logo.png</PackageIconUrl>
     <PackageOutputPath>..\bin\$(Configuration)</PackageOutputPath>
     <PackageTags>Bonsai Rx BonVision Visual Environment Psychophysics Stimulus</PackageTags>
     <IncludeSymbols Condition="'$(Configuration)'=='Release'">true</IncludeSymbols>
