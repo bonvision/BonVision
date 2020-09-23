@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.5.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:bv="clr-namespace:BonVision;assembly=BonVision"
                  xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Draws a single axis-aligned colored quad.</Description>
@@ -15,6 +16,21 @@
         <Property Name="LocationX" />
         <Property Name="LocationY" />
         <Property Name="Layer" />
+      </Expression>
+      <Expression xsi:type="ExternalizedProperty">
+        <MemberName>Value</MemberName>
+        <Name>Angle</Name>
+        <Description>The angle of the quad.</Description>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="bv:AngleProperty">
+          <bv:Value>0</bv:Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="Angle" />
+        </PropertyMappings>
       </Expression>
       <Expression xsi:type="GroupWorkflow">
         <Name>Transform</Name>
@@ -48,6 +64,15 @@
                 <gl:Z>1</gl:Z>
               </Combinator>
             </Expression>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="Angle" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="gl:RotateZ">
+                <gl:Order>Prepend</gl:Order>
+                <gl:Angle>0</gl:Angle>
+              </Combinator>
+            </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="gl:UpdateUniform">
                 <gl:UniformName>transform</gl:UniformName>
@@ -61,13 +86,15 @@
             <Edge From="1" To="2" Label="Source2" />
             <Edge From="2" To="4" Label="Source1" />
             <Edge From="3" To="4" Label="Source2" />
-            <Edge From="4" To="5" Label="Source1" />
-            <Edge From="5" To="6" Label="Source1" />
+            <Edge From="4" To="6" Label="Source1" />
+            <Edge From="5" To="6" Label="Source2" />
+            <Edge From="6" To="7" Label="Source1" />
+            <Edge From="7" To="8" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="ColorR" Description="The red component of the quad color." />
+        <Property Name="Value" DisplayName="ColorR" Description="The red component of the quad color." Category="Texture Mapping" />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="FloatProperty">
@@ -79,7 +106,7 @@
         <Name />
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="ColorG" Description="The green component of the quad color.&#xD;&#xA;" />
+        <Property Name="Value" DisplayName="ColorG" Description="The green component of the quad color.&#xD;&#xA;" Category="Texture Mapping" />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="FloatProperty">
@@ -91,7 +118,7 @@
         <Name />
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="ColorB" Description="The blue component of the quad color.&#xD;&#xA;" />
+        <Property Name="Value" DisplayName="ColorB" Description="The blue component of the quad color.&#xD;&#xA;" Category="Texture Mapping" />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="FloatProperty">
@@ -103,7 +130,7 @@
         <Name />
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Value" DisplayName="ColorA" Description="The alpha, or opacity, component of the quad color.&#xD;&#xA;" />
+        <Property Name="Value" DisplayName="ColorA" Description="The alpha, or opacity, component of the quad color.&#xD;&#xA;" Category="Texture Mapping" />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="FloatProperty">
@@ -137,24 +164,27 @@
       <Expression xsi:type="WorkflowOutput" />
     </Nodes>
     <Edges>
-      <Edge From="0" To="2" Label="Source2" />
-      <Edge From="1" To="2" Label="Source2" />
-      <Edge From="2" To="15" Label="Source1" />
+      <Edge From="0" To="5" Label="Source2" />
+      <Edge From="1" To="5" Label="Source2" />
+      <Edge From="2" To="3" Label="Source1" />
       <Edge From="3" To="4" Label="Source1" />
-      <Edge From="4" To="5" Label="Source1" />
-      <Edge From="5" To="15" Label="Source2" />
+      <Edge From="4" To="5" Label="Source3" />
+      <Edge From="5" To="18" Label="Source1" />
       <Edge From="6" To="7" Label="Source1" />
       <Edge From="7" To="8" Label="Source1" />
-      <Edge From="8" To="15" Label="Source3" />
+      <Edge From="8" To="18" Label="Source2" />
       <Edge From="9" To="10" Label="Source1" />
       <Edge From="10" To="11" Label="Source1" />
-      <Edge From="11" To="15" Label="Source4" />
+      <Edge From="11" To="18" Label="Source3" />
       <Edge From="12" To="13" Label="Source1" />
       <Edge From="13" To="14" Label="Source1" />
-      <Edge From="14" To="15" Label="Source5" />
+      <Edge From="14" To="18" Label="Source4" />
       <Edge From="15" To="16" Label="Source1" />
       <Edge From="16" To="17" Label="Source1" />
-      <Edge From="17" To="18" Label="Source1" />
+      <Edge From="17" To="18" Label="Source5" />
+      <Edge From="18" To="19" Label="Source1" />
+      <Edge From="19" To="20" Label="Source1" />
+      <Edge From="20" To="21" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>
