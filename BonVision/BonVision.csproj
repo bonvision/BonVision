@@ -27,8 +27,8 @@
 
   <ItemGroup>
     <PackageReference Include="Bonsai.Numerics" version="0.5.0" />
-    <PackageReference Include="Bonsai.Shaders" version="0.22.0" />
-    <PackageReference Include="Bonsai.Shaders.Design" Version="0.22.0" />
+    <PackageReference Include="Bonsai.Shaders" version="0.23.0" />
+    <PackageReference Include="Bonsai.Shaders.Design" Version="0.23.0" />
     <PackageReference Include="Bonsai.VR" version="0.6.0" />
   </ItemGroup>
 
