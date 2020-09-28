@@ -5,6 +5,7 @@ out vec4 fragColor;
 
 void main()
 {
-  float scale = length(2 * texCoord - 1) > 1 ? 0 : 1;
-  fragColor = scale * color;
+  if (length(2 * texCoord - 1) > 1)
+    discard;
+  fragColor = color;
 }
