@@ -1,9 +1,9 @@
 #version 400
-uniform vec3 Ka;
-uniform vec3 Kd;
-uniform vec3 Ks;
-uniform float Ns = 1.0;
-uniform sampler2D tex;
+uniform vec4 colorAmbient;
+uniform vec4 colorDiffuse;
+uniform vec4 colorSpecular;
+uniform float shininess = 1.0;
+uniform sampler2D textureDiffuse;
 uniform vec3 light;
 in vec3 position;
 in vec2 texCoord;
@@ -15,11 +15,11 @@ void main()
   vec3 L = normalize(light - position);
   vec3 R = normalize(-reflect(L, normal));
   vec3 V = normalize(-position);
-  vec4 texel = texture(tex, texCoord);
+  vec4 texel = texture(textureDiffuse, texCoord);
 
-  vec3 Iamb = Ka * texel.rgb;
-  vec3 Idiff = Kd * texel.rgb * max(dot(normal, L), 0.0);
-  vec3 Ispec = Ks * pow(max(dot(R, V), 0.0), Ns);
+  vec4 Iamb = colorAmbient * texel;
+  vec4 Idiff = colorDiffuse * vec4(texel.rgb * max(dot(normal, L), 0.0), texel.a);
+  vec4 Ispec = vec4(colorSpecular.rgb * pow(max(dot(R, V), 0.0), shininess), colorSpecular.a);
 
-  fragColor = vec4(Iamb + Idiff + Ispec, texel.a);
+  fragColor = Iamb + Idiff + Ispec;
 }

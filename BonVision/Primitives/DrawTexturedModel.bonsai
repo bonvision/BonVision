@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.5.0"
+<WorkflowBuilder Version="2.6.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
                  xmlns:bv="clr-namespace:BonVision;assembly=BonVision"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
-                 xmlns:q1="clr-namespace:OpenTK;assembly=OpenTK"
+                 xmlns:p1="clr-namespace:OpenTK;assembly=OpenTK"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Draws a textured and transformed 3D model stimulus.</Description>
   <Workflow>
@@ -144,7 +144,7 @@
             <Expression xsi:type="ExternalizedMapping">
               <Property Name="Value" DisplayName="Ambient" />
             </Expression>
-            <Expression xsi:type="PropertySource" TypeArguments="gl:CreateLookAt,q1:Vector3">
+            <Expression xsi:type="PropertySource" TypeArguments="gl:CreateLookAt,p1:Vector3">
               <MemberName>Eye</MemberName>
               <Value>
                 <X>0.2</X>
@@ -152,16 +152,31 @@
                 <Z>0.2</Z>
               </Value>
             </Expression>
+            <Expression xsi:type="InputMapping">
+              <PropertyMappings>
+                <Property Name="X" Selector="X" />
+                <Property Name="Y" Selector="Y" />
+                <Property Name="Z" Selector="Z" />
+              </PropertyMappings>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="gl:CreateVector4">
+                <gl:X>0.2</gl:X>
+                <gl:Y>0.2</gl:Y>
+                <gl:Z>0.2</gl:Z>
+                <gl:W>1</gl:W>
+              </Combinator>
+            </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="gl:UpdateUniform">
-                <gl:UniformName>Ka</gl:UniformName>
+                <gl:UniformName>colorAmbient</gl:UniformName>
                 <gl:ShaderName>TexturedModel</gl:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
               <Property Name="Value" DisplayName="Diffuse" />
             </Expression>
-            <Expression xsi:type="PropertySource" TypeArguments="gl:CreateLookAt,q1:Vector3">
+            <Expression xsi:type="PropertySource" TypeArguments="gl:CreateLookAt,p1:Vector3">
               <MemberName>Eye</MemberName>
               <Value>
                 <X>0.8</X>
@@ -169,16 +184,31 @@
                 <Z>0.8</Z>
               </Value>
             </Expression>
+            <Expression xsi:type="InputMapping">
+              <PropertyMappings>
+                <Property Name="X" Selector="X" />
+                <Property Name="Y" Selector="Y" />
+                <Property Name="Z" Selector="Z" />
+              </PropertyMappings>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="gl:CreateVector4">
+                <gl:X>0.8</gl:X>
+                <gl:Y>0.8</gl:Y>
+                <gl:Z>0.8</gl:Z>
+                <gl:W>1</gl:W>
+              </Combinator>
+            </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="gl:UpdateUniform">
-                <gl:UniformName>Kd</gl:UniformName>
+                <gl:UniformName>colorDiffuse</gl:UniformName>
                 <gl:ShaderName>TexturedModel</gl:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
               <Property Name="Value" DisplayName="Specular" />
             </Expression>
-            <Expression xsi:type="PropertySource" TypeArguments="gl:CreateLookAt,q1:Vector3">
+            <Expression xsi:type="PropertySource" TypeArguments="gl:CreateLookAt,p1:Vector3">
               <MemberName>Eye</MemberName>
               <Value>
                 <X>0.8</X>
@@ -186,9 +216,24 @@
                 <Z>0.8</Z>
               </Value>
             </Expression>
+            <Expression xsi:type="InputMapping">
+              <PropertyMappings>
+                <Property Name="X" Selector="X" />
+                <Property Name="Y" Selector="Y" />
+                <Property Name="Z" Selector="Z" />
+              </PropertyMappings>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="gl:CreateVector4">
+                <gl:X>0.8</gl:X>
+                <gl:Y>0.8</gl:Y>
+                <gl:Z>0.8</gl:Z>
+                <gl:W>1</gl:W>
+              </Combinator>
+            </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="gl:UpdateUniform">
-                <gl:UniformName>Ks</gl:UniformName>
+                <gl:UniformName>colorSpecular</gl:UniformName>
                 <gl:ShaderName>TexturedModel</gl:ShaderName>
               </Combinator>
             </Expression>
@@ -202,7 +247,7 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="gl:UpdateUniform">
-                <gl:UniformName>Ns</gl:UniformName>
+                <gl:UniformName>shininess</gl:UniformName>
                 <gl:ShaderName>TexturedModel</gl:ShaderName>
               </Combinator>
             </Expression>
@@ -212,16 +257,22 @@
             <Edge From="0" To="2" Label="Source1" />
             <Edge From="1" To="2" Label="Source2" />
             <Edge From="2" To="3" Label="Source1" />
-            <Edge From="3" To="5" Label="Source1" />
-            <Edge From="4" To="5" Label="Source2" />
-            <Edge From="5" To="6" Label="Source1" />
-            <Edge From="6" To="8" Label="Source1" />
-            <Edge From="7" To="8" Label="Source2" />
+            <Edge From="3" To="4" Label="Source1" />
+            <Edge From="4" To="5" Label="Source1" />
+            <Edge From="5" To="7" Label="Source1" />
+            <Edge From="6" To="7" Label="Source2" />
+            <Edge From="7" To="8" Label="Source1" />
             <Edge From="8" To="9" Label="Source1" />
-            <Edge From="9" To="11" Label="Source1" />
-            <Edge From="10" To="11" Label="Source2" />
-            <Edge From="11" To="12" Label="Source1" />
+            <Edge From="9" To="10" Label="Source1" />
+            <Edge From="10" To="12" Label="Source1" />
+            <Edge From="11" To="12" Label="Source2" />
             <Edge From="12" To="13" Label="Source1" />
+            <Edge From="13" To="14" Label="Source1" />
+            <Edge From="14" To="15" Label="Source1" />
+            <Edge From="15" To="17" Label="Source1" />
+            <Edge From="16" To="17" Label="Source2" />
+            <Edge From="17" To="18" Label="Source1" />
+            <Edge From="18" To="19" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
