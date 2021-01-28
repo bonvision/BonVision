@@ -164,7 +164,7 @@
                 <gl:X>0.2</gl:X>
                 <gl:Y>0.2</gl:Y>
                 <gl:Z>0.2</gl:Z>
-                <gl:W>0</gl:W>
+                <gl:W>1</gl:W>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
@@ -196,7 +196,7 @@
                 <gl:X>0.8</gl:X>
                 <gl:Y>0.8</gl:Y>
                 <gl:Z>0.8</gl:Z>
-                <gl:W>0</gl:W>
+                <gl:W>1</gl:W>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
@@ -228,7 +228,7 @@
                 <gl:X>0.8</gl:X>
                 <gl:Y>0.8</gl:Y>
                 <gl:Z>0.8</gl:Z>
-                <gl:W>0</gl:W>
+                <gl:W>1</gl:W>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
@@ -279,7 +279,7 @@
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="gl:DrawMesh">
           <gl:ShaderName>Model</gl:ShaderName>
-          <gl:MeshName />
+          <gl:MeshName>Plane</gl:MeshName>
         </Combinator>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
