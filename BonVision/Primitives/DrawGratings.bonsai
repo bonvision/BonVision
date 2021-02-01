@@ -84,7 +84,7 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="gl:UpdateUniform">
                 <gl:UniformName>transform</gl:UniformName>
-                <gl:ShaderName>Gratings_test</gl:ShaderName>
+                <gl:ShaderName>Gratings</gl:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
@@ -171,7 +171,7 @@ Item1 * Math.Cos(Item3) * Item2
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="gl:UpdateUniform">
                       <gl:UniformName>frequency_x</gl:UniformName>
-                      <gl:ShaderName>Gratings_test</gl:ShaderName>
+                      <gl:ShaderName>Gratings</gl:ShaderName>
                     </Combinator>
                   </Expression>
                   <Expression xsi:type="ExternalizedMapping">
@@ -202,7 +202,7 @@ Item1 * Math.Sin(Item3) * Item2
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="gl:UpdateUniform">
                       <gl:UniformName>frequency_y</gl:UniformName>
-                      <gl:ShaderName>Gratings_test</gl:ShaderName>
+                      <gl:ShaderName>Gratings</gl:ShaderName>
                     </Combinator>
                   </Expression>
                   <Expression xsi:type="WorkflowOutput" />
@@ -264,7 +264,7 @@ Item1 * Math.Sin(Item3) * Item2
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="gl:UpdateUniform">
                 <gl:UniformName>phase</gl:UniformName>
-                <gl:ShaderName>Gratings_test</gl:ShaderName>
+                <gl:ShaderName>Gratings</gl:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
@@ -315,7 +315,7 @@ Item1 * Math.Sin(Item3) * Item2
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="gl:UpdateUniform">
                 <gl:UniformName>threshold</gl:UniformName>
-                <gl:ShaderName>Gratings_test</gl:ShaderName>
+                <gl:ShaderName>Gratings</gl:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
@@ -329,7 +329,7 @@ Item1 * Math.Sin(Item3) * Item2
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="gl:UpdateUniform">
                 <gl:UniformName>contrast</gl:UniformName>
-                <gl:ShaderName>Gratings_test</gl:ShaderName>
+                <gl:ShaderName>Gratings</gl:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
@@ -364,7 +364,7 @@ Item1 * Math.Sin(Item3) * Item2
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="gl:UpdateUniform">
                 <gl:UniformName>radius</gl:UniformName>
-                <gl:ShaderName>Gratings_test</gl:ShaderName>
+                <gl:ShaderName>Gratings</gl:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
@@ -378,7 +378,7 @@ Item1 * Math.Sin(Item3) * Item2
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="gl:UpdateUniform">
                 <gl:UniformName>aperture</gl:UniformName>
-                <gl:ShaderName>Gratings_test</gl:ShaderName>
+                <gl:ShaderName>Gratings</gl:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
@@ -392,7 +392,7 @@ Item1 * Math.Sin(Item3) * Item2
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="gl:UpdateUniform">
                 <gl:UniformName>opacity</gl:UniformName>
-                <gl:ShaderName>Gratings_test</gl:ShaderName>
+                <gl:ShaderName>Gratings</gl:ShaderName>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
@@ -413,7 +413,7 @@ Item1 * Math.Sin(Item3) * Item2
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="gl:DrawMesh">
-          <gl:ShaderName>Gratings_test</gl:ShaderName>
+          <gl:ShaderName>Gratings</gl:ShaderName>
           <gl:MeshName>Quad</gl:MeshName>
         </Combinator>
       </Expression>
