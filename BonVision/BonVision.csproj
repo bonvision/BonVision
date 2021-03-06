@@ -14,7 +14,7 @@
     <GeneratePackageOnBuild Condition="'$(Configuration)'=='Release'">true</GeneratePackageOnBuild>
     <TargetFramework>net462</TargetFramework>
     <Features>strict</Features>
-    <Version>0.8.2</Version>
+    <Version>0.9.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <PackageReference Include="Bonsai.Numerics" version="0.6.0" />
+    <PackageReference Include="Bonsai.Scripting" version="2.6.0" />
     <PackageReference Include="Bonsai.Shaders" version="0.24.0" />
     <PackageReference Include="Bonsai.Shaders.Design" Version="0.24.0" />
     <PackageReference Include="Bonsai.Shaders.Rendering" Version="0.1.0" />

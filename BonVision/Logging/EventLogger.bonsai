@@ -3,25 +3,17 @@
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
                  xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
+                 xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                 xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Creates and initializes a CSV file, and matching behavior subject, on which to log events.</Description>
   <Workflow>
     <Nodes>
-      <Expression xsi:type="SubscribeSubject">
-        <Name>Events</Name>
-      </Expression>
       <Expression xsi:type="ExternalizedProperty">
         <MemberName>Name</MemberName>
         <Name>Name</Name>
         <Description>The name of the subject on which events will be logged.</Description>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Overwrite</MemberName>
-        <Name>Overwrite</Name>
-      </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Suffix</MemberName>
-        <Name>Suffix</Name>
+        <Category>Subject</Category>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="StringProperty" />
@@ -31,6 +23,9 @@
       </Expression>
       <Expression xsi:type="BehaviorSubject">
         <Name>Events</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="FileName" />
       </Expression>
       <Expression xsi:type="GroupWorkflow">
         <Name>GenerateFileName</Name>
@@ -45,27 +40,48 @@
                 <Value>Events</Value>
               </Combinator>
             </Expression>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="Value" DisplayName="FileName" />
+            </Expression>
+            <Expression xsi:type="PropertySource" TypeArguments="io:CsvWriter,sys:String">
+              <MemberName>FileName</MemberName>
+              <Value />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:Zip" />
+            </Expression>
+            <Expression xsi:type="scr:ExpressionTransform">
+              <scr:Expression>!string.IsNullOrEmpty(Item2) ? Item2 : Item1 + ".csv"</scr:Expression>
+            </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:Take">
                 <rx:Count>1</rx:Count>
               </Combinator>
             </Expression>
-            <Expression xsi:type="Format">
-              <Format>{0}.csv</Format>
-            </Expression>
             <Expression xsi:type="WorkflowOutput" />
           </Nodes>
           <Edges>
             <Edge From="0" To="1" Label="Source1" />
-            <Edge From="1" To="2" Label="Source1" />
+            <Edge From="1" To="4" Label="Source1" />
             <Edge From="2" To="3" Label="Source1" />
-            <Edge From="3" To="4" Label="Source1" />
+            <Edge From="3" To="4" Label="Source2" />
+            <Edge From="4" To="5" Label="Source1" />
+            <Edge From="5" To="6" Label="Source1" />
+            <Edge From="6" To="7" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
       <Expression xsi:type="ExternalizedProperty">
         <MemberName>FileName</MemberName>
         <Name />
+      </Expression>
+      <Expression xsi:type="SubscribeSubject">
+        <Name>Events</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Append" />
+        <Property Name="Overwrite" />
+        <Property Name="Suffix" />
       </Expression>
       <Expression xsi:type="io:CsvWriter">
         <io:FileName>Events.csv</io:FileName>
@@ -78,15 +94,16 @@
       </Expression>
     </Nodes>
     <Edges>
-      <Edge From="0" To="9" Label="Source1" />
-      <Edge From="1" To="6" Label="Source2" />
-      <Edge From="1" To="7" Label="Source1" />
-      <Edge From="2" To="9" Label="Source3" />
-      <Edge From="3" To="9" Label="Source4" />
-      <Edge From="4" To="5" Label="Source1" />
+      <Edge From="0" To="3" Label="Source2" />
+      <Edge From="0" To="5" Label="Source1" />
+      <Edge From="0" To="7" Label="Source1" />
+      <Edge From="1" To="2" Label="Source1" />
+      <Edge From="2" To="3" Label="Source1" />
+      <Edge From="4" To="5" Label="Source2" />
       <Edge From="5" To="6" Label="Source1" />
-      <Edge From="7" To="8" Label="Source1" />
-      <Edge From="8" To="9" Label="Source2" />
+      <Edge From="6" To="9" Label="Source2" />
+      <Edge From="7" To="9" Label="Source1" />
+      <Edge From="8" To="9" Label="Source3" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>
