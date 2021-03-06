@@ -170,6 +170,21 @@
               <gl:FragmentShader>BonVision:Shaders.MeshMap.frag</gl:FragmentShader>
             </gl:ShaderConfiguration>
             <gl:ShaderConfiguration xsi:type="gl:Material">
+              <gl:Name>PerspectiveMap</gl:Name>
+              <gl:RenderState />
+              <gl:ShaderUniforms />
+              <gl:BufferBindings>
+                <gl:BufferBinding xsi:type="gl:TextureBinding">
+                  <gl:Name>tex</gl:Name>
+                  <gl:TextureSlot>Texture0</gl:TextureSlot>
+                  <gl:TextureTarget>Texture2D</gl:TextureTarget>
+                </gl:BufferBinding>
+              </gl:BufferBindings>
+              <gl:FramebufferAttachments />
+              <gl:VertexShader>BonVision:Shaders.PerspectiveMap.vert</gl:VertexShader>
+              <gl:FragmentShader>BonVision:Shaders.PerspectiveMap.frag</gl:FragmentShader>
+            </gl:ShaderConfiguration>
+            <gl:ShaderConfiguration xsi:type="gl:Material">
               <gl:Name>SphereMap</gl:Name>
               <gl:RenderState />
               <gl:ShaderUniforms />
