@@ -36,16 +36,16 @@ namespace BonVision
         {
             get
             {
-                var x = DegreeConverter.RadianToDegree((float)value.X);
-                var y = DegreeConverter.RadianToDegree((float)value.Y);
-                var z = DegreeConverter.RadianToDegree((float)value.Z);
+                var x = DegreeConverter.RadianToDegree(value.X);
+                var y = DegreeConverter.RadianToDegree(value.Y);
+                var z = DegreeConverter.RadianToDegree(value.Z);
                 return new Point3f(x, y, z);
             }
             set
             {
-                var x = DegreeConverter.DegreeToRadian((float)value.X);
-                var y = DegreeConverter.DegreeToRadian((float)value.Y);
-                var z = DegreeConverter.DegreeToRadian((float)value.Z);
+                var x = DegreeConverter.DegreeToRadian(value.X);
+                var y = DegreeConverter.DegreeToRadian(value.Y);
+                var z = DegreeConverter.DegreeToRadian(value.Z);
                 this.value = new Point3f(x, y, z);
             }
         }
