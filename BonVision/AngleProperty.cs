@@ -41,17 +41,13 @@ namespace BonVision
 
         void OnValueChanged(float value)
         {
-            var handler = ValueChanged;
-            if (handler != null)
-            {
-                handler(value);
-            }
+            ValueChanged?.Invoke(value);
         }
 
         public IObservable<float> Process()
         {
             return Observable
-                .Defer(() => Observable.Return((float)value))
+                .Defer(() => Observable.Return(value))
                 .Concat(Observable.FromEvent<float>(
                     handler => ValueChanged += handler,
                     handler => ValueChanged -= handler));
@@ -59,7 +55,7 @@ namespace BonVision
 
         public IObservable<float> Process<TSource>(IObservable<TSource> source)
         {
-            return source.Select(x => (float)value);
+            return source.Select(x => value);
         }
     }
 }
