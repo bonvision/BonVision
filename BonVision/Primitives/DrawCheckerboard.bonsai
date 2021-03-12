@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.5.0"
+<WorkflowBuilder Version="2.6.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:bv="clr-namespace:BonVision;assembly=BonVision"
                  xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
@@ -69,14 +69,6 @@
               <Property Name="X" DisplayName="ExtentX" Description="The size of the checkerboard along the x-axis." />
               <Property Name="Y" DisplayName="ExtentY" Description="The size of the checkerboard along the y-axis." />
             </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="gl:Scale">
-                <gl:Order>Prepend</gl:Order>
-                <gl:X>1</gl:X>
-                <gl:Y>1</gl:Y>
-                <gl:Z>1</gl:Z>
-              </Combinator>
-            </Expression>
             <Expression xsi:type="ExternalizedMapping">
               <Property Name="Angle" />
             </Expression>
@@ -84,6 +76,14 @@
               <Combinator xsi:type="gl:RotateZ">
                 <gl:Order>Prepend</gl:Order>
                 <gl:Angle>0</gl:Angle>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="gl:Scale">
+                <gl:Order>Prepend</gl:Order>
+                <gl:X>1</gl:X>
+                <gl:Y>1</gl:Y>
+                <gl:Z>1</gl:Z>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
@@ -97,10 +97,10 @@
           <Edges>
             <Edge From="0" To="2" Label="Source1" />
             <Edge From="1" To="2" Label="Source2" />
-            <Edge From="2" To="4" Label="Source1" />
-            <Edge From="3" To="4" Label="Source2" />
-            <Edge From="4" To="6" Label="Source1" />
-            <Edge From="5" To="6" Label="Source2" />
+            <Edge From="2" To="5" Label="Source1" />
+            <Edge From="3" To="6" Label="Source2" />
+            <Edge From="4" To="5" Label="Source2" />
+            <Edge From="5" To="6" Label="Source1" />
             <Edge From="6" To="7" Label="Source1" />
             <Edge From="7" To="8" Label="Source1" />
           </Edges>

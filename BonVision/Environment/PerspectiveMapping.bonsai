@@ -2,10 +2,8 @@
 <WorkflowBuilder Version="2.6.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
-                 xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
-                 xmlns:bv="clr-namespace:BonVision;assembly=BonVision"
                  xmlns="https://bonsai-rx.org/2018/workflow">
-  <Description>Renders the current scene to a texture and applies mesh mapping and brightness correction as a post-processing effect.</Description>
+  <Description>Renders the current scene to a texture and applies perspective mapping as a post-processing effect.</Description>
   <Workflow>
     <Nodes>
       <Expression xsi:type="WorkflowInput">
@@ -33,64 +31,39 @@
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="gl:BindTexture">
           <gl:TextureSlot>Texture0</gl:TextureSlot>
-          <gl:ShaderName>MeshMap</gl:ShaderName>
+          <gl:ShaderName>PerspectiveMap</gl:ShaderName>
           <gl:TextureTarget>Texture2D</gl:TextureTarget>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Destination" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="gl:WarpPerspective" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="gl:UpdateUniform">
+          <gl:UniformName>transform</gl:UniformName>
+          <gl:ShaderName>PerspectiveMap</gl:ShaderName>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="gl:DrawMesh">
-          <gl:ShaderName>MeshMap</gl:ShaderName>
-          <gl:MeshName>MeshMap</gl:MeshName>
+          <gl:ShaderName>PerspectiveMap</gl:ShaderName>
+          <gl:MeshName>ViewportQuad</gl:MeshName>
         </Combinator>
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>FileName</MemberName>
-        <Name>FileName</Name>
-        <Category />
-      </Expression>
-      <Expression xsi:type="io:CsvReader">
-        <io:FileName />
-        <io:ListSeparator>,</io:ListSeparator>
-        <io:ScanPattern>%f</io:ScanPattern>
-        <io:SkipRows>0</io:SkipRows>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="bv:CreateVertexGrid" />
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="gl:SampleOnRenderFrame" />
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="gl:UpdateVertexBuffer">
-          <gl:MeshName>MeshMap</gl:MeshName>
-          <gl:DrawMode>Quads</gl:DrawMode>
-          <gl:Usage>DynamicDraw</gl:Usage>
-          <gl:VertexAttributes>
-            <gl:VertexAttributeMapping>
-              <gl:Size>3</gl:Size>
-              <gl:Normalized>false</gl:Normalized>
-              <gl:Type>Float</gl:Type>
-            </gl:VertexAttributeMapping>
-            <gl:VertexAttributeMapping>
-              <gl:Size>3</gl:Size>
-              <gl:Normalized>false</gl:Normalized>
-              <gl:Type>Float</gl:Type>
-            </gl:VertexAttributeMapping>
-          </gl:VertexAttributes>
-        </Combinator>
-      </Expression>
     </Nodes>
     <Edges>
       <Edge From="0" To="2" Label="Source1" />
       <Edge From="1" To="2" Label="Source2" />
       <Edge From="2" To="3" Label="Source1" />
-      <Edge From="3" To="4" Label="Source1" />
-      <Edge From="4" To="5" Label="Source1" />
+      <Edge From="3" To="5" Label="Source1" />
+      <Edge From="4" To="5" Label="Source2" />
+      <Edge From="5" To="6" Label="Source1" />
       <Edge From="6" To="7" Label="Source1" />
       <Edge From="7" To="8" Label="Source1" />
-      <Edge From="8" To="9" Label="Source1" />
-      <Edge From="9" To="10" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>

@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.5.0"
+<WorkflowBuilder Version="2.6.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
                  xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
                  xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
+                 xmlns:sys="clr-namespace:System;assembly=mscorlib"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Creates and initializes a CSV file, and matching behavior subject, used to log events with frame timing.</Description>
   <Workflow>
@@ -30,6 +31,7 @@
         <Property Name="Append" />
         <Property Name="Overwrite" />
         <Property Name="Suffix" />
+        <Property Name="FileName" />
       </Expression>
       <Expression xsi:type="Sink">
         <Name>CsvLogger</Name>
@@ -65,6 +67,9 @@ Item2.Index as Frame,
 Item2.Value as Timestamp,
 Item1 as Value)</scr:Expression>
             </Expression>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="FileName" />
+            </Expression>
             <Expression xsi:type="GroupWorkflow">
               <Name>GenerateFileName</Name>
               <Workflow>
@@ -78,21 +83,34 @@ Item1 as Value)</scr:Expression>
                       <Value>Events</Value>
                     </Combinator>
                   </Expression>
+                  <Expression xsi:type="ExternalizedMapping">
+                    <Property Name="Value" DisplayName="FileName" />
+                  </Expression>
+                  <Expression xsi:type="PropertySource" TypeArguments="io:CsvWriter,sys:String">
+                    <MemberName>FileName</MemberName>
+                    <Value />
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="rx:Zip" />
+                  </Expression>
+                  <Expression xsi:type="scr:ExpressionTransform">
+                    <scr:Expression>!string.IsNullOrEmpty(Item2) ? Item2 : Item1 + ".csv"</scr:Expression>
+                  </Expression>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="rx:Take">
                       <rx:Count>1</rx:Count>
                     </Combinator>
                   </Expression>
-                  <Expression xsi:type="Format">
-                    <Format>{0}.csv</Format>
-                  </Expression>
                   <Expression xsi:type="WorkflowOutput" />
                 </Nodes>
                 <Edges>
                   <Edge From="0" To="1" Label="Source1" />
-                  <Edge From="1" To="2" Label="Source1" />
+                  <Edge From="1" To="4" Label="Source1" />
                   <Edge From="2" To="3" Label="Source1" />
-                  <Edge From="3" To="4" Label="Source1" />
+                  <Edge From="3" To="4" Label="Source2" />
+                  <Edge From="4" To="5" Label="Source1" />
+                  <Edge From="5" To="6" Label="Source1" />
+                  <Edge From="6" To="7" Label="Source1" />
                 </Edges>
               </Workflow>
             </Expression>
@@ -101,7 +119,7 @@ Item1 as Value)</scr:Expression>
               <Name />
             </Expression>
             <Expression xsi:type="io:CsvWriter">
-              <io:FileName>Events.csv</io:FileName>
+              <io:FileName />
               <io:Delimiter>,</io:Delimiter>
               <io:Append>false</io:Append>
               <io:Overwrite>false</io:Overwrite>
@@ -116,15 +134,16 @@ Item1 as Value)</scr:Expression>
             <Edge From="1" To="2" Label="Source1" />
             <Edge From="2" To="3" Label="Source1" />
             <Edge From="3" To="7" Label="Source2" />
-            <Edge From="4" To="11" Label="Source3" />
+            <Edge From="4" To="12" Label="Source3" />
             <Edge From="5" To="6" Label="Source1" />
-            <Edge From="5" To="9" Label="Source1" />
+            <Edge From="5" To="10" Label="Source1" />
             <Edge From="6" To="7" Label="Source1" />
             <Edge From="7" To="8" Label="Source1" />
-            <Edge From="8" To="11" Label="Source1" />
-            <Edge From="9" To="10" Label="Source1" />
-            <Edge From="10" To="11" Label="Source2" />
-            <Edge From="11" To="12" Label="Source1" />
+            <Edge From="8" To="12" Label="Source1" />
+            <Edge From="9" To="10" Label="Source2" />
+            <Edge From="10" To="11" Label="Source1" />
+            <Edge From="11" To="12" Label="Source2" />
+            <Edge From="12" To="13" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
