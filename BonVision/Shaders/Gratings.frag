@@ -3,7 +3,8 @@ const float pi = 3.1415926535897932384626433832795;
 const float sqrtTwoPi = sqrt(2 * pi);
 uniform float radius = 1;
 uniform float aperture = 0;
-uniform float frequency = 1;
+uniform float frequency_x = 1;
+uniform float frequency_y = 0;
 uniform float contrast = 1;
 uniform float phase = 0;
 uniform float opacity = 1;
@@ -13,7 +14,7 @@ out vec4 fragColor;
 
 void main()
 {
-  float value = (texCoord.x + phase) * frequency;
+  float value = texCoord.x * frequency_x + texCoord.y * frequency_y + phase;
   if (threshold < 0) value = sin(value * 2 * pi); // sinewave
   else value = mod(value, 1) > threshold ? -1 : 1; // square modulation
 
