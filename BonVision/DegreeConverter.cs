@@ -6,14 +6,24 @@ namespace BonVision
 {
     class DegreeConverter : SingleConverter
     {
+        public static double RadianToDegree(double value)
+        {
+            return value * (180.0 / Math.PI);
+        }
+
+        public static double DegreeToRadian(double value)
+        {
+            return value * (Math.PI / 180.0);
+        }
+
         public static float RadianToDegree(float value)
         {
-            return (float)(value * (180.0 / Math.PI));
+            return (float)RadianToDegree((double)value);
         }
 
         public static float DegreeToRadian(float value)
         {
-            return (float)(value * (Math.PI / 180.0));
+            return (float)DegreeToRadian((double)value);
         }
 
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
@@ -42,7 +52,7 @@ namespace BonVision
 
     class NullableDegreeConverter : NullableConverter
     {
-        TypeConverter degreeConverter;
+        readonly TypeConverter degreeConverter;
 
         public NullableDegreeConverter(Type type)
             : base(type)

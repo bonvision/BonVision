@@ -10,8 +10,8 @@ namespace BonVision
     {
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
-            var rotation = (Point3f)base.ConvertFrom(context, culture, value);
-            return new Point3f(
+            var rotation = (Point3d)base.ConvertFrom(context, culture, value);
+            return new Point3d(
                 DegreeConverter.DegreeToRadian(rotation.X),
                 DegreeConverter.DegreeToRadian(rotation.Y),
                 DegreeConverter.DegreeToRadian(rotation.Z));
@@ -19,8 +19,8 @@ namespace BonVision
 
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
-            var rotation = (Point3f)value;
-            value = new Point3f(
+            var rotation = (Point3d)value;
+            value = new Point3d(
                 DegreeConverter.RadianToDegree(rotation.X),
                 DegreeConverter.RadianToDegree(rotation.Y),
                 DegreeConverter.RadianToDegree(rotation.Z));

@@ -48,7 +48,7 @@
       </Expression>
       <Expression xsi:type="PropertyMapping">
         <PropertyMappings>
-          <Property Name="Rotation" Selector="X,Y,Z" />
+          <Property Name="Rotation" />
         </PropertyMappings>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
