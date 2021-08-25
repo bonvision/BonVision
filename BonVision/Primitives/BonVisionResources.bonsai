@@ -200,6 +200,26 @@
               <gl:FragmentShader>BonVision:Shaders.SphereMap.frag</gl:FragmentShader>
             </gl:ShaderConfiguration>
             <gl:ShaderConfiguration xsi:type="gl:Material">
+              <gl:Name>ViewMap</gl:Name>
+              <gl:RenderState />
+              <gl:ShaderUniforms />
+              <gl:BufferBindings>
+                <gl:BufferBinding xsi:type="gl:TextureBinding">
+                  <gl:Name>tex</gl:Name>
+                  <gl:TextureSlot>Texture0</gl:TextureSlot>
+                  <gl:TextureTarget>TextureCubeMap</gl:TextureTarget>
+                </gl:BufferBinding>
+                <gl:BufferBinding xsi:type="gl:TextureBinding">
+                  <gl:Name>viewMap</gl:Name>
+                  <gl:TextureSlot>Texture1</gl:TextureSlot>
+                  <gl:TextureTarget>Texture2D</gl:TextureTarget>
+                </gl:BufferBinding>
+              </gl:BufferBindings>
+              <gl:FramebufferAttachments />
+              <gl:VertexShader>BonVision:Shaders.Quad.vert</gl:VertexShader>
+              <gl:FragmentShader>BonVision:Shaders.ViewMap.frag</gl:FragmentShader>
+            </gl:ShaderConfiguration>
+            <gl:ShaderConfiguration xsi:type="gl:Material">
               <gl:Name>Gamma</gl:Name>
               <gl:RenderState />
               <gl:ShaderUniforms />
