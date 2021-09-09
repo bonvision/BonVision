@@ -26,10 +26,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Bonsai.Core" version="2.6.2" />
     <PackageReference Include="Bonsai.Numerics" version="0.6.0" />
-    <PackageReference Include="Bonsai.Scripting" version="2.6.0" />
-    <PackageReference Include="Bonsai.Shaders" version="0.24.0" />
-    <PackageReference Include="Bonsai.Shaders.Design" Version="0.24.0" />
+    <PackageReference Include="Bonsai.Scripting" version="2.6.1" />
+    <PackageReference Include="Bonsai.Shaders" version="0.25.0" />
+    <PackageReference Include="Bonsai.Shaders.Design" Version="0.25.0" />
     <PackageReference Include="Bonsai.Shaders.Rendering" Version="0.1.0" />
     <PackageReference Include="Bonsai.VR" version="0.6.0" />
   </ItemGroup>
