@@ -4,10 +4,10 @@ uniform mat4 projection;
 uniform mat4 normalMatrix;
 layout(location = 0) in vec3 vp;
 layout(location = 1) in vec3 vn;
-layout(location = 2) in vec3 mt;
-layout(location = 3) in vec3 mr0;
-layout(location = 4) in vec3 mr1;
-layout(location = 5) in vec3 mr2;
+layout(location = 2) in vec3 mr0;
+layout(location = 3) in vec3 mr1;
+layout(location = 4) in vec3 mr2;
+layout(location = 5) in vec3 mt;
 out vec3 position;
 out vec3 normal;
 
