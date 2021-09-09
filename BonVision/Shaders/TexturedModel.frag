@@ -19,7 +19,7 @@ void main()
 
   vec4 Iamb = colorAmbient * texel;
   vec4 Idiff = colorDiffuse * vec4(texel.rgb * max(dot(normal, L), 0.0), texel.a);
-  vec4 Ispec = vec4(colorSpecular.rgb * pow(max(dot(R, V), 0.0), shininess), colorSpecular.a);
+  vec4 Ispec = vec4(colorSpecular.rgb * pow(max(dot(R, V), 0.0), shininess), colorSpecular.a * texel.a);
 
   fragColor = Iamb + Idiff + Ispec;
 }
