@@ -146,6 +146,15 @@
               <gl:FragmentShader>BonVision:Shaders.Model.frag</gl:FragmentShader>
             </gl:ShaderConfiguration>
             <gl:ShaderConfiguration xsi:type="gl:Material">
+              <gl:Name>ModelArray</gl:Name>
+              <gl:RenderState />
+              <gl:ShaderUniforms />
+              <gl:BufferBindings />
+              <gl:FramebufferAttachments />
+              <gl:VertexShader>BonVision:Shaders.ModelArray.vert</gl:VertexShader>
+              <gl:FragmentShader>BonVision:Shaders.Model.frag</gl:FragmentShader>
+            </gl:ShaderConfiguration>
+            <gl:ShaderConfiguration xsi:type="gl:Material">
               <gl:Name>TexturedModel</gl:Name>
               <gl:RenderState />
               <gl:ShaderUniforms />
@@ -158,6 +167,21 @@
               </gl:BufferBindings>
               <gl:FramebufferAttachments />
               <gl:VertexShader>BonVision:Shaders.TexturedModel.vert</gl:VertexShader>
+              <gl:FragmentShader>BonVision:Shaders.TexturedModel.frag</gl:FragmentShader>
+            </gl:ShaderConfiguration>
+            <gl:ShaderConfiguration xsi:type="gl:Material">
+              <gl:Name>TexturedModelArray</gl:Name>
+              <gl:RenderState />
+              <gl:ShaderUniforms />
+              <gl:BufferBindings>
+                <gl:BufferBinding xsi:type="gl:TextureBinding">
+                  <gl:Name>textureDiffuse</gl:Name>
+                  <gl:TextureSlot>Texture0</gl:TextureSlot>
+                  <gl:TextureTarget>Texture2D</gl:TextureTarget>
+                </gl:BufferBinding>
+              </gl:BufferBindings>
+              <gl:FramebufferAttachments />
+              <gl:VertexShader>BonVision:Shaders.TexturedModelArray.vert</gl:VertexShader>
               <gl:FragmentShader>BonVision:Shaders.TexturedModel.frag</gl:FragmentShader>
             </gl:ShaderConfiguration>
             <gl:ShaderConfiguration xsi:type="gl:Material">
