@@ -6,15 +6,15 @@
     <Authors>Aman Saleem</Authors>
     <Copyright>Copyright © Aman Saleem 2020</Copyright>
     <PackageProjectUrl>https://bonvision.github.io</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/bonvision/BonVision/master/LICENSE</PackageLicenseUrl>
-    <PackageIconUrl>https://github.com/bonvision/BonVision/raw/master/Resources/BonVision-Logo.png</PackageIconUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/bonvision/BonVision/main/LICENSE</PackageLicenseUrl>
+    <PackageIconUrl>https://github.com/bonvision/BonVision/raw/main/Resources/BonVision-Logo.png</PackageIconUrl>
     <PackageOutputPath>..\bin\$(Configuration)</PackageOutputPath>
     <PackageTags>Bonsai Rx BonVision Visual Environment Psychophysics Stimulus</PackageTags>
     <IncludeSymbols Condition="'$(Configuration)'=='Release'">true</IncludeSymbols>
     <GeneratePackageOnBuild Condition="'$(Configuration)'=='Release'">true</GeneratePackageOnBuild>
     <TargetFramework>net462</TargetFramework>
     <Features>strict</Features>
-    <Version>0.10.0</Version>
+    <Version>0.11.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,12 +26,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Bonsai.Core" version="2.6.2" />
-    <PackageReference Include="Bonsai.Numerics" version="0.6.0" />
-    <PackageReference Include="Bonsai.Scripting" version="2.6.1" />
-    <PackageReference Include="Bonsai.Shaders" version="0.25.0" />
-    <PackageReference Include="Bonsai.Shaders.Design" Version="0.25.0" />
-    <PackageReference Include="Bonsai.Shaders.Rendering" Version="0.2.1" />
+    <PackageReference Include="Bonsai.Numerics" version="0.7.0" />
+    <PackageReference Include="Bonsai.Scripting.Expressions" version="2.7.0" />
+    <PackageReference Include="Bonsai.Shaders" version="0.26.0" />
+    <PackageReference Include="Bonsai.Shaders.Design" Version="0.26.0" />
+    <PackageReference Include="Bonsai.Shaders.Rendering" Version="0.3.0" />
     <PackageReference Include="Bonsai.VR" version="0.6.0" />
   </ItemGroup>
 

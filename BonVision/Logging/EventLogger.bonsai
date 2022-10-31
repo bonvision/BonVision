@@ -1,19 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.6.0"
+<WorkflowBuilder Version="2.7.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
                  xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
                  xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                 xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
+                 xmlns:scr="clr-namespace:Bonsai.Scripting.Expressions;assembly=Bonsai.Scripting.Expressions"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Creates and initializes a CSV file, and matching behavior subject, on which to log events.</Description>
   <Workflow>
     <Nodes>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Name</MemberName>
-        <Name>Name</Name>
-        <Description>The name of the subject on which events will be logged.</Description>
-        <Category>Subject</Category>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Name" Description="The name of the subject on which events will be logged." Category="Subject" />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="StringProperty" />
@@ -21,7 +18,7 @@
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="rx:IgnoreElements" />
       </Expression>
-      <Expression xsi:type="BehaviorSubject">
+      <Expression xsi:type="rx:BehaviorSubject">
         <Name>Events</Name>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
@@ -31,9 +28,8 @@
         <Name>GenerateFileName</Name>
         <Workflow>
           <Nodes>
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>Value</MemberName>
-              <Name>Name</Name>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="Value" DisplayName="Name" />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="StringProperty">
@@ -71,9 +67,10 @@
           </Edges>
         </Workflow>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>FileName</MemberName>
-        <Name />
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="FileName" />
+        </PropertyMappings>
       </Expression>
       <Expression xsi:type="SubscribeSubject">
         <Name>Events</Name>

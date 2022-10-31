@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.6.0"
+<WorkflowBuilder Version="2.7.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:bv="clr-namespace:BonVision;assembly=BonVision"
                  xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
@@ -17,10 +17,8 @@
         <Property Name="LocationY" />
         <Property Name="Layer" />
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>Angle</Name>
-        <Description>The angle of the quad.</Description>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Angle" Description="The angle of the quad." />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="bv:AngleProperty">
@@ -101,9 +99,10 @@
           <Value>1</Value>
         </Combinator>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>X</MemberName>
-        <Name />
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="X" />
+        </PropertyMappings>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Value" DisplayName="ColorG" Description="The green component of the quad color.&#xD;&#xA;" Category="Texture Mapping" />
@@ -113,9 +112,10 @@
           <Value>1</Value>
         </Combinator>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Y</MemberName>
-        <Name />
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="Y" />
+        </PropertyMappings>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Value" DisplayName="ColorB" Description="The blue component of the quad color.&#xD;&#xA;" Category="Texture Mapping" />
@@ -125,9 +125,10 @@
           <Value>1</Value>
         </Combinator>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Z</MemberName>
-        <Name />
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="Z" />
+        </PropertyMappings>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Value" DisplayName="ColorA" Description="The alpha, or opacity, component of the quad color.&#xD;&#xA;" Category="Texture Mapping" />
@@ -137,9 +138,10 @@
           <Value>1</Value>
         </Combinator>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>W</MemberName>
-        <Name />
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="W" />
+        </PropertyMappings>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="gl:CreateVector4">

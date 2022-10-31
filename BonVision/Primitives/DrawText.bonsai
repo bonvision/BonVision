@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.6.0"
+<WorkflowBuilder Version="2.7.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
@@ -8,7 +8,7 @@
                  xmlns:p1="clr-namespace:System.Drawing;assembly=System.Drawing"
                  xmlns:p2="clr-namespace:System.Drawing.Text;assembly=System.Drawing"
                  xmlns:p3="clr-namespace:OpenCV.Net;assembly=OpenCV.Net"
-                 xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
+                 xmlns:scr="clr-namespace:Bonsai.Scripting.Expressions;assembly=Bonsai.Scripting.Expressions"
                  xmlns:bv="clr-namespace:BonVision;assembly=BonVision"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Draws affine transformed multi-line text using the specified style.</Description>

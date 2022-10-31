@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.6.0"
+<WorkflowBuilder Version="2.7.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
-                 xmlns:q1="clr-namespace:OpenTK;assembly=OpenTK"
+                 xmlns:p1="clr-namespace:OpenTK;assembly=OpenTK"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
-                 xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
+                 xmlns:scr="clr-namespace:Bonsai.Scripting.Expressions;assembly=Bonsai.Scripting.Expressions"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Specifies multiple views used to render the six different faces of a cubemap texture.</Description>
   <Workflow>
@@ -31,7 +31,7 @@
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Value" DisplayName="Light" Description="The position of the main point light." />
       </Expression>
-      <Expression xsi:type="PropertySource" TypeArguments="gl:CreateCubemapCamera,q1:Vector3">
+      <Expression xsi:type="PropertySource" TypeArguments="gl:CreateCubemapCamera,p1:Vector3">
         <MemberName>Eye</MemberName>
         <Value>
           <X>0</X>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.6.0"
+<WorkflowBuilder Version="2.7.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:bv="clr-namespace:BonVision;assembly=BonVision"
                  xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
@@ -10,20 +10,14 @@
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Columns</MemberName>
-        <Name>NumberColumns</Name>
-        <Description>The number of columns in the checkerboard.</Description>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Columns" DisplayName="NumberColumns" Description="The number of columns in the checkerboard." />
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Rows</MemberName>
-        <Name>NumberRows</Name>
-        <Description>The number of rows in the checkerboard.</Description>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Rows" DisplayName="NumberRows" Description="The number of rows in the checkerboard." />
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Phase</MemberName>
-        <Name>Phase</Name>
-        <Description>The contrast phase offset used to tile the checkerboard stimulus.</Description>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Phase" Description="The contrast phase offset used to tile the checkerboard stimulus." />
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="ExtentX" />
