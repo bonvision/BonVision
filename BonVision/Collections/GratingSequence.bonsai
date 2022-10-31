@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.6.0"
+<WorkflowBuilder Version="2.7.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                 xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
-                 xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns:scr="clr-namespace:Bonsai.Scripting.Expressions;assembly=Bonsai.Scripting.Expressions"
+                 xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Presents a sequence of predefined grating stimuli.</Description>
   <Workflow>
@@ -18,13 +18,13 @@
         <Property Name="Aperture" />
         <Property Name="Opacity" />
       </Expression>
-      <Expression xsi:type="CreateObservable">
+      <Expression xsi:type="rx:CreateObservable">
         <Workflow>
           <Nodes>
             <Expression xsi:type="WorkflowInput">
               <Name>Source1</Name>
             </Expression>
-            <Expression xsi:type="AsyncSubject">
+            <Expression xsi:type="rx:AsyncSubject">
               <Name>Parameters</Name>
             </Expression>
             <Expression xsi:type="SubscribeSubject">
@@ -74,12 +74,14 @@
             <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawGratings.bonsai">
               <LocationX>0</LocationX>
               <LocationY>0</LocationY>
+              <Layer>0</Layer>
               <Angle>0</Angle>
               <SpatialFrequency>10</SpatialFrequency>
               <TemporalFrequency>0</TemporalFrequency>
               <Phase>0</Phase>
               <SquareWave>false</SquareWave>
               <Contrast>1</Contrast>
+              <DutyCycle xsi:nil="true" />
               <Radius>1</Radius>
               <Aperture>0</Aperture>
               <Opacity>1</Opacity>

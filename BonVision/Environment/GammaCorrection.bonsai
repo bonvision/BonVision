@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.6.0"
+<WorkflowBuilder Version="2.7.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
                  xmlns:sys="clr-namespace:System;assembly=mscorlib"
@@ -19,10 +19,8 @@
           <gl:Height>1</gl:Height>
         </Combinator>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>ClearColor</MemberName>
-        <Name>ClearColor</Name>
-        <Category>Misc</Category>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="ClearColor" />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="gl:RenderTexture">
@@ -45,9 +43,8 @@
           <gl:TextureTarget>Texture2D</gl:TextureTarget>
         </Combinator>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>GammaLut</Name>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="GammaLut" Category="Render Settings" />
       </Expression>
       <Expression xsi:type="PropertySource" TypeArguments="gl:LoadImage,sys:String">
         <MemberName>FileName</MemberName>

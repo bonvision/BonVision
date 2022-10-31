@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.6.0"
+<WorkflowBuilder Version="2.7.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
                  xmlns:dsp="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp"
@@ -10,9 +10,8 @@
   <Description>Generates and draws a non-overlapping discrete sparse grid of randomly activated quads.</Description>
   <Workflow>
     <Nodes>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Period</MemberName>
-        <Name>Duration</Name>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Period" DisplayName="Duration" />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="gl:Timer">
@@ -20,15 +19,11 @@
           <gl:Period>PT0.2S</gl:Period>
         </Combinator>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>ActiveQuads</MemberName>
-        <Name>ActiveQuads</Name>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="ActiveQuads" />
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>GridSize</Name>
-        <Description>The size of the sparse noise grid.</Description>
-        <Category />
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="GridSize" Description="The size of the sparse noise grid." />
       </Expression>
       <Expression xsi:type="PropertySource" TypeArguments="dsp:ConvertFromArray,p1:Size">
         <MemberName>Size</MemberName>

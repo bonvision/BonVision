@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.6.0"
+<WorkflowBuilder Version="2.7.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
                  xmlns:bv="clr-namespace:BonVision;assembly=BonVision"
-                 xmlns:q1="clr-namespace:OpenTK;assembly=OpenTK"
+                 xmlns:p1="clr-namespace:OpenTK;assembly=OpenTK"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
-                 xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
+                 xmlns:scr="clr-namespace:Bonsai.Scripting.Expressions;assembly=Bonsai.Scripting.Expressions"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Specifies a perspective view, commonly used for 3D stimulus environments.</Description>
   <Workflow>
@@ -21,23 +21,21 @@
           <Property Name="AspectRatio" />
         </PropertyMappings>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>Light</Name>
-        <Description>The position of the main point light.</Description>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Light" Description="The position of the main point light." />
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Value</MemberName>
-        <Name>FieldOfView</Name>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="FieldOfView" />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="bv:FieldOfViewProperty">
           <bv:Value>90</bv:Value>
         </Combinator>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>FovY</MemberName>
-        <Name />
+      <Expression xsi:type="PropertyMapping">
+        <PropertyMappings>
+          <Property Name="FovY" />
+        </PropertyMappings>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Eye" />
@@ -75,7 +73,7 @@
           </gl:Up>
         </Combinator>
       </Expression>
-      <Expression xsi:type="PropertySource" TypeArguments="gl:CreateLookAt,q1:Vector3">
+      <Expression xsi:type="PropertySource" TypeArguments="gl:CreateLookAt,p1:Vector3">
         <MemberName>Eye</MemberName>
         <Value>
           <X>0</X>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.6.0"
+<WorkflowBuilder Version="2.7.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
                  xmlns="https://bonsai-rx.org/2018/workflow">
@@ -9,10 +9,8 @@
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>ClearColor</MemberName>
-        <Name>ClearColor</Name>
-        <Category>Misc</Category>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="ClearColor" />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="gl:RenderTexture">
@@ -36,7 +34,7 @@
         </Combinator>
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Destination" />
+        <Property Name="Destination" Category="Render Settings" />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="gl:WarpPerspective" />

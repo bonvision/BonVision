@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.6.0"
+<WorkflowBuilder Version="2.7.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Description>Logs a value into the specified common event stream.</Description>
   <Workflow>
@@ -8,38 +9,31 @@
       <Expression xsi:type="WorkflowInput">
         <Name>Source1</Name>
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Format</MemberName>
-        <Name>Format</Name>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Format" />
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Selector</MemberName>
-        <Name>Selector</Name>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Selector" />
       </Expression>
-      <Expression xsi:type="ExternalizedProperty">
-        <MemberName>Name</MemberName>
-        <Name>Name</Name>
-        <Category />
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Name" />
       </Expression>
-      <Expression xsi:type="Sink">
+      <Expression xsi:type="rx:Sink">
         <Name>FormatLog</Name>
         <Workflow>
           <Nodes>
             <Expression xsi:type="WorkflowInput">
               <Name>Source1</Name>
             </Expression>
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>Format</MemberName>
-              <Name>Format</Name>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="Format" />
             </Expression>
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>Selector</MemberName>
-              <Name>Selector</Name>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="Selector" />
             </Expression>
             <Expression xsi:type="Format" />
-            <Expression xsi:type="ExternalizedProperty">
-              <MemberName>Name</MemberName>
-              <Name>Name</Name>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="Name" />
             </Expression>
             <Expression xsi:type="MulticastSubject">
               <Name>Events</Name>
