@@ -31,6 +31,7 @@
     <PackageReference Include="Bonsai.Shaders" version="0.26.0" />
     <PackageReference Include="Bonsai.Shaders.Design" Version="0.26.0" />
     <PackageReference Include="Bonsai.Shaders.Rendering" Version="0.3.0" />
+    <PackageReference Include="Bonsai.Vision" version="2.7.0" />
     <PackageReference Include="Bonsai.VR" version="0.6.0" />
   </ItemGroup>
 
