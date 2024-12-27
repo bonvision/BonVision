@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.8.5"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawText.bonsai">
+        <ExtentX>1</ExtentX>
+        <ExtentY>1</ExtentY>
+        <Text />
+        <Font>Microsoft Sans Serif, 13.875pt</Font>
+        <Alignment>Center</Alignment>
+        <LineAlignment>Center</LineAlignment>
+        <TextRenderingHint>AntiAliasGridFit</TextRenderingHint>
+        <Color>
+          <Val0>255</Val0>
+          <Val1>255</Val1>
+          <Val2>255</Val2>
+          <Val3>255</Val3>
+        </Color>
+        <LocationX>0</LocationX>
+        <LocationY>0</LocationY>
+        <Layer>0</Layer>
+        <Angle>0</Angle>
+      </Expression>
+    </Nodes>
+    <Edges />
+  </Workflow>
+</WorkflowBuilder>

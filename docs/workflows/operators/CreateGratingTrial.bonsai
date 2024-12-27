@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.8.5"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:p1="clr-namespace:BonVision.Collections;assembly=BonVision"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="p1:CreateGratingTrial">
+          <p1:Delay>0</p1:Delay>
+          <p1:Duration>1</p1:Duration>
+          <p1:Diameter>1</p1:Diameter>
+          <p1:X>0</p1:X>
+          <p1:Y>0</p1:Y>
+          <p1:Contrast>1</p1:Contrast>
+          <p1:SpatialFrequency>10</p1:SpatialFrequency>
+          <p1:TemporalFrequency>0</p1:TemporalFrequency>
+          <p1:Orientation>0</p1:Orientation>
+        </Combinator>
+      </Expression>
+    </Nodes>
+    <Edges />
+  </Workflow>
+</WorkflowBuilder>

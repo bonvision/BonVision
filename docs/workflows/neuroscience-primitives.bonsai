@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.8.1"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawGratings.bonsai">
+        <LocationX>0</LocationX>
+        <LocationY>0</LocationY>
+        <Layer>0</Layer>
+        <ExtentX>1</ExtentX>
+        <ExtentY>1</ExtentY>
+        <SpatialFrequency>10</SpatialFrequency>
+        <TemporalFrequency>0</TemporalFrequency>
+        <Phase>0</Phase>
+        <Angle>0</Angle>
+        <SquareWave>false</SquareWave>
+        <Contrast>1</Contrast>
+        <DutyCycle xsi:nil="true" />
+        <Radius>1</Radius>
+        <Aperture>0</Aperture>
+        <Opacity>1</Opacity>
+      </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawCheckerboard.bonsai">
+        <ExtentX>1</ExtentX>
+        <ExtentY>1</ExtentY>
+        <LocationX>0</LocationX>
+        <LocationY>0</LocationY>
+        <Layer>0</Layer>
+        <Angle>0</Angle>
+        <NumberColumns>3</NumberColumns>
+        <NumberRows>3</NumberRows>
+        <Phase>0</Phase>
+      </Expression>
+    </Nodes>
+    <Edges />
+  </Workflow>
+</WorkflowBuilder>

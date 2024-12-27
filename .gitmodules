@@ -1,0 +1,4 @@
+[submodule "docs/bonsai"]
+	path = docs/bonsai
+	url = https://github.com/banchan86/docfx-tools_dev
+	branch = api-template-includeworkflow

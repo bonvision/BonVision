@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.8.5"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawCircleArray.bonsai">
+        <PositionData />
+        <Diameter>0.04</Diameter>
+        <LocationX>0</LocationX>
+        <LocationY>0</LocationY>
+        <Layer>0</Layer>
+        <ColorR>1</ColorR>
+        <ColorG>1</ColorG>
+        <ColorB>1</ColorB>
+        <ColorA>1</ColorA>
+      </Expression>
+    </Nodes>
+    <Edges />
+  </Workflow>
+</WorkflowBuilder>

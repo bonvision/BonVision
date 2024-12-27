@@ -1,0 +1,59 @@
+# Builds and publishes the documentation website to gh-pages branch
+name: Build docs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+        with:
+          submodules: true
+
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v4.0.0
+        with:
+          dotnet-version: 8.x
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+      
+      - name: Restore NuGet Packages
+        run: msbuild -t:restore src/BonVision.sln
+
+      - name: Build Solution
+        run: msbuild src/BonVision.sln /p:Configuration=Release
+
+      - name: Setup DocFX
+        run: dotnet tool restore
+
+      - name: Setup Bonsai
+        working-directory: .bonsai
+        run: .\Setup.ps1
+      
+      - name: Setup Python 
+        uses: actions/setup-python@v5
+        with: 
+          python-version: '3.12'
+      
+      - name: Setup Pyyaml
+        run: pip install pyyaml==6.0.2
+
+      - name: Build Documentation
+        working-directory: docs
+        run: .\build.ps1
+          
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4.1.1
+        with:
+          ref: gh-pages
+          path: gh-pages
+      - name: Publish to github pages
+        uses: peaceiris/actions-gh-pages@v3.9.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/_site
+          force_orphan: true

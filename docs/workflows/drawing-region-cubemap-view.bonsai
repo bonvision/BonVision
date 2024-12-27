@@ -1,0 +1,424 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.8.2"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
+                 xmlns:res="clr-namespace:Bonsai.Resources;assembly=Bonsai.System"
+                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="gl:CreateWindow">
+          <gl:Width>640</gl:Width>
+          <gl:Height>480</gl:Height>
+          <gl:VSync>On</gl:VSync>
+          <gl:SwapSync>false</gl:SwapSync>
+          <gl:ClearColor>Gray</gl:ClearColor>
+          <gl:ClearMask>DepthBufferBit ColorBufferBit</gl:ClearMask>
+          <gl:CursorVisible>true</gl:CursorVisible>
+          <gl:Location xsi:nil="true" />
+          <gl:WindowBorder>Resizable</gl:WindowBorder>
+          <gl:WindowState>Normal</gl:WindowState>
+          <gl:DisplayDevice>Primary</gl:DisplayDevice>
+          <gl:TargetRenderFrequency>60</gl:TargetRenderFrequency>
+          <gl:TargetUpdateFrequency xsi:nil="true" />
+          <gl:RenderState />
+          <gl:GraphicsMode>
+            <gl:ColorFormat>
+              <gl:Red>8</gl:Red>
+              <gl:Green>8</gl:Green>
+              <gl:Blue>8</gl:Blue>
+              <gl:Alpha>8</gl:Alpha>
+            </gl:ColorFormat>
+            <gl:Depth>16</gl:Depth>
+            <gl:Stencil>0</gl:Stencil>
+            <gl:Samples>0</gl:Samples>
+            <gl:AccumulatorFormat>
+              <gl:Red>0</gl:Red>
+              <gl:Green>0</gl:Green>
+              <gl:Blue>0</gl:Blue>
+              <gl:Alpha>0</gl:Alpha>
+            </gl:AccumulatorFormat>
+            <gl:Buffers>2</gl:Buffers>
+            <gl:Stereo>false</gl:Stereo>
+          </gl:GraphicsMode>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.BonVisionResources.bonsai" />
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="gl:TextureResources">
+          <gl:Textures>
+            <gl:TextureConfiguration xsi:type="gl:ImageTexture">
+              <gl:Name>plaid</gl:Name>
+              <gl:Width xsi:nil="true" />
+              <gl:Height xsi:nil="true" />
+              <gl:InternalFormat>Rgba</gl:InternalFormat>
+              <gl:WrapS>Repeat</gl:WrapS>
+              <gl:WrapT>Repeat</gl:WrapT>
+              <gl:MinFilter>Linear</gl:MinFilter>
+              <gl:MagFilter>Linear</gl:MagFilter>
+              <gl:FileName>Textures\plaid.jpg</gl:FileName>
+              <gl:ColorType>Unchanged</gl:ColorType>
+              <gl:FlipMode>Vertical</gl:FlipMode>
+            </gl:TextureConfiguration>
+            <gl:TextureConfiguration xsi:type="gl:ImageTexture">
+              <gl:Name>vertGrat</gl:Name>
+              <gl:Width xsi:nil="true" />
+              <gl:Height xsi:nil="true" />
+              <gl:InternalFormat>Rgba</gl:InternalFormat>
+              <gl:WrapS>Repeat</gl:WrapS>
+              <gl:WrapT>Repeat</gl:WrapT>
+              <gl:MinFilter>Linear</gl:MinFilter>
+              <gl:MagFilter>Linear</gl:MagFilter>
+              <gl:FileName>Textures\vertGrat.jpg</gl:FileName>
+              <gl:ColorType>Unchanged</gl:ColorType>
+              <gl:FlipMode>Vertical</gl:FlipMode>
+            </gl:TextureConfiguration>
+            <gl:TextureConfiguration xsi:type="gl:ImageTexture">
+              <gl:Name>fwn1</gl:Name>
+              <gl:Width xsi:nil="true" />
+              <gl:Height xsi:nil="true" />
+              <gl:InternalFormat>Rgba</gl:InternalFormat>
+              <gl:WrapS>Repeat</gl:WrapS>
+              <gl:WrapT>Repeat</gl:WrapT>
+              <gl:MinFilter>Linear</gl:MinFilter>
+              <gl:MagFilter>Linear</gl:MagFilter>
+              <gl:FileName>Textures\fwn1.jpg</gl:FileName>
+              <gl:ColorType>Unchanged</gl:ColorType>
+              <gl:FlipMode>Vertical</gl:FlipMode>
+            </gl:TextureConfiguration>
+            <gl:TextureConfiguration xsi:type="gl:ImageTexture">
+              <gl:Name>fwn2</gl:Name>
+              <gl:Width xsi:nil="true" />
+              <gl:Height xsi:nil="true" />
+              <gl:InternalFormat>Rgba</gl:InternalFormat>
+              <gl:WrapS>Repeat</gl:WrapS>
+              <gl:WrapT>Repeat</gl:WrapT>
+              <gl:MinFilter>Linear</gl:MinFilter>
+              <gl:MagFilter>Linear</gl:MagFilter>
+              <gl:FileName>Textures\fwn2.jpg</gl:FileName>
+              <gl:ColorType>Unchanged</gl:ColorType>
+              <gl:FlipMode>Vertical</gl:FlipMode>
+            </gl:TextureConfiguration>
+            <gl:TextureConfiguration xsi:type="gl:ImageTexture">
+              <gl:Name>fwn3</gl:Name>
+              <gl:Width xsi:nil="true" />
+              <gl:Height xsi:nil="true" />
+              <gl:InternalFormat>Rgba</gl:InternalFormat>
+              <gl:WrapS>Repeat</gl:WrapS>
+              <gl:WrapT>Repeat</gl:WrapT>
+              <gl:MinFilter>Linear</gl:MinFilter>
+              <gl:MagFilter>Linear</gl:MagFilter>
+              <gl:FileName>Textures\fwn3.jpg</gl:FileName>
+              <gl:ColorType>Unchanged</gl:ColorType>
+              <gl:FlipMode>Vertical</gl:FlipMode>
+            </gl:TextureConfiguration>
+            <gl:TextureConfiguration xsi:type="gl:ImageTexture">
+              <gl:Name>fwn4</gl:Name>
+              <gl:Width xsi:nil="true" />
+              <gl:Height xsi:nil="true" />
+              <gl:InternalFormat>Rgba</gl:InternalFormat>
+              <gl:WrapS>Repeat</gl:WrapS>
+              <gl:WrapT>Repeat</gl:WrapT>
+              <gl:MinFilter>Linear</gl:MinFilter>
+              <gl:MagFilter>Linear</gl:MagFilter>
+              <gl:FileName>Textures\fwn4.jpg</gl:FileName>
+              <gl:ColorType>Unchanged</gl:ColorType>
+              <gl:FlipMode>Vertical</gl:FlipMode>
+            </gl:TextureConfiguration>
+            <gl:TextureConfiguration xsi:type="gl:ImageTexture">
+              <gl:Name>grayEnd</gl:Name>
+              <gl:Width xsi:nil="true" />
+              <gl:Height xsi:nil="true" />
+              <gl:InternalFormat>Rgba</gl:InternalFormat>
+              <gl:WrapS>Repeat</gl:WrapS>
+              <gl:WrapT>Repeat</gl:WrapT>
+              <gl:MinFilter>Linear</gl:MinFilter>
+              <gl:MagFilter>Linear</gl:MagFilter>
+              <gl:FileName>Textures\grayEnd.jpg</gl:FileName>
+              <gl:ColorType>Unchanged</gl:ColorType>
+              <gl:FlipMode>Vertical</gl:FlipMode>
+            </gl:TextureConfiguration>
+            <gl:TextureConfiguration xsi:type="gl:ImageTexture">
+              <gl:Name>horGrat</gl:Name>
+              <gl:Width xsi:nil="true" />
+              <gl:Height xsi:nil="true" />
+              <gl:InternalFormat>Rgba</gl:InternalFormat>
+              <gl:WrapS>Repeat</gl:WrapS>
+              <gl:WrapT>Repeat</gl:WrapT>
+              <gl:MinFilter>Linear</gl:MinFilter>
+              <gl:MagFilter>Linear</gl:MagFilter>
+              <gl:FileName>Textures\horGrat.jpg</gl:FileName>
+              <gl:ColorType>Unchanged</gl:ColorType>
+              <gl:FlipMode>Vertical</gl:FlipMode>
+            </gl:TextureConfiguration>
+          </gl:Textures>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="res:LoadResources" />
+      </Expression>
+      <Expression xsi:type="WorkflowOutput" />
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="gl:RenderFrame" />
+      </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Environment.CubemapView.bonsai">
+        <Eye>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Eye>
+        <NearClip>0.1</NearClip>
+        <FarClip>1000</FarClip>
+        <Light>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Light>
+      </Expression>
+      <Expression xsi:type="rx:BehaviorSubject">
+        <Name>Draw3DStim</Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="gl:RenderCubemap">
+          <gl:RenderState />
+          <gl:ClearColor>Gray</gl:ClearColor>
+          <gl:ClearMask>DepthBufferBit ColorBufferBit</gl:ClearMask>
+          <gl:FaceSize xsi:nil="true" />
+          <gl:InternalFormat>Rgb</gl:InternalFormat>
+          <gl:MinFilter>Linear</gl:MinFilter>
+          <gl:MagFilter>Linear</gl:MagFilter>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Environment.ViewWindow.bonsai">
+        <Width>20</Width>
+        <Height>15</Height>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Translation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-10</Z>
+        </Translation>
+      </Expression>
+      <Expression xsi:type="SubscribeSubject">
+        <Name>Draw3DStim</Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="gl:BindTexture">
+          <gl:TextureSlot>Texture0</gl:TextureSlot>
+          <gl:ShaderName>TexturedModel</gl:ShaderName>
+          <gl:TextureName>vertGrat</gl:TextureName>
+          <gl:TextureTarget>Texture2D</gl:TextureTarget>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawTexturedModel.bonsai">
+        <TranslationX>0</TranslationX>
+        <TranslationY>6</TranslationY>
+        <TranslationZ>0</TranslationZ>
+        <RotationZ>0</RotationZ>
+        <RotationY>90</RotationY>
+        <RotationX>-90</RotationX>
+        <ScaleX>25</ScaleX>
+        <ScaleY>8</ScaleY>
+        <ScaleZ>8</ScaleZ>
+        <Ambient>
+          <X>0.5</X>
+          <Y>0.5</Y>
+          <Z>0.5</Z>
+        </Ambient>
+        <Diffuse>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </Diffuse>
+        <Specular>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </Specular>
+        <SpecularExponent>10</SpecularExponent>
+        <MeshName>Plane</MeshName>
+      </Expression>
+      <Expression xsi:type="SubscribeSubject">
+        <Name>Draw3DStim</Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="gl:BindTexture">
+          <gl:TextureSlot>Texture0</gl:TextureSlot>
+          <gl:ShaderName>TexturedModel</gl:ShaderName>
+          <gl:TextureName>vertGrat</gl:TextureName>
+          <gl:TextureTarget>Texture2D</gl:TextureTarget>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawTexturedModel.bonsai">
+        <TranslationX>0</TranslationX>
+        <TranslationY>-1.99</TranslationY>
+        <TranslationZ>0</TranslationZ>
+        <RotationZ>0</RotationZ>
+        <RotationY>90</RotationY>
+        <RotationX>-90</RotationX>
+        <ScaleX>25</ScaleX>
+        <ScaleY>8</ScaleY>
+        <ScaleZ>0</ScaleZ>
+        <Ambient>
+          <X>0.5</X>
+          <Y>0.5</Y>
+          <Z>0.5</Z>
+        </Ambient>
+        <Diffuse>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </Diffuse>
+        <Specular>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </Specular>
+        <SpecularExponent>10</SpecularExponent>
+        <MeshName>Plane</MeshName>
+      </Expression>
+      <Expression xsi:type="SubscribeSubject">
+        <Name>Draw3DStim</Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="gl:BindTexture">
+          <gl:TextureSlot>Texture0</gl:TextureSlot>
+          <gl:ShaderName>TexturedModel</gl:ShaderName>
+          <gl:TextureName>horGrat</gl:TextureName>
+          <gl:TextureTarget>Texture2D</gl:TextureTarget>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawTexturedModel.bonsai">
+        <TranslationX>4</TranslationX>
+        <TranslationY>2</TranslationY>
+        <TranslationZ>0</TranslationZ>
+        <RotationZ>0</RotationZ>
+        <RotationY>90</RotationY>
+        <RotationX>0</RotationX>
+        <ScaleX>25</ScaleX>
+        <ScaleY>8</ScaleY>
+        <ScaleZ>0</ScaleZ>
+        <Ambient>
+          <X>0.5</X>
+          <Y>0.5</Y>
+          <Z>0.5</Z>
+        </Ambient>
+        <Diffuse>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </Diffuse>
+        <Specular>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </Specular>
+        <SpecularExponent>10</SpecularExponent>
+        <MeshName>Plane</MeshName>
+      </Expression>
+      <Expression xsi:type="SubscribeSubject">
+        <Name>Draw3DStim</Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="gl:BindTexture">
+          <gl:TextureSlot>Texture0</gl:TextureSlot>
+          <gl:ShaderName>TexturedModel</gl:ShaderName>
+          <gl:TextureName>horGrat</gl:TextureName>
+          <gl:TextureTarget>Texture2D</gl:TextureTarget>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawTexturedModel.bonsai">
+        <TranslationX>-4</TranslationX>
+        <TranslationY>2</TranslationY>
+        <TranslationZ>0</TranslationZ>
+        <RotationZ>0</RotationZ>
+        <RotationY>90</RotationY>
+        <RotationX>0</RotationX>
+        <ScaleX>25</ScaleX>
+        <ScaleY>8</ScaleY>
+        <ScaleZ>0</ScaleZ>
+        <Ambient>
+          <X>0.5</X>
+          <Y>0.5</Y>
+          <Z>0.5</Z>
+        </Ambient>
+        <Diffuse>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </Diffuse>
+        <Specular>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </Specular>
+        <SpecularExponent>10</SpecularExponent>
+        <MeshName>Plane</MeshName>
+      </Expression>
+      <Expression xsi:type="SubscribeSubject">
+        <Name>Draw3DStim</Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="gl:BindTexture">
+          <gl:TextureSlot>Texture0</gl:TextureSlot>
+          <gl:ShaderName>TexturedModel</gl:ShaderName>
+          <gl:TextureName>fwn1</gl:TextureName>
+          <gl:TextureTarget>Texture2D</gl:TextureTarget>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawTexturedModel.bonsai">
+        <TranslationX>0</TranslationX>
+        <TranslationY>2</TranslationY>
+        <TranslationZ>-15</TranslationZ>
+        <RotationZ>0</RotationZ>
+        <RotationY>0</RotationY>
+        <RotationX>0</RotationX>
+        <ScaleX>11</ScaleX>
+        <ScaleY>11</ScaleY>
+        <ScaleZ>0</ScaleZ>
+        <Ambient>
+          <X>0.5</X>
+          <Y>0.5</Y>
+          <Z>0.5</Z>
+        </Ambient>
+        <Diffuse>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </Diffuse>
+        <Specular>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </Specular>
+        <SpecularExponent>10</SpecularExponent>
+        <MeshName>Plane</MeshName>
+      </Expression>
+    </Nodes>
+    <Edges>
+      <Edge From="0" To="1" Label="Source1" />
+      <Edge From="1" To="2" Label="Source1" />
+      <Edge From="2" To="3" Label="Source1" />
+      <Edge From="3" To="4" Label="Source1" />
+      <Edge From="5" To="6" Label="Source1" />
+      <Edge From="6" To="7" Label="Source1" />
+      <Edge From="7" To="8" Label="Source1" />
+      <Edge From="8" To="9" Label="Source1" />
+      <Edge From="10" To="11" Label="Source1" />
+      <Edge From="11" To="12" Label="Source1" />
+      <Edge From="13" To="14" Label="Source1" />
+      <Edge From="14" To="15" Label="Source1" />
+      <Edge From="16" To="17" Label="Source1" />
+      <Edge From="17" To="18" Label="Source1" />
+      <Edge From="19" To="20" Label="Source1" />
+      <Edge From="20" To="21" Label="Source1" />
+      <Edge From="22" To="23" Label="Source1" />
+      <Edge From="23" To="24" Label="Source1" />
+    </Edges>
+  </Workflow>
+</WorkflowBuilder>

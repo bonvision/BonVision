@@ -1,0 +1,691 @@
+### YamlMime:ManagedReference
+items:
+- uid: BonVision.CreateSphereGrid
+  commentId: T:BonVision.CreateSphereGrid
+  id: CreateSphereGrid
+  parent: BonVision
+  children:
+  - BonVision.CreateSphereGrid.#ctor
+  - BonVision.CreateSphereGrid.Bottom
+  - BonVision.CreateSphereGrid.Left
+  - BonVision.CreateSphereGrid.Process
+  - BonVision.CreateSphereGrid.Process``1(System.IObservable{``0})
+  - BonVision.CreateSphereGrid.Right
+  - BonVision.CreateSphereGrid.Top
+  langs:
+  - csharp
+  - vb
+  name: CreateSphereGrid
+  nameWithType: CreateSphereGrid
+  fullName: BonVision.CreateSphereGrid
+  type: Class
+  source:
+    remote:
+      path: src/BonVision/CreateSphereGrid.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: CreateSphereGrid
+    path: ../src/BonVision/CreateSphereGrid.cs
+    startLine: 9
+  assemblies:
+  - BonVision
+  namespace: BonVision
+  syntax:
+    content: >-
+      [Combinator]
+
+      [WorkflowElementCategory(ElementCategory.Source)]
+
+      public class CreateSphereGrid
+    content.vb: >-
+      <Combinator>
+
+      <WorkflowElementCategory(ElementCategory.Source)>
+
+      Public Class CreateSphereGrid
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  attributes:
+  - type: Bonsai.CombinatorAttribute
+    ctor: Bonsai.CombinatorAttribute.#ctor
+    arguments: []
+  - type: Bonsai.WorkflowElementCategoryAttribute
+    ctor: Bonsai.WorkflowElementCategoryAttribute.#ctor(Bonsai.ElementCategory)
+    arguments:
+    - type: Bonsai.ElementCategory
+      value: 0
+- uid: BonVision.CreateSphereGrid.#ctor
+  commentId: M:BonVision.CreateSphereGrid.#ctor
+  id: '#ctor'
+  parent: BonVision.CreateSphereGrid
+  langs:
+  - csharp
+  - vb
+  name: CreateSphereGrid()
+  nameWithType: CreateSphereGrid.CreateSphereGrid()
+  fullName: BonVision.CreateSphereGrid.CreateSphereGrid()
+  type: Constructor
+  source:
+    remote:
+      path: src/BonVision/CreateSphereGrid.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: .ctor
+    path: ../src/BonVision/CreateSphereGrid.cs
+    startLine: 14
+  assemblies:
+  - BonVision
+  namespace: BonVision
+  syntax:
+    content: public CreateSphereGrid()
+    content.vb: Public Sub New()
+  overload: BonVision.CreateSphereGrid.#ctor*
+  nameWithType.vb: CreateSphereGrid.New()
+  fullName.vb: BonVision.CreateSphereGrid.New()
+  name.vb: New()
+- uid: BonVision.CreateSphereGrid.Left
+  commentId: P:BonVision.CreateSphereGrid.Left
+  id: Left
+  parent: BonVision.CreateSphereGrid
+  langs:
+  - csharp
+  - vb
+  name: Left
+  nameWithType: CreateSphereGrid.Left
+  fullName: BonVision.CreateSphereGrid.Left
+  type: Property
+  source:
+    remote:
+      path: src/BonVision/CreateSphereGrid.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: Left
+    path: ../src/BonVision/CreateSphereGrid.cs
+    startLine: 22
+  assemblies:
+  - BonVision
+  namespace: BonVision
+  syntax:
+    content: public float Left { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Left As Single
+  overload: BonVision.CreateSphereGrid.Left*
+- uid: BonVision.CreateSphereGrid.Right
+  commentId: P:BonVision.CreateSphereGrid.Right
+  id: Right
+  parent: BonVision.CreateSphereGrid
+  langs:
+  - csharp
+  - vb
+  name: Right
+  nameWithType: CreateSphereGrid.Right
+  fullName: BonVision.CreateSphereGrid.Right
+  type: Property
+  source:
+    remote:
+      path: src/BonVision/CreateSphereGrid.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: Right
+    path: ../src/BonVision/CreateSphereGrid.cs
+    startLine: 25
+  assemblies:
+  - BonVision
+  namespace: BonVision
+  syntax:
+    content: public float Right { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Right As Single
+  overload: BonVision.CreateSphereGrid.Right*
+- uid: BonVision.CreateSphereGrid.Bottom
+  commentId: P:BonVision.CreateSphereGrid.Bottom
+  id: Bottom
+  parent: BonVision.CreateSphereGrid
+  langs:
+  - csharp
+  - vb
+  name: Bottom
+  nameWithType: CreateSphereGrid.Bottom
+  fullName: BonVision.CreateSphereGrid.Bottom
+  type: Property
+  source:
+    remote:
+      path: src/BonVision/CreateSphereGrid.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: Bottom
+    path: ../src/BonVision/CreateSphereGrid.cs
+    startLine: 28
+  assemblies:
+  - BonVision
+  namespace: BonVision
+  syntax:
+    content: public float Bottom { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Bottom As Single
+  overload: BonVision.CreateSphereGrid.Bottom*
+- uid: BonVision.CreateSphereGrid.Top
+  commentId: P:BonVision.CreateSphereGrid.Top
+  id: Top
+  parent: BonVision.CreateSphereGrid
+  langs:
+  - csharp
+  - vb
+  name: Top
+  nameWithType: CreateSphereGrid.Top
+  fullName: BonVision.CreateSphereGrid.Top
+  type: Property
+  source:
+    remote:
+      path: src/BonVision/CreateSphereGrid.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: Top
+    path: ../src/BonVision/CreateSphereGrid.cs
+    startLine: 31
+  assemblies:
+  - BonVision
+  namespace: BonVision
+  syntax:
+    content: public float Top { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Top As Single
+  overload: BonVision.CreateSphereGrid.Top*
+- uid: BonVision.CreateSphereGrid.Process
+  commentId: M:BonVision.CreateSphereGrid.Process
+  id: Process
+  parent: BonVision.CreateSphereGrid
+  langs:
+  - csharp
+  - vb
+  name: Process()
+  nameWithType: CreateSphereGrid.Process()
+  fullName: BonVision.CreateSphereGrid.Process()
+  type: Method
+  source:
+    remote:
+      path: src/BonVision/CreateSphereGrid.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: Process
+    path: ../src/BonVision/CreateSphereGrid.cs
+    startLine: 104
+  assemblies:
+  - BonVision
+  namespace: BonVision
+  syntax:
+    content: public IObservable<Tuple<Matrix2x3[], int[]>> Process()
+    return:
+      type: System.IObservable{System.Tuple{OpenTK.Matrix2x3[],System.Int32[]}}
+    content.vb: Public Function Process() As IObservable(Of Tuple(Of Matrix2x3(), Integer()))
+  overload: BonVision.CreateSphereGrid.Process*
+- uid: BonVision.CreateSphereGrid.Process``1(System.IObservable{``0})
+  commentId: M:BonVision.CreateSphereGrid.Process``1(System.IObservable{``0})
+  id: Process``1(System.IObservable{``0})
+  parent: BonVision.CreateSphereGrid
+  langs:
+  - csharp
+  - vb
+  name: Process<TSource>(IObservable<TSource>)
+  nameWithType: CreateSphereGrid.Process<TSource>(IObservable<TSource>)
+  fullName: BonVision.CreateSphereGrid.Process<TSource>(System.IObservable<TSource>)
+  type: Method
+  source:
+    remote:
+      path: src/BonVision/CreateSphereGrid.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: Process
+    path: ../src/BonVision/CreateSphereGrid.cs
+    startLine: 109
+  assemblies:
+  - BonVision
+  namespace: BonVision
+  syntax:
+    content: public IObservable<Tuple<Matrix2x3[], int[]>> Process<TSource>(IObservable<TSource> source)
+    parameters:
+    - id: source
+      type: System.IObservable{{TSource}}
+    typeParameters:
+    - id: TSource
+    return:
+      type: System.IObservable{System.Tuple{OpenTK.Matrix2x3[],System.Int32[]}}
+    content.vb: Public Function Process(Of TSource)(source As IObservable(Of TSource)) As IObservable(Of Tuple(Of Matrix2x3(), Integer()))
+  overload: BonVision.CreateSphereGrid.Process*
+  nameWithType.vb: CreateSphereGrid.Process(Of TSource)(IObservable(Of TSource))
+  fullName.vb: BonVision.CreateSphereGrid.Process(Of TSource)(System.IObservable(Of TSource))
+  name.vb: Process(Of TSource)(IObservable(Of TSource))
+references:
+- uid: BonVision
+  commentId: N:BonVision
+  href: BonVision.html
+  name: BonVision
+  nameWithType: BonVision
+  fullName: BonVision
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: BonVision.CreateSphereGrid.#ctor*
+  commentId: Overload:BonVision.CreateSphereGrid.#ctor
+  href: BonVision.CreateSphereGrid.html#BonVision_CreateSphereGrid__ctor
+  name: CreateSphereGrid
+  nameWithType: CreateSphereGrid.CreateSphereGrid
+  fullName: BonVision.CreateSphereGrid.CreateSphereGrid
+  nameWithType.vb: CreateSphereGrid.New
+  fullName.vb: BonVision.CreateSphereGrid.New
+  name.vb: New
+- uid: BonVision.CreateSphereGrid.Left*
+  commentId: Overload:BonVision.CreateSphereGrid.Left
+  href: BonVision.CreateSphereGrid.html#BonVision_CreateSphereGrid_Left
+  name: Left
+  nameWithType: CreateSphereGrid.Left
+  fullName: BonVision.CreateSphereGrid.Left
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: BonVision.CreateSphereGrid.Right*
+  commentId: Overload:BonVision.CreateSphereGrid.Right
+  href: BonVision.CreateSphereGrid.html#BonVision_CreateSphereGrid_Right
+  name: Right
+  nameWithType: CreateSphereGrid.Right
+  fullName: BonVision.CreateSphereGrid.Right
+- uid: BonVision.CreateSphereGrid.Bottom*
+  commentId: Overload:BonVision.CreateSphereGrid.Bottom
+  href: BonVision.CreateSphereGrid.html#BonVision_CreateSphereGrid_Bottom
+  name: Bottom
+  nameWithType: CreateSphereGrid.Bottom
+  fullName: BonVision.CreateSphereGrid.Bottom
+- uid: BonVision.CreateSphereGrid.Top*
+  commentId: Overload:BonVision.CreateSphereGrid.Top
+  href: BonVision.CreateSphereGrid.html#BonVision_CreateSphereGrid_Top
+  name: Top
+  nameWithType: CreateSphereGrid.Top
+  fullName: BonVision.CreateSphereGrid.Top
+- uid: BonVision.CreateSphereGrid.Process*
+  commentId: Overload:BonVision.CreateSphereGrid.Process
+  href: BonVision.CreateSphereGrid.html#BonVision_CreateSphereGrid_Process
+  name: Process
+  nameWithType: CreateSphereGrid.Process
+  fullName: BonVision.CreateSphereGrid.Process
+- uid: System.IObservable{System.Tuple{OpenTK.Matrix2x3[],System.Int32[]}}
+  commentId: T:System.IObservable{System.Tuple{OpenTK.Matrix2x3[],System.Int32[]}}
+  parent: System
+  definition: System.IObservable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  name: IObservable<Tuple<Matrix2x3[], int[]>>
+  nameWithType: IObservable<Tuple<Matrix2x3[], int[]>>
+  fullName: System.IObservable<System.Tuple<OpenTK.Matrix2x3[], int[]>>
+  nameWithType.vb: IObservable(Of Tuple(Of Matrix2x3(), Integer()))
+  fullName.vb: System.IObservable(Of System.Tuple(Of OpenTK.Matrix2x3(), Integer()))
+  name.vb: IObservable(Of Tuple(Of Matrix2x3(), Integer()))
+  spec.csharp:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: <
+  - uid: System.Tuple`2
+    name: Tuple
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.tuple-2
+  - name: <
+  - uid: OpenTK.Matrix2x3
+    name: Matrix2x3
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '['
+  - name: ']'
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Tuple`2
+    name: Tuple
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.tuple-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: OpenTK.Matrix2x3
+    name: Matrix2x3
+    isExternal: true
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: (
+  - name: )
+  - name: )
+  - name: )
+- uid: System.IObservable`1
+  commentId: T:System.IObservable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  name: IObservable<T>
+  nameWithType: IObservable<T>
+  fullName: System.IObservable<T>
+  nameWithType.vb: IObservable(Of T)
+  fullName.vb: System.IObservable(Of T)
+  name.vb: IObservable(Of T)
+  spec.csharp:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.IObservable{{TSource}}
+  commentId: T:System.IObservable{``0}
+  parent: System
+  definition: System.IObservable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  name: IObservable<TSource>
+  nameWithType: IObservable<TSource>
+  fullName: System.IObservable<TSource>
+  nameWithType.vb: IObservable(Of TSource)
+  fullName.vb: System.IObservable(Of TSource)
+  name.vb: IObservable(Of TSource)
+  spec.csharp:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: <
+  - name: TSource
+  - name: '>'
+  spec.vb:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TSource
+  - name: )

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.8.1"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Logging.FrameEventLogger.bonsai">
+        <Name>Events</Name>
+        <Append>false</Append>
+        <Overwrite>false</Overwrite>
+        <Suffix>None</Suffix>
+        <FileName />
+      </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Logging.EventLogger.bonsai">
+        <Name>Events</Name>
+        <FileName />
+        <Append>false</Append>
+        <Overwrite>false</Overwrite>
+        <Suffix>None</Suffix>
+      </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Logging.LogEvent.bonsai">
+        <Format xsi:nil="true" />
+        <Selector xsi:nil="true" />
+        <Name>Events</Name>
+      </Expression>
+    </Nodes>
+    <Edges />
+  </Workflow>
+</WorkflowBuilder>

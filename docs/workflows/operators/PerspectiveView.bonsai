@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.8.5"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Environment.PerspectiveView.bonsai">
+        <Eye>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>2</Z>
+        </Eye>
+        <Target>
+          <X>-0</X>
+          <Y>-0</Y>
+          <Z>-1</Z>
+        </Target>
+        <Up>
+          <X>0</X>
+          <Y>1</Y>
+          <Z>0</Z>
+        </Up>
+        <FieldOfView>90</FieldOfView>
+        <NearClip>0.1</NearClip>
+        <FarClip>1000</FarClip>
+        <Light>
+          <X>0</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </Light>
+      </Expression>
+    </Nodes>
+    <Edges />
+  </Workflow>
+</WorkflowBuilder>

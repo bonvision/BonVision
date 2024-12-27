@@ -1,0 +1,1187 @@
+### YamlMime:ManagedReference
+items:
+- uid: BonVision.Collections.CreateGratingTrial
+  commentId: T:BonVision.Collections.CreateGratingTrial
+  id: CreateGratingTrial
+  parent: BonVision.Collections
+  children:
+  - BonVision.Collections.CreateGratingTrial.#ctor
+  - BonVision.Collections.CreateGratingTrial.Contrast
+  - BonVision.Collections.CreateGratingTrial.Delay
+  - BonVision.Collections.CreateGratingTrial.Diameter
+  - BonVision.Collections.CreateGratingTrial.Duration
+  - BonVision.Collections.CreateGratingTrial.Orientation
+  - BonVision.Collections.CreateGratingTrial.OrientationXml
+  - BonVision.Collections.CreateGratingTrial.Process(System.IObservable{BonVision.Collections.GratingParameters})
+  - BonVision.Collections.CreateGratingTrial.Process``1(System.IObservable{``0})
+  - BonVision.Collections.CreateGratingTrial.SpatialFrequency
+  - BonVision.Collections.CreateGratingTrial.TemporalFrequency
+  - BonVision.Collections.CreateGratingTrial.X
+  - BonVision.Collections.CreateGratingTrial.Y
+  langs:
+  - csharp
+  - vb
+  name: CreateGratingTrial
+  nameWithType: CreateGratingTrial
+  fullName: BonVision.Collections.CreateGratingTrial
+  type: Class
+  source:
+    remote:
+      path: src/BonVision/Collections/CreateGratingTrial.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: CreateGratingTrial
+    path: ../src/BonVision/Collections/CreateGratingTrial.cs
+    startLine: 38
+  assemblies:
+  - BonVision
+  namespace: BonVision.Collections
+  syntax:
+    content: 'public class CreateGratingTrial : Transform<GratingParameters, GratingTrial>'
+    content.vb: Public Class CreateGratingTrial Inherits Transform(Of GratingParameters, GratingTrial)
+  inheritance:
+  - System.Object
+  - Bonsai.Combinator{BonVision.Collections.GratingParameters,BonVision.Collections.GratingTrial}
+  - Bonsai.Transform{BonVision.Collections.GratingParameters,BonVision.Collections.GratingTrial}
+  inheritedMembers:
+  - Bonsai.Combinator{BonVision.Collections.GratingParameters,BonVision.Collections.GratingTrial}.Process(System.IObservable{BonVision.Collections.GratingParameters})
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: BonVision.Collections.CreateGratingTrial.#ctor
+  commentId: M:BonVision.Collections.CreateGratingTrial.#ctor
+  id: '#ctor'
+  parent: BonVision.Collections.CreateGratingTrial
+  langs:
+  - csharp
+  - vb
+  name: CreateGratingTrial()
+  nameWithType: CreateGratingTrial.CreateGratingTrial()
+  fullName: BonVision.Collections.CreateGratingTrial.CreateGratingTrial()
+  type: Constructor
+  source:
+    remote:
+      path: src/BonVision/Collections/CreateGratingTrial.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: .ctor
+    path: ../src/BonVision/Collections/CreateGratingTrial.cs
+    startLine: 41
+  assemblies:
+  - BonVision
+  namespace: BonVision.Collections
+  syntax:
+    content: public CreateGratingTrial()
+    content.vb: Public Sub New()
+  overload: BonVision.Collections.CreateGratingTrial.#ctor*
+  nameWithType.vb: CreateGratingTrial.New()
+  fullName.vb: BonVision.Collections.CreateGratingTrial.New()
+  name.vb: New()
+- uid: BonVision.Collections.CreateGratingTrial.Delay
+  commentId: P:BonVision.Collections.CreateGratingTrial.Delay
+  id: Delay
+  parent: BonVision.Collections.CreateGratingTrial
+  langs:
+  - csharp
+  - vb
+  name: Delay
+  nameWithType: CreateGratingTrial.Delay
+  fullName: BonVision.Collections.CreateGratingTrial.Delay
+  type: Property
+  source:
+    remote:
+      path: src/BonVision/Collections/CreateGratingTrial.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: Delay
+    path: ../src/BonVision/Collections/CreateGratingTrial.cs
+    startLine: 49
+  assemblies:
+  - BonVision
+  namespace: BonVision.Collections
+  syntax:
+    content: public float Delay { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Delay As Single
+  overload: BonVision.Collections.CreateGratingTrial.Delay*
+- uid: BonVision.Collections.CreateGratingTrial.Duration
+  commentId: P:BonVision.Collections.CreateGratingTrial.Duration
+  id: Duration
+  parent: BonVision.Collections.CreateGratingTrial
+  langs:
+  - csharp
+  - vb
+  name: Duration
+  nameWithType: CreateGratingTrial.Duration
+  fullName: BonVision.Collections.CreateGratingTrial.Duration
+  type: Property
+  source:
+    remote:
+      path: src/BonVision/Collections/CreateGratingTrial.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: Duration
+    path: ../src/BonVision/Collections/CreateGratingTrial.cs
+    startLine: 52
+  assemblies:
+  - BonVision
+  namespace: BonVision.Collections
+  syntax:
+    content: public float Duration { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Duration As Single
+  overload: BonVision.Collections.CreateGratingTrial.Duration*
+- uid: BonVision.Collections.CreateGratingTrial.Diameter
+  commentId: P:BonVision.Collections.CreateGratingTrial.Diameter
+  id: Diameter
+  parent: BonVision.Collections.CreateGratingTrial
+  langs:
+  - csharp
+  - vb
+  name: Diameter
+  nameWithType: CreateGratingTrial.Diameter
+  fullName: BonVision.Collections.CreateGratingTrial.Diameter
+  type: Property
+  source:
+    remote:
+      path: src/BonVision/Collections/CreateGratingTrial.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: Diameter
+    path: ../src/BonVision/Collections/CreateGratingTrial.cs
+    startLine: 55
+  assemblies:
+  - BonVision
+  namespace: BonVision.Collections
+  syntax:
+    content: public float Diameter { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Diameter As Single
+  overload: BonVision.Collections.CreateGratingTrial.Diameter*
+- uid: BonVision.Collections.CreateGratingTrial.X
+  commentId: P:BonVision.Collections.CreateGratingTrial.X
+  id: X
+  parent: BonVision.Collections.CreateGratingTrial
+  langs:
+  - csharp
+  - vb
+  name: X
+  nameWithType: CreateGratingTrial.X
+  fullName: BonVision.Collections.CreateGratingTrial.X
+  type: Property
+  source:
+    remote:
+      path: src/BonVision/Collections/CreateGratingTrial.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: X
+    path: ../src/BonVision/Collections/CreateGratingTrial.cs
+    startLine: 58
+  assemblies:
+  - BonVision
+  namespace: BonVision.Collections
+  syntax:
+    content: public float X { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property X As Single
+  overload: BonVision.Collections.CreateGratingTrial.X*
+- uid: BonVision.Collections.CreateGratingTrial.Y
+  commentId: P:BonVision.Collections.CreateGratingTrial.Y
+  id: Y
+  parent: BonVision.Collections.CreateGratingTrial
+  langs:
+  - csharp
+  - vb
+  name: Y
+  nameWithType: CreateGratingTrial.Y
+  fullName: BonVision.Collections.CreateGratingTrial.Y
+  type: Property
+  source:
+    remote:
+      path: src/BonVision/Collections/CreateGratingTrial.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: Y
+    path: ../src/BonVision/Collections/CreateGratingTrial.cs
+    startLine: 61
+  assemblies:
+  - BonVision
+  namespace: BonVision.Collections
+  syntax:
+    content: public float Y { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Y As Single
+  overload: BonVision.Collections.CreateGratingTrial.Y*
+- uid: BonVision.Collections.CreateGratingTrial.Contrast
+  commentId: P:BonVision.Collections.CreateGratingTrial.Contrast
+  id: Contrast
+  parent: BonVision.Collections.CreateGratingTrial
+  langs:
+  - csharp
+  - vb
+  name: Contrast
+  nameWithType: CreateGratingTrial.Contrast
+  fullName: BonVision.Collections.CreateGratingTrial.Contrast
+  type: Property
+  source:
+    remote:
+      path: src/BonVision/Collections/CreateGratingTrial.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: Contrast
+    path: ../src/BonVision/Collections/CreateGratingTrial.cs
+    startLine: 64
+  assemblies:
+  - BonVision
+  namespace: BonVision.Collections
+  syntax:
+    content: public float Contrast { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Contrast As Single
+  overload: BonVision.Collections.CreateGratingTrial.Contrast*
+- uid: BonVision.Collections.CreateGratingTrial.SpatialFrequency
+  commentId: P:BonVision.Collections.CreateGratingTrial.SpatialFrequency
+  id: SpatialFrequency
+  parent: BonVision.Collections.CreateGratingTrial
+  langs:
+  - csharp
+  - vb
+  name: SpatialFrequency
+  nameWithType: CreateGratingTrial.SpatialFrequency
+  fullName: BonVision.Collections.CreateGratingTrial.SpatialFrequency
+  type: Property
+  source:
+    remote:
+      path: src/BonVision/Collections/CreateGratingTrial.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: SpatialFrequency
+    path: ../src/BonVision/Collections/CreateGratingTrial.cs
+    startLine: 67
+  assemblies:
+  - BonVision
+  namespace: BonVision.Collections
+  syntax:
+    content: public float SpatialFrequency { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property SpatialFrequency As Single
+  overload: BonVision.Collections.CreateGratingTrial.SpatialFrequency*
+- uid: BonVision.Collections.CreateGratingTrial.TemporalFrequency
+  commentId: P:BonVision.Collections.CreateGratingTrial.TemporalFrequency
+  id: TemporalFrequency
+  parent: BonVision.Collections.CreateGratingTrial
+  langs:
+  - csharp
+  - vb
+  name: TemporalFrequency
+  nameWithType: CreateGratingTrial.TemporalFrequency
+  fullName: BonVision.Collections.CreateGratingTrial.TemporalFrequency
+  type: Property
+  source:
+    remote:
+      path: src/BonVision/Collections/CreateGratingTrial.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: TemporalFrequency
+    path: ../src/BonVision/Collections/CreateGratingTrial.cs
+    startLine: 70
+  assemblies:
+  - BonVision
+  namespace: BonVision.Collections
+  syntax:
+    content: public float TemporalFrequency { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property TemporalFrequency As Single
+  overload: BonVision.Collections.CreateGratingTrial.TemporalFrequency*
+- uid: BonVision.Collections.CreateGratingTrial.Orientation
+  commentId: P:BonVision.Collections.CreateGratingTrial.Orientation
+  id: Orientation
+  parent: BonVision.Collections.CreateGratingTrial
+  langs:
+  - csharp
+  - vb
+  name: Orientation
+  nameWithType: CreateGratingTrial.Orientation
+  fullName: BonVision.Collections.CreateGratingTrial.Orientation
+  type: Property
+  source:
+    remote:
+      path: src/BonVision/Collections/CreateGratingTrial.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: Orientation
+    path: ../src/BonVision/Collections/CreateGratingTrial.cs
+    startLine: 73
+  assemblies:
+  - BonVision
+  namespace: BonVision.Collections
+  syntax:
+    content: >-
+      [Range(-3.141592653589793, 3.141592653589793)]
+
+      [TypeConverter(typeof(DegreeConverter))]
+
+      public float Orientation { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: >-
+      <Range(-3.141592653589793, 3.141592653589793)>
+
+      <TypeConverter(GetType(DegreeConverter))>
+
+      Public Property Orientation As Single
+  overload: BonVision.Collections.CreateGratingTrial.Orientation*
+  attributes:
+  - type: Bonsai.RangeAttribute
+    ctor: Bonsai.RangeAttribute.#ctor(System.Double,System.Double)
+    arguments:
+    - type: System.Double
+      value: -3.141592653589793
+    - type: System.Double
+      value: 3.141592653589793
+- uid: BonVision.Collections.CreateGratingTrial.OrientationXml
+  commentId: P:BonVision.Collections.CreateGratingTrial.OrientationXml
+  id: OrientationXml
+  parent: BonVision.Collections.CreateGratingTrial
+  langs:
+  - csharp
+  - vb
+  name: OrientationXml
+  nameWithType: CreateGratingTrial.OrientationXml
+  fullName: BonVision.Collections.CreateGratingTrial.OrientationXml
+  type: Property
+  source:
+    remote:
+      path: src/BonVision/Collections/CreateGratingTrial.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: OrientationXml
+    path: ../src/BonVision/Collections/CreateGratingTrial.cs
+    startLine: 80
+  assemblies:
+  - BonVision
+  namespace: BonVision.Collections
+  syntax:
+    content: >-
+      [Browsable(false)]
+
+      public float OrientationXml { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: >-
+      <Browsable(False)>
+
+      Public Property OrientationXml As Single
+  overload: BonVision.Collections.CreateGratingTrial.OrientationXml*
+  attributes:
+  - type: System.ComponentModel.BrowsableAttribute
+    ctor: System.ComponentModel.BrowsableAttribute.#ctor(System.Boolean)
+    arguments:
+    - type: System.Boolean
+      value: false
+- uid: BonVision.Collections.CreateGratingTrial.Process``1(System.IObservable{``0})
+  commentId: M:BonVision.Collections.CreateGratingTrial.Process``1(System.IObservable{``0})
+  id: Process``1(System.IObservable{``0})
+  parent: BonVision.Collections.CreateGratingTrial
+  langs:
+  - csharp
+  - vb
+  name: Process<TSource>(IObservable<TSource>)
+  nameWithType: CreateGratingTrial.Process<TSource>(IObservable<TSource>)
+  fullName: BonVision.Collections.CreateGratingTrial.Process<TSource>(System.IObservable<TSource>)
+  type: Method
+  source:
+    remote:
+      path: src/BonVision/Collections/CreateGratingTrial.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: Process
+    path: ../src/BonVision/Collections/CreateGratingTrial.cs
+    startLine: 88
+  assemblies:
+  - BonVision
+  namespace: BonVision.Collections
+  syntax:
+    content: public IObservable<GratingTrial> Process<TSource>(IObservable<TSource> source)
+    parameters:
+    - id: source
+      type: System.IObservable{{TSource}}
+    typeParameters:
+    - id: TSource
+    return:
+      type: System.IObservable{BonVision.Collections.GratingTrial}
+    content.vb: Public Function Process(Of TSource)(source As IObservable(Of TSource)) As IObservable(Of GratingTrial)
+  overload: BonVision.Collections.CreateGratingTrial.Process*
+  nameWithType.vb: CreateGratingTrial.Process(Of TSource)(IObservable(Of TSource))
+  fullName.vb: BonVision.Collections.CreateGratingTrial.Process(Of TSource)(System.IObservable(Of TSource))
+  name.vb: Process(Of TSource)(IObservable(Of TSource))
+- uid: BonVision.Collections.CreateGratingTrial.Process(System.IObservable{BonVision.Collections.GratingParameters})
+  commentId: M:BonVision.Collections.CreateGratingTrial.Process(System.IObservable{BonVision.Collections.GratingParameters})
+  id: Process(System.IObservable{BonVision.Collections.GratingParameters})
+  parent: BonVision.Collections.CreateGratingTrial
+  langs:
+  - csharp
+  - vb
+  name: Process(IObservable<GratingParameters>)
+  nameWithType: CreateGratingTrial.Process(IObservable<GratingParameters>)
+  fullName: BonVision.Collections.CreateGratingTrial.Process(System.IObservable<BonVision.Collections.GratingParameters>)
+  type: Method
+  source:
+    remote:
+      path: src/BonVision/Collections/CreateGratingTrial.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: Process
+    path: ../src/BonVision/Collections/CreateGratingTrial.cs
+    startLine: 105
+  assemblies:
+  - BonVision
+  namespace: BonVision.Collections
+  summary: >-
+    Processes an observable sequence into a new sequence of the specified
+
+    element type.
+  example: []
+  syntax:
+    content: public override IObservable<GratingTrial> Process(IObservable<GratingParameters> source)
+    parameters:
+    - id: source
+      type: System.IObservable{BonVision.Collections.GratingParameters}
+      description: The source sequence to process.
+    return:
+      type: System.IObservable{BonVision.Collections.GratingTrial}
+      description: An observable sequence with elements of type <xref href="BonVision.Collections.GratingTrial" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Overrides Function Process(source As IObservable(Of GratingParameters)) As IObservable(Of GratingTrial)
+  overridden: Bonsai.Combinator{BonVision.Collections.GratingParameters,BonVision.Collections.GratingTrial}.Process(System.IObservable{BonVision.Collections.GratingParameters})
+  overload: BonVision.Collections.CreateGratingTrial.Process*
+  nameWithType.vb: CreateGratingTrial.Process(IObservable(Of GratingParameters))
+  fullName.vb: BonVision.Collections.CreateGratingTrial.Process(System.IObservable(Of BonVision.Collections.GratingParameters))
+  name.vb: Process(IObservable(Of GratingParameters))
+references:
+- uid: BonVision.Collections
+  commentId: N:BonVision.Collections
+  href: BonVision.html
+  name: BonVision.Collections
+  nameWithType: BonVision.Collections
+  fullName: BonVision.Collections
+  spec.csharp:
+  - uid: BonVision
+    name: BonVision
+    href: BonVision.html
+  - name: .
+  - uid: BonVision.Collections
+    name: Collections
+    href: BonVision.Collections.html
+  spec.vb:
+  - uid: BonVision
+    name: BonVision
+    href: BonVision.html
+  - name: .
+  - uid: BonVision.Collections
+    name: Collections
+    href: BonVision.Collections.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bonsai.Combinator{BonVision.Collections.GratingParameters,BonVision.Collections.GratingTrial}
+  commentId: T:Bonsai.Combinator{BonVision.Collections.GratingParameters,BonVision.Collections.GratingTrial}
+  parent: Bonsai
+  definition: Bonsai.Combinator`2
+  href: BonVision.Collections.GratingParameters.html
+  name: Combinator<GratingParameters, GratingTrial>
+  nameWithType: Combinator<GratingParameters, GratingTrial>
+  fullName: Bonsai.Combinator<BonVision.Collections.GratingParameters, BonVision.Collections.GratingTrial>
+  nameWithType.vb: Combinator(Of GratingParameters, GratingTrial)
+  fullName.vb: Bonsai.Combinator(Of BonVision.Collections.GratingParameters, BonVision.Collections.GratingTrial)
+  name.vb: Combinator(Of GratingParameters, GratingTrial)
+  spec.csharp:
+  - uid: Bonsai.Combinator`2
+    name: Combinator
+    isExternal: true
+  - name: <
+  - uid: BonVision.Collections.GratingParameters
+    name: GratingParameters
+    href: BonVision.Collections.GratingParameters.html
+  - name: ','
+  - name: " "
+  - uid: BonVision.Collections.GratingTrial
+    name: GratingTrial
+    href: BonVision.Collections.GratingTrial.html
+  - name: '>'
+  spec.vb:
+  - uid: Bonsai.Combinator`2
+    name: Combinator
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: BonVision.Collections.GratingParameters
+    name: GratingParameters
+    href: BonVision.Collections.GratingParameters.html
+  - name: ','
+  - name: " "
+  - uid: BonVision.Collections.GratingTrial
+    name: GratingTrial
+    href: BonVision.Collections.GratingTrial.html
+  - name: )
+- uid: Bonsai.Transform{BonVision.Collections.GratingParameters,BonVision.Collections.GratingTrial}
+  commentId: T:Bonsai.Transform{BonVision.Collections.GratingParameters,BonVision.Collections.GratingTrial}
+  parent: Bonsai
+  definition: Bonsai.Transform`2
+  href: BonVision.Collections.GratingParameters.html
+  name: Transform<GratingParameters, GratingTrial>
+  nameWithType: Transform<GratingParameters, GratingTrial>
+  fullName: Bonsai.Transform<BonVision.Collections.GratingParameters, BonVision.Collections.GratingTrial>
+  nameWithType.vb: Transform(Of GratingParameters, GratingTrial)
+  fullName.vb: Bonsai.Transform(Of BonVision.Collections.GratingParameters, BonVision.Collections.GratingTrial)
+  name.vb: Transform(Of GratingParameters, GratingTrial)
+  spec.csharp:
+  - uid: Bonsai.Transform`2
+    name: Transform
+    isExternal: true
+  - name: <
+  - uid: BonVision.Collections.GratingParameters
+    name: GratingParameters
+    href: BonVision.Collections.GratingParameters.html
+  - name: ','
+  - name: " "
+  - uid: BonVision.Collections.GratingTrial
+    name: GratingTrial
+    href: BonVision.Collections.GratingTrial.html
+  - name: '>'
+  spec.vb:
+  - uid: Bonsai.Transform`2
+    name: Transform
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: BonVision.Collections.GratingParameters
+    name: GratingParameters
+    href: BonVision.Collections.GratingParameters.html
+  - name: ','
+  - name: " "
+  - uid: BonVision.Collections.GratingTrial
+    name: GratingTrial
+    href: BonVision.Collections.GratingTrial.html
+  - name: )
+- uid: Bonsai.Combinator{BonVision.Collections.GratingParameters,BonVision.Collections.GratingTrial}.Process(System.IObservable{BonVision.Collections.GratingParameters})
+  commentId: M:Bonsai.Combinator{BonVision.Collections.GratingParameters,BonVision.Collections.GratingTrial}.Process(System.IObservable{BonVision.Collections.GratingParameters})
+  parent: Bonsai.Combinator{BonVision.Collections.GratingParameters,BonVision.Collections.GratingTrial}
+  definition: Bonsai.Combinator`2.Process(System.IObservable{`0})
+  href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  name: Process(IObservable<GratingParameters>)
+  nameWithType: Combinator<GratingParameters, GratingTrial>.Process(IObservable<GratingParameters>)
+  fullName: Bonsai.Combinator<BonVision.Collections.GratingParameters, BonVision.Collections.GratingTrial>.Process(System.IObservable<BonVision.Collections.GratingParameters>)
+  nameWithType.vb: Combinator(Of GratingParameters, GratingTrial).Process(IObservable(Of GratingParameters))
+  fullName.vb: Bonsai.Combinator(Of BonVision.Collections.GratingParameters, BonVision.Collections.GratingTrial).Process(System.IObservable(Of BonVision.Collections.GratingParameters))
+  name.vb: Process(IObservable(Of GratingParameters))
+  spec.csharp:
+  - uid: Bonsai.Combinator{BonVision.Collections.GratingParameters,BonVision.Collections.GratingTrial}.Process(System.IObservable{BonVision.Collections.GratingParameters})
+    name: Process
+    isExternal: true
+  - name: (
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: <
+  - uid: BonVision.Collections.GratingParameters
+    name: GratingParameters
+    href: BonVision.Collections.GratingParameters.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Bonsai.Combinator{BonVision.Collections.GratingParameters,BonVision.Collections.GratingTrial}.Process(System.IObservable{BonVision.Collections.GratingParameters})
+    name: Process
+    isExternal: true
+  - name: (
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: BonVision.Collections.GratingParameters
+    name: GratingParameters
+    href: BonVision.Collections.GratingParameters.html
+  - name: )
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bonsai.Combinator`2
+  commentId: T:Bonsai.Combinator`2
+  isExternal: true
+  name: Combinator<TSource, TResult>
+  nameWithType: Combinator<TSource, TResult>
+  fullName: Bonsai.Combinator<TSource, TResult>
+  nameWithType.vb: Combinator(Of TSource, TResult)
+  fullName.vb: Bonsai.Combinator(Of TSource, TResult)
+  name.vb: Combinator(Of TSource, TResult)
+  spec.csharp:
+  - uid: Bonsai.Combinator`2
+    name: Combinator
+    isExternal: true
+  - name: <
+  - name: TSource
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: Bonsai.Combinator`2
+    name: Combinator
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TSource
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: Bonsai
+  commentId: N:Bonsai
+  isExternal: true
+  name: Bonsai
+  nameWithType: Bonsai
+  fullName: Bonsai
+- uid: Bonsai.Transform`2
+  commentId: T:Bonsai.Transform`2
+  isExternal: true
+  name: Transform<TSource, TResult>
+  nameWithType: Transform<TSource, TResult>
+  fullName: Bonsai.Transform<TSource, TResult>
+  nameWithType.vb: Transform(Of TSource, TResult)
+  fullName.vb: Bonsai.Transform(Of TSource, TResult)
+  name.vb: Transform(Of TSource, TResult)
+  spec.csharp:
+  - uid: Bonsai.Transform`2
+    name: Transform
+    isExternal: true
+  - name: <
+  - name: TSource
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: Bonsai.Transform`2
+    name: Transform
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TSource
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: Bonsai.Combinator`2.Process(System.IObservable{`0})
+  commentId: M:Bonsai.Combinator`2.Process(System.IObservable{`0})
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  name: Process(IObservable<TSource>)
+  nameWithType: Combinator<TSource, TResult>.Process(IObservable<TSource>)
+  fullName: Bonsai.Combinator<TSource, TResult>.Process(System.IObservable<TSource>)
+  nameWithType.vb: Combinator(Of TSource, TResult).Process(IObservable(Of TSource))
+  fullName.vb: Bonsai.Combinator(Of TSource, TResult).Process(System.IObservable(Of TSource))
+  name.vb: Process(IObservable(Of TSource))
+  spec.csharp:
+  - uid: Bonsai.Combinator`2.Process(System.IObservable{`0})
+    name: Process
+    isExternal: true
+  - name: (
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: <
+  - name: TSource
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Bonsai.Combinator`2.Process(System.IObservable{`0})
+    name: Process
+    isExternal: true
+  - name: (
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TSource
+  - name: )
+  - name: )
+- uid: BonVision.Collections.CreateGratingTrial.#ctor*
+  commentId: Overload:BonVision.Collections.CreateGratingTrial.#ctor
+  href: BonVision.Collections.CreateGratingTrial.html#BonVision_Collections_CreateGratingTrial__ctor
+  name: CreateGratingTrial
+  nameWithType: CreateGratingTrial.CreateGratingTrial
+  fullName: BonVision.Collections.CreateGratingTrial.CreateGratingTrial
+  nameWithType.vb: CreateGratingTrial.New
+  fullName.vb: BonVision.Collections.CreateGratingTrial.New
+  name.vb: New
+- uid: BonVision.Collections.CreateGratingTrial.Delay*
+  commentId: Overload:BonVision.Collections.CreateGratingTrial.Delay
+  href: BonVision.Collections.CreateGratingTrial.html#BonVision_Collections_CreateGratingTrial_Delay
+  name: Delay
+  nameWithType: CreateGratingTrial.Delay
+  fullName: BonVision.Collections.CreateGratingTrial.Delay
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: BonVision.Collections.CreateGratingTrial.Duration*
+  commentId: Overload:BonVision.Collections.CreateGratingTrial.Duration
+  href: BonVision.Collections.CreateGratingTrial.html#BonVision_Collections_CreateGratingTrial_Duration
+  name: Duration
+  nameWithType: CreateGratingTrial.Duration
+  fullName: BonVision.Collections.CreateGratingTrial.Duration
+- uid: BonVision.Collections.CreateGratingTrial.Diameter*
+  commentId: Overload:BonVision.Collections.CreateGratingTrial.Diameter
+  href: BonVision.Collections.CreateGratingTrial.html#BonVision_Collections_CreateGratingTrial_Diameter
+  name: Diameter
+  nameWithType: CreateGratingTrial.Diameter
+  fullName: BonVision.Collections.CreateGratingTrial.Diameter
+- uid: BonVision.Collections.CreateGratingTrial.X*
+  commentId: Overload:BonVision.Collections.CreateGratingTrial.X
+  href: BonVision.Collections.CreateGratingTrial.html#BonVision_Collections_CreateGratingTrial_X
+  name: X
+  nameWithType: CreateGratingTrial.X
+  fullName: BonVision.Collections.CreateGratingTrial.X
+- uid: BonVision.Collections.CreateGratingTrial.Y*
+  commentId: Overload:BonVision.Collections.CreateGratingTrial.Y
+  href: BonVision.Collections.CreateGratingTrial.html#BonVision_Collections_CreateGratingTrial_Y
+  name: Y
+  nameWithType: CreateGratingTrial.Y
+  fullName: BonVision.Collections.CreateGratingTrial.Y
+- uid: BonVision.Collections.CreateGratingTrial.Contrast*
+  commentId: Overload:BonVision.Collections.CreateGratingTrial.Contrast
+  href: BonVision.Collections.CreateGratingTrial.html#BonVision_Collections_CreateGratingTrial_Contrast
+  name: Contrast
+  nameWithType: CreateGratingTrial.Contrast
+  fullName: BonVision.Collections.CreateGratingTrial.Contrast
+- uid: BonVision.Collections.CreateGratingTrial.SpatialFrequency*
+  commentId: Overload:BonVision.Collections.CreateGratingTrial.SpatialFrequency
+  href: BonVision.Collections.CreateGratingTrial.html#BonVision_Collections_CreateGratingTrial_SpatialFrequency
+  name: SpatialFrequency
+  nameWithType: CreateGratingTrial.SpatialFrequency
+  fullName: BonVision.Collections.CreateGratingTrial.SpatialFrequency
+- uid: BonVision.Collections.CreateGratingTrial.TemporalFrequency*
+  commentId: Overload:BonVision.Collections.CreateGratingTrial.TemporalFrequency
+  href: BonVision.Collections.CreateGratingTrial.html#BonVision_Collections_CreateGratingTrial_TemporalFrequency
+  name: TemporalFrequency
+  nameWithType: CreateGratingTrial.TemporalFrequency
+  fullName: BonVision.Collections.CreateGratingTrial.TemporalFrequency
+- uid: BonVision.Collections.CreateGratingTrial.Orientation*
+  commentId: Overload:BonVision.Collections.CreateGratingTrial.Orientation
+  href: BonVision.Collections.CreateGratingTrial.html#BonVision_Collections_CreateGratingTrial_Orientation
+  name: Orientation
+  nameWithType: CreateGratingTrial.Orientation
+  fullName: BonVision.Collections.CreateGratingTrial.Orientation
+- uid: BonVision.Collections.CreateGratingTrial.OrientationXml*
+  commentId: Overload:BonVision.Collections.CreateGratingTrial.OrientationXml
+  href: BonVision.Collections.CreateGratingTrial.html#BonVision_Collections_CreateGratingTrial_OrientationXml
+  name: OrientationXml
+  nameWithType: CreateGratingTrial.OrientationXml
+  fullName: BonVision.Collections.CreateGratingTrial.OrientationXml
+- uid: BonVision.Collections.CreateGratingTrial.Process*
+  commentId: Overload:BonVision.Collections.CreateGratingTrial.Process
+  href: BonVision.Collections.CreateGratingTrial.html#BonVision_Collections_CreateGratingTrial_Process__1_System_IObservable___0__
+  name: Process
+  nameWithType: CreateGratingTrial.Process
+  fullName: BonVision.Collections.CreateGratingTrial.Process
+- uid: System.IObservable{{TSource}}
+  commentId: T:System.IObservable{``0}
+  parent: System
+  definition: System.IObservable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  name: IObservable<TSource>
+  nameWithType: IObservable<TSource>
+  fullName: System.IObservable<TSource>
+  nameWithType.vb: IObservable(Of TSource)
+  fullName.vb: System.IObservable(Of TSource)
+  name.vb: IObservable(Of TSource)
+  spec.csharp:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: <
+  - name: TSource
+  - name: '>'
+  spec.vb:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TSource
+  - name: )
+- uid: System.IObservable{BonVision.Collections.GratingTrial}
+  commentId: T:System.IObservable{BonVision.Collections.GratingTrial}
+  parent: System
+  definition: System.IObservable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  name: IObservable<GratingTrial>
+  nameWithType: IObservable<GratingTrial>
+  fullName: System.IObservable<BonVision.Collections.GratingTrial>
+  nameWithType.vb: IObservable(Of GratingTrial)
+  fullName.vb: System.IObservable(Of BonVision.Collections.GratingTrial)
+  name.vb: IObservable(Of GratingTrial)
+  spec.csharp:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: <
+  - uid: BonVision.Collections.GratingTrial
+    name: GratingTrial
+    href: BonVision.Collections.GratingTrial.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: BonVision.Collections.GratingTrial
+    name: GratingTrial
+    href: BonVision.Collections.GratingTrial.html
+  - name: )
+- uid: System.IObservable`1
+  commentId: T:System.IObservable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  name: IObservable<T>
+  nameWithType: IObservable<T>
+  fullName: System.IObservable<T>
+  nameWithType.vb: IObservable(Of T)
+  fullName.vb: System.IObservable(Of T)
+  name.vb: IObservable(Of T)
+  spec.csharp:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: BonVision.Collections.GratingTrial
+  commentId: T:BonVision.Collections.GratingTrial
+  href: BonVision.Collections.GratingTrial.html
+  name: GratingTrial
+  nameWithType: GratingTrial
+  fullName: BonVision.Collections.GratingTrial
+- uid: System.IObservable{BonVision.Collections.GratingParameters}
+  commentId: T:System.IObservable{BonVision.Collections.GratingParameters}
+  parent: System
+  definition: System.IObservable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  name: IObservable<GratingParameters>
+  nameWithType: IObservable<GratingParameters>
+  fullName: System.IObservable<BonVision.Collections.GratingParameters>
+  nameWithType.vb: IObservable(Of GratingParameters)
+  fullName.vb: System.IObservable(Of BonVision.Collections.GratingParameters)
+  name.vb: IObservable(Of GratingParameters)
+  spec.csharp:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: <
+  - uid: BonVision.Collections.GratingParameters
+    name: GratingParameters
+    href: BonVision.Collections.GratingParameters.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: BonVision.Collections.GratingParameters
+    name: GratingParameters
+    href: BonVision.Collections.GratingParameters.html
+  - name: )

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.8.1"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawImage.bonsai">
+        <TextureName />
+        <ExtentX>1</ExtentX>
+        <ExtentY>1</ExtentY>
+        <LocationX>0</LocationX>
+        <LocationY>0</LocationY>
+        <Layer>0</Layer>
+        <Angle>0</Angle>
+        <ScaleX>1</ScaleX>
+        <ScaleY>1</ScaleY>
+        <ShiftX>0</ShiftX>
+        <ShiftY>0</ShiftY>
+      </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawVideo.bonsai">
+        <TextureName xsi:nil="true" />
+        <PlaybackRate>0</PlaybackRate>
+        <Loop>false</Loop>
+        <Angle>0</Angle>
+        <ExtentX>1</ExtentX>
+        <ExtentY>1</ExtentY>
+        <LocationX>0</LocationX>
+        <LocationY>0</LocationY>
+        <ScaleX>1</ScaleX>
+        <ScaleY>1</ScaleY>
+        <ShiftX>0</ShiftX>
+        <ShiftY>0</ShiftY>
+        <Layer>0</Layer>
+      </Expression>
+    </Nodes>
+    <Edges />
+  </Workflow>
+</WorkflowBuilder>

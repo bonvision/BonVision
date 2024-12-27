@@ -1,0 +1,14 @@
+Frame,Timestamp,Value
+10,0.1833524,{Width=10, Height=10, Depth=U8, Channels=1}
+22,0.38393479999999996,{Width=10, Height=10, Depth=U8, Channels=1}
+34,0.58393719999999993,{Width=10, Height=10, Depth=U8, Channels=1}
+46,0.78393989999999991,{Width=10, Height=10, Depth=U8, Channels=1}
+58,0.98394399999999993,{Width=10, Height=10, Depth=U8, Channels=1}
+70,1.1839461999999998,{Width=10, Height=10, Depth=U8, Channels=1}
+82,1.3839484,{Width=10, Height=10, Depth=U8, Channels=1}
+90,1.5946148999999998,{Width=10, Height=10, Depth=U8, Channels=1}
+102,1.7946171,{Width=10, Height=10, Depth=U8, Channels=1}
+114,1.9946197999999999,{Width=10, Height=10, Depth=U8, Channels=1}
+126,2.1946224000000001,{Width=10, Height=10, Depth=U8, Channels=1}
+138,2.3946332999999997,{Width=10, Height=10, Depth=U8, Channels=1}
+150,2.5995718999999999,{Width=10, Height=10, Depth=U8, Channels=1}

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.8.5"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawSceneModel.bonsai">
+        <TranslationX>0</TranslationX>
+        <TranslationY>0</TranslationY>
+        <TranslationZ>0</TranslationZ>
+        <RotationZ>0</RotationZ>
+        <RotationY>0</RotationY>
+        <RotationX>0</RotationX>
+        <ScaleX>1</ScaleX>
+        <ScaleY>1</ScaleY>
+        <ScaleZ>1</ScaleZ>
+        <SceneName />
+      </Expression>
+    </Nodes>
+    <Edges />
+  </Workflow>
+</WorkflowBuilder>

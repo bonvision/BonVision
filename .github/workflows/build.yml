@@ -1,0 +1,28 @@
+name: Build
+ 
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+ 
+jobs:
+  build:
+    name: Build Solution
+    runs-on: windows-latest
+ 
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+       
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.2.0
+     
+    - name: Restore NuGet Packages
+      run: nuget restore src/BonVision.sln
+ 
+    - name: Build Solution
+      run: msbuild src/BonVision.sln /p:Configuration=Release

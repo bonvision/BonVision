@@ -1,0 +1,84 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "../src",
+          "files": [
+            "**/*.csproj"
+          ]
+        }
+      ],
+      "dest": "api",
+      "filter": "filter.yml",
+      "namespaceLayout": "flattened"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "**/*.{md,yml}"
+        ],
+        "exclude": [
+          "_site/**",
+          "filter.yml",
+          "bonsai/**"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "images/**",
+          "workflows/**",
+          "logo.svg",
+          "favicon.ico",
+          "bonsai/template/api/images/**",
+          "bonsai/template/api/styles/**"
+        ]
+      }
+    ],
+    "output": "_site",
+    "template": [
+      "default",
+      "modern",
+      "bonsai/template",
+      "bonsai/template/api", 
+      "template"
+    ],
+    "globalMetadata": {
+      "_appName": "\u00A0 Bonvision",
+      "_appTitle": "Bonvision",
+      "_enableSearch": true,
+      "pdf": false,
+      "_appFooter": "&copy; 2024 Aman Saleem. Made with <a href=\"https://dotnet.github.io/docfx\">docfx</a>",
+      "_gitContribute": {
+        "repo": "https://github.com/bonvision/BonVision",
+        "branch": "main",
+        "apiSpecFolder": "apidoc"
+      }
+    },
+    "overwrite": [
+      {
+        "files": [
+          "apidoc/**.md"
+        ],
+        "exclude": [
+          "obj/**",
+          "_site/**"
+        ]
+      }
+    ],
+    "markdownEngineProperties": {
+      "markdigExtensions": [
+        "attributes",
+        "customcontainers"
+      ]
+    },
+    "xref": [
+      "https://bonsai-rx.org/docs/xrefmap.yml",
+      "https://horizongir.github.io/reactive/xrefmap.yml"
+    ]
+  }
+}

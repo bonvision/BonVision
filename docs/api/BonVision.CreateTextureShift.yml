@@ -1,0 +1,668 @@
+### YamlMime:ManagedReference
+items:
+- uid: BonVision.CreateTextureShift
+  commentId: T:BonVision.CreateTextureShift
+  id: CreateTextureShift
+  parent: BonVision
+  children:
+  - BonVision.CreateTextureShift.Generate
+  - BonVision.CreateTextureShift.Generate``1(System.IObservable{``0})
+  - BonVision.CreateTextureShift.X
+  - BonVision.CreateTextureShift.Y
+  langs:
+  - csharp
+  - vb
+  name: CreateTextureShift
+  nameWithType: CreateTextureShift
+  fullName: BonVision.CreateTextureShift
+  type: Class
+  source:
+    remote:
+      path: src/BonVision/CreateTextureShift.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: CreateTextureShift
+    path: ../src/BonVision/CreateTextureShift.cs
+    startLine: 9
+  assemblies:
+  - BonVision
+  namespace: BonVision
+  syntax:
+    content: 'public class CreateTextureShift : Source<Vector2>'
+    content.vb: Public Class CreateTextureShift Inherits Source(Of Vector2)
+  inheritance:
+  - System.Object
+  - Bonsai.Source{OpenTK.Vector2}
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: BonVision.CreateTextureShift.X
+  commentId: P:BonVision.CreateTextureShift.X
+  id: X
+  parent: BonVision.CreateTextureShift
+  langs:
+  - csharp
+  - vb
+  name: X
+  nameWithType: CreateTextureShift.X
+  fullName: BonVision.CreateTextureShift.X
+  type: Property
+  source:
+    remote:
+      path: src/BonVision/CreateTextureShift.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: X
+    path: ../src/BonVision/CreateTextureShift.cs
+    startLine: 12
+  assemblies:
+  - BonVision
+  namespace: BonVision
+  syntax:
+    content: >-
+      [Range(-1, 1)]
+
+      public float X { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: >-
+      <Range(-1, 1)>
+
+      Public Property X As Single
+  overload: BonVision.CreateTextureShift.X*
+  attributes:
+  - type: Bonsai.RangeAttribute
+    ctor: Bonsai.RangeAttribute.#ctor(System.Int32,System.Int32)
+    arguments:
+    - type: System.Int32
+      value: -1
+    - type: System.Int32
+      value: 1
+- uid: BonVision.CreateTextureShift.Y
+  commentId: P:BonVision.CreateTextureShift.Y
+  id: Y
+  parent: BonVision.CreateTextureShift
+  langs:
+  - csharp
+  - vb
+  name: Y
+  nameWithType: CreateTextureShift.Y
+  fullName: BonVision.CreateTextureShift.Y
+  type: Property
+  source:
+    remote:
+      path: src/BonVision/CreateTextureShift.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: Y
+    path: ../src/BonVision/CreateTextureShift.cs
+    startLine: 17
+  assemblies:
+  - BonVision
+  namespace: BonVision
+  syntax:
+    content: >-
+      [Range(-1, 1)]
+
+      public float Y { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: >-
+      <Range(-1, 1)>
+
+      Public Property Y As Single
+  overload: BonVision.CreateTextureShift.Y*
+  attributes:
+  - type: Bonsai.RangeAttribute
+    ctor: Bonsai.RangeAttribute.#ctor(System.Int32,System.Int32)
+    arguments:
+    - type: System.Int32
+      value: -1
+    - type: System.Int32
+      value: 1
+- uid: BonVision.CreateTextureShift.Generate
+  commentId: M:BonVision.CreateTextureShift.Generate
+  id: Generate
+  parent: BonVision.CreateTextureShift
+  langs:
+  - csharp
+  - vb
+  name: Generate()
+  nameWithType: CreateTextureShift.Generate()
+  fullName: BonVision.CreateTextureShift.Generate()
+  type: Method
+  source:
+    remote:
+      path: src/BonVision/CreateTextureShift.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: Generate
+    path: ../src/BonVision/CreateTextureShift.cs
+    startLine: 22
+  assemblies:
+  - BonVision
+  namespace: BonVision
+  summary: Generates an observable sequence of data elements.
+  example: []
+  syntax:
+    content: public override IObservable<Vector2> Generate()
+    return:
+      type: System.IObservable{OpenTK.Vector2}
+      description: An observable sequence of data elements of type <xref href="OpenTK.Vector2" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Overrides Function Generate() As IObservable(Of Vector2)
+  overridden: Bonsai.Source{OpenTK.Vector2}.Generate
+  overload: BonVision.CreateTextureShift.Generate*
+- uid: BonVision.CreateTextureShift.Generate``1(System.IObservable{``0})
+  commentId: M:BonVision.CreateTextureShift.Generate``1(System.IObservable{``0})
+  id: Generate``1(System.IObservable{``0})
+  parent: BonVision.CreateTextureShift
+  langs:
+  - csharp
+  - vb
+  name: Generate<TSource>(IObservable<TSource>)
+  nameWithType: CreateTextureShift.Generate<TSource>(IObservable<TSource>)
+  fullName: BonVision.CreateTextureShift.Generate<TSource>(System.IObservable<TSource>)
+  type: Method
+  source:
+    remote:
+      path: src/BonVision/CreateTextureShift.cs
+      branch: include-workflow-plugin
+      repo: https://github.com/banchan86/BonVision_env_dev
+    id: Generate
+    path: ../src/BonVision/CreateTextureShift.cs
+    startLine: 27
+  assemblies:
+  - BonVision
+  namespace: BonVision
+  syntax:
+    content: public IObservable<Vector2> Generate<TSource>(IObservable<TSource> source)
+    parameters:
+    - id: source
+      type: System.IObservable{{TSource}}
+    typeParameters:
+    - id: TSource
+    return:
+      type: System.IObservable{OpenTK.Vector2}
+    content.vb: Public Function Generate(Of TSource)(source As IObservable(Of TSource)) As IObservable(Of Vector2)
+  overload: BonVision.CreateTextureShift.Generate*
+  nameWithType.vb: CreateTextureShift.Generate(Of TSource)(IObservable(Of TSource))
+  fullName.vb: BonVision.CreateTextureShift.Generate(Of TSource)(System.IObservable(Of TSource))
+  name.vb: Generate(Of TSource)(IObservable(Of TSource))
+references:
+- uid: BonVision
+  commentId: N:BonVision
+  href: BonVision.html
+  name: BonVision
+  nameWithType: BonVision
+  fullName: BonVision
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bonsai.Source{OpenTK.Vector2}
+  commentId: T:Bonsai.Source{OpenTK.Vector2}
+  parent: Bonsai
+  definition: Bonsai.Source`1
+  name: Source<Vector2>
+  nameWithType: Source<Vector2>
+  fullName: Bonsai.Source<OpenTK.Vector2>
+  nameWithType.vb: Source(Of Vector2)
+  fullName.vb: Bonsai.Source(Of OpenTK.Vector2)
+  name.vb: Source(Of Vector2)
+  spec.csharp:
+  - uid: Bonsai.Source`1
+    name: Source
+    isExternal: true
+  - name: <
+  - uid: OpenTK.Vector2
+    name: Vector2
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Bonsai.Source`1
+    name: Source
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: OpenTK.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bonsai.Source`1
+  commentId: T:Bonsai.Source`1
+  isExternal: true
+  name: Source<TSource>
+  nameWithType: Source<TSource>
+  fullName: Bonsai.Source<TSource>
+  nameWithType.vb: Source(Of TSource)
+  fullName.vb: Bonsai.Source(Of TSource)
+  name.vb: Source(Of TSource)
+  spec.csharp:
+  - uid: Bonsai.Source`1
+    name: Source
+    isExternal: true
+  - name: <
+  - name: TSource
+  - name: '>'
+  spec.vb:
+  - uid: Bonsai.Source`1
+    name: Source
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TSource
+  - name: )
+- uid: Bonsai
+  commentId: N:Bonsai
+  isExternal: true
+  name: Bonsai
+  nameWithType: Bonsai
+  fullName: Bonsai
+- uid: BonVision.CreateTextureShift.X*
+  commentId: Overload:BonVision.CreateTextureShift.X
+  href: BonVision.CreateTextureShift.html#BonVision_CreateTextureShift_X
+  name: X
+  nameWithType: CreateTextureShift.X
+  fullName: BonVision.CreateTextureShift.X
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: BonVision.CreateTextureShift.Y*
+  commentId: Overload:BonVision.CreateTextureShift.Y
+  href: BonVision.CreateTextureShift.html#BonVision_CreateTextureShift_Y
+  name: Y
+  nameWithType: CreateTextureShift.Y
+  fullName: BonVision.CreateTextureShift.Y
+- uid: OpenTK.Vector2
+  commentId: T:OpenTK.Vector2
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: OpenTK.Vector2
+- uid: Bonsai.Source{OpenTK.Vector2}.Generate
+  commentId: M:Bonsai.Source{OpenTK.Vector2}.Generate
+  parent: Bonsai.Source{OpenTK.Vector2}
+  definition: Bonsai.Source`1.Generate
+  name: Generate()
+  nameWithType: Source<Vector2>.Generate()
+  fullName: Bonsai.Source<OpenTK.Vector2>.Generate()
+  nameWithType.vb: Source(Of Vector2).Generate()
+  fullName.vb: Bonsai.Source(Of OpenTK.Vector2).Generate()
+  spec.csharp:
+  - uid: Bonsai.Source{OpenTK.Vector2}.Generate
+    name: Generate
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bonsai.Source{OpenTK.Vector2}.Generate
+    name: Generate
+    isExternal: true
+  - name: (
+  - name: )
+- uid: BonVision.CreateTextureShift.Generate*
+  commentId: Overload:BonVision.CreateTextureShift.Generate
+  href: BonVision.CreateTextureShift.html#BonVision_CreateTextureShift_Generate
+  name: Generate
+  nameWithType: CreateTextureShift.Generate
+  fullName: BonVision.CreateTextureShift.Generate
+- uid: System.IObservable{OpenTK.Vector2}
+  commentId: T:System.IObservable{OpenTK.Vector2}
+  parent: System
+  definition: System.IObservable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  name: IObservable<Vector2>
+  nameWithType: IObservable<Vector2>
+  fullName: System.IObservable<OpenTK.Vector2>
+  nameWithType.vb: IObservable(Of Vector2)
+  fullName.vb: System.IObservable(Of OpenTK.Vector2)
+  name.vb: IObservable(Of Vector2)
+  spec.csharp:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: <
+  - uid: OpenTK.Vector2
+    name: Vector2
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: OpenTK.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+- uid: Bonsai.Source`1.Generate
+  commentId: M:Bonsai.Source`1.Generate
+  isExternal: true
+  name: Generate()
+  nameWithType: Source<TSource>.Generate()
+  fullName: Bonsai.Source<TSource>.Generate()
+  nameWithType.vb: Source(Of TSource).Generate()
+  fullName.vb: Bonsai.Source(Of TSource).Generate()
+  spec.csharp:
+  - uid: Bonsai.Source`1.Generate
+    name: Generate
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bonsai.Source`1.Generate
+    name: Generate
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.IObservable`1
+  commentId: T:System.IObservable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  name: IObservable<T>
+  nameWithType: IObservable<T>
+  fullName: System.IObservable<T>
+  nameWithType.vb: IObservable(Of T)
+  fullName.vb: System.IObservable(Of T)
+  name.vb: IObservable(Of T)
+  spec.csharp:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.IObservable{{TSource}}
+  commentId: T:System.IObservable{``0}
+  parent: System
+  definition: System.IObservable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  name: IObservable<TSource>
+  nameWithType: IObservable<TSource>
+  fullName: System.IObservable<TSource>
+  nameWithType.vb: IObservable(Of TSource)
+  fullName.vb: System.IObservable(Of TSource)
+  name.vb: IObservable(Of TSource)
+  spec.csharp:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: <
+  - name: TSource
+  - name: '>'
+  spec.vb:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TSource
+  - name: )

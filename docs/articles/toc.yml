@@ -1,0 +1,27 @@
+- name: Getting Started
+- name: Introduction
+  href: ../index.md
+- href: installation.md
+- name: Background Concepts
+- href: display-environment-basics.md
+- name: Workflow
+- href: basic-workflow.md
+- href: create-window.md
+- href: drawing-region.md
+- href: draw-stimuli.md
+- href: map-stimuli.md
+- href: define-display.md
+- name: Stimuli Tips
+- href: stimuli-multiple.md
+- href: stimuli-timing.md
+- href: stimuli-animating.md
+- href: stimuli-alternative.md
+- href: stimuli-neuroscience.md
+- name: Calibration
+- href: gamma-calibration.md
+- href: display-position-calibration.md
+- href: mesh-mapping-calibration.md
+- name: Additional Topics
+- href: logging.md
+- href: syncing.md
+- href: faq.md

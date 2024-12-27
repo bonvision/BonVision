@@ -1,4 +1,12 @@
 .vs
+.venv
 bin
 obj
 packages
+*.orig
+*.user
+*.suo
+*.exe
+*.exe.settings
+*.exe.old
+*.dll
