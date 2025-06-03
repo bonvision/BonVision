@@ -1,12 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.7.0"
+<WorkflowBuilder Version="2.8.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
                  xmlns:bv="clr-namespace:BonVision;assembly=BonVision"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
                  xmlns:p1="clr-namespace:OpenTK;assembly=OpenTK"
                  xmlns="https://bonsai-rx.org/2018/workflow">
-  <Description>Draws a textured and transformed 3D model stimulus.</Description>
   <Workflow>
     <Nodes>
       <Expression xsi:type="WorkflowInput">
@@ -27,20 +26,6 @@
           <gl:Y>0</gl:Y>
           <gl:Z>0</gl:Z>
         </Combinator>
-      </Expression>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="X" DisplayName="ScaleX" />
-        <Property Name="Y" DisplayName="ScaleY" />
-        <Property Name="Z" DisplayName="ScaleZ" />
-      </Expression>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="MeshName" />
-      </Expression>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="Ambient" Description="The amount and color of the ambient light reflected by the material." Category="Model Material" />
-        <Property Name="Diffuse" Description="The amount and color of the diffuse light reflected by the material.&#xD;&#xA;" Category="Model Material" />
-        <Property Name="Specular" Description="The amount and color of the specular light reflected by the material.&#xD;&#xA;" Category="Model Material" />
-        <Property Name="SpecularExponent" Description="The exponent used to compute the specular response of the material." Category="Model Material" />
       </Expression>
       <Expression xsi:type="ExternalizedMapping">
         <Property Name="Value" DisplayName="RotationZ" Description="The rotation about the z-axis." />
@@ -99,6 +84,11 @@
           <gl:Angle>0</gl:Angle>
         </Combinator>
       </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="X" DisplayName="ScaleX" />
+        <Property Name="Y" DisplayName="ScaleY" />
+        <Property Name="Z" DisplayName="ScaleZ" />
+      </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="gl:Scale">
           <gl:Order>Prepend</gl:Order>
@@ -142,6 +132,12 @@
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="rx:Zip" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Ambient" Description="The amount and color of the ambient light reflected by the material." Category="Model Material" />
+        <Property Name="Diffuse" Description="The amount and color of the diffuse light reflected by the material.&#xD;&#xA;" Category="Model Material" />
+        <Property Name="Specular" Description="The amount and color of the specular light reflected by the material.&#xD;&#xA;" Category="Model Material" />
+        <Property Name="SpecularExponent" Description="The exponent used to compute the specular response of the material." Category="Model Material" />
       </Expression>
       <Expression xsi:type="GroupWorkflow">
         <Name>UpdateMaterial</Name>
@@ -285,6 +281,67 @@
           </Edges>
         </Workflow>
       </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="TextureScaleX" />
+        <Property Name="TextureScaleY" />
+        <Property Name="TextureShiftX" />
+        <Property Name="TextureShiftY" />
+      </Expression>
+      <Expression xsi:type="GroupWorkflow">
+        <Name>TextureScaleShift</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="X" DisplayName="TextureScaleX" Category="Texture Mapping" />
+              <Property Name="Y" DisplayName="TextureScaleY" Category="Texture Mapping" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="bv:CreateTextureScale">
+                <bv:X>1</bv:X>
+                <bv:Y>1</bv:Y>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="gl:UpdateUniform">
+                <gl:UniformName>scale</gl:UniformName>
+                <gl:ShaderName>TexturedModel</gl:ShaderName>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="X" DisplayName="TextureShiftX" Category="Texture Mapping" />
+              <Property Name="Y" DisplayName="TextureShiftY" Category="Texture Mapping" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="bv:CreateTextureShift">
+                <bv:X>0</bv:X>
+                <bv:Y>0</bv:Y>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="gl:UpdateUniform">
+                <gl:UniformName>shift</gl:UniformName>
+                <gl:ShaderName>TexturedModel</gl:ShaderName>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge From="0" To="2" Label="Source1" />
+            <Edge From="1" To="2" Label="Source2" />
+            <Edge From="2" To="3" Label="Source1" />
+            <Edge From="3" To="5" Label="Source1" />
+            <Edge From="4" To="5" Label="Source2" />
+            <Edge From="5" To="6" Label="Source1" />
+            <Edge From="6" To="7" Label="Source1" />
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="MeshName" />
+      </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="gl:DrawMesh">
           <gl:ShaderName>TexturedModel</gl:ShaderName>
@@ -295,37 +352,39 @@
     </Nodes>
     <Edges>
       <Edge From="0" To="1" Label="Source1" />
+      <Edge From="0" To="21" Label="Source1" />
       <Edge From="0" To="23" Label="Source1" />
-      <Edge From="0" To="25" Label="Source1" />
       <Edge From="1" To="3" Label="Source1" />
       <Edge From="2" To="3" Label="Source2" />
-      <Edge From="3" To="10" Label="Source1" />
-      <Edge From="4" To="19" Label="Source2" />
-      <Edge From="5" To="29" Label="Source2" />
-      <Edge From="6" To="28" Label="Source2" />
-      <Edge From="7" To="8" Label="Source1" />
+      <Edge From="3" To="7" Label="Source1" />
+      <Edge From="4" To="5" Label="Source1" />
+      <Edge From="5" To="6" Label="Source1" />
+      <Edge From="6" To="7" Label="Source2" />
+      <Edge From="7" To="11" Label="Source1" />
       <Edge From="8" To="9" Label="Source1" />
-      <Edge From="9" To="10" Label="Source2" />
-      <Edge From="10" To="14" Label="Source1" />
-      <Edge From="11" To="12" Label="Source1" />
+      <Edge From="9" To="10" Label="Source1" />
+      <Edge From="10" To="11" Label="Source2" />
+      <Edge From="11" To="15" Label="Source1" />
       <Edge From="12" To="13" Label="Source1" />
-      <Edge From="13" To="14" Label="Source2" />
-      <Edge From="14" To="18" Label="Source1" />
-      <Edge From="15" To="16" Label="Source1" />
-      <Edge From="16" To="17" Label="Source1" />
-      <Edge From="17" To="18" Label="Source2" />
+      <Edge From="13" To="14" Label="Source1" />
+      <Edge From="14" To="15" Label="Source2" />
+      <Edge From="15" To="17" Label="Source1" />
+      <Edge From="16" To="17" Label="Source2" />
+      <Edge From="17" To="18" Label="Source1" />
       <Edge From="18" To="19" Label="Source1" />
       <Edge From="19" To="20" Label="Source1" />
-      <Edge From="20" To="21" Label="Source1" />
+      <Edge From="20" To="25" Label="Source1" />
       <Edge From="21" To="22" Label="Source1" />
-      <Edge From="22" To="27" Label="Source1" />
+      <Edge From="22" To="25" Label="Source2" />
       <Edge From="23" To="24" Label="Source1" />
-      <Edge From="24" To="27" Label="Source2" />
-      <Edge From="25" To="26" Label="Source1" />
-      <Edge From="26" To="27" Label="Source3" />
-      <Edge From="27" To="28" Label="Source1" />
-      <Edge From="28" To="29" Label="Source1" />
-      <Edge From="29" To="30" Label="Source1" />
+      <Edge From="24" To="25" Label="Source3" />
+      <Edge From="25" To="27" Label="Source1" />
+      <Edge From="26" To="27" Label="Source2" />
+      <Edge From="27" To="29" Label="Source1" />
+      <Edge From="28" To="29" Label="Source2" />
+      <Edge From="29" To="31" Label="Source1" />
+      <Edge From="30" To="31" Label="Source2" />
+      <Edge From="31" To="32" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>
