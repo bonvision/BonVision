@@ -17,7 +17,7 @@ namespace BonVision
             return source.ToArray().Select(value =>
             {
                 // The number of rows in the grid is equal to the number of distinct values of 'v'
-                var rows = value.Select(row => row[3]).Distinct().Count();
+                var rows = value.Select(row => row[2]).Distinct().Count();
                 var cols = value.Length / rows;
 
                 var i = 0;
