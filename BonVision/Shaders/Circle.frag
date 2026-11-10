@@ -1,4 +1,4 @@
-#version 400
+#version 140
 uniform vec4 color = vec4(1);
 in vec2 texCoord;
 out vec4 fragColor;

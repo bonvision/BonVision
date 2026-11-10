@@ -1,4 +1,4 @@
-#version 400
+#version 140
 uniform sampler2D tex;
 uniform sampler2D lut;
 in vec2 texCoord;

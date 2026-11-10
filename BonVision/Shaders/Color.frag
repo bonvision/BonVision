@@ -1,4 +1,4 @@
-#version 400
+#version 140
 uniform vec4 color;
 out vec4 fragColor;
 

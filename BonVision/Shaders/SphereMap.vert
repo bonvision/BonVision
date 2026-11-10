@@ -1,4 +1,5 @@
-#version 400
+#version 140
+#extension GL_ARB_explicit_attrib_location : require
 uniform mat4 transform = mat4(1);
 uniform vec2 scale = vec2(1, 1);
 uniform vec2 shift;

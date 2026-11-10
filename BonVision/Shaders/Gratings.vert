@@ -1,4 +1,5 @@
-#version 400
+#version 140
+#extension GL_ARB_explicit_attrib_location : require
 uniform mat4 transform = mat4(1);
 layout(location = 0) in vec2 vp;
 layout(location = 1) in vec2 vt;

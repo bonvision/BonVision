@@ -1,4 +1,4 @@
-#version 400
+#version 140
 uniform vec4 colorAmbient;
 uniform vec4 colorDiffuse;
 uniform vec4 colorSpecular;

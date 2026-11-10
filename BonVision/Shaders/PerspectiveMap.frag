@@ -1,4 +1,4 @@
-#version 400
+#version 140
 uniform sampler2D tex;
 in vec2 texCoord;
 out vec4 fragColor;

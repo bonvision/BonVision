@@ -1,4 +1,4 @@
-#version 400
+#version 140
 uniform samplerCube tex;
 in vec4 texCoord;
 out vec4 fragColor;

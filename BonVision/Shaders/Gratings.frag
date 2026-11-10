@@ -1,4 +1,4 @@
-#version 400
+#version 140
 const float pi = 3.1415926535897932384626433832795;
 const float sqrtTwoPi = sqrt(2 * pi);
 uniform vec2 frequency;
