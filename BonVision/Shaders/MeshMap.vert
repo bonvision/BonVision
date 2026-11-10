@@ -1,4 +1,5 @@
-#version 400
+#version 140
+#extension GL_ARB_explicit_attrib_location : require
 uniform mat4 modelview = mat4(1);
 uniform mat4 projection = mat4(1);
 layout(location = 0) in vec3 vp;

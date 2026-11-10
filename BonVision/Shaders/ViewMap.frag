@@ -1,4 +1,4 @@
-#version 400
+#version 140
 uniform samplerCube tex;
 uniform sampler2D viewMap;
 in vec2 texCoord;

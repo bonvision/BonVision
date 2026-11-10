@@ -1,4 +1,4 @@
-#version 400
+#version 140
 uniform vec2 shift;
 uniform vec2 scale = vec2(1, 1);
 uniform sampler2D tex;
